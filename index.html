@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Разработка ПО на заказ — M-SOFT IT | Заказная разработка программного обеспечения</title>
+  <meta name="description" content="M-SOFT IT — заказная разработка ПО для бизнеса: ERP, CRM, мобильные приложения, BI-аналитика, кибербезопасность. Импортозамещение западных решений." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ Блок 2. Header / Navigation ============ -->
+  <header class="header" id="siteHeader">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="M-SOFT IT — на главную">
+        <span class="logo__mark">M</span>
+        <span class="logo__text">M-SOFT <span class="logo__accent">IT</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Услуги
+              <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="submenu" role="menu">
+              <a class="submenu__link" href="/uslugi/razrabotka-erp-sistem" role="menuitem">
+                <span class="submenu__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14M4 21h16M9 21V12h6v9M9 8h.01M12 8h.01M15 8h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>ERP-системы</span>
+              </a>
+              <a class="submenu__link" href="/uslugi/razrabotka-crm-sistem" role="menuitem">
+                <span class="submenu__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3v18h18M7 14l4-4 4 4 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>CRM-системы</span>
+              </a>
+              <a class="submenu__link" href="/uslugi/kiberbezopasnost" role="menuitem">
+                <span class="submenu__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                </span>
+                <span>Кибербезопасность</span>
+              </a>
+              <a class="submenu__link" href="/uslugi/iskusstvennyj-intellekt" role="menuitem">
+                <span class="submenu__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2M12 8a4 4 0 100 8 4 4 0 000-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </span>
+                <span>Внедрение ИИ</span>
+              </a>
+              <a class="submenu__link" href="/uslugi/mobilnaya-razrabotka" role="menuitem">
+                <span class="submenu__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M11 18h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </span>
+                <span>Мобильная разработка</span>
+              </a>
+              <a class="submenu__link submenu__link--all" href="/uslugi" role="menuitem">
+                Все услуги
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="/importozameshchenie">Импортозамещение</a></li>
+          <li class="nav__item"><a class="nav__link" href="/portfolio">Портфолио</a></li>
+          <li class="nav__item"><a class="nav__link" href="/stoimost">Стоимость</a></li>
+          <li class="nav__item"><a class="nav__link" href="/o-nas">О нас</a></li>
+          <li class="nav__item"><a class="nav__link" href="/kontakty">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#cta" class="btn btn--primary btn--sm">Обсудить проект</a>
+        <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/uslugi" class="mobile-menu__link">Услуги</a>
+      <a href="/importozameshchenie" class="mobile-menu__link">Импортозамещение</a>
+      <a href="/portfolio" class="mobile-menu__link">Портфолио</a>
+      <a href="/stoimost" class="mobile-menu__link">Стоимость</a>
+      <a href="/o-nas" class="mobile-menu__link">О нас</a>
+      <a href="/kontakty" class="mobile-menu__link">Контакты</a>
+      <a href="#cta" class="btn btn--primary mobile-menu__cta">Обсудить проект</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ Блок 3. Hero ============ -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__glow hero__glow--1"></div>
+        <div class="hero__glow hero__glow--2"></div>
+        <div class="hero__grid"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content reveal">
+          <h1 class="hero__title">
+            Разрабатываем ПО любой сложности для <span class="text-gradient">автоматизации бизнеса</span>
+          </h1>
+          <p class="hero__subtitle">
+            Мы совершили революцию в бизнес-модели: с ИИ создание софта стало <span class="hero__highlight">в 5 раз дешевле</span>. Пройдите путь от идеи до MVP за считанные дни.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#cta" class="btn btn--primary btn--lg">
+              Обсудить проект
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/stoimost" class="btn btn--outline btn--lg">Рассчитать стоимость</a>
+          </div>
+        </div>
+
+        <!-- Иконки направлений -->
+        <div class="directions reveal" role="list">
+          <a class="direction" href="/uslugi/razrabotka-erp-sistem" role="listitem">
+            <span class="direction__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14M4 21h16M9 21V12h6v9M9 8h.01M12 8h.01M15 8h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="direction__label">ERP-системы</span>
+          </a>
+          <a class="direction" href="/uslugi/razrabotka-crm-sistem" role="listitem">
+            <span class="direction__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3v18h18M7 14l4-4 4 4 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="direction__label">CRM-системы</span>
+          </a>
+          <a class="direction" href="/uslugi/kiberbezopasnost" role="listitem">
+            <span class="direction__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="direction__label">Кибербезопасность</span>
+          </a>
+          <a class="direction" href="/uslugi/iskusstvennyj-intellekt" role="listitem">
+            <span class="direction__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <span class="direction__label">Внедрение ИИ</span>
+          </a>
+          <a class="direction" href="/uslugi/mobilnaya-razrabotka" role="listitem">
+            <span class="direction__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M11 18h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="direction__label">Мобильные приложения</span>
+          </a>
+          <a class="direction" href="/importozameshchenie" role="listitem">
+            <span class="direction__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="direction__label">Импортозамещение</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Блок 4. Почему мы? ============ -->
+    <section class="why">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Почему мы?</span>
+          <h2 class="section-title">Мы отменили разработку <span class="text-gradient">«прошлого века»</span></h2>
+          <p class="section-lead">
+            В 2025 году мы полностью реформировали подход к созданию ПО. Традиционные громоздкие команды из менеджеров, фронтенд- и бекенд-разработчиков и штата тестировщиков — это медленно и неоправданно дорого.
+          </p>
+          <p class="section-accent">
+            Эпоха классических команд закончилась. Наступила эра ИИ-дирижеров.
+          </p>
+        </div>
+
+        <div class="why__grid">
+          <article class="card reveal">
+            <div class="card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 12a4 4 0 100-8 4 4 0 000 8zM6 21v-1a6 6 0 0112 0v1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M19 8l1.5 1.5L23 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Команда в одном лице</h3>
+            <p class="card__text">
+              Наши специалисты — это ИИ-дирижеры. Проджект-менеджеры с глубокой технической экспертизой, которые используют ИИ-агенты как мультипликатор силы. Один человек теперь заменяет целый отдел.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Стоимость ниже на порядок</h3>
+            <p class="card__text">
+              Благодаря автоматизации рутины мы сократили издержки в 10 раз. Вы платите за результат и интеллект, а не за оплату сотен человеко-часов на написание шаблонного кода.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Enterprise-технологии для малого бизнеса</h3>
+            <p class="card__text">
+              То, что вчера могли себе позволить только корпорации с миллионными бюджетами, сегодня мы внедряем для малого и среднего бизнеса.
+            </p>
+          </article>
+        </div>
+
+        <p class="why__final reveal">
+          Мы не просто пишем код. Мы управляем интеллектом, чтобы ваш бизнес рос быстрее.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ Блок 5. Революция 2026: Сравнение ============ -->
+    <section class="revolution">
+      <div class="revolution__bg" aria-hidden="true">
+        <div class="revolution__glow"></div>
+      </div>
+      <div class="container">
+        <div class="section-head section-head--light reveal">
+          <span class="eyebrow eyebrow--light">Революция 2026</span>
+          <h2 class="section-title section-title--light">
+            Новая математика <span class="text-gradient">вашей разработки</span>
+          </h2>
+          <p class="section-lead section-lead--light">
+            Мы не просто внедрили нейросети — мы полностью перестроили архитектуру процессов. Старые методы разработки сегодня выглядят как ручной труд мануфактур на фоне автоматизированного завода.
+          </p>
+        </div>
+
+        <div class="compare reveal">
+          <div class="compare__head">
+            <div class="compare__head-cell compare__head-cell--label">Характеристика</div>
+            <div class="compare__head-cell compare__head-cell--legacy">
+              <span class="compare__tag compare__tag--legacy">Прошлое</span>
+              Legacy-подход
+            </div>
+            <div class="compare__head-cell compare__head-cell--ai">
+              <span class="compare__tag compare__tag--ai">Наше настоящее</span>
+              AI-Native
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <div class="compare__cell compare__cell--label">Команда проекта</div>
+            <div class="compare__cell compare__cell--legacy">ПМ + Frontend + Backend + QA (минимум 4 зарплаты)</div>
+            <div class="compare__cell compare__cell--ai">1 ИИ-дирижер (единая точка ответственности)</div>
+          </div>
+
+          <div class="compare__row">
+            <div class="compare__cell compare__cell--label">Стоимость</div>
+            <div class="compare__cell compare__cell--legacy">Высокий порог входа, раздутые бюджеты</div>
+            <div class="compare__cell compare__cell--ai">Снижение издержек на порядок (в 10 раз)</div>
+          </div>
+
+          <div class="compare__row">
+            <div class="compare__cell compare__cell--label">Скорость</div>
+            <div class="compare__cell compare__cell--legacy">Месяцы на согласования и передачу задач между отделами</div>
+            <div class="compare__cell compare__cell--ai">От идеи до MVP — за считанные дни</div>
+          </div>
+
+          <div class="compare__row">
+            <div class="compare__cell compare__cell--label">Коммуникации</div>
+            <div class="compare__cell compare__cell--legacy">«Испорченный телефон» между разработчиками и бизнесом</div>
+            <div class="compare__cell compare__cell--ai">Прямая реализация: ИИ-дирижер понимает бизнес-задачу и внедряет её сразу</div>
+          </div>
+
+          <div class="compare__row">
+            <div class="compare__cell compare__cell--label">Качество кода</div>
+            <div class="compare__cell compare__cell--legacy">Человеческий фактор, ручное тестирование, баги</div>
+            <div class="compare__cell compare__cell--ai">AI-контроль: мгновенная проверка синтаксиса и авто-тесты на лету</div>
+          </div>
+
+          <div class="compare__row">
+            <div class="compare__cell compare__cell--label">Доступность</div>
+            <div class="compare__cell compare__cell--legacy">Передовые фичи — только для корпораций</div>
+            <div class="compare__cell compare__cell--ai">Демократизация: Enterprise-технологии доступны малому бизнесу</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ Блок 13. Footer ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col footer__col--brand">
+          <a href="#" class="logo logo--footer">
+            <span class="logo__mark">M</span>
+            <span class="logo__text">M-SOFT <span class="logo__accent">IT</span></span>
+          </a>
+          <p class="footer__tagline">Разработка ПО для бизнеса. Импортозамещение и автоматизация.</p>
+          <ul class="footer__contacts">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.8a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="tel:+74950000000">+7 (495) 000-00-00</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 6l10 7L22 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="mailto:info@m-soft.it">info@m-soft.it</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+              <span>Москва</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Услуги</h4>
+          <ul class="footer__links">
+            <li><a href="/uslugi/razrabotka-erp-sistem">ERP-системы</a></li>
+            <li><a href="/uslugi/razrabotka-crm-sistem">CRM-системы</a></li>
+            <li><a href="/uslugi/kiberbezopasnost">Кибербезопасность</a></li>
+            <li><a href="/uslugi/iskusstvennyj-intellekt">Внедрение ИИ</a></li>
+            <li><a href="/uslugi/mobilnaya-razrabotka">Мобильная разработка</a></li>
+            <li><a href="/uslugi" class="footer__links-all">Все услуги →</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Компания</h4>
+          <ul class="footer__links">
+            <li><a href="/importozameshchenie">Импортозамещение</a></li>
+            <li><a href="/portfolio">Портфолио</a></li>
+            <li><a href="/stoimost">Стоимость</a></li>
+            <li><a href="/o-nas">О нас</a></li>
+            <li><a href="/kontakty">Контакты</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Ресурсы</h4>
+          <ul class="footer__links">
+            <li><a href="/etapy">Этапы реализации</a></li>
+            <li><a href="/garantii">Гарантии</a></li>
+            <li><a href="/blog" class="footer__links-soon">Блог <span class="badge-soon">скоро</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__social" aria-label="Социальные сети">
+          <a href="#" class="footer__social-link" aria-label="Telegram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="VK">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h3l2 5 2-5h3l-3 6 4 6h-3l-3-4-3 4H2l4-6-3-6z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="footer__copy">
+          © 2026 M-SOFT IT
+        </div>
+        <div class="footer__legal">
+          <a href="/privacy">Политика конфиденциальности</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
