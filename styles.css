@@ -16,7 +16,7 @@
   --text-muted: #a8a8c0;
   --text-dark: #0a0a14;
   --text-dark-muted: #4a4a64;
-  --primary: #7d52eb;
+  --primary: #6f4cff;
   --primary-hover: #8366ff;
   --primary-soft: rgba(111, 76, 255, 0.14);
   --accent: #b14bff;
@@ -157,8 +157,8 @@ img, svg { display: block; max-width: 100%; }
   justify-content: center;
   gap: 8px;
   padding: 12px 22px;
-  border-radius: 8px;
-  font-weight: 600;
+  /* border-radius: 8px; */
+  /* font-weight: 600; */
   font-size: 15px;
   letter-spacing: -0.005em;
   border: 1px solid transparent;
@@ -167,13 +167,12 @@ img, svg { display: block; max-width: 100%; }
   cursor: pointer;
 }
 .btn--primary {
-  background: var(--primary);
   color: #fff;
   box-shadow: none;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 .btn--primary:hover {
-  background: var(--primary-hover);
+  background: var(--primary);
   transform: translateY(0);
   box-shadow: none;
 }
