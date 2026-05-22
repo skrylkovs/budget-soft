@@ -550,7 +550,8 @@ img, svg { display: block; max-width: 100%; }
    ÃÅ¸ÃÂ¾ÃÂ»ÃÂ¾Ã‘ÂÃÂ° Ã‘â€¡ÃÂ¸Ã‘ÂÃÂ»ÃÂ¾ÃÂ²Ã‘â€¹Ã‘â€¦ Ã‘â€žÃÂ°ÃÂºÃ‘â€šÃÂ¾ÃÂ² (stats)
    ================================================================ */
 .stats {
-  background: var(--bg-2);
+  background:
+    radial-gradient(120% 120% at 50% 0%, #2a1f52 0%, #1a1338 38%, #130d29 100%);
   padding: 80px 0;
   border-bottom: 1px solid var(--border);
 }
@@ -581,14 +582,14 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: #2dd4bf;
 }
-.stats__suffix { color: var(--primary); }
+.stats__suffix { color: #2dd4bf; }
 .stats__label {
   margin-top: 14px;
   font-size: 15px;
   letter-spacing: 0.01em;
-  color: var(--text-muted);
+  color: #9b94bd;
 }
 @media (max-width: 700px) {
   .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
@@ -1343,7 +1344,7 @@ body.has-announce .hero { padding-top: calc(var(--header-h) + var(--announce-h) 
 }
 .carousel-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 .carousel-btn.swiper-button-disabled { opacity: 0.4; cursor: default; }
-.case-carousel__all { margin-left: 8px; font-weight: 600; color: var(--primary); }
+.case-carousel__all { margin-left: 8px; font-weight: 600; color: var(--primary); display: none; }
 .case-carousel .swiper { padding-bottom: 8px; }
 /* Swiper bundle Ð·Ð°Ð´Ð°Ñ‘Ñ‚ .swiper-wrapper/.swiper-slide height:100% â€” Ð¸Ð·-Ð·Ð° ÑÑ‚Ð¾Ð³Ð¾ ÐºÐ°Ñ€Ñ‚Ð¾Ñ‡ÐºÐ¸
    Ñ€Ð°ÑÑ‚ÑÐ³Ð¸Ð²Ð°ÑŽÑ‚ÑÑ Ð½Ð° Ð²ÑÑŽ Ð²Ñ‹ÑÐ¾Ñ‚Ñƒ. Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÐ¼ Ð²Ñ‹ÑÐ¾Ñ‚Ñƒ Ð¿Ð¾ ÐºÐ¾Ð½Ñ‚ÐµÐ½Ñ‚Ñƒ. */
@@ -1361,7 +1362,7 @@ body.has-announce .hero { padding-top: calc(var(--header-h) + var(--announce-h) 
 }
 .case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .case-card__shot {
-  height: 190px;
+  height: 250px;
   background: #eceaf4;
   overflow: hidden;
 }
