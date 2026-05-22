@@ -1,6 +1,6 @@
 /* ================================================================
-   M-SOFT IT — main prototype
-   Стек: чистый HTML/CSS/JS, шрифт Inter (Google Fonts)
+   M-SOFT IT Ã¢â‚¬â€ main prototype
+   ÃÂ¡Ã‘â€šÃÂµÃÂº: Ã‘â€¡ÃÂ¸Ã‘ÂÃ‘â€šÃ‘â€¹ÃÂ¹ HTML/CSS/JS, Ã‘Ë†Ã‘â‚¬ÃÂ¸Ã‘â€žÃ‘â€š Inter (Google Fonts)
    ================================================================ */
 
 /* ---------- Tokens (10clouds-inspired violet palette) ---------- */
@@ -16,7 +16,7 @@
   --text-muted: #a8a8c0;
   --text-dark: #0a0a14;
   --text-dark-muted: #4a4a64;
-  --primary: #6f4cff;
+  --primary: #7d52eb;
   --primary-hover: #8366ff;
   --primary-soft: rgba(111, 76, 255, 0.14);
   --accent: #b14bff;
@@ -85,12 +85,21 @@ img, svg { display: block; max-width: 100%; }
   color: var(--primary);
 }
 
+.text-accent-cyan {
+  color: #00d4aa;
+}
+
+/* ---------- Stagger animation for cards ---------- */
+.why__grid .card:nth-child(1) { transition-delay: 0s; }
+.why__grid .card:nth-child(2) { transition-delay: 0.1s; }
+.why__grid .card:nth-child(3) { transition-delay: 0.2s; }
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 22px;
-  border-radius: 999px;
+  padding: 15px 35px;
+  /* border-radius: 999px; */
   background: var(--primary-soft);
   color: var(--primary);
   font-size: 20px;
@@ -102,6 +111,14 @@ img, svg { display: block; max-width: 100%; }
   background: rgba(255, 255, 255, 0.08);
   color: #ffb3ad;
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section-rule {
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--primary);
+  margin: 0 auto 24px;
 }
 
 .section-head {
@@ -140,8 +157,8 @@ img, svg { display: block; max-width: 100%; }
   justify-content: center;
   gap: 8px;
   padding: 12px 22px;
-  /* border-radius: 8px; */
-  /* font-weight: 600; */
+  border-radius: 8px;
+  font-weight: 600;
   font-size: 15px;
   letter-spacing: -0.005em;
   border: 1px solid transparent;
@@ -150,12 +167,13 @@ img, svg { display: block; max-width: 100%; }
   cursor: pointer;
 }
 .btn--primary {
+  background: var(--primary);
   color: #fff;
   box-shadow: none;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid transparent;
 }
 .btn--primary:hover {
-  background: var(--primary);
+  background: var(--primary-hover);
   transform: translateY(0);
   box-shadow: none;
 }
@@ -172,7 +190,7 @@ img, svg { display: block; max-width: 100%; }
 .btn--lg { padding: 16px 28px; font-size: 16px; }
 
 /* ================================================================
-   Блок 2. Header / Navigation
+   Ãâ€˜ÃÂ»ÃÂ¾ÃÂº 2. Header / Navigation
    ================================================================ */
 .header {
   position: fixed;
@@ -264,7 +282,7 @@ img, svg { display: block; max-width: 100%; }
   transform: rotate(180deg);
 }
 
-/* Submenu — ширина и центрирование как у .container.hero__inner */
+/* Submenu Ã¢â‚¬â€ Ã‘Ë†ÃÂ¸Ã‘â‚¬ÃÂ¸ÃÂ½ÃÂ° ÃÂ¸ Ã‘â€ ÃÂµÃÂ½Ã‘â€šÃ‘â‚¬ÃÂ¸Ã‘â‚¬ÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ¸ÃÂµ ÃÂºÃÂ°ÃÂº Ã‘Æ’ .container.hero__inner */
 .submenu {
   position: absolute;
   top: 100%;
@@ -385,7 +403,7 @@ img, svg { display: block; max-width: 100%; }
 .mobile-menu__cta { margin-top: 12px; align-self: stretch; }
 
 /* ================================================================
-   Блок 3. Hero
+   Ãâ€˜ÃÂ»ÃÂ¾ÃÂº 3. Hero
    ================================================================ */
 .hero {
   position: relative;
@@ -560,7 +578,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ================================================================
-   Блок 4. Почему мы?
+   Ãâ€˜ÃÂ»ÃÂ¾ÃÂº 4. ÃÅ¸ÃÂ¾Ã‘â€¡ÃÂµÃÂ¼Ã‘Æ’ ÃÂ¼Ã‘â€¹?
    ================================================================ */
 .why {
   background: var(--bg-light);
@@ -622,7 +640,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ================================================================
-   Блок 5. Революция 2026: Сравнение
+   Ãâ€˜ÃÂ»ÃÂ¾ÃÂº 5. ÃÂ ÃÂµÃÂ²ÃÂ¾ÃÂ»Ã‘Å½Ã‘â€ ÃÂ¸Ã‘Â 2026: ÃÂ¡Ã‘â‚¬ÃÂ°ÃÂ²ÃÂ½ÃÂµÃÂ½ÃÂ¸ÃÂµ
    ================================================================ */
 .revolution {
   position: relative;
@@ -753,7 +771,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ================================================================
-   Блок 13. Footer
+   Ãâ€˜ÃÂ»ÃÂ¾ÃÂº 13. Footer
    ================================================================ */
 .footer {
   background: #06060d;
