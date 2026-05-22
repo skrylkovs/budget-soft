@@ -577,6 +577,44 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ================================================================
+   Полоса логотипов клиентов
+   ================================================================ */
+.clients-strip {
+  padding: 48px 0;
+  background: var(--bg-light);
+  border-top: 1px solid #e8e8f0;
+  border-bottom: 1px solid #e8e8f0;
+}
+
+.clients-strip__label {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-dark-muted);
+  text-transform: uppercase;
+  margin: 0 0 32px;
+}
+
+.clients-strip__logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 24px;
+  align-items: center;
+  justify-items: center;
+}
+
+.clients-strip__logo {
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: -0.005em;
+}
+
+/* ================================================================
    Ãâ€˜ÃÂ»ÃÂ¾ÃÂº 4. ÃÅ¸ÃÂ¾Ã‘â€¡ÃÂµÃÂ¼Ã‘Æ’ ÃÂ¼Ã‘â€¹?
    ================================================================ */
 .why {
