@@ -58,4 +58,187 @@
   } else {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
+
+  /* ---------- CountUp for stats numbers ---------- */
+  const counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window && counters.length) {
+    const animate = (el) => {
+      const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        el.textContent = Math.round(target * eased);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      el.textContent = '0';
+      requestAnimationFrame(tick);
+    };
+    const co = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animate(entry.target);
+            co.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    counters.forEach((el) => co.observe(el));
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Блок 1. Announcement Bar ---------- */
+  (function announceBar() {
+    const bar = document.getElementById('announce');
+    if (!bar) return;
+    if (localStorage.getItem('announceDismissed') === '1') return;
+
+    document.body.classList.add('has-announce');
+    bar.classList.add('is-shown');
+
+    const slides = Array.from(bar.querySelectorAll('.announce__slide'));
+    const dots = Array.from(bar.querySelectorAll('.announce__dot'));
+    let idx = 0;
+    let timer = null;
+
+    const show = (n) => {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    };
+    const next = () => show(idx + 1);
+    const start = () => { if (!prefersReduced && slides.length > 1) timer = setInterval(next, 5000); };
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+
+    dots.forEach((d, i) => d.addEventListener('click', () => { stop(); show(i); start(); }));
+
+    const dismiss = () => {
+      stop();
+      bar.classList.remove('is-shown');
+      document.body.classList.remove('has-announce');
+      localStorage.setItem('announceDismissed', '1');
+    };
+    const closeBtn = document.getElementById('announceClose');
+    if (closeBtn) closeBtn.addEventListener('click', dismiss);
+
+    show(0);
+    start();
+  })();
+
+  /* ---------- Блок 6. Timeline storytelling ---------- */
+  (function timelineStory() {
+    const steps = Array.from(document.querySelectorAll('.timeline__step'));
+    const fill = document.getElementById('timelineFill');
+    if (!steps.length) return;
+
+    const setActive = (activeIdx) => {
+      steps.forEach((s, i) => s.classList.toggle('is-active', i <= activeIdx));
+      if (fill) fill.style.height = ((activeIdx + 1) / steps.length * 100) + '%';
+    };
+
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      steps.forEach((step, i) => {
+        ScrollTrigger.create({
+          trigger: step,
+          start: 'top center',
+          end: 'bottom center',
+          onToggle: (self) => { if (self.isActive) setActive(i); },
+        });
+      });
+    } else if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(steps.indexOf(e.target));
+        });
+      }, { threshold: 0.6 });
+      steps.forEach((s) => io.observe(s));
+    } else {
+      setActive(steps.length - 1);
+    }
+  })();
+
+  /* ---------- Блок 7. Bento mouse-follow glow ---------- */
+  document.querySelectorAll('.bento__tile').forEach((tile) => {
+    tile.addEventListener('mousemove', (e) => {
+      const r = tile.getBoundingClientRect();
+      tile.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      tile.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ---------- Блок 9b. Cases carousel (Swiper) ---------- */
+  if (window.Swiper && document.getElementById('caseSwiper')) {
+    const progress = document.getElementById('caseProgress');
+    new Swiper('#caseSwiper', {
+      slidesPerView: 1.1,
+      spaceBetween: 20,
+      grabCursor: true,
+      navigation: { prevEl: '#casePrev', nextEl: '#caseNext' },
+      breakpoints: {
+        640: { slidesPerView: 2, spaceBetween: 20 },
+        1024: { slidesPerView: 3, spaceBetween: 24 },
+      },
+      on: {
+        progress(sw, p) { if (progress) progress.style.width = Math.max(8, p * 100) + '%'; },
+        init(sw) { if (progress) progress.style.width = Math.max(8, (1 / sw.slides.length) * 100) + '%'; },
+      },
+    });
+  }
+
+  /* ---------- Блок 11b. Testimonials (Swiper coverflow) ---------- */
+  if (window.Swiper && document.getElementById('testimonialsSwiper')) {
+    new Swiper('#testimonialsSwiper', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 1.15,
+      loop: false,
+      coverflowEffect: { rotate: 0, stretch: 0, depth: 120, modifier: 2, slideShadows: false },
+      pagination: { el: '#testimonialsPagination', clickable: true },
+      breakpoints: { 768: { slidesPerView: 1.8 }, 1100: { slidesPerView: 2.4 } },
+    });
+  }
+
+  /* ---------- Блок 12. CTA spotlight + form ---------- */
+  (function ctaSection() {
+    const cta = document.getElementById('cta');
+    if (cta && !prefersReduced) {
+      cta.addEventListener('mousemove', (e) => {
+        const r = cta.getBoundingClientRect();
+        cta.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        cta.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    }
+    const form = document.getElementById('ctaForm');
+    const success = document.getElementById('ctaSuccess');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        form.querySelectorAll('input, textarea, button').forEach((el) => { el.disabled = true; });
+        if (success) success.hidden = false;
+      });
+    }
+  })();
+
+  /* ---------- Блок 14a. Cookie consent ---------- */
+  (function cookieConsent() {
+    const cookie = document.getElementById('cookie');
+    if (!cookie) return;
+    if (localStorage.getItem('cookieChoice')) return;
+    cookie.hidden = false;
+    const decide = (choice) => () => {
+      localStorage.setItem('cookieChoice', choice);
+      cookie.hidden = true;
+    };
+    const accept = document.getElementById('cookieAccept');
+    const decline = document.getElementById('cookieDecline');
+    if (accept) accept.addEventListener('click', decide('accepted'));
+    if (decline) decline.addEventListener('click', decide('declined'));
+  })();
 })();

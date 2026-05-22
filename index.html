@@ -6,9 +6,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- ============ Блок 1. Announcement Bar ============ -->
+  <div class="announce" id="announce" role="region" aria-label="Объявления">
+    <div class="container announce__inner">
+      <div class="announce__track" id="announceTrack">
+        <a class="announce__slide is-active" href="/importozameshchenie">
+          Импортозамещение ПО — дедлайн для субъектов КИИ: 01.01.2028. <span class="announce__cta">Узнать подробнее →</span>
+        </a>
+        <a class="announce__slide" href="/o-nas">
+          Enterprise-технологии теперь доступны малому бизнесу. <span class="announce__cta">Как это работает →</span>
+        </a>
+      </div>
+      <div class="announce__dots" id="announceDots" aria-hidden="true">
+        <button class="announce__dot is-active" type="button" aria-label="Слайд 1"></button>
+        <button class="announce__dot" type="button" aria-label="Слайд 2"></button>
+      </div>
+      <button class="announce__close" id="announceClose" type="button" aria-label="Закрыть объявление">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+      </button>
+    </div>
+  </div>
 
   <!-- ============ Блок 2. Header / Navigation ============ -->
   <header class="header" id="siteHeader">
@@ -102,15 +124,10 @@
         <video class="hero__video" autoplay="" muted="" loop="" playsinline="">
           <source src="hero-background.webm" type="video/webm">
         </video>
-        <div class="hero__glow hero__glow--1"></div>
-        <div class="hero__glow hero__glow--2"></div>
-        <div class="hero__grid"></div>
+        <div class="hero__overlay"></div>
       </div>
 
-      <div class="container hero__inner" style="/* background: black; */">
-        <video class="hero__video-inner" autoplay="" muted="" loop="" playsinline="" aria-hidden="true">
-          <source src="hero-background.webm" type="video/webm">
-        </video>
+      <div class="container hero__inner">
         <div class="hero__content reveal">
           <h1 class="hero__title">
             Разрабатываем ПО любой сложности для <span class="text-gradient">автоматизации бизнеса</span>
@@ -173,26 +190,13 @@
     <!-- ============ Полоса логотипов клиентов ============ -->
     <section class="clients-strip">
       <div class="container">
-        <div class="clients-strip__inner">
+        <div class="clients-strip__card">
           <div class="clients-strip__logos">
-            <div class="clients-strip__logo">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">Я</text></svg>
-            </div>
-            <div class="clients-strip__logo">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">С</text></svg>
-            </div>
-            <div class="clients-strip__logo">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">G</text></svg>
-            </div>
-            <div class="clients-strip__logo">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">V</text></svg>
-            </div>
-            <div class="clients-strip__logo">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">T</text></svg>
-            </div>
-            <div class="clients-strip__logo">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="14" font-weight="600" fill="currentColor">O</text></svg>
-            </div>
+            <div class="clients-strip__logo"><img src="logos/pzu.svg" alt="PZU logo" loading="lazy"></div>
+            <div class="clients-strip__logo"><img src="logos/truststamp.svg" alt="TrustStamp logo" loading="lazy"></div>
+            <div class="clients-strip__logo"><img src="logos/crescent.svg" alt="Crescent logo" loading="lazy"></div>
+            <div class="clients-strip__logo"><img src="logos/alephzero.svg" alt="Aleph Zero logo" loading="lazy"></div>
+            <div class="clients-strip__logo"><img src="logos/qenta.webp" alt="Qenta logo" loading="lazy"></div>
           </div>
         </div>
       </div>
@@ -258,19 +262,40 @@
       </div>
     </section>
 
+    <!-- ============ Полоса числовых фактов ============ -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats__grid">
+          <div class="stats__item reveal">
+            <div class="stats__num"><span data-count="5">5</span><span class="stats__suffix">×</span></div>
+            <div class="stats__label">дешевле разработка</div>
+          </div>
+          <div class="stats__item reveal">
+            <div class="stats__num"><span data-count="48">48</span><span class="stats__suffix">ч</span></div>
+            <div class="stats__label">от идеи до MVP</div>
+          </div>
+          <div class="stats__item reveal">
+            <div class="stats__num"><span data-count="100">100</span><span class="stats__suffix">+</span></div>
+            <div class="stats__label">реализованных проектов</div>
+          </div>
+          <div class="stats__item reveal">
+            <div class="stats__num"><span data-count="10">10</span><span class="stats__suffix">&nbsp;лет</span></div>
+            <div class="stats__label">опыта в IT</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ Блок 5. Революция 2026: Сравнение ============ -->
     <section class="revolution">
-      <div class="revolution__bg" aria-hidden="true">
-        <div class="revolution__glow"></div>
-      </div>
       <div class="container">
-        <div class="section-head section-head--light reveal">
+        <div class="section-head reveal">
           <span class="section-rule"></span>
-          <span class="eyebrow eyebrow--light">Революция 2026</span>
-          <h2 class="section-title section-title--light">
+          <span class="eyebrow">Революция 2026</span>
+          <h2 class="section-title">
             Новая математика <span class="text-gradient">вашей разработки</span>
           </h2>
-          <p class="section-lead section-lead--light">
+          <p class="section-lead">
             Мы не просто внедрили нейросети — мы полностью перестроили архитектуру процессов. Старые методы разработки сегодня выглядят как ручной труд мануфактур на фоне автоматизированного завода.
           </p>
         </div>
@@ -324,6 +349,362 @@
             <div class="compare__cell compare__cell--ai">Демократизация: Enterprise-технологии доступны малому бизнесу</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ Блок 6. Сроки — Timeline + Sticky storytelling ============ -->
+    <section class="timeline" id="timeline">
+      <div class="container timeline__grid">
+        <div class="timeline__aside">
+          <div class="timeline__aside-inner reveal">
+            <span class="section-rule"></span>
+            <span class="eyebrow">Time-to-Market</span>
+            <h2 class="section-title section-title--light">
+              От идеи до запуска — за <span class="text-gradient">недели, а не месяцы</span>
+            </h2>
+            <p class="section-lead section-lead--light">За счёт чего мы работаем быстрее рынка:</p>
+            <ul class="timeline__points">
+              <li>
+                <span class="timeline__point-icon">⚡</span>
+                <span><strong>Мгновенный старт.</strong> Формируем и выводим команду на проект за 2–3 рабочих дня.</span>
+              </li>
+              <li>
+                <span class="timeline__point-icon">🤖</span>
+                <span><strong>AI-Driven Engineering.</strong> ИИ-агенты автоматизируют рутинный кодинг и тесты — ускорение в 2–3 раза.</span>
+              </li>
+              <li>
+                <span class="timeline__point-icon">🧩</span>
+                <span><strong>Готовая архитектура.</strong> Внутренние библиотеки и микросервисные шаблоны вместо кода с нуля.</span>
+              </li>
+              <li>
+                <span class="timeline__point-icon">🔀</span>
+                <span><strong>Параллельные стримы.</strong> Проектирование, дизайн и разработка идут одновременно.</span>
+              </li>
+            </ul>
+            <p class="timeline__benefit">«Пока конкуренты пишут ТЗ, вы уже тестируете первую версию продукта на реальных пользователях».</p>
+          </div>
+        </div>
+
+        <div class="timeline__steps">
+          <div class="timeline__progress" aria-hidden="true"><span class="timeline__progress-fill" id="timelineFill"></span></div>
+          <article class="timeline__step is-active">
+            <div class="timeline__node"><span>01</span></div>
+            <div class="timeline__body">
+              <div class="timeline__term">2–4 дня</div>
+              <h3 class="timeline__step-title">Discovery &amp; Оценка</h3>
+              <p>Погружаемся в бизнес-задачу, фиксируем требования и считаем экономику проекта.</p>
+            </div>
+          </article>
+          <article class="timeline__step">
+            <div class="timeline__node"><span>02</span></div>
+            <div class="timeline__body">
+              <div class="timeline__term">5–7 дней</div>
+              <h3 class="timeline__step-title">Прототипирование (UI/UX)</h3>
+              <p>Собираем интерактивный прототип, чтобы вы увидели продукт ещё до разработки.</p>
+            </div>
+          </article>
+          <article class="timeline__step">
+            <div class="timeline__node"><span>03</span></div>
+            <div class="timeline__body">
+              <div class="timeline__term">от 21 дня</div>
+              <h3 class="timeline__step-title">Запуск MVP</h3>
+              <p>Первая рабочая версия на реальных пользователях — быстрая обратная связь и метрики.</p>
+            </div>
+          </article>
+          <article class="timeline__step">
+            <div class="timeline__node"><span>04</span></div>
+            <div class="timeline__body">
+              <div class="timeline__term">от 2 месяцев</div>
+              <h3 class="timeline__step-title">Полноценный релиз</h3>
+              <p>Зрелый продукт с полным набором функций, документацией и поддержкой.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Блок 7. Услуги — Bento grid ============ -->
+    <section class="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-rule"></span>
+          <span class="eyebrow">Направления</span>
+          <h2 class="section-title">Что мы <span class="text-gradient">разрабатываем</span></h2>
+          <p class="section-lead">Полный цикл заказной разработки — от ERP-систем до ИИ-агентов и кибербезопасности.</p>
+        </div>
+
+        <div class="bento reveal">
+          <a class="bento__tile bento__tile--erp" href="/uslugi/razrabotka-erp-sistem">
+            <div class="bento__glow" aria-hidden="true"></div>
+            <div class="bento__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14M4 21h16M9 21V12h6v9M9 8h.01M12 8h.01M15 8h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <h3 class="bento__title">ERP-системы</h3>
+            <p class="bento__text">Замена SAP и Oracle. Внедрение 1С:ERP и кастомных решений под ваши процессы.</p>
+            <span class="bento__link">Подробнее →</span>
+          </a>
+
+          <a class="bento__tile bento__tile--crm" href="/uslugi/razrabotka-crm-sistem">
+            <div class="bento__glow" aria-hidden="true"></div>
+            <div class="bento__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3v18h18M7 14l4-4 4 4 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <h3 class="bento__title">CRM-системы</h3>
+            <p class="bento__text">Кастомная CRM под ваши бизнес-процессы.</p>
+            <span class="bento__link">Подробнее →</span>
+          </a>
+
+          <a class="bento__tile bento__tile--ai" href="/uslugi/iskusstvennyj-intellekt">
+            <div class="bento__glow" aria-hidden="true"></div>
+            <div class="bento__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"></circle></svg>
+            </div>
+            <h3 class="bento__title">Внедрение ИИ</h3>
+            <p class="bento__text">AI-агенты, чат-боты и автоматизация на базе LLM — встраиваем интеллект в ваши процессы.</p>
+            <span class="bento__link">Подробнее →</span>
+          </a>
+
+          <a class="bento__tile bento__tile--security" href="/uslugi/kiberbezopasnost">
+            <div class="bento__glow" aria-hidden="true"></div>
+            <div class="bento__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <h3 class="bento__title">Кибербезопасность</h3>
+            <p class="bento__text">Аудит ИБ, 152-ФЗ, DevSecOps, пентест.</p>
+            <span class="bento__link">Подробнее →</span>
+          </a>
+
+          <a class="bento__tile bento__tile--mobile" href="/uslugi/mobilnaya-razrabotka">
+            <div class="bento__glow" aria-hidden="true"></div>
+            <div class="bento__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M11 18h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+            </div>
+            <h3 class="bento__title">Мобильные приложения</h3>
+            <p class="bento__text">iOS, Android, Flutter — от идеи до публикации в сторах.</p>
+            <span class="bento__link">Подробнее →</span>
+          </a>
+
+          <a class="bento__tile bento__tile--more" href="/uslugi">
+            <div class="bento__glow" aria-hidden="true"></div>
+            <h3 class="bento__title">Ещё 15 направлений</h3>
+            <span class="bento__link bento__link--big">Все услуги →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Блок 9. Кейсы ============ -->
+    <section class="cases">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-rule"></span>
+          <span class="eyebrow">Портфолио</span>
+          <h2 class="section-title">Кейсы, которыми <span class="text-gradient">гордимся</span></h2>
+        </div>
+
+        <!-- 9a. Featured + 3D -->
+        <article class="case-featured reveal">
+          <div class="case-featured__content">
+            <div class="case-featured__tags">
+              <span class="case-tag">ERP</span>
+              <span class="case-tag">Импортозамещение</span>
+            </div>
+            <h3 class="case-featured__title">Миграция с SAP на 1С:ERP</h3>
+            <p class="case-featured__desc">
+              Производственная компания (500+ сотрудников). Поэтапная миграция с SAP ERP на 1С:ERP с кастомными модулями в рамках импортозамещения.
+            </p>
+            <ul class="case-featured__results">
+              <li><strong>0</strong> простоя</li>
+              <li><strong>8 мес</strong> миграция</li>
+              <li><strong>−40%</strong> на лицензиях</li>
+            </ul>
+            <a href="/portfolio" class="btn btn--primary btn--lg">Подробнее
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+          </div>
+          <div class="case-featured__visual">
+            <div class="case-3d" id="case3d" aria-hidden="true"></div>
+          </div>
+        </article>
+
+        <!-- 9b. Carousel -->
+        <div class="case-carousel reveal">
+          <div class="case-carousel__head">
+            <h3 class="case-carousel__title">Другие проекты</h3>
+            <div class="case-carousel__nav">
+              <button class="carousel-btn" id="casePrev" type="button" aria-label="Предыдущий">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </button>
+              <button class="carousel-btn" id="caseNext" type="button" aria-label="Следующий">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </button>
+              <a href="/portfolio" class="case-carousel__all">Все кейсы →</a>
+            </div>
+          </div>
+
+          <div class="swiper" id="caseSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot case-card__shot--ai"><span>AI</span></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">ИИ</span><span class="case-tag">E-commerce</span></div>
+                    <h4 class="case-card__title">AI-агент для клиентской поддержки</h4>
+                    <p class="case-card__result">−65% обращений к операторам, CSAT +18%</p>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot case-card__shot--mobile"><span>📱</span></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">Мобильные</span><span class="case-tag">Логистика</span></div>
+                    <h4 class="case-card__title">Приложение для службы доставки</h4>
+                    <p class="case-card__result">50k+ установок за 3 мес, NPS 4.7</p>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot case-card__shot--bi"><span>📊</span></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">BI</span><span class="case-tag">Производство</span></div>
+                    <h4 class="case-card__title">BI-аналитика для завода</h4>
+                    <p class="case-card__result">Отчётность в реальном времени, −30% издержек</p>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot case-card__shot--crm"><span>🔐</span></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">ИБ</span><span class="case-tag">Финансы</span></div>
+                    <h4 class="case-card__title">DevSecOps для финтех-платформы</h4>
+                    <p class="case-card__result">Соответствие 152-ФЗ, 0 критичных уязвимостей</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="case-carousel__progress"><div class="swiper-progress" id="caseProgress"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Блок 10. Технологический стек — Marquee ============ -->
+    <section class="techstack">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-rule"></span>
+          <span class="eyebrow">Технологии</span>
+          <h2 class="section-title">Наш <span class="text-gradient">технологический стек</span></h2>
+        </div>
+      </div>
+      <div class="marquee reveal" aria-hidden="true">
+        <div class="marquee__row" data-dir="left">
+          <div class="marquee__track">
+            <span class="tech-chip">Python</span><span class="tech-chip">Java</span><span class="tech-chip">Go</span><span class="tech-chip">PHP</span><span class="tech-chip">Node.js</span><span class="tech-chip">.NET</span><span class="tech-chip">React</span><span class="tech-chip">Vue.js</span><span class="tech-chip">Angular</span><span class="tech-chip">Next.js</span>
+            <span class="tech-chip">Python</span><span class="tech-chip">Java</span><span class="tech-chip">Go</span><span class="tech-chip">PHP</span><span class="tech-chip">Node.js</span><span class="tech-chip">.NET</span><span class="tech-chip">React</span><span class="tech-chip">Vue.js</span><span class="tech-chip">Angular</span><span class="tech-chip">Next.js</span>
+          </div>
+        </div>
+        <div class="marquee__row" data-dir="right">
+          <div class="marquee__track marquee__track--reverse">
+            <span class="tech-chip">Flutter</span><span class="tech-chip">React Native</span><span class="tech-chip">Swift</span><span class="tech-chip">Kotlin</span><span class="tech-chip">TensorFlow</span><span class="tech-chip">PyTorch</span><span class="tech-chip">Apache Spark</span><span class="tech-chip">Kubernetes</span><span class="tech-chip">Docker</span>
+            <span class="tech-chip">Flutter</span><span class="tech-chip">React Native</span><span class="tech-chip">Swift</span><span class="tech-chip">Kotlin</span><span class="tech-chip">TensorFlow</span><span class="tech-chip">PyTorch</span><span class="tech-chip">Apache Spark</span><span class="tech-chip">Kubernetes</span><span class="tech-chip">Docker</span>
+          </div>
+        </div>
+        <div class="marquee__row" data-dir="left">
+          <div class="marquee__track">
+            <span class="tech-chip">Yandex Cloud</span><span class="tech-chip">VK Cloud</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">ClickHouse</span><span class="tech-chip">MongoDB</span><span class="tech-chip">Redis</span>
+            <span class="tech-chip">Yandex Cloud</span><span class="tech-chip">VK Cloud</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">ClickHouse</span><span class="tech-chip">MongoDB</span><span class="tech-chip">Redis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Блок 11b. Отзывы — Coverflow slider ============ -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-rule"></span>
+          <span class="eyebrow eyebrow--light">Отзывы</span>
+          <h2 class="section-title section-title--light">Что говорят <span class="text-gradient">клиенты</span></h2>
+        </div>
+
+        <div class="swiper testimonials__swiper reveal" id="testimonialsSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <blockquote class="testimonial">
+                <p class="testimonial__text">«Команда M-SOFT IT перевела нас с SAP на 1С:ERP без единого дня простоя. Скорость и вовлечённость — на уровне, которого мы не видели у прежних подрядчиков».</p>
+                <footer class="testimonial__author">
+                  <span class="testimonial__avatar">АК</span>
+                  <span><strong>Алексей Кузнецов</strong><br>CIO, производственный холдинг</span>
+                </footer>
+              </blockquote>
+            </div>
+            <div class="swiper-slide">
+              <blockquote class="testimonial">
+                <p class="testimonial__text">«AI-агент закрыл две трети обращений в поддержку. Окупился за полтора месяца — мы такого ROI не ожидали».</p>
+                <footer class="testimonial__author">
+                  <span class="testimonial__avatar">МС</span>
+                  <span><strong>Мария Соколова</strong><br>Head of Operations, e-commerce</span>
+                </footer>
+              </blockquote>
+            </div>
+            <div class="swiper-slide">
+              <blockquote class="testimonial">
+                <p class="testimonial__text">«От идеи до MVP мобильного приложения — три недели. С классической командой это заняло бы квартал. Рекомендую».</p>
+                <footer class="testimonial__author">
+                  <span class="testimonial__avatar">ДВ</span>
+                  <span><strong>Дмитрий Волков</strong><br>Founder, логистический стартап</span>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="swiper-pagination" id="testimonialsPagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Блок 12. CTA-форма — Spotlight ============ -->
+    <section class="cta" id="cta">
+      <div class="cta__spotlight" aria-hidden="true"></div>
+      <div class="container cta__inner">
+        <div class="cta__text reveal">
+          <span class="section-rule"></span>
+          <h2 class="section-title section-title--light">Расскажите о <span class="text-gradient">вашем проекте</span></h2>
+          <p class="section-lead section-lead--light">Оценим задачу и предложим решение. Ответим в течение 24 часов.</p>
+          <ul class="cta__perks">
+            <li>✓ Бесплатная оценка проекта</li>
+            <li>✓ Прозрачная стоимость и сроки</li>
+            <li>✓ NDA по запросу</li>
+          </ul>
+        </div>
+
+        <form class="cta__form reveal" id="ctaForm" novalidate>
+          <div class="cta__field">
+            <label for="ctaName">Имя</label>
+            <input id="ctaName" name="name" type="text" placeholder="Как к вам обращаться" required>
+          </div>
+          <div class="cta__field">
+            <label for="ctaCompany">Компания</label>
+            <input id="ctaCompany" name="company" type="text" placeholder="Название компании">
+          </div>
+          <div class="cta__field">
+            <label for="ctaContact">Телефон или email</label>
+            <input id="ctaContact" name="contact" type="text" placeholder="Для связи" required>
+          </div>
+          <div class="cta__field">
+            <label for="ctaTask">Кратко о задаче</label>
+            <textarea id="ctaTask" name="task" rows="3" placeholder="Что нужно разработать?"></textarea>
+          </div>
+          <label class="cta__consent">
+            <input type="checkbox" name="consent" required>
+            <span>Согласен на обработку персональных данных</span>
+          </label>
+          <button type="submit" class="btn btn--primary btn--lg cta__submit">Получить оценку проекта</button>
+          <p class="cta__success" id="ctaSuccess" hidden>Спасибо! Мы получили заявку и ответим в течение 24 часов.</p>
+        </form>
       </div>
     </section>
 
@@ -407,7 +788,33 @@
     </div>
   </footer>
 
+  <!-- ============ Блок 14. Плавающие элементы ============ -->
+  <!-- 14a. Cookie consent -->
+  <div class="cookie" id="cookie" role="dialog" aria-label="Согласие на использование cookie" hidden>
+    <p class="cookie__text">Мы используем cookie, чтобы сайт работал лучше. Продолжая, вы соглашаетесь с их использованием.</p>
+    <div class="cookie__actions">
+      <button class="btn btn--outline btn--sm" id="cookieDecline" type="button">Отклонить</button>
+      <button class="btn btn--primary btn--sm" id="cookieAccept" type="button">Принять</button>
+    </div>
+  </div>
+
+  <!-- 14b. Messenger button -->
+  <a class="messenger-fab" href="https://t.me/" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+  </a>
+
+  <!-- 3D engine (Three.js) -->
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <!-- Carousels -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Scroll storytelling -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
   <script src="script.js"></script>
+  <script type="module" src="case3d.js"></script>
 
 
 </body></html>
