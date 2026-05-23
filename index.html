@@ -537,25 +537,30 @@
               <div class="bento-showcase__media bento-showcase__media--code">
                 <div class="bento-showcase__ide">
                   <div class="bento-showcase__ide-tabs">
-                    <div class="bento-showcase__ide-tab is-active">ordersService.ts</div>
-                    <div class="bento-showcase__ide-tab">types.ts</div>
+                    <div class="bento-showcase__ide-tab is-active">PreferencesForm.jsx</div>
+                    <div class="bento-showcase__ide-tab">App.jsx</div>
                   </div>
                   <div class="bento-showcase__ide-body">
-                    <pre class="bento-showcase__code"><code><span class="code-kw">import</span> { client } <span class="code-kw">from</span> <span class="code-str">'@/api/client'</span>
-<span class="code-kw">import</span> <span class="code-kw">type</span> { Order, Filter } <span class="code-kw">from</span> <span class="code-str">'./types'</span>
+                    <pre class="bento-showcase__code"><code><span class="code-kw">import</span> { useState } <span class="code-kw">from</span> <span class="code-str">'react'</span>
+<span class="code-kw">import</span> { Switch } <span class="code-kw">from</span> <span class="code-str">'@headlessui/react'</span>
+<span class="code-kw">import</span> { saveSettings } <span class="code-kw">from</span> <span class="code-str">'@/api/settings'</span>
 
-<span class="code-kw">export</span> <span class="code-kw">const</span> <span class="code-fn">ordersApi</span> = {
-  list: <span class="code-kw">async</span> (filter: Filter): <span class="code-kw">Promise</span>&lt;Order[]&gt; =&gt; {
-    <span class="code-kw">const</span> res = <span class="code-kw">await</span> client.get(<span class="code-str">'/orders'</span>, { params: filter })
-    <span class="code-kw">return</span> res.data
-  },
-  find: (id: <span class="code-kw">string</span>) =&gt; client.get&lt;Order&gt;(<span class="code-str">`/orders/${id}`</span>),
-  create: <span class="code-kw">async</span> (order: <span class="code-kw">Omit</span>&lt;Order, <span class="code-str">'id'</span>&gt;) =&gt; {
-    <span class="code-kw">return</span> client.post&lt;Order&gt;(<span class="code-str">'/orders'</span>, order)
-  },
-  update: (id: <span class="code-kw">string</span>, patch: <span class="code-kw">Partial</span>&lt;Order&gt;) =&gt;
-    client.patch&lt;Order&gt;(<span class="code-str">`/orders/${id}`</span>, patch),
-  archive: (id: <span class="code-kw">string</span>) =&gt; client.<span class="code-fn">delete</span>(<span class="code-str">`/orders/${id}`</span>),
+<span class="code-kw">export function</span> <span class="code-fn">PreferencesForm</span>({ initial }) {
+  <span class="code-kw">const</span> [marketing, setMarketing] = <span class="code-fn">useState</span>(initial.marketing)
+  <span class="code-kw">const</span> [updates, setUpdates] = <span class="code-fn">useState</span>(initial.updates ?? <span class="code-kw">true</span>)
+
+  <span class="code-kw">async function</span> <span class="code-fn">onSubmit</span>(e) {
+    e.<span class="code-fn">preventDefault</span>()
+    <span class="code-kw">await</span> <span class="code-fn">saveSettings</span>({ marketing, updates })
+  }
+
+  <span class="code-kw">return</span> (
+    &lt;<span class="code-tag">form</span> onSubmit={onSubmit}&gt;
+      &lt;<span class="code-tag">Switch</span> checked={marketing} onChange={setMarketing} /&gt;
+      &lt;<span class="code-tag">Switch</span> checked={updates} onChange={setUpdates} /&gt;
+      &lt;<span class="code-tag">button</span> type=<span class="code-str">"submit"</span>&gt;Сохранить&lt;/<span class="code-tag">button</span>&gt;
+    &lt;/<span class="code-tag">form</span>&gt;
+  )
 }</code></pre>
                   </div>
                 </div>
