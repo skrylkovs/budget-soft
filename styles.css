@@ -125,24 +125,25 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .section-head {
-  max-width: 820px;
-  margin: 0 auto 56px;
-  text-align: center;
+  max-width: none;
+  margin: 0 0 56px;
+  text-align: left;
 }
 .section-title {
-  font-size: clamp(25px, 3.5vw, 50px);
-  line-height: 1.05;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin: 20px 0 18px;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 16px 0 20px;
   color: var(--text-dark);
 }
 .section-title--light { color: var(--text); }
 .section-lead {
-  font-size: clamp(16px, 1.4vw, 19px);
+  font-size: clamp(16px, 1.8vw, 21px);
   line-height: 1.6;
   color: var(--text-dark-muted);
   margin: 0;
+  max-width: 680px;
 }
 .section-lead--light { color: var(--text-muted); }
 .section-accent {
