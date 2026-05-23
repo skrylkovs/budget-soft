@@ -694,6 +694,7 @@ img, svg {
     background: radial-gradient(120% 120% at 50% 0%, #2a1f52 0%, #1a1338 38%, #130d29 100%);
     padding: 80px 0;
     border-bottom: 1px solid var(--border);
+    margin-top: 40px;
 }
 
 .stats__grid {
@@ -858,6 +859,7 @@ img, svg {
 @media (min-width: 1024px) {
     .bento-showcase__content {
         margin-bottom: 1rem;
+        padding-right: 2rem;
     }
 }
 
@@ -1069,7 +1071,7 @@ img, svg {
     top: 2.5rem;
     right: 0;
     bottom: 0;
-    left: 2.5rem;
+    left: 0rem;
     overflow: hidden;
     border-top-left-radius: 0.75rem;
     background: #111827;
