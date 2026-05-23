@@ -1104,7 +1104,9 @@ img, svg {
 .bento-showcase__ide-body {
     padding: 1.5rem 1.5rem 3.5rem;
     overflow-x: auto;
+    scrollbar-width: none;
 }
+.bento-showcase__ide-body::-webkit-scrollbar { display: none; }
 
 .bento-showcase__code {
     margin: 0;
