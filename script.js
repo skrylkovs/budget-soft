@@ -94,7 +94,7 @@
   /* ---------- Блок 1. Announcement Bar ---------- */
   (function announceBar() {
     const bar = document.getElementById('announce');
-    if (!bar) return;
+    if (!bar || bar.hidden) return;
     if (localStorage.getItem('announceDismissed') === '1') return;
 
     document.body.classList.add('has-announce');
