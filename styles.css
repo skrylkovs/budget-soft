@@ -940,7 +940,9 @@ img, svg {
     line-height: 1.5;
     color: #ccc;
     font-family: 'Courier New', monospace;
+    scrollbar-width: none;
 }
+.bento-showcase__code::-webkit-scrollbar { display: none; }
 
 .code-kw {
     color: #ff79c6;
