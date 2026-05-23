@@ -549,9 +549,12 @@
     <span class="code-kw">const</span> res = <span class="code-kw">await</span> client.get(<span class="code-str">'/orders'</span>, { params: filter })
     <span class="code-kw">return</span> res.data
   },
+  find: (id: <span class="code-kw">string</span>) =&gt; client.get&lt;Order&gt;(<span class="code-str">`/orders/${id}`</span>),
   create: <span class="code-kw">async</span> (order: <span class="code-kw">Omit</span>&lt;Order, <span class="code-str">'id'</span>&gt;) =&gt; {
     <span class="code-kw">return</span> client.post&lt;Order&gt;(<span class="code-str">'/orders'</span>, order)
   },
+  update: (id: <span class="code-kw">string</span>, patch: <span class="code-kw">Partial</span>&lt;Order&gt;) =&gt;
+    client.patch&lt;Order&gt;(<span class="code-str">`/orders/${id}`</span>, patch),
   archive: (id: <span class="code-kw">string</span>) =&gt; client.<span class="code-fn">delete</span>(<span class="code-str">`/orders/${id}`</span>),
 }</code></pre>
                   </div>
