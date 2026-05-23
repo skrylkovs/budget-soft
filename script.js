@@ -207,7 +207,7 @@
   /* ---------- Блок 12. CTA spotlight + form ---------- */
   (function ctaSection() {
     const cta = document.getElementById('cta');
-    if (cta && !prefersReduced) {
+    if (cta && !cta.classList.contains('cta--simple') && !prefersReduced) {
       cta.addEventListener('mousemove', (e) => {
         const r = cta.getBoundingClientRect();
         cta.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -224,6 +224,51 @@
         if (success) success.hidden = false;
       });
     }
+  })();
+
+  /* ---------- Messenger FAB: theme by background under button ---------- */
+  (function messengerFabTheme() {
+    const fab = document.querySelector('.messenger-fab');
+    if (!fab) return;
+
+    const skipRoot = (el) =>
+      el.closest('.messenger-fab, .cookie, .announce, #siteHeader');
+
+    const update = () => {
+      const rect = fab.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      fab.style.pointerEvents = 'none';
+      const stack = document.elementsFromPoint(x, y);
+      fab.style.pointerEvents = '';
+
+      let theme = 'dark';
+      for (const el of stack) {
+        if (skipRoot(el)) continue;
+        const host = el.closest('[data-fab-theme]');
+        if (host) {
+          theme = host.dataset.fabTheme === 'light' ? 'light' : 'dark';
+          break;
+        }
+      }
+
+      fab.classList.toggle('is-on-light', theme === 'light');
+      fab.classList.toggle('is-on-dark', theme === 'dark');
+    };
+
+    let ticking = false;
+    const schedule = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    schedule();
   })();
 
   /* ---------- Блок 14a. Cookie consent ---------- */

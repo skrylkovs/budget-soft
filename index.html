@@ -119,7 +119,7 @@
   <main>
 
     <!-- ============ Блок 3. Hero ============ -->
-    <section class="hero">
+    <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
         <video class="hero__video" autoplay="" muted="" loop="" playsinline="">
           <source src="hero-background.webm" type="video/webm">
@@ -148,7 +148,7 @@
     </section>
 
     <!-- ============ Полоса логотипов клиентов ============ -->
-    <section class="clients-strip">
+    <section class="clients-strip" data-fab-theme="light">
       <div class="container">
         <div class="clients-strip__card">
           <!-- Иконки направлений -->
@@ -245,7 +245,7 @@
     </section>
 
     <!-- ============ Блок 4. Почему мы? ============ -->
-    <section class="why">
+    <section class="why" data-fab-theme="light">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-rule"></span>
@@ -305,7 +305,7 @@
     </section>
 
     <!-- ============ Блок 6. Сроки — Timeline + Sticky storytelling ============ -->
-    <section class="timeline" id="timeline">
+    <section class="timeline" id="timeline" data-fab-theme="dark">
       <div class="container timeline__grid">
         <div class="timeline__aside">
           <div class="timeline__aside-inner reveal">
@@ -385,7 +385,7 @@
 
 
     <!-- ============ Блок 5. Революция 2026: Сравнение ============ -->
-    <section class="revolution">
+    <section class="revolution" data-fab-theme="light">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-rule"></span>
@@ -451,7 +451,7 @@
     </section>
 
     <!-- ============ Полоса числовых фактов ============ -->
-    <section class="stats">
+    <section class="stats" data-fab-theme="dark">
       <div class="container">
         <div class="stats__grid">
           <div class="stats__item reveal">
@@ -476,7 +476,7 @@
 
     <!-- ============ Блок 7. Услуги — Bento grid ============ -->
     <!-- ============ Bento grid (Tailwind UI — three column) ============ -->
-    <section class="bento-showcase" aria-labelledby="bentoShowcaseTitle">
+    <section class="bento-showcase" aria-labelledby="bentoShowcaseTitle" data-fab-theme="light">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-rule"></span>
@@ -570,7 +570,7 @@
         </div>
       </div>
     </section>
-    <section class="team">
+    <section class="team" data-fab-theme="dark">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-rule"></span>
@@ -578,19 +578,35 @@
           <h2 class="section-title section-title--light">Люди, которые <span class="text-gradient">делают продукт</span></h2>
           <p class="section-lead section-lead--light">Инженеры, дизайнеры, AI-дирижёры — те, кто превращает идеи в работающий софт.</p>
         </div>
-        <div class="team__grid reveal">
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=12" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=15" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=33" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=47" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=51" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=58" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=64" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=11" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=22" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=37" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=49" alt="" loading="lazy"></div>
-          <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=68" alt="" loading="lazy"></div>
+        <div class="team__marquee reveal" aria-label="Команда">
+          <div class="team__row">
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=12" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=15" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=33" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=47" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=51" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=58" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=3" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=8" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=20" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=25" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=40" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=55" alt="" loading="lazy" width="80" height="80"></div>
+          </div>
+          <div class="team__row team__row--reverse">
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=64" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=11" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=22" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=37" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=49" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=68" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=7" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=14" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=28" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=32" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=44" alt="" loading="lazy" width="80" height="80"></div>
+            <div class="team__avatar"><img src="https://i.pravatar.cc/160?img=60" alt="" loading="lazy" width="80" height="80"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -665,7 +681,7 @@
     </section>
 
     <!-- ============ Блок 9. Кейсы ============ -->
-    <section class="cases">
+    <section class="cases" data-fab-theme="light">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-rule"></span>
@@ -844,12 +860,13 @@
     </section>
 
     <!-- ============ Блок 12. CTA — текст + кнопка ============ -->
-    <section class="cta cta--simple" id="cta">
-      <div class="cta__spotlight" aria-hidden="true"></div>
-      <div class="container cta__inner cta__inner--centered">
-        <div class="cta__text reveal">
-          <h2 class="section-title section-title--light">Расскажите о <span class="text-gradient">вашем проекте</span></h2>
-          <a href="#contact" class="btn btn--primary btn--lg cta__submit">Обсудить проект <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+    <section class="cta cta--simple" id="cta" data-fab-theme="light">
+      <div class="container">
+        <div class="cta__card cta__inner cta__inner--centered">
+          <div class="cta__text reveal">
+            <h2 class="section-title section-title--light">Следующий прорыв на рынке может быть <span class="text-gradient">вашим</span>. Давайте воплотим это в жизнь.</h2>
+            <a href="#contact" class="btn btn--primary btn--lg cta__submit">Связаться с нами <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+          </div>
         </div>
       </div>
     </section>
@@ -857,7 +874,7 @@
   </main>
 
   <!-- ============ Блок 13. Footer ============ -->
-  <footer class="footer">
+  <footer class="footer" data-fab-theme="dark">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col footer__col--brand">
