@@ -610,7 +610,7 @@ img, svg { display: block; max-width: 100%; }
 /* Bento grid â€” Tailwind UI three-column */
 .bento-showcase {
   background: var(--bg-light);
-  padding: 80px 0;
+  padding: 56px 0;
   color: var(--text-dark);
 }
 .bento-showcase .section-title,
@@ -636,7 +636,7 @@ img, svg { display: block; max-width: 100%; }
 
 .bento-showcase__card {
   position: relative;
-  min-height: 280px;
+  min-height: 196px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -788,13 +788,13 @@ img, svg { display: block; max-width: 100%; }
   container-type: inline-size;
   position: relative;
   width: 100%;
-  min-height: 18rem;
+  min-height: 12.6rem;
   margin: 0 auto;
   max-width: 24rem;
 }
 @media (min-width: 1024px) {
   .bento-showcase__media--phone {
-    min-height: 30rem;
+    min-height: 21rem;
     max-width: none;
     margin: 0;
   }
@@ -851,10 +851,10 @@ img, svg { display: block; max-width: 100%; }
 .bento-showcase__media--code {
   position: relative;
   flex: 1;
-  min-height: 18rem;
+  min-height: 12.6rem;
 }
 @media (min-width: 1024px) {
-  .bento-showcase__media--code { min-height: 30rem; }
+  .bento-showcase__media--code { min-height: 21rem; }
 }
 
 .bento-showcase__ide {
