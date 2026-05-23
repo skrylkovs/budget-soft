@@ -69,7 +69,7 @@ img, svg { display: block; max-width: 100%; }
   .container { padding: 0 4rem; }
 }
 @media (min-width: 1441px) {
-  .container { padding: 0 3rem; }
+  .container {padding: 3rem;}
 }
 
 /* ---------- Reveal animation ---------- */
@@ -1330,6 +1330,8 @@ body.has-announce .hero { padding-top: calc(var(--header-h) + var(--announce-h) 
   display: flex;
   align-items: center;
   gap: 16px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .announce__track {
   position: relative;
