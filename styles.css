@@ -69,7 +69,7 @@ img, svg { display: block; max-width: 100%; }
   .container { padding: 0 4rem; }
 }
 @media (min-width: 1441px) {
-  .container {padding: 3rem;}
+  .container { padding: 0 3rem; }
 }
 
 /* ---------- Reveal animation ---------- */
@@ -105,10 +105,10 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 999px;
   background: var(--primary-soft);
   color: var(--primary);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
 }
 .eyebrow--light {
   background: rgba(111, 76, 255, 0.16);
