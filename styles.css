@@ -692,6 +692,7 @@ img, svg {
    ================================================================ */
 .stats {
     background:
+      linear-gradient(rgba(111, 76, 255, 0.55), rgba(111, 76, 255, 0.55)),
       url("https://img.magnific.com/free-photo/3d-rendering-hexagonal-texture-background_23-2150796421.jpg")
       center / cover no-repeat,
       radial-gradient(120% 120% at 50% 0%, #2a1f52 0%, #1a1338 38%, #130d29 100%);
