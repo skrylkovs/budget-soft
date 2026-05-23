@@ -290,6 +290,81 @@
       </div>
     </section>
 
+    <!-- ============ Bento grid (Tailwind UI — three column) ============ -->
+    <section class="bento-showcase" aria-labelledby="bentoShowcaseTitle">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-rule"></span>
+          <span class="eyebrow">Преимущества</span>
+          <h2 class="section-title" id="bentoShowcaseTitle">Технологии, которые <span class="text-gradient">работают на вас</span></h2>
+          <p class="section-lead">Современная архитектура, безопасность и скорость разработки — в одном продуктовом подходе.</p>
+        </div>
+
+        <div class="bento-showcase__grid reveal">
+          <!-- Left tall card (2 rows) -->
+          <article class="bento-showcase__card bento-showcase__card--lg">
+            <div class="bento-showcase__inner">
+              <div class="bento-showcase__content">
+                <h3 class="bento-showcase__title">Мобильные решения</h3>
+                <p class="bento-showcase__desc">iOS, Android и кроссплатформа — интерфейсы, которые удобны на любом устройстве вашей команды и клиентов.</p>
+              </div>
+              <div class="bento-showcase__media">
+                <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png" alt="Мобильное приложение" width="200" height="400" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+          <!-- Top right card -->
+          <article class="bento-showcase__card">
+            <div class="bento-showcase__inner">
+              <div class="bento-showcase__content">
+                <h3 class="bento-showcase__title">Производительность</h3>
+                <p class="bento-showcase__desc">Оптимизированный стек, кэширование и горизонтальное масштабирование.</p>
+              </div>
+              <div class="bento-showcase__media">
+                <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png" alt="Производительность" width="200" height="140" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+          <!-- Bottom right card (row 2, col 2) -->
+          <article class="bento-showcase__card">
+            <div class="bento-showcase__inner">
+              <div class="bento-showcase__content">
+                <h3 class="bento-showcase__title">Безопасность</h3>
+                <p class="bento-showcase__desc">152-ФЗ, аудит ИБ, шифрование и DevSecOps — защита встроена в процесс.</p>
+              </div>
+              <div class="bento-showcase__media">
+                <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-security.png" alt="Безопасность" width="160" height="100" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+          <!-- Right tall card (2 rows) -->
+          <article class="bento-showcase__card bento-showcase__card--lg">
+            <div class="bento-showcase__inner">
+              <div class="bento-showcase__content">
+                <h3 class="bento-showcase__title">Мощные API</h3>
+                <p class="bento-showcase__desc">REST, GraphQL, вебхуки и интеграции — легко встраивается в экосистему бизнеса.</p>
+              </div>
+              <div class="bento-showcase__media bento-showcase__media--code">
+                <div class="bento-showcase__code-block">
+                  <div class="bento-showcase__code-tabs">
+                    <div class="bento-showcase__code-tab is-active">API.ts</div>
+                    <div class="bento-showcase__code-tab">Types.ts</div>
+                  </div>
+                  <pre class="bento-showcase__code"><code><span class="code-kw">export</span> <span class="code-kw">const</span> <span class="code-fn">fetchData</span> = <span class="code-kw">async</span> () => {
+  <span class="code-kw">const</span> res = <span class="code-kw">await</span> fetch(<span class="code-str">'/api/v1/data'</span>)
+  <span class="code-kw">return</span> res.json()
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ Блок 5. Революция 2026: Сравнение ============ -->
     <section class="revolution">
       <div class="container">
