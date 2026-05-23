@@ -87,6 +87,12 @@ img, svg { display: block; max-width: 100%; }
 .text-gradient {
   color: var(--primary);
 }
+.why .section-title .text-gradient,
+.revolution .section-title .text-gradient,
+.bento-showcase .section-title .text-gradient,
+.cases .section-title .text-gradient {
+  color: #4f39f6;
+}
 
 .text-accent-cyan {
   color: var(--teal);
