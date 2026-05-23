@@ -130,10 +130,10 @@ img, svg { display: block; max-width: 100%; }
   text-align: center;
 }
 .section-title {
-  font-size: clamp(36px, 4.5vw, 56px);
-  line-height: 1.1;
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.025em;
   margin: 16px 0 20px;
   color: var(--text-dark);
 }
