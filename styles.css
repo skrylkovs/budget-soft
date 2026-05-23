@@ -2641,6 +2641,32 @@ body.has-announce .hero {
     align-self: center;
 }
 
+/* --- .cta--simple: card-style overlapping next section --- */
+.cta.cta--simple {
+    background: transparent;
+    overflow: visible;
+    padding: var(--section-pad) 1rem 0;
+}
+
+.cta--simple .cta__spotlight { display: none; }
+
+.cta--simple .cta__inner {
+    position: relative;
+    z-index: 2;
+    background:
+      radial-gradient(120% 140% at 50% 0%, rgba(111, 76, 255, 0.35), transparent 60%),
+      linear-gradient(135deg, #1a1338 0%, #2a1f52 60%, #1a1338 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-xl);
+    padding: 80px 48px;
+    margin-bottom: -140px;
+    max-width: 1120px;
+    box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+}
+
+.footer { padding-top: 220px; }
+
 .cta__perks {
     margin: 28px 0 0;
     display: flex;
