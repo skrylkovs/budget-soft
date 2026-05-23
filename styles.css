@@ -91,7 +91,7 @@ img, svg { display: block; max-width: 100%; }
 .revolution .section-title .text-gradient,
 .bento-showcase .section-title .text-gradient,
 .cases .section-title .text-gradient {
-  color: #4f39f6;
+  color: oklch(51.1% 0.262 276.966);
 }
 
 .text-accent-cyan {
