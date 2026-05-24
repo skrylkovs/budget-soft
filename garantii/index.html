@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../page.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body class="page-body page-inner">
   <header class="header" id="siteHeader">
@@ -44,7 +45,7 @@
   <span class="submenu__icon">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2M12 8a4 4 0 100 8 4 4 0 000-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
   </span>
-  <span>Внедрение ИИ</span>
+  <span>Внедрение AI во все сферы бизнеса</span>
 </a><a class="submenu__link" href="../uslugi/mobilnaya-razrabotka/" role="menuitem">
   <span class="submenu__icon">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M11 18h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
@@ -57,14 +58,14 @@
   <span>Все услуги</span>
 </a></div>
           </li>
-          <li class="nav__item"><a class="nav__link" href="../portfolio/">Портфолио</a></li>
+          <li class="nav__item"><a class="nav__link" href="#portfolio">Портфолио</a></li>
           <li class="nav__item"><a class="nav__link" href="../etapy/">Этапы реализации</a></li>
-          <li class="nav__item"><a class="nav__link" href="../sroki/">Сроки</a></li>
+          <li class="nav__item"><a class="nav__link" href="../#timeline">Сроки</a></li>
           <li class="nav__item"><a class="nav__link is-active" href="../garantii/">Гарантии</a></li>
         </ul>
       </nav>
       <div class="header__actions">
-        <button type="button" class="btn btn--primary btn--sm js-open-contact">ОБСУДИТЬ ПРОЕКТ</button>
+        <button type="button" class="btn btn--primary btn--sm js-open-contact">ОБСУДИТЬ ПРОЕКТ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
         <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -72,9 +73,9 @@
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="../uslugi/" class="mobile-menu__link">Услуги</a>
-      <a href="../portfolio/" class="mobile-menu__link">Портфолио</a>
+      <a href="#portfolio" class="mobile-menu__link">Портфолио</a>
       <a href="../etapy/" class="mobile-menu__link">Этапы реализации</a>
-      <a href="../sroki/" class="mobile-menu__link">Сроки</a>
+      <a href="../#timeline" class="mobile-menu__link">Сроки</a>
       <a href="../garantii/" class="mobile-menu__link">Гарантии</a>
       <button type="button" class="btn btn--primary mobile-menu__cta js-open-contact">Обсудить проект</button>
     </div>
@@ -148,7 +149,7 @@
                   <path d="M40 44 L41.5 44" stroke="currentColor" stroke-width="1.6"/>
                 </svg>
               </span>
-              <span class="direction__label">Внедрение ИИ</span>
+              <span class="direction__label">Внедрение AI</span>
             </a>
             <a class="direction" href="../uslugi/mobilnaya-razrabotka/" role="listitem">
               <span class="direction__icon">
@@ -224,6 +225,131 @@
 </div>
       </div>
     </section>
+    <!-- shared: stats + portfolio -->
+    <section class="stats" data-fab-theme="dark">
+      <div class="container">
+        <div class="stats__grid">
+          <div class="stats__item reveal">
+            <div class="stats__num"><span data-count="5">5</span><span class="stats__suffix">×</span></div>
+            <div class="stats__label">дешевле разработка</div>
+          </div>
+          <div class="stats__item reveal">
+            <div class="stats__num"><span data-count="48">48</span><span class="stats__suffix">ч</span></div>
+            <div class="stats__label">от идеи до MVP</div>
+          </div>
+          <div class="stats__item reveal">
+            <div class="stats__num"><span data-count="100">100</span><span class="stats__suffix">+</span></div>
+            <div class="stats__label">реализованных проектов</div>
+          </div>
+          <div class="stats__item reveal">
+            <div class="stats__num"><span data-count="10">10</span><span class="stats__suffix">&nbsp;лет</span></div>
+            <div class="stats__label">опыта в IT</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases" id="portfolio" data-fab-theme="light">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-rule"></span>
+          <span class="eyebrow">Портфолио</span>
+          <h2 class="section-title">Кейсы, которыми <span class="text-gradient">гордимся</span></h2>
+        </div>
+
+        <article class="case-featured reveal">
+          <div class="case-featured__content">
+            <div class="case-featured__tags">
+              <span class="case-tag">ERP</span>
+              <span class="case-tag">Импортозамещение</span>
+            </div>
+            <h3 class="case-featured__title">Миграция с SAP на 1С:ERP</h3>
+            <p class="case-featured__desc">
+              Производственная компания (500+ сотрудников). Поэтапная миграция с SAP ERP на 1С:ERP с кастомными модулями в рамках импортозамещения.
+            </p>
+            <ul class="case-featured__results">
+              <li><strong>0</strong> простоя</li>
+              <li><strong>8 мес</strong> миграция</li>
+              <li><strong>−40%</strong> на лицензиях</li>
+            </ul>
+            <a href="../portfolio/" class="btn btn--primary btn--lg">Подробнее
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+          </div>
+          <div class="case-featured__visual">
+            <div class="case-3d" id="case3d" aria-hidden="true"></div>
+          </div>
+        </article>
+
+        <div class="case-carousel reveal">
+          <div class="swiper" id="caseSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot"><img src="../cases/digital-twin.png" alt="Скриншот цифрового двойника производства" loading="lazy"></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">IoT</span><span class="case-tag">Производство</span></div>
+                    <h4 class="case-card__title">Цифровой двойник производства</h4>
+                    <p class="case-card__result">200+ единиц оборудования в реальном времени</p>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot"><img src="../cases/ecommerce.png" alt="Скриншот e-commerce платформы" loading="lazy"></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">E-commerce</span><span class="case-tag">Web</span></div>
+                    <h4 class="case-card__title">E-commerce платформа</h4>
+                    <p class="case-card__result">Конверсия +32%, время загрузки −45%</p>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot"><img src="../cases/wallet.png" alt="Скриншот мобильного криптокошелька" loading="lazy"></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">Финтех</span><span class="case-tag">Мобильные</span></div>
+                    <h4 class="case-card__title">Мобильный криптокошелёк</h4>
+                    <p class="case-card__result">120k+ пользователей, аптайм 99.98%</p>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot"><img src="../cases/saas.png" alt="Скриншот SaaS-платформы сбора данных" loading="lazy"></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">SaaS</span><span class="case-tag">Аналитика</span></div>
+                    <h4 class="case-card__title">SaaS-платформа сбора данных</h4>
+                    <p class="case-card__result">Онбординг −60%, MRR ×2.4</p>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="case-card">
+                  <div class="case-card__shot"><img src="../cases/biometrics.png" alt="Скриншот системы биометрической аутентификации" loading="lazy"></div>
+                  <div class="case-card__body">
+                    <div class="case-card__tags"><span class="case-tag">ИБ</span><span class="case-tag">Финтех</span></div>
+                    <h4 class="case-card__title">Биометрическая аутентификация</h4>
+                    <p class="case-card__result">Распознавание лица &lt; 1 сек, FAR 0.001%</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-carousel__controls">
+            <button class="carousel-btn" id="casePrev" type="button" aria-label="Предыдущий">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+            <div class="case-carousel__progress"><div class="swiper-progress" id="caseProgress"></div></div>
+            <button class="carousel-btn" id="caseNext" type="button" aria-label="Следующий">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="cta cta--simple" id="cta" data-fab-theme="light">
       <div class="container">
         <div class="cta__card cta__inner cta__inner--centered">
@@ -246,13 +372,13 @@
           <ul class="footer__contacts">
             <li><a href="tel:+74950000000">+7 (495) 000-00-00</a></li>
             <li><a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
-            <li><span>Москва</span></li>
+            <li><span>Москва, ул. Ордынка, 40, БЦ «Палаты Черкасских», оф. 305</span></li>
           </ul>
         </div>
         <div class="footer__col">
           <h4 class="footer__title">Услуги</h4>
           <ul class="footer__links">
-            <li><a href="../uslugi/razrabotka-erp-sistem/">ERP-системы</a></li><li><a href="../uslugi/razrabotka-crm-sistem/">CRM-системы</a></li><li><a href="../uslugi/kiberbezopasnost/">Кибербезопасность</a></li><li><a href="../uslugi/iskusstvennyj-intellekt/">Внедрение ИИ</a></li><li><a href="../uslugi/mobilnaya-razrabotka/">Мобильная разработка</a></li>
+            <li><a href="../uslugi/razrabotka-erp-sistem/">ERP-системы</a></li><li><a href="../uslugi/razrabotka-crm-sistem/">CRM-системы</a></li><li><a href="../uslugi/kiberbezopasnost/">Кибербезопасность</a></li><li><a href="../uslugi/iskusstvennyj-intellekt/">Внедрение AI во все сферы бизнеса</a></li><li><a href="../uslugi/mobilnaya-razrabotka/">Мобильная разработка</a></li>
             <li><a href="../uslugi/" class="footer__links-all">Все услуги →</a></li>
           </ul>
         </div>
@@ -288,14 +414,63 @@
       <button class="contact-modal__close" type="button" aria-label="Закрыть" data-close-contact>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
       </button>
-      <h2 class="contact-modal__title" id="contactModalTitle">Обсудить проект</h2>
-      <p class="contact-modal__lead">Свяжитесь с нами любым удобным способом — ответим в ближайшее время.</p>
-      <ul class="contact-modal__list">
-        <li><strong>Телефон:</strong> <a href="tel:+74950000000">+7 (495) 000-00-00</a></li>
-        <li><strong>Email:</strong> <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
-        <li><strong>Telegram:</strong> <a href="https://t.me/" target="_blank" rel="noopener">Написать в Telegram</a></li>
-        <li><strong>Офис:</strong> Москва</li>
-      </ul>
+      <div class="contact-modal__inner">
+        <header class="contact-modal__header">
+          <h2 class="contact-modal__title" id="contactModalTitle">Обсудить <span class="contact-modal__accent">проект</span></h2>
+          <p class="contact-modal__lead">Расскажите о задаче — подберём формат и сроки. Обычно отвечаем в течение рабочего дня.</p>
+        </header>
+        <div class="contact-modal__grid">
+          <div class="contact-modal__row contact-modal__row--messengers">
+            <a class="contact-modal__tile contact-modal__tile--telegram" href="https://t.me/" target="_blank" rel="noopener">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>Telegram</strong>
+                <span>Написать в мессенджер</span>
+              </span>
+            </a>
+            <a class="contact-modal__tile contact-modal__tile--whatsapp" href="https://wa.me/74950000000" target="_blank" rel="noopener">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.2 9.8c.3 1.1 1.4 2.6 3.1 3.4 1 .5 1.9.7 2.2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>WhatsApp</strong>
+                <span>Написать в мессенджер</span>
+              </span>
+            </a>
+          </div>
+          <div class="contact-modal__row contact-modal__row--contacts">
+            <a class="contact-modal__tile" href="tel:+74950000000">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2 1a13 13 0 006 6l1-2 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>Телефон</strong>
+                <span>+7 (495) 000-00-00</span>
+              </span>
+            </a>
+            <a class="contact-modal__tile" href="mailto:info@budget-soft.ru">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>Email</strong>
+                <span>info@budget-soft.ru</span>
+              </span>
+            </a>
+          </div>
+          <div class="contact-modal__tile contact-modal__tile--muted">
+            <span class="contact-modal__tile-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <span class="contact-modal__tile-text">
+              <strong>Офис</strong>
+              <span>Москва, ул. Ордынка, 40, БЦ «Палаты Черкасских», оф. 305</span>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -307,10 +482,15 @@
     </div>
   </div>
 
-  <a class="messenger-fab" href="https://t.me/" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+  <button type="button" class="messenger-fab js-open-contact" aria-label="Обсудить проект">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-  </a>
+  </button>
 
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="../case3d.js"></script>
   <script src="../script.js"></script>
 </body>
 </html>

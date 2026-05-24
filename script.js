@@ -21,7 +21,7 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    mobileMenu.querySelectorAll('a').forEach((link) => {
+    mobileMenu.querySelectorAll('a, button.js-open-contact').forEach((link) => {
       link.addEventListener('click', () => {
         burger.classList.remove('is-open');
         mobileMenu.classList.remove('is-open');
@@ -162,14 +162,81 @@
     }
   })();
 
-  /* ---------- Блок 7. Bento mouse-follow glow ---------- */
-  document.querySelectorAll('.bento__tile').forEach((tile) => {
+  /* ---------- Bento + workflow cards: mouse-follow glow ---------- */
+  document.querySelectorAll('.bento__tile, .page-workflow__card').forEach((tile) => {
     tile.addEventListener('mousemove', (e) => {
       const r = tile.getBoundingClientRect();
       tile.style.setProperty('--mx', (e.clientX - r.left) + 'px');
       tile.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
   });
+
+  /* ---------- Этапы: одинаковая высота «Что происходит» и «Результат» в ряду ---------- */
+  (function equalizeWorkflowBlocks() {
+    const grid = document.querySelector('.page-workflow--layout');
+    if (!grid) return;
+
+    const rowGroups = () =>
+      [...grid.querySelectorAll('.page-workflow__row')].map((row) =>
+        [...row.querySelectorAll('.page-workflow__card')]
+      );
+    let resizeTimer;
+
+    function equalizeGroup(nodes) {
+      nodes.forEach((node) => node.style.removeProperty('min-height'));
+      if (!nodes.length) return;
+      const max = Math.max(...nodes.map((node) => node.getBoundingClientRect().height));
+      nodes.forEach((node) => {
+        node.style.minHeight = `${Math.ceil(max)}px`;
+      });
+    }
+
+    function syncLeadCards() {
+      const lead1 = grid.querySelector('.page-workflow__card--1');
+      const lead4 = grid.querySelector('.page-workflow__card--4');
+      if (!lead1 || !lead4) return;
+
+      lead1.style.removeProperty('min-height');
+      lead4.style.removeProperty('min-height');
+
+      if (window.innerWidth <= 1100) return;
+
+      const height = Math.max(lead1.offsetHeight, lead4.offsetHeight);
+      const px = `${Math.ceil(height)}px`;
+      lead1.style.minHeight = px;
+      lead4.style.minHeight = px;
+    }
+
+    function run() {
+      const cards = [...grid.querySelectorAll('.page-workflow__card')];
+      const processes = cards.map((card) => card.querySelector('.page-workflow__process')).filter(Boolean);
+      const results = cards.map((card) => card.querySelector('.page-workflow__result')).filter(Boolean);
+
+      processes.forEach((node) => node.style.removeProperty('min-height'));
+      results.forEach((node) => node.style.removeProperty('min-height'));
+
+      if (window.innerWidth <= 640) {
+        syncLeadCards();
+        return;
+      }
+
+      const groups = rowGroups().filter((group) => group.length);
+
+      groups.forEach((group) => {
+        equalizeGroup(group.map((card) => card.querySelector('.page-workflow__result')).filter(Boolean));
+      });
+
+      syncLeadCards();
+    }
+
+    run();
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(run, 120);
+    });
+    if (document.fonts?.ready) document.fonts.ready.then(run);
+    window.addEventListener('load', run);
+  })();
 
   /* ---------- Блок 9b. Cases carousel (Swiper) ---------- */
   if (window.Swiper && document.getElementById('caseSwiper')) {
@@ -269,6 +336,283 @@
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     schedule();
+  })();
+
+  /* ---------- Contact modal ---------- */
+  (function contactModal() {
+    const modal = document.getElementById('contactModal');
+    if (!modal) return;
+
+    const cookie = document.getElementById('cookie');
+    const fab = document.querySelector('.messenger-fab');
+
+    const open = () => {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      if (cookie) cookie.hidden = true;
+      if (fab) fab.style.visibility = 'hidden';
+      requestAnimationFrame(() => modal.classList.add('is-open'));
+      const closeBtn = modal.querySelector('.contact-modal__close');
+      if (closeBtn) closeBtn.focus();
+    };
+
+    const close = () => {
+      modal.classList.remove('is-open');
+      window.setTimeout(() => {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        if (cookie && !localStorage.getItem('cookieChoice')) cookie.hidden = false;
+        if (fab) fab.style.visibility = '';
+      }, 320);
+    };
+
+    document.querySelectorAll('.js-open-contact').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        open();
+      });
+    });
+
+    modal.querySelectorAll('[data-close-contact]').forEach((el) => {
+      el.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  })();
+
+  /* ---------- Портфолио в меню: скролл к блоку кейсов на главной ---------- */
+  (function portfolioMenuScroll() {
+    const HASH = '#portfolio';
+    const STORAGE_KEY = 'budgetSoftScrollPortfolio';
+    const menuLinks = document.querySelectorAll(
+      'header .nav__link[href*="portfolio"], header .mobile-menu__link[href*="portfolio"]'
+    );
+    if (!menuLinks.length) return;
+
+    const portfolioSection = () => document.querySelector('.cases#portfolio, #portfolio.cases');
+    const isHomePage = () => !!portfolioSection();
+
+    const scrollToPortfolio = (behavior = 'auto') => {
+      const target = portfolioSection();
+      if (!target) return false;
+      target.scrollIntoView({ behavior, block: 'start' });
+      return true;
+    };
+
+    const isPortfolioAligned = () => {
+      const target = portfolioSection();
+      if (!target) return true;
+      const headerEl = document.getElementById('siteHeader');
+      const offset = (headerEl?.offsetHeight ?? 0) + 16;
+      return Math.abs(target.getBoundingClientRect().top - offset) <= 6;
+    };
+
+    const clearPortfolioScrollFlag = () => {
+      try {
+        sessionStorage.removeItem(STORAGE_KEY);
+      } catch (_) {
+        /* ignore */
+      }
+    };
+
+    const shouldAlignPortfolio = () => {
+      if (!isHomePage()) return false;
+      if (location.hash === HASH) return true;
+      try {
+        return sessionStorage.getItem(STORAGE_KEY) === '1';
+      } catch (_) {
+        return false;
+      }
+    };
+
+    const closeMobileMenu = () => {
+      if (!burger || !mobileMenu) return;
+      burger.classList.remove('is-open');
+      mobileMenu.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    const homeHashUrl = (link) => {
+      const href = link.getAttribute('href') || '';
+      if (href === HASH || href.endsWith(HASH)) return href;
+      const base = href.replace(/#portfolio.*$/, '').replace(/\/?portfolio\/?$/, '');
+      if (!base || base === '.') return HASH;
+      return `${base.endsWith('/') ? base : `${base}/`}#portfolio`;
+    };
+
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isHomePage()) {
+          scrollToPortfolio('smooth');
+          closeMobileMenu();
+          history.replaceState(null, '', HASH);
+        } else {
+          try {
+            sessionStorage.setItem(STORAGE_KEY, '1');
+          } catch (_) {
+            /* ignore */
+          }
+          window.location.href = homeHashUrl(link);
+        }
+      });
+    });
+
+    const alignPortfolio = () => {
+      if (!shouldAlignPortfolio()) return;
+      scrollToPortfolio('auto');
+      if (isPortfolioAligned()) {
+        clearPortfolioScrollFlag();
+        if (location.hash !== HASH) history.replaceState(null, '', HASH);
+      }
+    };
+
+    const schedulePortfolioAlign = () => {
+      if (!shouldAlignPortfolio()) return;
+
+      alignPortfolio();
+      requestAnimationFrame(alignPortfolio);
+      window.addEventListener('load', alignPortfolio, { once: true });
+
+      [80, 200, 450, 900, 1500].forEach((ms) => {
+        window.setTimeout(() => {
+          if (!shouldAlignPortfolio()) return;
+          alignPortfolio();
+          if (isPortfolioAligned()) clearPortfolioScrollFlag();
+        }, ms);
+      });
+    };
+
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    schedulePortfolioAlign();
+    window.addEventListener('hashchange', schedulePortfolioAlign);
+  })();
+
+  /* ---------- Сроки в меню: скролл к блоку Time-to-Market ---------- */
+  (function timelineMenuScroll() {
+    const HASH = '#timeline';
+    const STORAGE_KEY = 'budgetSoftScrollTimeline';
+    const menuLinks = document.querySelectorAll(
+      'header .nav__link[href*="#timeline"], header .nav__link[href*="#speed"], header .mobile-menu__link[href*="#timeline"], header .mobile-menu__link[href*="#speed"]'
+    );
+    if (!menuLinks.length) return;
+
+    const timelineSection = () => document.querySelector('#timeline, #speed');
+    const hasTimelineBlock = () => !!timelineSection();
+
+    const timelineScrollOffset = () => {
+      const headerEl = document.getElementById('siteHeader');
+      return (headerEl?.offsetHeight ?? 0) + 40;
+    };
+
+    const scrollToTimeline = (behavior = 'auto') => {
+      const target = timelineSection();
+      if (!target) return false;
+      const top = target.getBoundingClientRect().top + window.scrollY - timelineScrollOffset();
+      window.scrollTo({ top: Math.max(0, top), behavior });
+      return true;
+    };
+
+    const isTimelineAligned = () => {
+      const target = timelineSection();
+      if (!target) return true;
+      const offset = timelineScrollOffset();
+      return Math.abs(target.getBoundingClientRect().top - offset) <= 6;
+    };
+
+    const clearTimelineScrollFlag = () => {
+      try {
+        sessionStorage.removeItem(STORAGE_KEY);
+      } catch (_) {
+        /* ignore */
+      }
+    };
+
+    const shouldAlignTimeline = () => {
+      if (!hasTimelineBlock()) return false;
+      const hash = location.hash;
+      if (hash === HASH || hash === '#speed') return true;
+      try {
+        return sessionStorage.getItem(STORAGE_KEY) === '1';
+      } catch (_) {
+        return false;
+      }
+    };
+
+    const closeMobileMenu = () => {
+      if (!burger || !mobileMenu) return;
+      burger.classList.remove('is-open');
+      mobileMenu.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    const homeHashUrl = (link) => {
+      const href = link.getAttribute('href') || '';
+      if (href === HASH || href === '#speed' || href.endsWith(HASH) || href.endsWith('#speed')) return href;
+      const base = href.replace(/#(timeline|speed).*$/, '').replace(/\/?sroki\/?$/, '');
+      if (!base || base === '.') return HASH;
+      return `${base.endsWith('/') ? base : `${base}/`}${HASH}`;
+    };
+
+    const targetHash = (link) => {
+      const href = link.getAttribute('href') || '';
+      if (href.endsWith('#speed')) return '#speed';
+      return HASH;
+    };
+
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (hasTimelineBlock()) {
+          scrollToTimeline('smooth');
+          closeMobileMenu();
+          history.replaceState(null, '', targetHash(link));
+        } else {
+          try {
+            sessionStorage.setItem(STORAGE_KEY, '1');
+          } catch (_) {
+            /* ignore */
+          }
+          window.location.href = homeHashUrl(link);
+        }
+      });
+    });
+
+    const alignTimeline = () => {
+      if (!shouldAlignTimeline()) return;
+      scrollToTimeline('auto');
+      if (isTimelineAligned()) {
+        clearTimelineScrollFlag();
+        const hash = location.hash === '#speed' ? '#speed' : HASH;
+        if (location.hash !== hash) history.replaceState(null, '', hash);
+      }
+    };
+
+    const scheduleTimelineAlign = () => {
+      if (!shouldAlignTimeline()) return;
+
+      alignTimeline();
+      requestAnimationFrame(alignTimeline);
+      window.addEventListener('load', alignTimeline, { once: true });
+
+      [80, 200, 450, 900, 1500].forEach((ms) => {
+        window.setTimeout(() => {
+          if (!shouldAlignTimeline()) return;
+          alignTimeline();
+          if (isTimelineAligned()) clearTimelineScrollFlag();
+        }, ms);
+      });
+    };
+
+    scheduleTimelineAlign();
+    window.addEventListener('hashchange', scheduleTimelineAlign);
   })();
 
   /* ---------- Блок 14a. Cookie consent ---------- */

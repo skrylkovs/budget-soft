@@ -8,6 +8,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      try {
+        if (
+          location.hash === '#portfolio' ||
+          location.hash === '#timeline' ||
+          sessionStorage.getItem('budgetSoftScrollPortfolio') === '1' ||
+          sessionStorage.getItem('budgetSoftScrollTimeline') === '1'
+        ) {
+          window.scrollTo(0, 0);
+        }
+      } catch (_) {}
+    })();
+  </script>
 </head>
 <body>
 
@@ -71,7 +86,7 @@
                 <span class="submenu__icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2M12 8a4 4 0 100 8 4 4 0 000-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
                 </span>
-                <span>Внедрение ИИ</span>
+                <span>Внедрение AI во все сферы бизнеса</span>
               </a>
               <a class="submenu__link" href="uslugi/mobilnaya-razrabotka/" role="menuitem">
                 <span class="submenu__icon">
@@ -87,9 +102,9 @@
               </a>
             </div>
           </li>
-          <li class="nav__item"><a class="nav__link" href="portfolio/">Портфолио</a></li>
+          <li class="nav__item"><a class="nav__link" href="#portfolio">Портфолио</a></li>
           <li class="nav__item"><a class="nav__link" href="etapy/">Этапы реализации</a></li>
-          <li class="nav__item"><a class="nav__link" href="sroki/">Сроки</a></li>
+          <li class="nav__item"><a class="nav__link" href="#timeline">Сроки</a></li>
           <li class="nav__item"><a class="nav__link" href="garantii/">Гарантии</a></li>
         </ul>
       </nav>
@@ -105,9 +120,9 @@
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
       <a href="uslugi/" class="mobile-menu__link">Услуги</a>
-      <a href="portfolio/" class="mobile-menu__link">Портфолио</a>
+      <a href="#portfolio" class="mobile-menu__link">Портфолио</a>
       <a href="etapy/" class="mobile-menu__link">Этапы реализации</a>
-      <a href="sroki/" class="mobile-menu__link">Сроки</a>
+      <a href="#timeline" class="mobile-menu__link">Сроки</a>
       <a href="garantii/" class="mobile-menu__link">Гарантии</a>
       <button type="button" class="btn btn--primary mobile-menu__cta js-open-contact">Обсудить проект</button>
     </div>
@@ -130,7 +145,7 @@
             Разрабатываем ПО любой сложности для <span class="text-gradient">автоматизации бизнеса</span>
           </h1>
           <p class="hero__subtitle">
-            Мы совершили революцию в бизнес-модели: с ИИ создание софта стало <span class="hero__highlight">в 5 раз дешевле</span>. Пройдите путь от идеи до MVP за <span class="text-accent-cyan">считанные дни</span>.
+            Мы совершили революцию в бизнес-модели: с AI создание софта стало <span class="hero__highlight">в 5 раз дешевле</span>. Пройдите путь от идеи до MVP за <span class="text-accent-cyan">считанные дни</span>.
           </p>
 
           <div class="hero__actions">
@@ -193,7 +208,7 @@
                   <path d="M40 44 L41.5 44" stroke="currentColor" stroke-width="1.6"/>
                 </svg>
               </span>
-              <span class="direction__label">Внедрение ИИ</span>
+              <span class="direction__label">Внедрение AI</span>
             </a>
             <a class="direction" href="uslugi/mobilnaya-razrabotka/" role="listitem">
               <span class="direction__icon">
@@ -252,7 +267,7 @@
             В 2025 году мы полностью реформировали подход к созданию ПО. Традиционные громоздкие команды из менеджеров, фронтенд- и бекенд-разработчиков и штата тестировщиков — это медленно и неоправданно дорого.
           </p>
           <p class="section-accent">
-            Эпоха классических команд закончилась. Наступила эра ИИ-дирижеров.
+            Эпоха классических команд закончилась. Наступила эра AI-дирижеров.
           </p>
         </div>
 
@@ -266,7 +281,7 @@
             </div>
             <h3 class="card__title">Команда в одном лице</h3>
             <p class="card__text">
-              Наши специалисты — это ИИ-дирижеры. Проджект-менеджеры с глубокой технической экспертизой, которые используют ИИ-агенты как мультипликатор силы. Один человек теперь заменяет целый отдел.
+              Наши специалисты — это AI-дирижеры. Проджект-менеджеры с глубокой технической экспертизой, которые используют AI-агенты как мультипликатор силы. Один человек теперь заменяет целый отдел.
             </p>
           </article>
 
@@ -323,7 +338,7 @@
                 <span class="timeline__point-icon">
                   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="7" width="12" height="12" rx="3" stroke="currentColor" stroke-width="1.6"></rect><path d="M9.5 11.5h.01M14.5 11.5h.01M9.5 15h5M12 4v3M9 4v1M15 4v1M6 10H4M6 14H4M20 10h-2M20 14h-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
                 </span>
-                <span><strong>AI-Driven Engineering.</strong> ИИ-агенты автоматизируют рутинный кодинг и тесты — ускорение в 2–3 раза.</span>
+                <span><strong>AI-Driven Engineering.</strong> AI-агенты автоматизируют рутинный кодинг и тесты — ускорение в 2–3 раза.</span>
               </li>
               <li>
                 <span class="timeline__point-icon">
@@ -411,7 +426,7 @@
           <div class="compare__row">
             <div class="compare__cell compare__cell--label">Команда проекта</div>
             <div class="compare__cell compare__cell--legacy">ПМ + Frontend + Backend + QA (минимум 4 зарплаты)</div>
-            <div class="compare__cell compare__cell--ai">1 ИИ-дирижер (единая точка ответственности)</div>
+            <div class="compare__cell compare__cell--ai">1 AI-дирижер (единая точка ответственности)</div>
           </div>
 
           <div class="compare__row">
@@ -429,7 +444,7 @@
           <div class="compare__row">
             <div class="compare__cell compare__cell--label">Коммуникации</div>
             <div class="compare__cell compare__cell--legacy">«Испорченный телефон» между разработчиками и бизнесом</div>
-            <div class="compare__cell compare__cell--ai">Прямая реализация: ИИ-дирижер понимает бизнес-задачу и внедряет её сразу</div>
+            <div class="compare__cell compare__cell--ai">Прямая реализация: AI-дирижер понимает бизнес-задачу и внедряет её сразу</div>
           </div>
 
           <div class="compare__row">
@@ -502,8 +517,8 @@
           <article class="bento-showcase__card">
             <div class="bento-showcase__inner">
               <div class="bento-showcase__content">
-                <h3 class="bento-showcase__title">Синергия человека и ИИ</h3>
-                <p class="bento-showcase__desc">ИИ интегрирован в нашу бизнес-модель и работает в синергии с профессионалами — минимум рутины, кратный рост скорости.</p>
+                <h3 class="bento-showcase__title">Синергия человека и AI</h3>
+                <p class="bento-showcase__desc">AI интегрирован в нашу бизнес-модель и работает в синергии с профессионалами — минимум рутины, кратный рост скорости.</p>
               </div>
               <div class="bento-showcase__media bento-showcase__media--center">
                 <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png" alt="Производительность" loading="lazy">
@@ -614,7 +629,7 @@
           <span class="section-rule"></span>
           <span class="eyebrow eyebrow--light">Направления</span>
           <h2 class="section-title section-title--light">Что мы <span class="text-gradient">разрабатываем</span></h2>
-          <p class="section-lead section-lead--light">Полный цикл заказной разработки — от ERP-систем до ИИ-агентов и кибербезопасности.</p>
+          <p class="section-lead section-lead--light">Полный цикл заказной разработки — от ERP-систем до AI-агентов и кибербезопасности.</p>
         </div>
 
         <div class="bento reveal">
@@ -643,7 +658,7 @@
             <div class="bento__icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"></circle></svg>
             </div>
-            <h3 class="bento__title">Внедрение ИИ</h3>
+            <h3 class="bento__title">Внедрение AI во все сферы бизнеса</h3>
             <p class="bento__text">AI-агенты, чат-боты и автоматизация на базе LLM — встраиваем интеллект в ваши процессы.</p>
             <span class="bento__link">Подробнее →</span>
           </a>
@@ -678,7 +693,7 @@
     </section>
 
     <!-- ============ Блок 9. Кейсы ============ -->
-    <section class="cases" id="cases" data-fab-theme="light">
+    <section class="cases" id="portfolio" data-fab-theme="light">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-rule"></span>
@@ -890,7 +905,7 @@
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"></circle></svg>
-              <span>Москва</span>
+              <span>Москва, ул. Бауманская, 11, стр. 8, оф. 402</span>
             </li>
           </ul>
         </div>
@@ -901,7 +916,7 @@
             <li><a href="uslugi/razrabotka-erp-sistem/">ERP-системы</a></li>
             <li><a href="uslugi/razrabotka-crm-sistem/">CRM-системы</a></li>
             <li><a href="uslugi/kiberbezopasnost/">Кибербезопасность</a></li>
-            <li><a href="uslugi/iskusstvennyj-intellekt/">Внедрение ИИ</a></li>
+            <li><a href="uslugi/iskusstvennyj-intellekt/">Внедрение AI во все сферы бизнеса</a></li>
             <li><a href="uslugi/mobilnaya-razrabotka/">Мобильная разработка</a></li>
             <li><a href="uslugi/" class="footer__links-all">Все услуги →</a></li>
           </ul>
@@ -955,18 +970,66 @@
       <button class="contact-modal__close" type="button" aria-label="Закрыть" data-close-contact>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
       </button>
-      <h2 class="contact-modal__title" id="contactModalTitle">Обсудить проект</h2>
-      <p class="contact-modal__lead">Свяжитесь с нами любым удобным способом — ответим в ближайшее время.</p>
-      <ul class="contact-modal__list">
-        <li><strong>Телефон:</strong> <a href="tel:+74950000000">+7 (495) 000-00-00</a></li>
-        <li><strong>Email:</strong> <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
-        <li><strong>Telegram:</strong> <a href="https://t.me/" target="_blank" rel="noopener">Написать в Telegram</a></li>
-        <li><strong>Офис:</strong> Москва</li>
-      </ul>
+      <div class="contact-modal__inner">
+        <header class="contact-modal__header">
+          <h2 class="contact-modal__title" id="contactModalTitle">Обсудить <span class="contact-modal__accent">проект</span></h2>
+          <p class="contact-modal__lead">Расскажите о задаче — подберём формат и сроки. Обычно отвечаем в течение рабочего дня.</p>
+        </header>
+        <div class="contact-modal__grid">
+          <div class="contact-modal__row contact-modal__row--messengers">
+            <a class="contact-modal__tile contact-modal__tile--telegram" href="https://t.me/" target="_blank" rel="noopener">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>Telegram</strong>
+                <span>Написать в мессенджер</span>
+              </span>
+            </a>
+            <a class="contact-modal__tile contact-modal__tile--whatsapp" href="https://wa.me/74950000000" target="_blank" rel="noopener">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.2 9.8c.3 1.1 1.4 2.6 3.1 3.4 1 .5 1.9.7 2.2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>WhatsApp</strong>
+                <span>Написать в мессенджер</span>
+              </span>
+            </a>
+          </div>
+          <div class="contact-modal__row contact-modal__row--contacts">
+            <a class="contact-modal__tile" href="tel:+74950000000">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2 1a13 13 0 006 6l1-2 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>Телефон</strong>
+                <span>+7 (495) 000-00-00</span>
+              </span>
+            </a>
+            <a class="contact-modal__tile" href="mailto:info@budget-soft.ru">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>Email</strong>
+                <span>info@budget-soft.ru</span>
+              </span>
+            </a>
+          </div>
+          <div class="contact-modal__tile contact-modal__tile--muted">
+            <span class="contact-modal__tile-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <span class="contact-modal__tile-text">
+              <strong>Офис</strong>
+              <span>Москва, ул. Бауманская, 11, стр. 8, оф. 402</span>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- 14a. Cookie consent -->
   <div class="cookie" id="cookie" role="dialog" aria-label="Согласие на использование cookie" hidden>
     <p class="cookie__text">Мы используем cookie, чтобы сайт работал лучше. Продолжая, вы соглашаетесь с их использованием.</p>
     <div class="cookie__actions">
@@ -976,9 +1039,9 @@
   </div>
 
   <!-- 14b. Messenger button -->
-  <a class="messenger-fab" href="https://t.me/" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+  <button type="button" class="messenger-fab js-open-contact" aria-label="Обсудить проект">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-  </a>
+  </button>
 
   <!-- 3D engine (Three.js) -->
   <script type="importmap">
