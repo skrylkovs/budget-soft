@@ -1116,28 +1116,32 @@
 }
 
 .risk-metrics {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    gap: clamp(28px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 0;
+    align-items: stretch;
 }
 
 .risk-metric {
     position: relative;
-    flex: 0 1 auto;
-    min-width: 7.5rem;
-    padding: 0 clamp(20px, 2.5vw, 32px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 0;
+    padding: clamp(4px, 0.8vw, 8px) clamp(16px, 2vw, 24px);
     text-align: center;
 }
 
 .risk-metric:not(:last-child)::after {
     content: "";
     position: absolute;
-    top: 12%;
+    top: 50%;
     right: 0;
     width: 1px;
-    height: 76%;
+    height: clamp(48px, 52%, 80px);
+    transform: translateY(-50%);
     background: linear-gradient(
         180deg,
         transparent,
@@ -1148,6 +1152,9 @@
 }
 
 .risk-metric__value {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
     margin: 0;
     font-size: clamp(40px, 5vw, 58px);
     font-weight: 600;
@@ -1166,10 +1173,18 @@
 }
 
 .risk-metric__label {
-    margin: 16px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 15rem;
+    min-height: 2.65em;
+    margin: 14px 0 0;
     font-size: clamp(16px, 1.43vw, 17px);
     font-weight: 600;
     letter-spacing: 0.06em;
+    line-height: 1.35;
+    text-align: center;
     text-transform: uppercase;
     color: var(--risk-metric-label, #4a386e);
 }
@@ -1424,24 +1439,26 @@
     }
 
     .risk-metrics {
-        flex-direction: column;
-        align-items: center;
-        gap: 32px;
+        grid-template-columns: 1fr;
     }
 
     .risk-metric {
-        width: 100%;
-        padding: 0;
+        padding: 20px 12px;
+    }
+
+    .risk-metric__label {
+        min-height: 0;
+        max-width: none;
     }
 
     .risk-metric:not(:last-child)::after {
         top: auto;
         right: auto;
-        bottom: -16px;
+        bottom: 0;
         left: 50%;
-        width: 48px;
+        width: min(120px, 40%);
         height: 1px;
-        transform: translateX(-50%);
+        transform: translate(-50%, 50%);
     }
 
     .risk-layer {
