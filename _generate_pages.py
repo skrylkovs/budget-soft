@@ -3,9 +3,12 @@
 from __future__ import annotations
 
 import random
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).parent
+
+STATS_CASES_PARTIAL = (ROOT / "partials" / "stats-cases.html").read_text(encoding="utf-8")
 
 BTN_ARROW_SM = (
     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
@@ -153,29 +156,63 @@ SERVICES = [
     ),
 ]
 
+# Сортировка по востребованности внедрения AI (2025–2026): финтех/IT → ритейл/промышленность → медицина → прочие услуги
 AI_BUSINESS_DIRECTIONS = [
-    ("dentistry", "Стоматология"),
-    ("medical", "Медцентры и клиники общего профиля"),
-    ("beauty", "Салоны красоты и бьюти-индустрия"),
-    ("logistics", "Грузоперевозки и экспедирование"),
-    ("equipment", "Аренда спецтехники и оборудования"),
-    ("mfo", "МФО и ломбарды"),
+    ("it", "ИТ-компании и Digital-агентства"),
     ("insurance", "Страховые компании и брокеры"),
+    ("mfo", "МФО и ломбарды"),
     ("ecommerce", "Интернет-магазины (e-Commerce)"),
     ("wholesale", "Оптовая торговля и дистрибуция"),
+    ("industry", "Промышленные предприятия"),
+    ("logistics", "Грузоперевозки и экспедирование"),
+    ("medical", "Медцентры и клиники общего профиля"),
+    ("dentistry", "Стоматология"),
     ("auto", "Автодилеры и автосервисы"),
     ("edtech", "Онлайн-образование (EdTech)"),
-    ("travel", "Турагентства и Event-индустрия"),
-    ("industry", "Промышленные предприятия"),
-    ("it", "ИТ-компании и Digital-агентства"),
     ("legal", "Юридические и консалтинговые компании"),
+    ("equipment", "Аренда спецтехники и оборудования"),
     ("realty", "Агентства недвижимости"),
     ("developer", "Застройщики (девелоперы)"),
+    ("travel", "Турагентства и Event-индустрия"),
+    ("beauty", "Салоны красоты и бьюти-индустрия"),
     ("construction", "Ремонтно-строительные компании"),
 ]
 
+# Заголовок и lead блока «Отрасли» (title_main, title_sub, lead)
+AI_DIRECTIONS_COPY: dict[str, tuple[str, str, str]] = {
+    "uslugi": (
+        "Разработка и AI",
+        "для каждой сферы бизнеса",
+        "От финтеха и e-commerce до промышленности и девелопмента — собираем стек под отраслевую специфику, а не под абстрактный «коробочный» продукт.",
+    ),
+    "razrabotka-erp-sistem": (
+        "ERP-решения",
+        "для вашей отрасли",
+        "Внедряем единые контуры управления — производство, опт, логистика, девелопмент — с отраслевыми регламентами, KPI и интеграциями под вашу модель бизнеса.",
+    ),
+    "razrabotka-crm-sistem": (
+        "CRM",
+        "под цикл продаж отрасли",
+        "Автоматизируем воронку и сопровождение клиентов в финтехе, B2B-услугах, ритейле и производстве — с AI-подсказками и сквозной аналитикой.",
+    ),
+    "kiberbezopasnost": (
+        "Кибербезопасность",
+        "по отраслевым рискам",
+        "Защищаем периметр и данные в финтехе, e-commerce, медицине и промышленности — аудит, DevSecOps, антифрод и соответствие регуляторике.",
+    ),
+    "iskusstvennyj-intellekt": (
+        "Внедрение AI",
+        "во все сферы бизнеса",
+        "Внедряем агентов и автоматизацию с учётом отраслевой специфики — от медицины и ритейла до промышленности и девелопмента.",
+    ),
+    "mobilnaya-razrabotka": (
+        "Мобильные продукты",
+        "для вашей аудитории",
+        "Создаём приложения для ритейла, финтеха, логистики, медицины и полевых команд — с UX и интеграциями под отраслевые сценарии.",
+    ),
+}
+
 SCREENS: dict[str, tuple[str, str]] = {
-    "stoimost": ("cases/saas.png", "Скриншот SaaS-платформы"),
     "razrabotka-erp-sistem": ("cases/digital-twin.png", "Скриншот цифрового двойника производства"),
     "razrabotka-crm-sistem": ("cases/ecommerce.png", "Скриншот e-commerce платформы"),
     "kiberbezopasnost": ("cases/biometrics.png", "Скриншот системы биометрической аутентификации"),
@@ -261,6 +298,94 @@ SPEED_ROWS = [
     ("Прототипирование (UI/UX)", "5–7 дней"),
     ("Запуск MVP (Первая версия)", "от 21 дня"),
     ("Полноценный релиз", "от 2 месяцев"),
+]
+
+TTM_METRICS = [
+    ("2–3", "дня", "вывод команды на проект"),
+    ("×2–3", "", "ускорение разработки кода"),
+    ("21+", "день", "запуск MVP"),
+]
+
+TTM_PILLARS = [
+    (
+        "01",
+        "Мгновенный старт",
+        "On-Demand Scaling",
+        "Благодаря ресурсному пулу и отлаженным HR-процессам формируем и выводим команду на проект за 2–3 рабочих дня — без ожидания «освободившихся» специалистов.",
+    ),
+    (
+        "02",
+        "AI-Native Engineering",
+        "",
+        "AI-агенты автоматизируют рутинный код, тесты и документацию — инженеры фокусируются на архитектуре и логике. Производство кода быстрее в 2–3 раза.",
+    ),
+    (
+        "03",
+        "Экосистема разработки",
+        "",
+        "Внутренние библиотеки и микросервисные шаблоны: базовый фундамент собирается за часы, а не пишется с нуля на каждом проекте.",
+    ),
+    (
+        "04",
+        "Параллельные спринты",
+        "",
+        "Проектирование, дизайн и бэкенд идут одновременно — «мёртвые зоны» между этапами сведены к минимуму.",
+    ),
+]
+
+RISK_METRICS = [
+    ("30·30·40", "", "оплата по этапам"),
+    ("100", "%", "доступ к коду и проекту"),
+    ("Jira", "", "все доски и задачи"),
+]
+
+RISK_PILLAR_ICONS = {
+    "payment": '<path d="M4 8h16v10H4V8zm2-4h12v2H6V4zm4 12h4v2h-4v-2z" fill="currentColor"/>',
+    "access": '<path d="M8 6l-4 4 4 4V6zm8 0v8l4-4-4-4zm-5 9H9v2h2v-2z" fill="currentColor"/>',
+    "jira": '<path d="M4 6h16v2H4V6zm0 5h10v2H4v-2zm0 5h14v2H4v-2z" fill="currentColor"/>',
+    "shield": '<path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4zm-1 10.2l5.4-5.4-1.4-1.4L11 12.4 8.4 9.8 7 11.2l4 4z" fill="currentColor"/>',
+}
+
+RISK_PILLARS = [
+    (
+        "01",
+        "Оплата 30 · 30 · 40",
+        "Payment",
+        "payment",
+        "Три этапа в договоре: 30% — старт и проектирование, 30% — разработка и демо, 40% — приёмка. Вы не переводите весь бюджет заранее — платите за принятый результат.",
+    ),
+    (
+        "02",
+        "Доступ к проекту и коду",
+        "Full access",
+        "access",
+        "Репозиторий, документация, стенды и артефакты — у вас с начала работ. Код не в «чёрном ящике»: можете проверить, передать своей команде или развивать продукт самостоятельно.",
+    ),
+    (
+        "03",
+        "Jira и все доски",
+        "Transparency",
+        "jira",
+        "Полный доступ ко всем доскам, спринтам и задачам в Jira (или ClickUp). Статусы, сроки и ответственные видны в реальном времени — без отдельных сводных отчётов.",
+    ),
+    (
+        "04",
+        "Вы ничем не рискуете",
+        "Zero risk",
+        "shield",
+        "Этап не принят — следующий платёж не наступает. Скрытые дефекты после релиза устраняем в гарантийный период. Права на продукт закрепляем в договоре.",
+    ),
+]
+
+RISK_COMMITMENTS = [
+    ("Оплата", "30% · 30% · 40% — только за принятые этапы"),
+    ("Доступ к коду", "Репозиторий, документация и стенды с начала проекта"),
+    ("Jira", "Все доски, спринты и задачи — в реальном времени"),
+    ("Права на продукт", "100% IP и исходный код по договору"),
+    ("NDA", "Конфиденциальность с первого контакта"),
+    ("Гарантия", "Скрытые дефекты после релиза — за наш счёт"),
+    ("Демо", "Работающий функционал каждые 2 недели"),
+    ("SLA", "Сроки реакции и доступности фиксируем письменно"),
 ]
 
 USLUGI_CATALOG = [
@@ -497,6 +622,123 @@ def render_speed_table() -> str:
 </div>"""
 
 
+def render_ttm_content() -> str:
+    metrics = "".join(
+        f"""<div class="ttm-metric">
+  <p class="ttm-metric__value">{val}{f'<span class="ttm-metric__unit">{unit}</span>' if unit else ""}</p>
+  <p class="ttm-metric__label">{label}</p>
+</div>"""
+        for val, unit, label in TTM_METRICS
+    )
+    pillars = "".join(
+        f"""<article class="ttm-pillar">
+  <span class="ttm-pillar__index" aria-hidden="true">{index}</span>
+  <h3 class="ttm-pillar__title">{title}{f'<span class="ttm-pillar__tag">{tag}</span>' if tag else ""}</h3>
+  <p class="ttm-pillar__text">{text}</p>
+</article>"""
+        for index, title, tag, text in TTM_PILLARS
+    )
+    stages = "".join(
+        f"""<div class="ttm-stage{" ttm-stage--highlight" if "MVP" in stage else ""}">
+  <span class="ttm-stage__name">{stage}</span>
+  <span class="ttm-stage__term">{term}</span>
+</div>"""
+        for stage, term in SPEED_ROWS
+    )
+    return f"""<div class="ttm">
+  <div class="ttm-metrics reveal" aria-label="Ключевые показатели скорости">
+{metrics}
+  </div>
+  <p class="ttm-kicker reveal">За счёт чего мы работаем быстрее рынка?</p>
+  <div class="ttm-pillars reveal">
+{pillars}
+  </div>
+  <div class="ttm-standards reveal" aria-labelledby="ttmStandardsTitle">
+    <h3 class="ttm-standards__title" id="ttmStandardsTitle">Наши стандарты скорости</h3>
+    <div class="ttm-standards__list">
+{stages}
+    </div>
+  </div>
+  <figure class="ttm-quote reveal">
+    <blockquote>«Пока конкуренты пишут ТЗ, вы уже тестируете первую версию продукта на реальных пользователях».</blockquote>
+  </figure>
+</div>"""
+
+
+def _risk_icon(icon_key: str) -> str:
+    path = RISK_PILLAR_ICONS.get(icon_key, RISK_PILLAR_ICONS["shield"])
+    return (
+        f'<span class="risk-layer__icon" aria-hidden="true">'
+        f'<svg width="24" height="24" viewBox="0 0 24 24" fill="none">{path}</svg>'
+        f"</span>"
+    )
+
+
+def render_risk_content() -> str:
+    metrics = "".join(
+        f"""<div class="risk-metric">
+  <p class="risk-metric__value{" risk-metric__value--compact" if "·" in val else ""}">{val}{f'<span class="risk-metric__unit">{unit}</span>' if unit else ""}</p>
+  <p class="risk-metric__label">{label}</p>
+</div>"""
+        for val, unit, label in RISK_METRICS
+    )
+    layers = "".join(
+        f"""<article class="risk-layer">
+  <span class="risk-layer__num" aria-hidden="true">{index}</span>
+  <div class="risk-layer__body">
+    <div class="risk-layer__head">
+      {_risk_icon(icon_key)}
+      <h3 class="risk-layer__title">{title}<span class="risk-layer__dot" aria-hidden="true">·</span><span class="risk-layer__tag">{tag}</span></h3>
+    </div>
+    <p class="risk-layer__text">{text}</p>
+  </div>
+</article>"""
+        for index, title, tag, icon_key, text in RISK_PILLARS
+    )
+    commitments = "".join(
+        f"""<div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">{num:02d}</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">{name}</p>
+    <p class="risk-contract__detail">{detail}</p>
+  </div>
+</div>"""
+        for num, (name, detail) in enumerate(RISK_COMMITMENTS, start=1)
+    )
+    return f"""<div class="risk">
+  <div class="risk-hero reveal">
+    <p class="risk-hero__lead risk-hero__lead--accent">Вы ничем не рискуете</p>
+    <p class="risk-hero__lead">Платите по этапам 30 · 30 · 40, видите каждую задачу в Jira и владеете проектом и кодом — с первого дня совместной работы.</p>
+    <div class="risk-metrics" aria-label="Ключевые гарантии">
+{metrics}
+    </div>
+  </div>
+  <section class="risk-layers reveal" aria-labelledby="riskLayersTitle">
+    <header class="risk-layers__head">
+      <p class="risk-layers__eyebrow" id="riskLayersTitle">Как снимаем риск с вас</p>
+      <p class="risk-layers__sub">Три механизма контроля и одно правило: вы платите и принимаете работу только тогда, когда видите результат.</p>
+    </header>
+    <div class="risk-layers__stack">
+{layers}
+    </div>
+  </section>
+  <section class="risk-contract reveal" aria-labelledby="riskContractTitle">
+    <div class="risk-contract__panel">
+      <header class="risk-contract__head">
+        <p class="risk-contract__eyebrow" id="riskContractTitle">Договор</p>
+        <h3 class="risk-contract__title">Что фиксируем письменно</h3>
+      </header>
+      <div class="risk-contract__grid">
+{commitments}
+      </div>
+    </div>
+  </section>
+  <figure class="risk-quote reveal">
+    <blockquote>«Вы ничем не рискуете: оплата по факту, полный доступ к коду и всё — на досках в Jira».</blockquote>
+  </figure>
+</div>"""
+
+
 def render_stoimost_compare() -> str:
     return """<div class="compare reveal">
   <div class="compare__head">
@@ -533,18 +775,18 @@ def render_stoimost_compare() -> str:
 </div>"""
 
 
-BENTO_SECURITY_IMG = (
-    "https://tailwindcss.com/plus-assets/img/component-images/bento-03-security.png"
-)
-
-
-def render_ai_directions_block(prefix: str) -> str:
+def render_ai_directions_block(
+    prefix: str,
+    *,
+    copy_key: str,
+) -> str:
+    title_main, title_sub, lead = AI_DIRECTIONS_COPY[copy_key]
     items = []
     for slug, label in AI_BUSINESS_DIRECTIONS:
         items.append(
             f"""<li class="ai-direction">
   <span class="ai-direction__icon" aria-hidden="true">
-    <img src="{prefix}images/ai-directions/{slug}.svg" alt="" width="28" height="28" loading="lazy">
+    <img src="{prefix}images/ai-directions/{slug}.svg" alt="" width="32" height="32" loading="lazy">
   </span>
   <span class="ai-direction__label">{label}</span>
 </li>"""
@@ -555,10 +797,10 @@ def render_ai_directions_block(prefix: str) -> str:
     <header class="ai-directions__head">
       <p class="ai-directions__eyebrow">Отрасли</p>
       <h3 class="ai-directions__title" id="aiDirectionsTitle">
-        <span class="ai-directions__title-main">Внедрение AI</span>
-        <span class="ai-directions__title-sub">во все сферы бизнеса</span>
+        <span class="ai-directions__title-main">{title_main}</span>
+        <span class="ai-directions__title-sub">{title_sub}</span>
       </h3>
-      <p class="ai-directions__lead">Внедряем агентов и автоматизацию с учётом отраслевой специфики — от медицины и ритейла до промышленности и девелопмента.</p>
+      <p class="ai-directions__lead">{lead}</p>
       <p class="ai-directions__meta"><span class="ai-directions__count">{count}</span> направлений</p>
     </header>
     <ul class="ai-directions__list">
@@ -568,21 +810,93 @@ def render_ai_directions_block(prefix: str) -> str:
 </section>"""
 
 
-def render_security_banner() -> str:
-    return render_screen_card(
-        "",
-        BENTO_SECURITY_IMG,
-        "Безопасность инфраструктуры и данных",
-        shot_modifier="security",
-    )
+FEATURED_SERVICE_SLUGS = (
+    "razrabotka-erp-sistem",
+    "razrabotka-crm-sistem",
+    "iskusstvennyj-intellekt",
+    "mobilnaya-razrabotka",
+    "kiberbezopasnost",
+)
 
 
-def render_uslugi_catalog() -> str:
-    sections = []
+def _parse_catalog_heading(heading: str) -> tuple[str, str, str]:
+    match = re.match(r"(\d+)\.\s*(.+?)(?:\s*\(([^)]+)\))?\s*$", heading)
+    if not match:
+        return "00", heading, ""
+    return f"{int(match.group(1)):02d}", match.group(2).strip(), (match.group(3) or "").strip()
+
+
+def _parse_catalog_item(item_html: str) -> tuple[str, str]:
+    match = re.match(r"<strong>(.*?)</strong>\s*:?\s*(.*)", item_html, re.DOTALL)
+    if not match:
+        return item_html, ""
+    return match.group(1).strip().rstrip(":"), match.group(2).strip()
+
+
+def render_uslugi_sidebar(prefix: str) -> str:
+    by_slug = {slug: label for slug, label, *_ in SERVICES}
+    links = []
+    for slug in FEATURED_SERVICE_SLUGS:
+        label = by_slug.get(slug)
+        if not label:
+            continue
+        links.append(
+            f'<a class="svc-aside__link" href="{page_href(prefix, f"uslugi/{slug}")}">'
+            f'<span>{label}</span><span class="svc-aside__arrow" aria-hidden="true">→</span></a>'
+        )
+    return f"""<aside class="page-layout__sidebar" aria-label="Ключевые направления">
+  <div class="page-spec svc-aside">
+    <div class="page-spec__head">
+      <span class="page-spec__label">Направления</span>
+      <h3 class="page-spec__title">Ключевые услуги</h3>
+    </div>
+    <nav class="svc-aside__nav">{"".join(links)}</nav>
+    <div class="svc-aside__actions">
+      <button type="button" class="btn btn--primary btn--lg svc-aside__cta js-open-contact">Обсудить проект</button>
+      <a class="btn btn--outline btn--sm svc-aside__cta-secondary" href="{page_href(prefix, "stoimost")}">Рассчитать стоимость</a>
+    </div>
+  </div>
+</aside>"""
+
+
+def render_uslugi_catalog(prefix: str) -> str:
+    groups = []
     for heading, items in USLUGI_CATALOG:
-        lis = "".join(f"<li>{item}</li>" for item in items)
-        sections.append(f"<section><h3>{heading}</h3><ul>{lis}</ul></section>")
-    return f'<div class="page-services-catalog reveal">{"".join(sections)}</div>'
+        num, title_ru, title_en = _parse_catalog_heading(heading)
+        rows = []
+        for item in items:
+            name, desc = _parse_catalog_item(item)
+            rows.append(
+                f'<li class="svc-item">'
+                f'<span class="svc-item__name">{name}</span>'
+                f'<span class="svc-item__desc">{desc}</span></li>'
+            )
+        en_html = f'<p class="svc-group__en">{title_en}</p>' if title_en else ""
+        groups.append(
+            f"""<article class="svc-group">
+  <header class="svc-group__head">
+    <span class="svc-group__num" aria-hidden="true">{num}</span>
+    <div class="svc-group__titles">
+      <h3 class="svc-group__title">{title_ru}</h3>
+      {en_html}
+    </div>
+  </header>
+  <ul class="svc-list">{"".join(rows)}</ul>
+</article>"""
+        )
+
+    return f"""<div class="page-layout page-layout--with-sidebar reveal">
+  <div class="page-layout__main">
+    <div class="page-prose page-prose--service svc-catalog-panel">
+      <div class="svc-catalog">
+        <div class="svc-catalog__grid">
+          {"".join(groups)}
+        </div>
+      </div>
+    </div>
+  </div>
+  {render_uslugi_sidebar(prefix)}
+</div>"""
 
 
 def render_screen_card(
@@ -821,13 +1135,29 @@ def render_revolution(
     </section>"""
 
 
+def render_stats_cases(prefix: str) -> str:
+    return STATS_CASES_PARTIAL.replace("{{ROOT}}", prefix)
+
+
+def render_portfolio_assets(prefix: str) -> tuple[str, str]:
+    head = '  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">\n'
+    tail = f"""  <script type="importmap">
+  {{ "imports": {{ "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" }} }}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="{prefix}script.js"></script>
+  <script type="module" src="{prefix}case3d.js"></script>
+"""
+    return head, tail
+
+
 def render_cta(prefix: str) -> str:
     return f"""    <section class="cta cta--simple" id="cta" data-fab-theme="light">
       <div class="container">
         <div class="cta__card cta__inner cta__inner--centered">
           <div class="cta__text">
             <h2 class="section-title section-title--light">Следующий прорыв на рынке может быть <span class="text-gradient">вашим</span>. Давайте воплотим это в жизнь.</h2>
-            <a href="{page_href(prefix, 'kontakty')}" class="btn btn--primary btn--lg cta__submit">Связаться с нами</a>
+            <button type="button" class="btn btn--primary btn--lg cta__submit js-open-contact">Связаться с нами</button>
           </div>
         </div>
       </div>
@@ -969,9 +1299,11 @@ def render_tail(prefix: str) -> str:
 
   <button type="button" class="messenger-fab js-open-contact" aria-label="Обсудить проект">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-  </button>
+  </button>"""
 
-  <script src="{prefix}script.js"></script>"""
+
+def render_scripts(prefix: str) -> str:
+    return f'  <script src="{prefix}script.js"></script>'
 
 
 def render_page(
@@ -986,8 +1318,11 @@ def render_page(
     section_id: str = "",
     accent: str = "",
     second_btn: tuple[str, str] | None = None,
+    include_stats_cases: bool = True,
 ) -> str:
     p = rel_prefix(depth)
+    portfolio_head, portfolio_tail = render_portfolio_assets(p) if include_stats_cases else ("", "")
+    stats_cases = render_stats_cases(p) if include_stats_cases else ""
     return f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -999,18 +1334,18 @@ def render_page(
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{p}styles.css">
   <link rel="stylesheet" href="{p}page.css">
-</head>
+{portfolio_head}</head>
 <body class="page-body page-inner">
 {render_header(p, active)}
   <main>
 {render_hero(p, second_btn)}
 {render_clients_strip(p)}
-{render_revolution(eyebrow=eyebrow, title_html=title_html, lead=lead, content=content + render_security_banner(), section_id=section_id, accent=accent)}
-{render_cta(p)}
+{render_revolution(eyebrow=eyebrow, title_html=title_html, lead=lead, content=content, section_id=section_id, accent=accent)}
+{stats_cases}{render_cta(p)}
   </main>
 {render_footer(p)}
 {render_tail(p)}
-</body>
+{portfolio_tail if include_stats_cases else render_scripts(p)}</body>
 </html>"""
 
 
@@ -1019,45 +1354,15 @@ def content_etapy() -> str:
 
 
 def content_sroki() -> str:
-    bullets = """<ul class="page-list reveal">
-<li><strong>Мгновенный старт (On-Demand Scaling):</strong> Благодаря обширному ресурсному пулу и отлаженным HR-процессам, мы формируем и выводим команду на проект в течение 2–3 рабочих дней. Вам не нужно ждать, пока освободятся специалисты.</li>
-<li><strong>AI-Native Engineering:</strong> Мы используем AI-агентов для автоматизации рутинного кодинга, генерации тестов и создания документации. Это позволяет нашим инженерам фокусироваться на архитектуре и логике, ускоряя производство кода в 2–3 раза.</li>
-<li><strong>Слаженная экосистема разработки:</strong> Использование готовых внутренних библиотек и микросервисных шаблонов позволяет нам не писать базовые функции с нуля, а собирать фундамент проекта за считанные часы.</li>
-<li><strong>Параллельные спринты:</strong> Наши процессы выстроены так, что проектирование, дизайн и разработка бэкенда идут одновременно. Мы сокращаем «мёртвые зоны» ожидания между этапами до минимума.</li>
-</ul>
-<h3 class="page-subsection__title reveal">Наши стандарты скорости</h3>
-"""
-    return bullets + render_speed_table() + """
-<blockquote class="timeline__benefit reveal">«Пока конкуренты пишут ТЗ, вы уже тестируете первую версию продукта на реальных пользователях».</blockquote>"""
+    return render_ttm_content()
 
 
 def content_garantii() -> str:
-    return """<div class="page-prose reveal">
-<h3>1. Юридическая и Интеллектуальная защита</h3>
-<ul class="page-list page-list--cards">
-<li><strong>Полная передача прав (IP Ownership):</strong> Согласно договору, 100% прав на исходный код, документацию и интеллектуальную собственность переходят к вам сразу после завершения работ.</li>
-<li><strong>Строгий NDA (Конфиденциальность):</strong> Мы подписываем соглашение о неразглашении на этапе первых переговоров. Ваша бизнес-логика и данные защищены юридически.</li>
-</ul>
-<h3>2. Технологические гарантии (Quality Assurance)</h3>
-<ul class="page-list page-list--cards">
-<li><strong>Гарантийный период:</strong> После релиза мы предоставляем период бесплатной технической поддержки для устранения любых выявленных скрытых дефектов.</li>
-<li><strong>SLA (Service Level Agreement):</strong> Мы фиксируем параметры доступности и скорости реакции в соглашении об уровне сервиса. Вы всегда знаете, когда задача будет выполнена.</li>
-</ul>
-<h3>3. Безопасность данных и инфраструктуры</h3>
-<ul class="page-list page-list--cards">
-<li><strong>Соответствие стандартам:</strong> Разработка ведётся с учётом международных стандартов безопасности (ISO, GDPR, HIPAA — в зависимости от ниши).</li>
-<li><strong>Безопасный цикл разработки (DevSecOps):</strong> Мы интегрируем проверку уязвимостей на каждом этапе написания кода, минимизируя риски взлома.</li>
-</ul>
-<h3>4. Гарантия прозрачности (Operational Transparency)</h3>
-<ul class="page-list page-list--cards">
-<li><strong>Регулярная отчётность:</strong> Вы получаете доступ к системе управления проектами (Jira/ClickUp) и видите прогресс в режиме реального времени.</li>
-<li><strong>Демо-сессии:</strong> Каждые две недели мы демонстрируем работающий функционал, чтобы вы могли убедиться в соответствии продукта вашим ожиданиям.</li>
-</ul>
-</div>"""
+    return render_risk_content()
 
 
 def content_stoimost(prefix: str) -> str:
-    return render_stoimost_compare() + render_screen_card(prefix, *SCREENS["stoimost"]) + """
+    return render_stoimost_compare() + """
 <div class="page-outro reveal">
   <p>Свяжитесь с нами, и наш эксперт рассчитает точный бюджет проекта под ваши задачи уже в рамках первичного планирования.</p>
   <button type="button" class="btn btn--primary btn--lg js-open-contact">Получить расчёт</button>
@@ -1116,7 +1421,6 @@ def main() -> None:
             "eyebrow": "Time-to-Market",
             "title_html": 'От идеи до запуска — за <span class="text-gradient">недели, а не месяцы</span>',
             "lead": "Мы пересмотрели классический подход к разработке, чтобы ваш бизнес получал технологическое преимущество в кратчайшие сроки.",
-            "accent": "За счёт чего мы работаем быстрее рынка?",
             "content_fn": lambda p: content_sroki(),
             "section_id": "speed",
         },
@@ -1125,9 +1429,10 @@ def main() -> None:
             "title": "Гарантии — BUDGET SOFT",
             "active": "garantii",
             "eyebrow": "Risk Mitigation",
-            "title_html": 'Гарантии и <span class="text-gradient">безопасность</span>',
-            "lead": "Мы берём на себя полную ответственность за результат и обеспечиваем многоуровневую защиту ваших интересов.",
+            "title_html": 'Вы ничем не <span class="text-gradient">рискуете</span>',
+            "lead": "Оплата 30 / 30 / 40, полный доступ к проекту и коду, все доски в Jira — условия, которые защищают ваш бюджет и контроль.",
             "content_fn": lambda p: content_garantii(),
+            "section_id": "garantii",
         },
         {
             "slug": "stoimost",
@@ -1260,19 +1565,17 @@ def main() -> None:
         active="uslugi",
         eyebrow="Услуги",
         title_html='Направления и <span class="text-gradient">услуги</span>',
-        lead="Мы разрабатываем программное обеспечение на заказ для каждой функции предприятия.",
-        content=render_uslugi_catalog(),
+        lead="Заказная разработка для каждой функции бизнеса — от корпоративных систем до AI, мобильных продуктов и инфраструктуры.",
+        content=render_uslugi_catalog(uslugi_prefix)
+        + render_ai_directions_block(uslugi_prefix, copy_key="uslugi"),
         section_id="services",
+        second_btn=(page_href(uslugi_prefix, "stoimost"), "Рассчитать стоимость"),
     )
     write_page(ROOT / "uslugi" / "index.html", uslugi_html)
 
     for slug, label, heading, body in SERVICES:
         prefix = rel_prefix(2)
-        middle = (
-            render_ai_directions_block(prefix)
-            if slug == "iskusstvennyj-intellekt"
-            else ""
-        )
+        middle = render_ai_directions_block(prefix, copy_key=slug)
         content = content_prose(body, prefix, pricing_key=slug, middle=middle)
         html = render_page(
             depth=2,

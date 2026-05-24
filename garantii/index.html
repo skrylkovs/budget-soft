@@ -58,9 +58,9 @@
   <span>Все услуги</span>
 </a></div>
           </li>
-          <li class="nav__item"><a class="nav__link" href="#portfolio">Портфолио</a></li>
+          <li class="nav__item"><a class="nav__link" href="../#portfolio">Портфолио</a></li>
           <li class="nav__item"><a class="nav__link" href="../etapy/">Этапы реализации</a></li>
-          <li class="nav__item"><a class="nav__link" href="../#timeline">Сроки</a></li>
+          <li class="nav__item"><a class="nav__link" href="../sroki/">Сроки</a></li>
           <li class="nav__item"><a class="nav__link is-active" href="../garantii/">Гарантии</a></li>
         </ul>
       </nav>
@@ -73,9 +73,9 @@
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="../uslugi/" class="mobile-menu__link">Услуги</a>
-      <a href="#portfolio" class="mobile-menu__link">Портфолио</a>
+      <a href="../#portfolio" class="mobile-menu__link">Портфолио</a>
       <a href="../etapy/" class="mobile-menu__link">Этапы реализации</a>
-      <a href="../#timeline" class="mobile-menu__link">Сроки</a>
+      <a href="../sroki/" class="mobile-menu__link">Сроки</a>
       <a href="../garantii/" class="mobile-menu__link">Гарантии</a>
       <button type="button" class="btn btn--primary mobile-menu__cta js-open-contact">Обсудить проект</button>
     </div>
@@ -198,34 +198,136 @@
         <div class="section-head reveal">
           <span class="section-rule"></span>
           <span class="eyebrow">Risk Mitigation</span>
-          <h2 class="section-title">Гарантии и <span class="text-gradient">безопасность</span></h2>
-          <p class="section-lead">Мы берём на себя полную ответственность за результат и обеспечиваем многоуровневую защиту ваших интересов.</p>
+          <h2 class="section-title">Вы ничем не <span class="text-gradient">рискуете</span></h2>
+          <p class="section-lead">Оплата 30 / 30 / 40, полный доступ к проекту и коду, все доски в Jira — условия, которые защищают ваш бюджет и контроль.</p>
         </div>
-        <div class="page-prose reveal">
-<h3>1. Юридическая и Интеллектуальная защита</h3>
-<ul class="page-list page-list--cards">
-<li><strong>Полная передача прав (IP Ownership):</strong> Согласно договору, 100% прав на исходный код, документацию и интеллектуальную собственность переходят к вам сразу после завершения работ.</li>
-<li><strong>Строгий NDA (Конфиденциальность):</strong> Мы подписываем соглашение о неразглашении на этапе первых переговоров. Ваша бизнес-логика и данные защищены юридически.</li>
-</ul>
-<h3>2. Технологические гарантии (Quality Assurance)</h3>
-<ul class="page-list page-list--cards">
-<li><strong>Гарантийный период:</strong> После релиза мы предоставляем период бесплатной технической поддержки для устранения любых выявленных скрытых дефектов.</li>
-<li><strong>SLA (Service Level Agreement):</strong> Мы фиксируем параметры доступности и скорости реакции в соглашении об уровне сервиса. Вы всегда знаете, когда задача будет выполнена.</li>
-</ul>
-<h3>3. Безопасность данных и инфраструктуры</h3>
-<ul class="page-list page-list--cards">
-<li><strong>Соответствие стандартам:</strong> Разработка ведётся с учётом международных стандартов безопасности (ISO, GDPR, HIPAA — в зависимости от ниши).</li>
-<li><strong>Безопасный цикл разработки (DevSecOps):</strong> Мы интегрируем проверку уязвимостей на каждом этапе написания кода, минимизируя риски взлома.</li>
-</ul>
-<h3>4. Гарантия прозрачности (Operational Transparency)</h3>
-<ul class="page-list page-list--cards">
-<li><strong>Регулярная отчётность:</strong> Вы получаете доступ к системе управления проектами (Jira/ClickUp) и видите прогресс в режиме реального времени.</li>
-<li><strong>Демо-сессии:</strong> Каждые две недели мы демонстрируем работающий функционал, чтобы вы могли убедиться в соответствии продукта вашим ожиданиям.</li>
-</ul>
+        <div class="risk">
+  <div class="risk-hero reveal">
+    <p class="risk-hero__lead risk-hero__lead--accent">Вы ничем не рискуете</p>
+    <p class="risk-hero__lead">Платите по этапам 30 · 30 · 40, видите каждую задачу в Jira и владеете проектом и кодом — с первого дня совместной работы.</p>
+    <div class="risk-metrics" aria-label="Ключевые гарантии">
+<div class="risk-metric">
+  <p class="risk-metric__value risk-metric__value--compact">30·30·40</p>
+  <p class="risk-metric__label">оплата по этапам</p>
+</div><div class="risk-metric">
+  <p class="risk-metric__value">100<span class="risk-metric__unit">%</span></p>
+  <p class="risk-metric__label">доступ к коду и проекту</p>
+</div><div class="risk-metric">
+  <p class="risk-metric__value">Jira</p>
+  <p class="risk-metric__label">все доски и задачи</p>
+</div>
+    </div>
+  </div>
+  <section class="risk-layers reveal" aria-labelledby="riskLayersTitle">
+    <header class="risk-layers__head">
+      <p class="risk-layers__eyebrow" id="riskLayersTitle">Как снимаем риск с вас</p>
+      <p class="risk-layers__sub">Три механизма контроля и одно правило: вы платите и принимаете работу только тогда, когда видите результат.</p>
+    </header>
+    <div class="risk-layers__stack">
+<article class="risk-layer">
+  <span class="risk-layer__num" aria-hidden="true">01</span>
+  <div class="risk-layer__body">
+    <div class="risk-layer__head">
+      <span class="risk-layer__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 8h16v10H4V8zm2-4h12v2H6V4zm4 12h4v2h-4v-2z" fill="currentColor"/></svg></span>
+      <h3 class="risk-layer__title">Оплата 30 · 30 · 40<span class="risk-layer__dot" aria-hidden="true">·</span><span class="risk-layer__tag">Payment</span></h3>
+    </div>
+    <p class="risk-layer__text">Три этапа в договоре: 30% — старт и проектирование, 30% — разработка и демо, 40% — приёмка. Вы не переводите весь бюджет заранее — платите за принятый результат.</p>
+  </div>
+</article><article class="risk-layer">
+  <span class="risk-layer__num" aria-hidden="true">02</span>
+  <div class="risk-layer__body">
+    <div class="risk-layer__head">
+      <span class="risk-layer__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 6l-4 4 4 4V6zm8 0v8l4-4-4-4zm-5 9H9v2h2v-2z" fill="currentColor"/></svg></span>
+      <h3 class="risk-layer__title">Доступ к проекту и коду<span class="risk-layer__dot" aria-hidden="true">·</span><span class="risk-layer__tag">Full access</span></h3>
+    </div>
+    <p class="risk-layer__text">Репозиторий, документация, стенды и артефакты — у вас с начала работ. Код не в «чёрном ящике»: можете проверить, передать своей команде или развивать продукт самостоятельно.</p>
+  </div>
+</article><article class="risk-layer">
+  <span class="risk-layer__num" aria-hidden="true">03</span>
+  <div class="risk-layer__body">
+    <div class="risk-layer__head">
+      <span class="risk-layer__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v2H4V6zm0 5h10v2H4v-2zm0 5h14v2H4v-2z" fill="currentColor"/></svg></span>
+      <h3 class="risk-layer__title">Jira и все доски<span class="risk-layer__dot" aria-hidden="true">·</span><span class="risk-layer__tag">Transparency</span></h3>
+    </div>
+    <p class="risk-layer__text">Полный доступ ко всем доскам, спринтам и задачам в Jira (или ClickUp). Статусы, сроки и ответственные видны в реальном времени — без отдельных сводных отчётов.</p>
+  </div>
+</article><article class="risk-layer">
+  <span class="risk-layer__num" aria-hidden="true">04</span>
+  <div class="risk-layer__body">
+    <div class="risk-layer__head">
+      <span class="risk-layer__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4zm-1 10.2l5.4-5.4-1.4-1.4L11 12.4 8.4 9.8 7 11.2l4 4z" fill="currentColor"/></svg></span>
+      <h3 class="risk-layer__title">Вы ничем не рискуете<span class="risk-layer__dot" aria-hidden="true">·</span><span class="risk-layer__tag">Zero risk</span></h3>
+    </div>
+    <p class="risk-layer__text">Этап не принят — следующий платёж не наступает. Скрытые дефекты после релиза устраняем в гарантийный период. Права на продукт закрепляем в договоре.</p>
+  </div>
+</article>
+    </div>
+  </section>
+  <section class="risk-contract reveal" aria-labelledby="riskContractTitle">
+    <div class="risk-contract__panel">
+      <header class="risk-contract__head">
+        <p class="risk-contract__eyebrow" id="riskContractTitle">Договор</p>
+        <h3 class="risk-contract__title">Что фиксируем письменно</h3>
+      </header>
+      <div class="risk-contract__grid">
+<div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">01</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">Оплата</p>
+    <p class="risk-contract__detail">30% · 30% · 40% — только за принятые этапы</p>
+  </div>
+</div><div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">02</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">Доступ к коду</p>
+    <p class="risk-contract__detail">Репозиторий, документация и стенды с начала проекта</p>
+  </div>
+</div><div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">03</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">Jira</p>
+    <p class="risk-contract__detail">Все доски, спринты и задачи — в реальном времени</p>
+  </div>
+</div><div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">04</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">Права на продукт</p>
+    <p class="risk-contract__detail">100% IP и исходный код по договору</p>
+  </div>
+</div><div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">05</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">NDA</p>
+    <p class="risk-contract__detail">Конфиденциальность с первого контакта</p>
+  </div>
+</div><div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">06</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">Гарантия</p>
+    <p class="risk-contract__detail">Скрытые дефекты после релиза — за наш счёт</p>
+  </div>
+</div><div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">07</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">Демо</p>
+    <p class="risk-contract__detail">Работающий функционал каждые 2 недели</p>
+  </div>
+</div><div class="risk-contract__item">
+  <span class="risk-contract__num" aria-hidden="true">08</span>
+  <div class="risk-contract__copy">
+    <p class="risk-contract__name">SLA</p>
+    <p class="risk-contract__detail">Сроки реакции и доступности фиксируем письменно</p>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+  <figure class="risk-quote reveal">
+    <blockquote>«Вы ничем не рискуете: оплата по факту, полный доступ к коду и всё — на досках в Jira».</blockquote>
+  </figure>
 </div>
       </div>
     </section>
-    <!-- shared: stats + portfolio -->
     <section class="stats" data-fab-theme="dark">
       <div class="container">
         <div class="stats__grid">
@@ -349,13 +451,12 @@
         </div>
       </div>
     </section>
-
     <section class="cta cta--simple" id="cta" data-fab-theme="light">
       <div class="container">
         <div class="cta__card cta__inner cta__inner--centered">
           <div class="cta__text">
             <h2 class="section-title section-title--light">Следующий прорыв на рынке может быть <span class="text-gradient">вашим</span>. Давайте воплотим это в жизнь.</h2>
-            <a href="../kontakty/" class="btn btn--primary btn--lg cta__submit">Связаться с нами</a>
+            <button type="button" class="btn btn--primary btn--lg cta__submit js-open-contact">Связаться с нами</button>
           </div>
         </div>
       </div>
@@ -372,7 +473,7 @@
           <ul class="footer__contacts">
             <li><a href="tel:+74950000000">+7 (495) 000-00-00</a></li>
             <li><a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
-            <li><span>Москва, ул. Ордынка, 40, БЦ «Палаты Черкасских», оф. 305</span></li>
+            <li><span>Москва, ул. Бауманская, 11, стр. 8, оф. 402</span></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -466,7 +567,7 @@
             </span>
             <span class="contact-modal__tile-text">
               <strong>Офис</strong>
-              <span>Москва, ул. Ордынка, 40, БЦ «Палаты Черкасских», оф. 305</span>
+              <span>Москва, ул. Бауманская, 11, стр. 8, оф. 402</span>
             </span>
           </div>
         </div>
@@ -485,12 +586,11 @@
   <button type="button" class="messenger-fab js-open-contact" aria-label="Обсудить проект">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
   </button>
-
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script type="module" src="../case3d.js"></script>
   <script src="../script.js"></script>
+  <script type="module" src="../case3d.js"></script>
 </body>
 </html>
