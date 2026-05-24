@@ -145,8 +145,8 @@
       steps.forEach((step, i) => {
         ScrollTrigger.create({
           trigger: step,
-          start: 'top center',
-          end: 'bottom center',
+          start: 'top 78%',
+          end: 'bottom 55%',
           onToggle: (self) => { if (self.isActive) setActive(i); },
         });
       });
@@ -155,7 +155,7 @@
         entries.forEach((e) => {
           if (e.isIntersecting) setActive(steps.indexOf(e.target));
         });
-      }, { threshold: 0.6 });
+      }, { threshold: 0.15, rootMargin: '0px 0px -28% 0px' });
       steps.forEach((s) => io.observe(s));
     } else {
       setActive(steps.length - 1);
