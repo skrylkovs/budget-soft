@@ -183,7 +183,7 @@ img, svg {
 }
 
 .section-lead {
-    font-size: clamp(16px, 1.6vw, 21px);
+    font-size: clamp(16px, 1.6vw, 17px);
     line-height: 1.6;
     color: var(--text-dark-muted);
     margin: 0;
@@ -668,12 +668,15 @@ button.nav__link {
     border-radius: var(--radius-md);
     color: var(--text-dark);
     text-align: center;
-    transition: transform 0.25s ease;
+    transform-origin: center center;
+    transition: transform 0.28s ease;
 }
 
 .direction:hover {
-    transform: translateY(-4px);
+    transform: scale(1.15);
     background: transparent;
+    position: relative;
+    z-index: 1;
 }
 
 .direction__icon {
@@ -1198,10 +1201,12 @@ button.nav__link {
     background: #fff;
     box-shadow: 0 30px 70px rgba(10, 10, 18, 0.22);
     padding: 15px 40px;
+    overflow: visible;
 }
 
 .clients-strip__card .directions {
     margin: 0;
+    overflow: visible;
 }
 
 .clients-strip__divider {
