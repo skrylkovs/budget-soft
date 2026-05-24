@@ -1213,7 +1213,7 @@
     grid-template-columns: clamp(52px, 6vw, 72px) minmax(0, 1fr);
     gap: clamp(16px, 2vw, 28px);
     align-items: start;
-    padding: clamp(28px, 3.2vw, 40px) 0;
+    padding: clamp(28px, 3.2vw, 40px) 0 clamp(28px, 3.2vw, 40px) 25px;
     border-bottom: 1px solid rgba(10, 10, 18, 0.07);
     transition: background 0.35s ease;
 }
