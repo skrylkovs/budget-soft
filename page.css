@@ -1185,12 +1185,13 @@
 }
 
 .risk-layers__eyebrow {
-    margin: 0 0 12px;
-    font-size: clamp(12px, 1.1vw, 13px);
+    margin: 0 0 14px;
+    font-size: clamp(20px, 2.1vw, 26px);
     font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--primary);
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    text-transform: none;
+    color: var(--text-dark);
 }
 
 .risk-layers__sub {
