@@ -334,9 +334,9 @@ TTM_PILLARS = [
 ]
 
 RISK_METRICS = [
-    ("100", "%", "передача прав на продукт"),
-    ("NDA", "", "с первого контакта"),
-    ("SLA", "", "в каждом договоре"),
+    ("30", "%", "старт и проектирование"),
+    ("30", "%", "разработка и демо"),
+    ("40", "%", "приёмка и сдача"),
 ]
 
 RISK_PILLAR_ICONS = {
@@ -707,8 +707,9 @@ def render_risk_content() -> str:
     )
     return f"""<div class="risk">
   <div class="risk-hero reveal">
-    <p class="risk-hero__lead">Ответственность за результат закреплена в договоре — не в презентации.</p>
-    <div class="risk-metrics" aria-label="Ключевые гарантии">
+    <p class="risk-hero__lead risk-hero__lead--accent">Ваше спокойствие и уверенность в результате</p>
+    <p class="risk-hero__lead">Мы выстраиваем сотрудничество так, чтобы вы контролировали бюджет и видели прогресс на каждом этапе — за счёт схемы оплаты <strong>30 · 30 · 40</strong>.</p>
+    <div class="risk-metrics" aria-label="Схема оплаты 30 · 30 · 40">
 {metrics}
     </div>
   </div>
@@ -1429,7 +1430,7 @@ def main() -> None:
             "active": "garantii",
             "eyebrow": "Risk Mitigation",
             "title_html": 'Гарантии и <span class="text-gradient">безопасность</span>',
-            "lead": "Мы берём на себя полную ответственность за результат и обеспечиваем многоуровневую защиту ваших интересов.",
+            "lead": "Ориентируемся на ваше спокойствие и уверенность в результате — с поэтапной оплатой 30 / 30 / 40 и прозрачным процессом на каждом этапе.",
             "content_fn": lambda p: content_garantii(),
             "section_id": "garantii",
         },
