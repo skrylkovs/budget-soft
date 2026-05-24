@@ -1044,22 +1044,21 @@
 }
 
 /* —— Risk Mitigation (страница «Гарантии») —— */
+#garantii {
+    --risk-content-max: 1104px; /* +20% к базовым 920px */
+}
+
 #garantii .section-head {
     margin-bottom: clamp(32px, 4vw, 48px);
 }
 
 #garantii .section-lead {
-    max-width: 36rem;
+    max-width: min(43.2rem, 100%);
     margin-left: auto;
     margin-right: auto;
     font-size: clamp(17px, 1.5vw, 19px);
     line-height: 1.65;
     color: rgba(10, 10, 18, 0.72);
-}
-
-.risk {
-    max-width: 920px;
-    margin: 0 auto;
 }
 
 /* Hero + metrics */
@@ -1076,9 +1075,14 @@
     box-shadow: 0 24px 64px rgba(10, 10, 18, 0.04);
 }
 
+.risk {
+    max-width: min(var(--risk-content-max), 100%);
+    margin: 0 auto;
+}
+
 .risk-hero__lead {
     margin: 0 auto;
-    max-width: 34rem;
+    max-width: min(40.8rem, 100%);
     font-size: clamp(17px, 1.5vw, 19px);
     font-weight: 500;
     line-height: 1.6;
@@ -1190,7 +1194,7 @@
 
 .risk-layers__sub {
     margin: 0 auto;
-    max-width: 34rem;
+    max-width: min(40.8rem, 100%);
     font-size: clamp(16px, 1.4vw, 18px);
     line-height: 1.65;
     color: rgba(10, 10, 18, 0.72);
@@ -1290,7 +1294,7 @@
 
 .risk-layer__text {
     margin: 0;
-    max-width: 40rem;
+    max-width: none;
     font-size: clamp(16px, 1.35vw, 17px);
     line-height: 1.7;
     color: rgba(10, 10, 18, 0.72);
