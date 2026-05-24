@@ -1360,11 +1360,12 @@
 }
 
 .risk-contract__num {
-    font-size: clamp(12px, 1.05vw, 13px);
+    align-self: center;
+    font-size: clamp(24px, 2.1vw, 26px);
     font-weight: 600;
-    letter-spacing: 0.08em;
-    line-height: 1.4;
-    color: rgba(111, 76, 255, 0.55);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: oklch(51.1% 0.262 276.966);
     font-variant-numeric: tabular-nums;
 }
 
