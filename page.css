@@ -1046,6 +1046,7 @@
 /* —— Risk Mitigation (страница «Гарантии») —— */
 #garantii {
     --risk-content-max: 1104px; /* +20% к базовым 920px */
+    --risk-metric-label: #4a386e; /* тёмно-сиреневый */
 }
 
 #garantii .section-head {
@@ -1166,11 +1167,11 @@
 
 .risk-metric__label {
     margin: 16px 0 0;
-    font-size: clamp(12px, 1.1vw, 13px);
+    font-size: clamp(16px, 1.43vw, 17px);
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(10, 10, 18, 0.55);
+    color: var(--risk-metric-label, #4a386e);
 }
 
 /* Four layers — editorial stack */
@@ -1393,7 +1394,7 @@
 .risk-quote blockquote {
     margin: 0 auto;
     padding: 0;
-    max-width: 34rem;
+    max-width: min(40.8rem, 100%);
     border: none;
     background: none;
     font-style: normal;
