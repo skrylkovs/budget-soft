@@ -6,6 +6,14 @@ import random
 import re
 from pathlib import Path
 
+from _uslugi_data import (
+    DIRECTION_ICONS,
+    DIRECTION_STRIP_SLUGS,
+    SERVICE_ICONS,
+    parse_texts_uslugi,
+    services_as_tuples,
+)
+
 ROOT = Path(__file__).parent
 
 STATS_CASES_PARTIAL = (ROOT / "partials" / "stats-cases.html").read_text(encoding="utf-8")
@@ -45,15 +53,6 @@ SERVICE_PRICING = {
             "40% — Тестирование на реальных лидах, обучение и запуск",
         ],
     },
-    "kiberbezopasnost": {
-        "price": "От 120 000 руб. (включая аудит и выстраивание контура DevSecOps)",
-        "terms": "От 1 до 2.5 месяцев",
-        "payment_steps": [
-            "30% — Предоплата, комплексный аудит инфраструктуры и выявление уязвимостей",
-            "30% — Развертывание систем защиты, DLP и антифрод-модулей",
-            "40% — Стресс-тесты (пентесты), симуляция атак и финальный деплой",
-        ],
-    },
     "iskusstvennyj-intellekt": {
         "price": "От 180 000 руб. (зависит от сложности LLM-моделей и объема данных для обучения)",
         "terms": "От 1 до 3 месяцев",
@@ -72,89 +71,39 @@ SERVICE_PRICING = {
             "40% — Публикация в App Store / Google Play, отладка и передача исходников",
         ],
     },
-    "importozameshchenie": {
-        "price": "От 260 000 руб. (определяется сложностью архитектуры замещаемого ПО)",
-        "terms": "От 2 до 5 месяцев",
-        "payment_steps": [
-            "30% — Предоплата, маппинг данных и проектирование суверенной архитектуры",
-            "30% — Разработка независимых модулей и перенос баз данных (бекапы)",
-            "40% — Финальное переключение систем, нагрузочные тесты и сдача проекта",
-        ],
-    },
 }
 
-SERVICES = [
-    (
-        "razrabotka-erp-sistem",
-        "ERP-системы",
-        "Кастомные ERP-системы: Единый цифровой мозг и интеллектуальный центр управления предприятием",
-        """<h4 class="page-prose__heading">От хаоса таблиц к единой системе</h4>
-<p>Когда финансы живут в одной программе, склад — в другой, а отчёты для руководства собирают вручную из десятка Excel-файлов, компания теряет скорость и деньги на каждой сверке. Ошибки в остатках, дубли заказов и «слепые зоны» в управлении — типичный след разрозненного софта, а не слабой дисциплины в отделах.</p>
-<p>BUDGET SOFT проектирует и разрабатывает кастомную ERP под вашу модель бизнеса: от аналитики процессов и ТЗ до внедрения, обучения команды и сопровождения. Все ключевые контуры — ресурсы, финансы, закупки, производство, логистика и персонал — работают в одной экосистеме с едиными справочниками, правами доступа и сквозной отчётностью, без разрывов между модулями.</p>
-<h4 class="page-prose__heading">AI-Native ERP: не архив, а ассистент</h4>
-<p>С AI-Native подходом система не просто фиксирует факты, а помогает принимать решения: подсказывает отклонения от плана, прогнозирует кассовые разрывы, предлагает оптимальные объёмы закупок и загрузку мощностей. Руководитель видит консолидированную картину по компании в реальном времени, а не отчёт «на вчера», собранный вручную.</p>
-<p>Мы закладываем интеграции с банками, маркетплейсами, 1С и внешними сервисами так, чтобы данные поступали автоматически, а не через выгрузки. Это снижает нагрузку на бухгалтерию и ИТ и даёт основу для дальнейшего внедрения AI-агентов в закупки, планирование и контроль качества.</p>
-<h4 class="page-prose__heading">Прозрачность и контроль на каждом уровне</h4>
-<p>Дашборды для собственника, операционные панели для руководителей направлений и понятные рабочие места для линейных сотрудников настраиваются под вашу оргструктуру. Система анализирует историю и тренды, формирует регламентные отчёты и сигналы об аномалиях — от просроченной дебиторки до критического остатка на складе.</p>
-<p>На этапе запуска фиксируем KPI проекта: сроки внедрения, сокращение ручного труда, скорость закрытия периода. После сдачи остаёмся на поддержке и развитии — ERP живёт вместе с бизнесом, а не превращается в замороженный IT-артефакт.</p>""",
-    ),
-    (
-        "razrabotka-crm-sistem",
-        "CRM-системы",
-        "Умные CRM-системы: Интеллектуальная автоматизация продаж и бесшовное AI-сопровождение клиентов",
-        """<h4 class="page-prose__heading">CRM, которая ведёт сделку, а не хранит контакты</h4>
-<p>Если менеджеры тратят полдня на перенос писем и звонков в карточку, а руководитель не видит реальную воронку — CRM не окупает себя. Мы проектируем систему под ваш цикл продаж: от первого касания до повторной покупки, с этапами, полями и автоматизацией, которые отражают, как вы реально продаёте, а не «как в коробке».</p>
-<p>Разрабатываем кастомные высоконагруженные CRM с нуля и глубоко дорабатываем Salesforce, Creatio и SAP. Подключаем телефонию, мессенджеры, почту, сайт и рекламные кабинеты, чтобы лиды не терялись между каналами, а история общения была цельной в одной карточке.</p>
-<h4 class="page-prose__heading">AI-агенты в ежедневной работе отдела продаж</h4>
-<p>Встроенные автономные AI-агенты снимают с менеджеров рутину: черновики ответов, резюме звонков, напоминания о следующем шаге, первичная квалификация входящих заявок. AI помнит контекст по каждому клиенту — переписку, звонки, прошлые КП — и подсказывает, когда вернуться к сделке или какой оффер предложить.</p>
-<p>Скрипты и сценарии настраиваются под ваш тон и регламенты, а не «универсальный чат-бот». Руководитель получает прогноз по воронке и рискам срыва плана, а не только отчёт о количестве звонков в конце месяца.</p>
-<h4 class="page-prose__heading">Измеримый рост конверсии</h4>
-<p>Меньше забытых лидов, просроченных задач и ручных ошибок в статусах — прямая экономия времени команды и рост доли закрытых сделок. На запуске согласуем метрики: скорость обработки заявки, конверсия по этапам, доля повторных продаж.</p>
-<p>Обучаем sales-команду и администраторов, переносим данные из старых систем и сопровождаем первые недели после go-live, пока процессы не стабилизируются в новой CRM.</p>""",
-    ),
-    (
-        "kiberbezopasnost",
-        "Кибербезопасность",
-        "Cybersecurity & DevSecOps: Комплексная защита данных, транзакций и критической ИТ-инфраструктуры",
-        """<h4 class="page-prose__heading">Безопасность как условие роста, а не тормоз</h4>
-<p>Утечка данных, успешная атака или блокировка сервиса обходятся дороже, чем проект защиты, который «откладывали на потом». В эпоху цифровизации и AI компании одновременно открывают новые каналы и расширяют периметр риска — без системного подхода это лотерея для репутации и регуляторики.</p>
-<p>Мы начинаем с аудита: инфраструктура, приложения, права доступа, цепочка поставки кода. По итогам — приоритизированный план с понятными сроками и бюджетом, без бессмысленного «чек-листа ради галочки».</p>
-<h4 class="page-prose__heading">DevSecOps, архитектура и контроль доступа</h4>
-<p>Внедряем DevSecOps в ваш конвейер разработки: статический анализ, секреты, политики деплоя, чтобы уязвимости не доезжали до продакшена. Проектируем отказоустойчивую архитектуру, DLP, сегментацию сети, MFA, биометрию и интеграцию со СКУД — защита и от внешних атак, и от внутренних инцидентов.</p>
-<p>Документируем регламенты, обучаем команду и настраиваем мониторинг событий безопасности, чтобы реагирование было отработанным, а не импровизацией в момент кризиса.</p>
-<h4 class="page-prose__heading">Антифрод и непрерывный мониторинг</h4>
-<p>Для финтеха, маркетплейсов и e-commerce разворачиваем антифрод на машинном обучении: подозрительные транзакции и сценарии злоупотреблений выявляются за миллисекунды, до списания средств или блокировки мерчанта.</p>
-<p>Коммерческие тайны, платёжные данные и персональная информация остаются под автоматизированным контролем 24/7. После внедрения — пентесты, симуляции атак и регулярный пересмотр политик по мере роста бизнеса.</p>""",
-    ),
-    (
-        "iskusstvennyj-intellekt",
-        "Внедрение AI во все сферы бизнеса",
-        "AI Agent Workflows: Проектирование и интеграция автономных AI-агентов в бизнес-архитектуру",
-        """<h4 class="page-prose__heading page-prose__heading--lead">AI в архитектуре процессов</h4>
-<p>Мы не вешаем «чат с GPT» поверх хаотичных процессов — сначала разбираем, где в компании теряются деньги и время, и проектируем AI-контур под конкретные роли: поддержка, закупки, документооборот, аналитика, контент. Агенты получают доступ только к нужным данным и действиям, с журналированием и контролем качества ответов.</p>
-<p>Результат — не демо-бот, а рабочая часть операционной модели: согласованные сценарии, метрики точности, план поэтапного расширения на новые отделы без остановки текущих систем.</p>
-<h4 class="page-prose__heading">Технологии и прикладные сценарии</h4>
-<p>В стеке — многоагентные оркестрации, OCR и извлечение полей из договоров и накладных, ML-модели спроса и рисков, Computer Vision для производства и логистики. Для клиентских каналов — Telegram- и web-боты с оплатой, авторизацией и полноценным AI-сопровождением пользователя до целевого действия.</p>
-<p>Интегрируемся с CRM, ERP, 1С, почтой и внутренними API: AI работает там, где уже лежат данные, а не в отдельном «острове». Обучение моделей и промпт-инжиниринг ведём на ваших регламентах и тоне коммуникации, с тестовым контуром до выхода в прод.</p>
-<h4 class="page-prose__heading">Эффект для бизнеса</h4>
-<p>Рутинные задачи уходят агентам — сокращаются операционные расходы, растёт скорость обработки заявок и документов, снижается нагрузка на линейный персонал. Руководитель видит прозрачную аналитику по автоматизированным процессам: объём, ошибки, экономия времени.</p>
-<p>На пилоте фиксируем измеримые KPI, на масштабировании — roadmap по новым сценариям. Сопровождаем калибровку моделей и обновление знаний по мере изменения продуктов и регламентов компании.</p>""",
-    ),
-    (
-        "mobilnaya-razrabotka",
-        "Мобильная разработка",
-        "Мобильная разработка Enterprise-уровня: Высокопроизводительные приложения для iOS и Android",
-        """<h4 class="page-prose__heading">Мобильный канал как часть бизнес-модели</h4>
-<p>Приложение — не «визитка в Store», а рабочий инструмент: для клиента это заказ, оплата и поддержка; для компании — полевые задачи, логистика, контроль KPI бригад. Мы закладываем архитектуру под рост нагрузки, офлайн-сценарии и интеграцию с вашим бэкендом с первого релиза.</p>
-<p>На старте прототипируем ключевые сценарии, согласуем UX/UI и только затем идём в разработку — без сюрпризов на этапе приёмки, когда «кнопка не туда».</p>
-<h4 class="page-prose__heading">Натив, кроссплатформа и сильный UX</h4>
-<p>Выбираем стек под задачу: Swift и Kotlin, когда критичны производительность и доступ к возможностям платформы; Flutter и React Native — для быстрого запуска на iOS и Android с единой кодовой базой. Делаем понятную навигацию, доступность, push-уведомления и аналитику поведения, в том числе с AI-подсказками по воронке.</p>
-<p>Безопасность — шифрование, защита API, соответствие требованиям магазинов приложений. Платежи, биометрия, программы лояльности и m-Commerce встраиваем без разрывов: пользователь не выпадает из сценария между экранами.</p>
-<h4 class="page-prose__heading">Enterprise, логистика и отраслевые решения</h4>
-<p>Разрабатываем приложения для выездных сотрудников, TMS и GPS-мониторинга флота, телемедицины с EHR, панелей управления IoT-оборудованием. Связываем мобильный клиент с ERP, CRM и складскими системами, чтобы данные на телефоне и в офисе совпадали в реальном времени.</p>
-<p>Публикуем в App Store и Google Play, настраиваем CI/CD и передаём исходники и документацию. После релиза — поддержка, метрики стабильности и план развития по обратной связи пользователей.</p>""",
-    ),
-]
+_DEFAULT_SERVICE_PRICING = {
+    "price": "Рассчитывается индивидуально под масштаб и сложность проекта",
+    "terms": "От 1.5 до 6 месяцев",
+    "payment_steps": [
+        "30% — Предоплата, аналитика и проектирование",
+        "30% — Разработка и интеграции",
+        "40% — Тестирование, внедрение и передача прав",
+    ],
+}
+
+SERVICE_PAGES = parse_texts_uslugi()
+SERVICE_BY_SLUG = {p.slug: p for p in SERVICE_PAGES}
+SERVICES = services_as_tuples()
+
+for _slug in SERVICE_BY_SLUG:
+    SERVICE_PRICING.setdefault(
+        _slug,
+        {
+            **_DEFAULT_SERVICE_PRICING,
+            "payment_steps": list(_DEFAULT_SERVICE_PRICING["payment_steps"]),
+        },
+    )
+SERVICE_PRICING["it-autstaffing"] = {
+    "price": "Оплата по Time & Materials (фактически отработанные часы)",
+    "terms": "Вывод специалиста от 3 рабочих дней",
+    "payment_steps": [
+        "Ежемесячный отчёт по часам и задачам",
+        "Прямое управление специалистом на стороне заказчика",
+        "Юридическое оформление и налоги — на BUDGET SOFT",
+    ],
+}
 
 # Сортировка по востребованности внедрения AI (2025–2026): финтех/IT → ритейл/промышленность → медицина → прочие услуги
 AI_BUSINESS_DIRECTIONS = [
@@ -195,11 +144,6 @@ AI_DIRECTIONS_COPY: dict[str, tuple[str, str, str]] = {
         "под цикл продаж отрасли",
         "Автоматизируем воронку и сопровождение клиентов в финтехе, B2B-услугах, ритейле и производстве — с AI-подсказками и сквозной аналитикой.",
     ),
-    "kiberbezopasnost": (
-        "Кибербезопасность",
-        "по отраслевым рискам",
-        "Защищаем периметр и данные в финтехе, e-commerce, медицине и промышленности — аудит, DevSecOps, антифрод и соответствие регуляторике.",
-    ),
     "iskusstvennyj-intellekt": (
         "Внедрение AI",
         "во все сферы бизнеса",
@@ -212,13 +156,20 @@ AI_DIRECTIONS_COPY: dict[str, tuple[str, str, str]] = {
     ),
 }
 
+AI_DIRECTIONS_DEFAULT = (
+    "Отрасли",
+    "для вашего проекта",
+    "Внедряем решения с учётом отраслевой специфики — от финтеха и ритейла до промышленности и медицины.",
+)
+
 SCREENS: dict[str, tuple[str, str]] = {
     "razrabotka-erp-sistem": ("cases/digital-twin.png", "Скриншот цифрового двойника производства"),
     "razrabotka-crm-sistem": ("cases/ecommerce.png", "Скриншот e-commerce платформы"),
-    "kiberbezopasnost": ("cases/biometrics.png", "Скриншот системы биометрической аутентификации"),
     "iskusstvennyj-intellekt": ("cases/saas.png", "Скриншот SaaS-платформы сбора данных"),
     "mobilnaya-razrabotka": ("cases/wallet.png", "Скриншот мобильного криптокошелька"),
-    "importozameshchenie": ("cases/digital-twin.png", "Скриншот цифрового двойника производства"),
+    "fintech": ("cases/biometrics.png", "Скриншот финтех-приложения"),
+    "razrabotka-internet-magazinov": ("cases/ecommerce.png", "Скриншот интернет-магазина"),
+    "blockchain-web3": ("cases/wallet.png", "Скриншот Web3-приложения"),
 }
 
 WORKFLOW_STEPS = [
@@ -332,6 +283,8 @@ TTM_PILLARS = [
         "Проектирование, дизайн и бэкенд идут одновременно — «мёртвые зоны» между этапами сведены к минимуму.",
     ),
 ]
+
+RISK_PAYMENT_SCHEME = "30% · 30% · 40%"
 
 RISK_METRICS = [
     ("30", "%", "старт и проектирование"),
@@ -708,8 +661,8 @@ def render_risk_content() -> str:
     return f"""<div class="risk">
   <div class="risk-hero reveal">
     <p class="risk-hero__lead risk-hero__lead--accent">Ваше спокойствие и уверенность в результате</p>
-    <p class="risk-hero__lead">Мы выстраиваем сотрудничество так, чтобы вы контролировали бюджет и видели прогресс на каждом этапе — за счёт схемы оплаты <strong>30 · 30 · 40</strong>.</p>
-    <div class="risk-metrics" aria-label="Схема оплаты 30 · 30 · 40">
+    <p class="risk-hero__lead">Мы выстраиваем сотрудничество так, чтобы вы контролировали бюджет и видели прогресс на каждом этапе — за счёт схемы оплаты <strong>{RISK_PAYMENT_SCHEME}</strong>.</p>
+    <div class="risk-metrics" aria-label="Схема оплаты {RISK_PAYMENT_SCHEME}">
 {metrics}
     </div>
   </div>
@@ -780,7 +733,7 @@ def render_ai_directions_block(
     *,
     copy_key: str,
 ) -> str:
-    title_main, title_sub, lead = AI_DIRECTIONS_COPY[copy_key]
+    title_main, title_sub, lead = AI_DIRECTIONS_COPY.get(copy_key, AI_DIRECTIONS_DEFAULT)
     items = []
     for slug, label in AI_BUSINESS_DIRECTIONS:
         items.append(
@@ -810,13 +763,7 @@ def render_ai_directions_block(
 </section>"""
 
 
-FEATURED_SERVICE_SLUGS = (
-    "razrabotka-erp-sistem",
-    "razrabotka-crm-sistem",
-    "iskusstvennyj-intellekt",
-    "mobilnaya-razrabotka",
-    "kiberbezopasnost",
-)
+FEATURED_SERVICE_SLUGS = tuple(p.slug for p in SERVICE_PAGES)
 
 
 def _parse_catalog_heading(heading: str) -> tuple[str, str, str]:
@@ -914,14 +861,17 @@ def render_screen_card(
 
 
 def render_submenu(prefix: str) -> str:
-    items = [
-        ("uslugi/razrabotka-erp-sistem", "ERP-системы", '<path d="M4 21V7l8-4 8 4v14M4 21h16M9 21V12h6v9M9 8h.01M12 8h.01M15 8h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>'),
-        ("uslugi/razrabotka-crm-sistem", "CRM-системы", '<path d="M3 3v18h18M7 14l4-4 4 4 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>'),
-        ("uslugi/kiberbezopasnost", "Кибербезопасность", '<path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>'),
-        ("uslugi/iskusstvennyj-intellekt", "Внедрение AI во все сферы бизнеса", '<path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2M12 8a4 4 0 100 8 4 4 0 000-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>'),
-        ("uslugi/mobilnaya-razrabotka", "Мобильная разработка", '<rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M11 18h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>'),
-        ("uslugi", "Все услуги", '<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>'),
+    items: list[tuple[str, str, str]] = [
+        (f"uslugi/{slug}", label, SERVICE_ICONS.get(slug, SERVICE_ICONS["avtomatizaciya-biznesa"]))
+        for slug, label, *_ in SERVICES
     ]
+    items.append(
+        (
+            "uslugi",
+            "Все услуги",
+            '<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>',
+        )
+    )
     links = []
     for slug, label, icon_path in items:
         links.append(
@@ -932,88 +882,36 @@ def render_submenu(prefix: str) -> str:
   <span>{label}</span>
 </a>"""
         )
-    return f'<div class="submenu" role="menu">{"".join(links)}</div>'
+    return f'<div class="submenu submenu--services" role="menu">{"".join(links)}</div>'
+
+
+def render_direction_link(prefix: str, slug: str, label: str) -> str:
+    icon = DIRECTION_ICONS.get(
+        slug,
+        '<circle cx="30" cy="30" r="20" stroke="currentColor" stroke-width="1.6"/>',
+    )
+    return f"""            <a class="direction" href="{page_href(prefix, f'uslugi/{slug}')}" role="listitem">
+              <span class="direction__icon">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                  {icon}
+                </svg>
+              </span>
+              <span class="direction__label">{label}</span>
+            </a>"""
 
 
 def render_clients_strip(prefix: str) -> str:
+    by_slug = {slug: label for slug, label, *_ in SERVICES}
+    direction_links = "\n".join(
+        render_direction_link(prefix, slug, by_slug[slug])
+        for slug in DIRECTION_STRIP_SLUGS
+        if slug in by_slug
+    )
     return f"""    <section class="clients-strip" data-fab-theme="light">
       <div class="container">
         <div class="clients-strip__card">
           <div class="directions reveal" role="list">
-            <a class="direction" href="{page_href(prefix, 'uslugi/razrabotka-erp-sistem')}" role="listitem">
-              <span class="direction__icon">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-                  <rect x="10" y="10" width="30" height="30" rx="2" stroke="currentColor" stroke-width="1.6"/>
-                  <rect x="22" y="22" width="30" height="30" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
-                </svg>
-              </span>
-              <span class="direction__label">ERP-системы</span>
-            </a>
-            <a class="direction" href="{page_href(prefix, 'uslugi/razrabotka-crm-sistem')}" role="listitem">
-              <span class="direction__icon">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-                  <circle cx="30" cy="30" r="22" stroke="currentColor" stroke-width="1.6"/>
-                  <text x="30" y="34" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="currentColor">CRM</text>
-                </svg>
-              </span>
-              <span class="direction__label">CRM-системы</span>
-            </a>
-            <a class="direction" href="{page_href(prefix, 'uslugi/kiberbezopasnost')}" role="listitem">
-              <span class="direction__icon">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-                  <path d="M30 8 L48 14 L48 28 C48 40 40 48 30 52 C20 48 12 40 12 28 L12 14 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                  <circle cx="30" cy="27" r="3" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M30 30 L30 38" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span class="direction__label">Кибербезопасность</span>
-            </a>
-            <a class="direction" href="{page_href(prefix, 'uslugi/iskusstvennyj-intellekt')}" role="listitem">
-              <span class="direction__icon">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-                  <path d="M28 12 C22 10 16 13 15 19 C10 21 10 27 14 30 C11 34 14 40 19 40 C20 45 27 46 28 41 L28 12 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                  <path d="M28 20 L28 33" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M32 16 L40 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <circle cx="44" cy="16" r="2.5" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M32 26 L38 26 L38 32" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="42" cy="32" r="2.5" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M38 32 L39.5 32" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M32 38 L40 38 L40 44" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="44" cy="44" r="2.5" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M40 44 L41.5 44" stroke="currentColor" stroke-width="1.6"/>
-                </svg>
-              </span>
-              <span class="direction__label">Внедрение AI</span>
-            </a>
-            <a class="direction" href="{page_href(prefix, 'uslugi/mobilnaya-razrabotka')}" role="listitem">
-              <span class="direction__icon">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-                  <rect x="18" y="8" width="24" height="44" rx="3" stroke="currentColor" stroke-width="1.6"/>
-                  <rect x="22" y="20" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                  <rect x="28" y="20" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                  <rect x="34" y="20" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                  <rect x="22" y="26" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                  <rect x="28" y="26" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                  <rect x="34" y="26" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                  <rect x="22" y="32" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                  <rect x="28" y="32" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                  <rect x="34" y="32" width="4" height="4" stroke="currentColor" stroke-width="1.4"/>
-                </svg>
-              </span>
-              <span class="direction__label">Мобильные приложения</span>
-            </a>
-            <a class="direction" href="{page_href(prefix, 'importozameshchenie')}" role="listitem">
-              <span class="direction__icon">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
-                  <circle cx="28" cy="32" r="18" stroke="currentColor" stroke-width="1.6"/>
-                  <ellipse cx="28" cy="32" rx="8" ry="18" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M10 32 L46 32" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M40 14 C44 10 49 10 51 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-                  <path d="M51 14 L48 11 M51 14 L48 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span class="direction__label">Импортозамещение</span>
-            </a>
+{direction_links}
           </div>
           <div class="clients-strip__divider" aria-hidden="true" hidden></div>
           <p class="clients-strip__caption" hidden>Нам доверяют</p>
@@ -1082,12 +980,24 @@ def render_header(prefix: str, active: str) -> str:
   </header>"""
 
 
-def render_hero(prefix: str, second_btn: tuple[str, str] | None = None) -> str:
+def render_hero(
+    prefix: str,
+    second_btn: tuple[str, str] | None = None,
+    *,
+    hero_h1: str | None = None,
+) -> str:
     second = ""
     if second_btn:
         href, label = second_btn
         second = f"""
             <a href="{href}" class="btn btn--outline btn--lg">{label}</a>"""
+    if hero_h1:
+        title_html = hero_h1
+    else:
+        title_html = (
+            'Разрабатываем ПО любой сложности для '
+            '<span class="text-gradient">автоматизации бизнеса</span>'
+        )
     return f"""    <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
         <video class="hero__video" autoplay muted loop playsinline>
@@ -1098,7 +1008,7 @@ def render_hero(prefix: str, second_btn: tuple[str, str] | None = None) -> str:
       <div class="container hero__inner">
         <div class="hero__content reveal">
           <h1 class="hero__title">
-            Разрабатываем ПО любой сложности для <span class="text-gradient">автоматизации бизнеса</span>
+            {title_html}
           </h1>
           <div class="hero__actions">
             <button type="button" class="btn btn--primary btn--lg js-open-contact">
@@ -1171,45 +1081,46 @@ def render_footer(prefix: str) -> str:
     )
     return f"""  <footer class="footer" data-fab-theme="dark">
     <div class="container">
-      <div class="footer__grid">
+      <div class="footer__main">
         <div class="footer__col footer__col--brand">
           <a href="{prefix}" class="logo logo--footer">
             <img src="{prefix}logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
           </a>
-          <p class="footer__tagline">Разработка ПО для бизнеса. Импортозамещение и автоматизация.</p>
+          <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <ul class="footer__contacts">
             <li><a href="tel:+74950000000">+7 (495) 000-00-00</a></li>
             <li><a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
             <li><span>{OFFICE_ADDRESS}</span></li>
           </ul>
         </div>
-        <div class="footer__col">
-          <h4 class="footer__title">Услуги</h4>
-          <ul class="footer__links">
-            {footer_service_links}
-            <li><a href="{page_href(prefix, 'uslugi')}" class="footer__links-all">Все услуги →</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4 class="footer__title">Компания</h4>
-          <ul class="footer__links">
-            <li><a href="{page_href(prefix, 'importozameshchenie')}">Импортозамещение</a></li>
-            <li><a href="{page_href(prefix, 'portfolio')}">Портфолио</a></li>
-            <li><a href="{page_href(prefix, 'stoimost')}">Стоимость</a></li>
-            <li><a href="{page_href(prefix, 'o-nas')}">О нас</a></li>
-            <li><a href="{page_href(prefix, 'kontakty')}">Контакты</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4 class="footer__title">Ресурсы</h4>
-          <ul class="footer__links">
-            <li><a href="{page_href(prefix, 'etapy')}">Этапы реализации</a></li>
-            <li><a href="{page_href(prefix, 'sroki')}">Сроки</a></li>
-            <li><a href="{page_href(prefix, 'garantii')}">Гарантии</a></li>
-            <li><a href="{page_href(prefix, 'blog')}" class="footer__links-soon">Блог <span class="badge-soon">скоро</span></a></li>
-          </ul>
+        <div class="footer__nav">
+          <div class="footer__col">
+            <h4 class="footer__title">Компания</h4>
+            <ul class="footer__links">
+              <li><a href="{page_href(prefix, 'portfolio')}">Портфолио</a></li>
+              <li><a href="{page_href(prefix, 'stoimost')}">Стоимость</a></li>
+              <li><a href="{page_href(prefix, 'o-nas')}">О нас</a></li>
+              <li><a href="{page_href(prefix, 'kontakty')}">Контакты</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__title">Ресурсы</h4>
+            <ul class="footer__links">
+              <li><a href="{page_href(prefix, 'etapy')}">Этапы реализации</a></li>
+              <li><a href="{page_href(prefix, 'sroki')}">Сроки</a></li>
+              <li><a href="{page_href(prefix, 'garantii')}">Гарантии</a></li>
+              <li><a href="{page_href(prefix, 'blog')}" class="footer__links-soon">Блог <span class="badge-soon">скоро</span></a></li>
+            </ul>
+          </div>
         </div>
       </div>
+      <section class="footer__services" aria-labelledby="footerServicesTitle">
+        <h4 class="footer__title" id="footerServicesTitle">Услуги</h4>
+        <ul class="footer__links footer__links--services">
+          {footer_service_links}
+          <li class="footer__links-all-item"><a href="{page_href(prefix, 'uslugi')}" class="footer__links-all">Все услуги →</a></li>
+        </ul>
+      </section>
       <div class="footer__bottom">
         <div class="footer__copy">© 2026 BUDGET SOFT</div>
         <div class="footer__legal"><a href="{page_href(prefix, 'privacy')}">Политика конфиденциальности</a></div>
@@ -1319,6 +1230,7 @@ def render_page(
     accent: str = "",
     second_btn: tuple[str, str] | None = None,
     include_stats_cases: bool = True,
+    hero_h1: str | None = None,
 ) -> str:
     p = rel_prefix(depth)
     portfolio_head, portfolio_tail = render_portfolio_assets(p) if include_stats_cases else ("", "")
@@ -1338,7 +1250,7 @@ def render_page(
 <body class="page-body page-inner">
 {render_header(p, active)}
   <main>
-{render_hero(p, second_btn)}
+{render_hero(p, second_btn, hero_h1=hero_h1)}
 {render_clients_strip(p)}
 {render_revolution(eyebrow=eyebrow, title_html=title_html, lead=lead, content=content, section_id=section_id, accent=accent)}
 {stats_cases}{render_cta(p)}
@@ -1401,6 +1313,111 @@ def write_page(path: Path, html: str) -> None:
     print(f"  {path.relative_to(ROOT)}")
 
 
+def update_index_html() -> None:
+    """Синхронизирует меню услуг, полосу направлений и футер на главной."""
+    path = ROOT / "index.html"
+    html = path.read_text(encoding="utf-8")
+    prefix = ""
+
+    submenu_new = render_submenu(prefix).replace(
+        'class="submenu submenu--services"', 'class="submenu submenu--services"', 1
+    )
+    # index uses <div class="submenu" without submenu--services in old file
+    submenu_new = submenu_new.replace('submenu submenu--services', 'submenu submenu--services', 1)
+
+    html = re.sub(
+        r'<div class="submenu" role="menu">.*?</div>\s*</li>\s*<li class="nav__item"><a class="nav__link" href="#portfolio">',
+        submenu_new + '\n          </li>\n          <li class="nav__item"><a class="nav__link" href="#portfolio">',
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
+
+    strip_inner = "\n".join(
+        render_direction_link(prefix, slug, SERVICE_BY_SLUG[slug].menu_label)
+        for slug in DIRECTION_STRIP_SLUGS
+        if slug in SERVICE_BY_SLUG
+    )
+    html = re.sub(
+        r'<div class="directions reveal[^"]*" role="list">.*?</div>\s*<!-- TODO: временно скрыто',
+        f'<div class="directions reveal is-visible" role="list">\n{strip_inner}\n          </div>\n\n          <!-- TODO: временно скрыто',
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
+
+    footer_links = "".join(
+        f'          <li><a href="uslugi/{p.slug}/">{p.menu_label}</a></li>\n'
+        for p in SERVICE_PAGES
+    )
+    footer_block = f"""      <div class="footer__main">
+        <div class="footer__col footer__col--brand">
+          <a href="./" class="logo logo--footer">
+            <img src="logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+          </a>
+          <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
+          <ul class="footer__contacts">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.8a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <a href="tel:+74950000000">+7 (495) 000-00-00</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M2 6l10 7L22 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"></circle></svg>
+              <span>Москва, ул. Бауманская, 11, стр. 8, оф. 402</span>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__nav">
+          <div class="footer__col">
+            <h4 class="footer__title">Компания</h4>
+            <ul class="footer__links">
+              <li><a href="portfolio/">Портфолио</a></li>
+              <li><a href="stoimost/">Стоимость</a></li>
+              <li><a href="o-nas/">О нас</a></li>
+              <li><a href="kontakty/">Контакты</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__title">Ресурсы</h4>
+            <ul class="footer__links">
+              <li><a href="etapy/">Этапы реализации</a></li>
+              <li><a href="sroki/">Сроки</a></li>
+              <li><a href="garantii/">Гарантии</a></li>
+              <li><a href="blog/" class="footer__links-soon">Блог <span class="badge-soon">скоро</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <section class="footer__services" aria-labelledby="footerServicesTitle">
+        <h4 class="footer__title" id="footerServicesTitle">Услуги</h4>
+        <ul class="footer__links footer__links--services">
+{footer_links}          <li class="footer__links-all-item"><a href="uslugi/" class="footer__links-all">Все услуги →</a></li>
+        </ul>
+      </section>"""
+    html = re.sub(
+        r'<div class="footer__grid">.*?</div>\s*<div class="footer__bottom">',
+        footer_block + '\n\n      <div class="footer__bottom">',
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
+
+    html = html.replace(
+        '<p class="footer__tagline">Разработка ПО для бизнеса. Импортозамещение и автоматизация.</p>',
+        '<p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>',
+    )
+    html = html.replace(
+        '<li><a href="importozameshchenie/">Импортозамещение</a></li>',
+        '',
+    )
+    path.write_text(html, encoding="utf-8")
+    print(f"  {path.relative_to(ROOT)} (menu sync)")
+
+
 def main() -> None:
     print("Generating pages…")
 
@@ -1430,7 +1447,7 @@ def main() -> None:
             "active": "garantii",
             "eyebrow": "Risk Mitigation",
             "title_html": 'Гарантии и <span class="text-gradient">безопасность</span>',
-            "lead": "Ориентируемся на ваше спокойствие и уверенность в результате — с поэтапной оплатой 30 / 30 / 40 и прозрачным процессом на каждом этапе.",
+            "lead": f"Ориентируемся на ваше спокойствие и уверенность в результате — с поэтапной оплатой {RISK_PAYMENT_SCHEME} и прозрачным процессом на каждом этапе.",
             "content_fn": lambda p: content_garantii(),
             "section_id": "garantii",
         },
@@ -1573,22 +1590,25 @@ def main() -> None:
     )
     write_page(ROOT / "uslugi" / "index.html", uslugi_html)
 
-    for slug, label, heading, body in SERVICES:
+    for page in SERVICE_PAGES:
         prefix = rel_prefix(2)
-        middle = render_ai_directions_block(prefix, copy_key=slug)
-        content = content_prose(body, prefix, pricing_key=slug, middle=middle)
+        middle = render_ai_directions_block(prefix, copy_key=page.slug)
+        content = content_prose(page.body_html, prefix, pricing_key=page.slug, middle=middle)
         html = render_page(
             depth=2,
-            title=f"{label} — BUDGET SOFT",
-            active=f"uslugi/{slug}",
-            eyebrow=label,
-            title_html=heading.split(":")[0] if ":" in heading else heading,
-            lead=heading.split(":", 1)[1].strip() if ":" in heading else "",
+            title=f"{page.meta_title} — BUDGET SOFT",
+            active=f"uslugi/{page.slug}",
+            eyebrow=page.menu_label,
+            title_html=page.h1,
+            lead=page.lead,
             content=content,
-            section_id=slug,
+            section_id=page.slug,
             second_btn=(page_href(rel_prefix(2), "stoimost"), "Рассчитать стоимость"),
+            hero_h1=page.h1,
         )
-        write_page(ROOT / "uslugi" / slug / "index.html", html)
+        write_page(ROOT / "uslugi" / page.slug / "index.html", html)
+
+    update_index_html()
 
     stoimost_css = ROOT / "stoimost" / "stoimost.css"
     if stoimost_css.exists():

@@ -103,6 +103,39 @@
     display: none;
 }
 
+.page-prose--service .page-prose__list {
+    margin: 1em 0 0;
+    padding-left: 1.25em;
+}
+
+.page-prose--service .page-prose__list li + li {
+    margin-top: 0.5em;
+}
+
+.page-prose--service .page-prose__quote {
+    margin: 1.25em 0 0;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--primary);
+    background: var(--primary-soft);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.page-prose--service .page-prose__quote p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.page-prose--service .page-prose__diagram {
+    margin: 1.25em 0 0;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.5;
+    background: rgba(10, 10, 18, 0.04);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(10, 10, 18, 0.08);
+}
+
 .page-spec {
     border: 1px solid rgba(10, 10, 18, 0.12);
     border-left: 3px solid var(--primary);
@@ -1045,7 +1078,7 @@
 
 /* —— Risk Mitigation (страница «Гарантии») —— */
 #garantii {
-    --risk-content-max: 1104px; /* +20% к базовым 920px */
+    --risk-content-max: 1270px; /* +15% к 1104px */
     --risk-metric-label: #4a386e; /* тёмно-сиреневый */
 }
 
@@ -1054,7 +1087,7 @@
 }
 
 #garantii .section-lead {
-    max-width: min(43.2rem, 100%);
+    max-width: min(49.68rem, 100%);
     margin-left: auto;
     margin-right: auto;
     font-size: clamp(17px, 1.5vw, 19px);
@@ -1067,11 +1100,7 @@
     margin: 0 0 clamp(64px, 8vw, 96px);
     padding: clamp(36px, 4.5vw, 52px) clamp(28px, 3.5vw, 48px);
     text-align: center;
-    background: linear-gradient(
-        165deg,
-        rgba(111, 76, 255, 0.045) 0%,
-        rgba(255, 255, 255, 0) 52%
-    );
+    background: #fff;
     border: 1px solid rgba(10, 10, 18, 0.06);
     box-shadow: 0 24px 64px rgba(10, 10, 18, 0.04);
 }
@@ -1083,7 +1112,7 @@
 
 .risk-hero__lead {
     margin: 0 auto;
-    max-width: min(40.8rem, 100%);
+    max-width: min(46.92rem, 100%);
     font-size: clamp(17px, 1.5vw, 19px);
     font-weight: 500;
     line-height: 1.6;
@@ -1163,7 +1192,7 @@
 .risk-metric__label {
     align-self: start;
     width: 100%;
-    max-width: 14.5rem;
+    max-width: 16.7rem;
     margin: 0;
     font-size: clamp(16px, 1.43vw, 17px);
     font-weight: 600;
@@ -1196,7 +1225,7 @@
 
 .risk-layers__sub {
     margin: 0 auto;
-    max-width: min(40.8rem, 100%);
+    max-width: min(46.92rem, 100%);
     font-size: clamp(16px, 1.4vw, 18px);
     line-height: 1.65;
     color: rgba(10, 10, 18, 0.72);
@@ -1371,7 +1400,7 @@
 
 .risk-contract__name {
     margin: 0 0 8px;
-    font-size: clamp(15px, 1.3vw, 16px);
+    font-size: clamp(23px, 1.95vw, 24px);
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.4;
@@ -1396,7 +1425,7 @@
 .risk-quote blockquote {
     margin: 0 auto;
     padding: 0;
-    max-width: min(40.8rem, 100%);
+    max-width: min(46.92rem, 100%);
     border: none;
     background: none;
     font-style: normal;
@@ -1482,7 +1511,7 @@
     }
 
     .risk-contract__name {
-        font-size: 16px;
+        font-size: 24px;
     }
 
     .risk-contract__detail {

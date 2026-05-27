@@ -396,7 +396,7 @@ button.nav__link {
     margin: 0;
     padding: 10px 1rem;
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 8px;
     background: #fff;
     border: 1px solid rgba(10, 10, 20, 0.1);
@@ -462,6 +462,111 @@ button.nav__link {
 .submenu__link:hover .submenu__icon {
     background: rgba(111, 76, 255, 0.22);
     color: var(--primary-hover);
+}
+
+/* Services mega-menu (full-width layout) */
+.submenu--services {
+    left: 50%;
+    width: 100%;
+    max-width: 1400px;
+    padding: 24px 40px 28px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    column-gap: clamp(40px, 8vw, 120px);
+    row-gap: 14px;
+    justify-items: stretch;
+    border-top: 1px solid rgba(10, 10, 20, 0.08);
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(10, 10, 20, 0.12);
+    box-shadow: 0 14px 34px rgba(10, 10, 20, 0.08);
+}
+
+.submenu--services .submenu__icon {
+    display: none;
+}
+
+.submenu--services .submenu__link {
+    display: block;
+    min-height: auto;
+    padding: 10px 0;
+    border-radius: 0;
+    border-left: 4px solid transparent;
+    background: transparent;
+    color: #0f1115;
+    text-align: left;
+    transition: border-left-color 0.22s ease, padding-left 0.22s ease, color 0.22s ease;
+}
+
+.submenu--services .submenu__link:hover {
+    background: transparent;
+    color: #6f4cff;
+    border-left-color: #6f4cff;
+    padding-left: 10px;
+}
+
+.submenu--services .submenu__link:last-child {
+    grid-column: -2 / -1;
+    justify-self: stretch;
+}
+
+.submenu--services .submenu__link > span:last-child {
+    display: block;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.38;
+    letter-spacing: 0.01em;
+}
+
+.submenu--services .submenu__link > span:last-child::after {
+    content: "";
+    display: block;
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: #5d6472;
+}
+
+.submenu--services .submenu__link:nth-child(1) > span:last-child::after { content: "Разработка ERP для управления ресурсами, финансами и процессами."; }
+.submenu--services .submenu__link:nth-child(2) > span:last-child::after { content: "Разработка CRM для продаж, лидов и клиентских коммуникаций."; }
+.submenu--services .submenu__link:nth-child(3) > span:last-child::after { content: "Разработка AI-решений и ML-моделей для автоматизации задач."; }
+.submenu--services .submenu__link:nth-child(4) > span:last-child::after { content: "Разработка iOS/Android-приложений, MVP и enterprise-решений."; }
+.submenu--services .submenu__link:nth-child(5) > span:last-child::after { content: "Разработка Telegram Mini Apps и ботов с интеграциями."; }
+.submenu--services .submenu__link:nth-child(6) > span:last-child::after { content: "Разработка SCM/WMS для управления поставками и складом."; }
+.submenu--services .submenu__link:nth-child(7) > span:last-child::after { content: "Разработка BI-платформ: DWH, ETL и аналитические дашборды."; }
+.submenu--services .submenu__link:nth-child(8) > span:last-child::after { content: "Разработка SaaS-платформ с multi-tenant архитектурой и API."; }
+.submenu--services .submenu__link:nth-child(9) > span:last-child::after { content: "Разработка интернет-магазинов с highload-интеграциями."; }
+.submenu--services .submenu__link:nth-child(10) > span:last-child::after { content: "Разработка маркетплейсов B2B/B2C с кабинетами продавцов."; }
+.submenu--services .submenu__link:nth-child(11) > span:last-child::after { content: "Разработка решений для комплексной автоматизации бизнеса."; }
+.submenu--services .submenu__link:nth-child(12) > span:last-child::after { content: "Разработка МИС и Digital Health платформ для медицины."; }
+.submenu--services .submenu__link:nth-child(13) > span:last-child::after { content: "Разработка FinTech-продуктов: платежи, процессинг, банкинг."; }
+.submenu--services .submenu__link:nth-child(14) > span:last-child::after { content: "Разработка blockchain/Web3-решений: dApps, DeFi, смарт-контракты."; }
+.submenu--services .submenu__link:nth-child(15) > span:last-child::after { content: "Middle+/Senior специалисты в вашу команду."; }
+.submenu--services .submenu__link:nth-child(16) > span:last-child::after { content: "Все направления разработки и цифровых услуг компании."; }
+
+@media (max-width: 1200px) {
+    .submenu--services {
+        padding: 18px 24px 22px;
+        column-gap: 28px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .submenu--services {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .submenu--services {
+        grid-template-columns: 1fr;
+    }
+
+    .submenu--services .submenu__link:last-child {
+        grid-column: auto;
+    }
 }
 
 /* Header actions */
@@ -661,7 +766,7 @@ button.nav__link {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 7.68px;
     padding: 18px 12px;
     /* background: #faf8ff; */
     /* border: 1px solid rgba(10, 10, 18, 0.06); */
@@ -669,11 +774,12 @@ button.nav__link {
     color: var(--text-dark);
     text-align: center;
     transform-origin: center center;
-    transition: transform 0.28s ease;
+    transition: gap 0.28s ease, color 0.28s ease;
 }
 
 .direction:hover {
-    transform: scale(1.15);
+    gap: 5.12px;
+    color: oklch(51.1% 0.262 276.966);
     background: transparent;
     position: relative;
     z-index: 1;
@@ -684,10 +790,10 @@ button.nav__link {
     place-items: center;
     width: 64px;
     height: 64px;
-    color: var(--text-dark);
+    color: inherit;
     background: transparent;
     border: 0;
-    transition: transform 0.8s ease-in-out;
+    transition: transform 0.8s ease-in-out, color 0.28s ease;
 }
 
 .direction__icon svg {
@@ -696,13 +802,18 @@ button.nav__link {
 }
 
 .direction:hover .direction__icon {
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(1.15);
 }
 
 .direction__label {
     font-size: 14px;
     font-weight: 500;
-    color: var(--text-dark);
+    color: inherit;
+    transition: transform 0.28s ease, color 0.28s ease;
+}
+
+.direction:hover .direction__label {
+    transform: scale(1.15);
 }
 
 /* ================================================================
@@ -1472,12 +1583,40 @@ button.nav__link {
     border-top: 1px solid var(--border);
 }
 
-.footer__grid {
+.footer__main {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 48px;
-    padding-bottom: 56px;
+    grid-template-columns: minmax(280px, 1.35fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 64px);
+    padding-bottom: 40px;
+}
+
+.footer__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 4vw, 48px);
+}
+
+.footer__services {
+    width: 100%;
+    margin: 0;
+    padding: 36px 0 48px;
+    border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+}
+
+.footer__services .footer__title {
+    margin-bottom: 22px;
+}
+
+.footer__links--services {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px 28px;
+}
+
+.footer__links--services .footer__links-all-item {
+    justify-self: end;
+    grid-column: -2 / -1;
 }
 
 .footer__col--brand {
@@ -1530,6 +1669,13 @@ button.nav__link {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+/* keep services list as horizontal responsive grid */
+.footer__links.footer__links--services {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px 28px;
 }
 
 .footer__links a {
@@ -1618,8 +1764,12 @@ Responsive
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .footer__grid {
+    .footer__main {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__links.footer__links--services {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -1688,9 +1838,23 @@ Responsive
         padding: 56px 0 24px;
     }
 
-    .footer__grid {
+    .footer__main {
         grid-template-columns: 1fr;
         gap: 32px;
+    }
+
+    .footer__nav {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .footer__links.footer__links--services {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer__links--services .footer__links-all-item {
+        grid-column: auto;
+        justify-self: start;
     }
 
     .footer__bottom {
@@ -1703,6 +1867,14 @@ Responsive
 @media (max-width: 560px) {
     .directions {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer__nav {
+        grid-template-columns: 1fr;
+    }
+
+    .footer__links.footer__links--services {
+        grid-template-columns: 1fr;
     }
 
     .hero__actions .btn {
