@@ -243,12 +243,12 @@
     const progress = document.getElementById('caseProgress');
     new Swiper('#caseSwiper', {
       slidesPerView: 1.1,
-      spaceBetween: 20,
+      spaceBetween: 25,
       grabCursor: true,
       navigation: { prevEl: '#casePrev', nextEl: '#caseNext' },
       breakpoints: {
-        640: { slidesPerView: 2, spaceBetween: 20 },
-        1024: { slidesPerView: 3, spaceBetween: 24 },
+        640: { slidesPerView: 2, spaceBetween: 25 },
+        1024: { slidesPerView: 3, spaceBetween: 30 },
       },
       on: {
         progress(sw, p) { if (progress) progress.style.width = Math.max(8, p * 100) + '%'; },
