@@ -2707,7 +2707,7 @@ body.has-announce .hero {
 }
 
 .case-card__shot {
-    height: 250px;
+    aspect-ratio: 3 / 2;
     background: #eceaf4;
     overflow: hidden;
 }
