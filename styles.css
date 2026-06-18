@@ -1164,6 +1164,7 @@ button.nav__link {
 
 .bento-showcase__media--center {
     overflow: hidden;
+    margin: 15px 0px;
 }
 
 .bento-showcase__media--center img {
