@@ -1654,13 +1654,6 @@ button.nav__link {
     gap: 10px;
 }
 
-/* keep services list as horizontal responsive grid */
-.footer__links.footer__links--services {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px 28px;
-}
-
 .footer__links a {
     font-size: 14px;
     color: var(--text-muted);
