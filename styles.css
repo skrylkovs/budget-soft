@@ -2205,166 +2205,95 @@ body.has-announce .hero {
     color: var(--text);
 }
 
-/* Marquee avatars (Codrops Creative Spotlights pattern) */
-.team__marquee {
+/* Team roles grid */
+.team__roles {
     margin-top: 56px;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
 }
 
-.team__row {
-    display: flex;
-    overflow: hidden;
-    --marquee-count: 12;
-    --marquee-speed: 55;
-    --marquee-gap: 24px;
-    --team-avatar-size: clamp(64px, 7.5vw, 104px);
-    --marquee-step: calc(100% + var(--marquee-gap));
-    gap: var(--marquee-gap);
-    width: calc(100% + 100% / var(--marquee-count));
-}
-
-.team__row .team__avatar {
-    flex: 0 0 var(--team-avatar-size);
-    width: var(--team-avatar-size);
-    height: var(--team-avatar-size);
-    aspect-ratio: 1;
-    overflow: hidden;
-    border-radius: 16px;
+.role-card {
+    position: relative;
+    padding: 30px 26px;
+    border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    background: var(--surface);
-    --marquee-item-position: calc(var(--marquee-item-index) + 1);
-    --duration: calc(var(--marquee-speed) * 1s);
-    --duration-per-item: calc(var(--duration) / var(--marquee-count));
-    --delay: calc(-1 * var(--duration-per-item) * (var(--marquee-count) - var(--marquee-item-position)));
-    animation: team-marquee var(--duration) var(--delay) linear infinite;
-    transition: border-color 0.3s ease, filter 0.3s ease;
+    background: rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
-.team__row .team__avatar:nth-child(1) {
-    --marquee-item-index: 0;
+.role-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 120% at 0% 0%, rgba(111, 76, 255, 0.16), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
-.team__row .team__avatar:nth-child(2) {
-    --marquee-item-index: 1;
+.role-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(111, 76, 255, 0.45);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.team__row .team__avatar:nth-child(3) {
-    --marquee-item-index: 2;
+.role-card:hover::before {
+    opacity: 1;
 }
 
-.team__row .team__avatar:nth-child(4) {
-    --marquee-item-index: 3;
+.role-card--accent {
+    border-color: rgba(111, 76, 255, 0.45);
+    background: linear-gradient(160deg, rgba(111, 76, 255, 0.16), rgba(255, 255, 255, 0.03));
 }
 
-.team__row .team__avatar:nth-child(5) {
-    --marquee-item-index: 4;
+.role-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(111, 76, 255, 0.14);
+    border: 1px solid rgba(111, 76, 255, 0.3);
+    color: #b9a8ff;
+    margin-bottom: 18px;
 }
 
-.team__row .team__avatar:nth-child(6) {
-    --marquee-item-index: 5;
+.role-card--accent .role-card__icon {
+    background: rgba(111, 76, 255, 0.28);
+    color: #fff;
 }
 
-.team__row .team__avatar:nth-child(7) {
-    --marquee-item-index: 6;
+.role-card__title {
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: var(--text);
 }
 
-.team__row .team__avatar:nth-child(8) {
-    --marquee-item-index: 7;
+.role-card__desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.66);
+    margin: 0;
 }
 
-.team__row .team__avatar:nth-child(9) {
-    --marquee-item-index: 8;
-}
-
-.team__row .team__avatar:nth-child(10) {
-    --marquee-item-index: 9;
-}
-
-.team__row .team__avatar:nth-child(11) {
-    --marquee-item-index: 10;
-}
-
-.team__row .team__avatar:nth-child(12) {
-    --marquee-item-index: 11;
-}
-
-.team__row--reverse .team__avatar {
-    animation-direction: reverse;
-}
-
-.team__marquee:hover .team__avatar {
-    animation-play-state: paused;
-}
-
-.team__row .team__avatar:hover {
-    border-color: rgba(111, 76, 255, 0.5);
-    filter: brightness(1.08);
-    z-index: 1;
-}
-
-.team__avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-@keyframes team-marquee {
-    from {
-        translate: calc(var(--marquee-step) * (var(--marquee-count) - var(--marquee-item-position)));
-    }
-
-    to {
-        translate: calc(-1 * var(--marquee-step) * var(--marquee-item-position));
+@media (max-width: 1024px) {
+    .team__roles {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1025px) {
-    .team__marquee {
-        margin-left: -4rem;
-        margin-right: -4rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .team__marquee {
-        gap: 16px;
+@media (max-width: 560px) {
+    .team__roles {
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
 
-    .team__row {
-        --marquee-gap: 16px;
-        --marquee-speed: 40;
-        --team-avatar-size: clamp(52px, 14vw, 72px);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .team__marquee {
-        mask-image: none;
-        -webkit-mask-image: none;
-    }
-
-    .team__row {
-        flex-wrap: wrap;
-        width: 100%;
-        justify-content: center;
-        overflow: visible;
-    }
-
-    .team__row .team__avatar {
-        animation: none;
-        flex: 0 0 var(--team-avatar-size, 72px);
-        width: var(--team-avatar-size, 72px);
-        height: var(--team-avatar-size, 72px);
-        max-width: 72px;
+    .role-card {
+        padding: 24px 22px;
     }
 }
 
@@ -3569,10 +3498,6 @@ prefers-reduced-motion
 
     /* Team marquee: Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â´Ãƒâ€˜Ã¢â‚¬Â¹ ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ionally Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â²Ãƒâ€˜Ã…â€™Ãƒâ€˜Ã…Â½ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â° ÃƒÂÃ‚Â´ÃƒÂÃ‚Â»Ãƒâ€˜Ã‚Â ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¸.
        ÃƒÂÃ…Â¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¹ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ ÃƒÂÃ‚Â´ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¶ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™, Ãƒâ€˜Ã¢â‚¬Â¡Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â¹ Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â° ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ Ãƒâ€˜Ã†â€™Ãƒâ€˜Ã¢â‚¬Â¦ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â»ÃƒÂÃ‚Â° ÃƒÂÃ‚Â² ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â». */
-    .team__marquee {
-        overflow: hidden;
-    }
-
     /* Stats: 50pt Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ ÃƒÂÃ‚Â±ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¹ Ãƒâ€˜Ã‹â€ Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¾Ãƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´ ÃƒÂÃ‚Â´ÃƒÂÃ‚Â²ÃƒÂÃ‚Âµ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° 390px,
        Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã†â€™Ãƒâ€˜Ã¢â‚¬Å¾Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¸ÃƒÂÃ‚ÂºÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Â¹ ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â·ÃƒÂÃ‚Â° ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚ÂºÃƒâ€˜Ã†â€™. */
     .stats__num {
