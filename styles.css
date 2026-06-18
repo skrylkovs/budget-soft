@@ -2205,20 +2205,20 @@ body.has-announce .hero {
     color: var(--text);
 }
 
-/* Team roles grid (AI-native company) */
+/* Team roles row (AI-native company) */
 .team__roles {
     margin-top: 56px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 12px;
 }
 
 .role-card {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 28px 26px;
-    border-radius: 18px;
+    padding: 22px 18px;
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.03);
     overflow: hidden;
