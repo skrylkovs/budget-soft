@@ -1185,7 +1185,7 @@ button.nav__link {
 
 .bento-showcase__media--security img {
     width: auto;
-    height: min(152px, 40cqw);
+    height: min(114px, 30cqw);
     object-fit: cover;
     transform: scale(1.7);
 }
