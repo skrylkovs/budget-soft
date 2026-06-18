@@ -2205,17 +2205,19 @@ body.has-announce .hero {
     color: var(--text);
 }
 
-/* Team roles grid */
+/* Team roles grid (AI-native company) */
 .team__roles {
     margin-top: 56px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
 .role-card {
     position: relative;
-    padding: 30px 26px;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 26px;
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.03);
@@ -2248,6 +2250,13 @@ body.has-announce .hero {
     background: linear-gradient(160deg, rgba(111, 76, 255, 0.16), rgba(255, 255, 255, 0.03));
 }
 
+.role-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
 .role-card__icon {
     display: inline-flex;
     align-items: center;
@@ -2258,7 +2267,6 @@ body.has-announce .hero {
     background: rgba(111, 76, 255, 0.14);
     border: 1px solid rgba(111, 76, 255, 0.3);
     color: #b9a8ff;
-    margin-bottom: 18px;
 }
 
 .role-card--accent .role-card__icon {
@@ -2266,21 +2274,51 @@ body.has-announce .hero {
     color: #fff;
 }
 
-.role-card__title {
-    font-size: 1.18rem;
+.role-card__count {
+    font-size: 0.95rem;
     font-weight: 700;
-    margin: 0 0 10px;
+    color: #b9a8ff;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(111, 76, 255, 0.12);
+    border: 1px solid rgba(111, 76, 255, 0.28);
+    letter-spacing: 0.02em;
+}
+
+.role-card__title {
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin: 0 0 8px;
     color: var(--text);
 }
 
 .role-card__desc {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.66);
-    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.62);
+    margin: 0 0 18px;
 }
 
-@media (max-width: 1024px) {
+.role-card__tools {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.role-card__tools li {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.78);
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+@media (max-width: 920px) {
     .team__roles {
         grid-template-columns: repeat(2, 1fr);
     }
