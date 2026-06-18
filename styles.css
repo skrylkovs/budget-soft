@@ -1129,10 +1129,10 @@ button.nav__link {
 
 .bento-showcase__phone {
     position: absolute;
-    left: 0;
+    left: -55px;
     right: 0;
     top: 0;
-    bottom: 0;
+    bottom: -9px;
     overflow: hidden;
     background: transparent;
     border: 0;
