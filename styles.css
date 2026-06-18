@@ -2220,6 +2220,35 @@ body.has-announce .hero {
     opacity: 1;
 }
 
+/* Border Glow — a colored highlight on the border that follows the cursor
+   (vanilla port of reactbits.dev/components/border-glow) */
+.role-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: radial-gradient(
+        160px circle at var(--mx, 50%) var(--my, 0%),
+        rgba(168, 140, 255, 0.95),
+        rgba(111, 76, 255, 0.4) 26%,
+        transparent 62%
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.role-card.is-glow::after,
+.role-card--accent::after {
+    opacity: 1;
+}
+
 .role-card--accent {
     border-color: rgba(111, 76, 255, 0.45);
     background: linear-gradient(160deg, rgba(111, 76, 255, 0.16), rgba(255, 255, 255, 0.03));
