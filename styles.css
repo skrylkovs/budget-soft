@@ -857,10 +857,20 @@ button.nav__link {
     position: relative;
     text-align: center;
     padding: 32px 20px;
+}
+
+.stats__item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background: rgba(8, 6, 22, 0.55);
     -webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);
     border-radius: 28px;
+    /* плавный уход фона в прозрачность по краям */
+    -webkit-mask-image: radial-gradient(125% 135% at 50% 50%, #000 50%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(125% 135% at 50% 50%, #000 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 .stats__num {
