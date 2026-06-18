@@ -615,6 +615,21 @@
     window.addEventListener('hashchange', scheduleTimelineAlign);
   })();
 
+  /* ---------- Border glow follows the cursor (team role cards) ---------- */
+  (function borderGlow() {
+    const cards = document.querySelectorAll('.role-card');
+    if (!cards.length) return;
+    cards.forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        card.classList.add('is-glow');
+      });
+      card.addEventListener('pointerleave', () => card.classList.remove('is-glow'));
+    });
+  })();
+
   /* ---------- Блок 14a. Cookie consent ---------- */
   (function cookieConsent() {
     const cookie = document.getElementById('cookie');
