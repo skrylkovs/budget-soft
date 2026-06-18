@@ -2291,11 +2291,11 @@ body.has-announce .hero {
 }
 
 .role-card__tools li {
-    font-size: 0.72rem;
+    font-size: 0.62rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.78);
-    padding: 3px 8px;
-    border-radius: 7px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2px 6px;
+    border-radius: 6px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.09);
     white-space: nowrap;
