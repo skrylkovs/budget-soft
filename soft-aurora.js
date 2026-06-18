@@ -243,5 +243,20 @@ function initSoftAurora(container, options = {}) {
 
 const target = document.querySelector('.team__aurora');
 if (target) {
-  initSoftAurora(target);
+  initSoftAurora(target, {
+    speed: 0.6,
+    scale: 1.5,
+    brightness: 2.4,
+    color1: '#f7f7f7',
+    color2: '#e100ff',
+    noiseFrequency: 9,
+    noiseAmplitude: 2,
+    bandHeight: 0.45,
+    bandSpread: 0.3,
+    octaveDecay: 0.33,
+    layerOffset: 0,
+    colorSpeed: 1,
+    enableMouseInteraction: true,
+    mouseInfluence: 0.35
+  });
 }
