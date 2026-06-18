@@ -819,10 +819,30 @@ button.nav__link {
 /* ================================================================
 ================================================================ */
 .stats {
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(rgb(37 0 131), rgb(0 40 124 / 92%)), url(https://img.magnific.com/free-photo/3d-rendering-hexagonal-texture-background_23-2150796421.jpg) center / cover no-repeat, radial-gradient(120% 120% at 50% 0%, #2a1f52 0%, #1a1338 38%, #130d29 100%);
     background-blend-mode: multiply, normal, normal;
     padding: 40px 0 40px;
     border-bottom: 1px solid var(--border);
+}
+
+.stats__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.stats__bg canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.stats > .container {
+    position: relative;
+    z-index: 1;
 }
 
 .stats__grid {
