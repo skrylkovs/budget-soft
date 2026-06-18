@@ -856,7 +856,8 @@ button.nav__link {
 .stats__item {
     position: relative;
     text-align: center;
-    padding: 32px 20px;
+    padding: 5px;
+    margin: 20px 0px;
 }
 
 .stats__item::before {
