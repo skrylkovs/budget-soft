@@ -258,6 +258,6 @@ const auroraOptions = {
   mouseInfluence: 0.35
 };
 
-document.querySelectorAll('.team__aurora, .cta__bg').forEach((el) => {
+document.querySelectorAll('.team__aurora').forEach((el) => {
   initSoftAurora(el, auroraOptions);
 });
