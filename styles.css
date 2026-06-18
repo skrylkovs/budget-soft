@@ -1162,10 +1162,14 @@ button.nav__link {
     }
 }
 
+.bento-showcase__media--center {
+    overflow: hidden;
+}
+
 .bento-showcase__media--center img {
     width: 100%;
-    max-width: 15rem;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 }
 
 .bento-showcase__media--security {
