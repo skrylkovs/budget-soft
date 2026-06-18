@@ -2268,9 +2268,9 @@ body.has-announce .hero {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: rgba(111, 76, 255, 0.14);
+    background: rgba(111, 76, 255, 0.28);
     border: 1px solid rgba(111, 76, 255, 0.3);
-    color: #b9a8ff;
+    color: #fff;
 }
 
 .role-card__icon svg {
