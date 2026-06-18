@@ -1176,6 +1176,7 @@ button.nav__link {
 .bento-showcase__media--security {
     container-type: inline-size;
     padding: 1.5rem 0;
+    margin: 13px 0px;
     justify-content: center;
     overflow: hidden;
 }
