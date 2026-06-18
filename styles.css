@@ -2239,14 +2239,9 @@ body.has-announce .hero {
         linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.35s ease;
     pointer-events: none;
-}
-
-.role-card.is-glow::after,
-.role-card--accent::after {
-    opacity: 1;
 }
 
 .role-card--accent {
