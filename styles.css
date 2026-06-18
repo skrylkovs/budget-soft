@@ -1740,11 +1740,15 @@ Responsive
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .footer__main {
-        grid-template-columns: 1fr 1fr;
+    .footer__top {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
     }
 
-    .footer__links.footer__links--services {
+    .footer__col--services {
+        grid-column: 1 / -1;
+    }
+
+    .footer__col--services .footer__links--services {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
