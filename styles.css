@@ -1174,6 +1174,7 @@ button.nav__link {
     container-type: inline-size;
     padding: 1.5rem 0;
     justify-content: center;
+    overflow: hidden;
 }
 
 @media (min-width: 1024px) {
