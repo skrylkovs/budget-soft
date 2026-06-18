@@ -1,0 +1,142 @@
+{
+  "_comment": "Реестр постоянных URL сайта. Эти пути НЕЛЬЗЯ менять — на них могут быть внешние ссылки, индексация в поиске и закладки. Менять можно только содержимое страниц, не их адреса. При добавлении новой страницы — добавляй сюда новую запись, существующие не трогай.",
+  "url_style": "directory-pretty-urls (каждая страница — <dir>/index.html, отдаётся как /<dir>/)",
+  "count": 27,
+  "pages": [
+    {
+      "url": "/",
+      "file": "index.html",
+      "title": "Разработка ПО на заказ — BUDGET SOFT | Заказная разработка программного обеспечения"
+    },
+    {
+      "url": "/blog/",
+      "file": "blog/index.html",
+      "title": "Блог — BUDGET SOFT"
+    },
+    {
+      "url": "/etapy/",
+      "file": "etapy/index.html",
+      "title": "Этапы реализации — BUDGET SOFT"
+    },
+    {
+      "url": "/garantii/",
+      "file": "garantii/index.html",
+      "title": "Гарантии — BUDGET SOFT"
+    },
+    {
+      "url": "/importozameshchenie/",
+      "file": "importozameshchenie/index.html",
+      "title": "Импортозамещение — BUDGET SOFT"
+    },
+    {
+      "url": "/kontakty/",
+      "file": "kontakty/index.html",
+      "title": "Контакты — BUDGET SOFT"
+    },
+    {
+      "url": "/o-nas/",
+      "file": "o-nas/index.html",
+      "title": "О нас — BUDGET SOFT"
+    },
+    {
+      "url": "/portfolio/",
+      "file": "portfolio/index.html",
+      "title": "Портфолио — BUDGET SOFT"
+    },
+    {
+      "url": "/privacy/",
+      "file": "privacy/index.html",
+      "title": "Политика конфиденциальности — BUDGET SOFT"
+    },
+    {
+      "url": "/sroki/",
+      "file": "sroki/index.html",
+      "title": "Сроки — BUDGET SOFT"
+    },
+    {
+      "url": "/stoimost/",
+      "file": "stoimost/index.html",
+      "title": "Стоимость — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/",
+      "file": "uslugi/index.html",
+      "title": "Услуги — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/avtomatizaciya-biznesa/",
+      "file": "uslugi/avtomatizaciya-biznesa/index.html",
+      "title": "Комплексная автоматизация бизнеса и цифровизация процессов предприятия под ключ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/bi-big-data/",
+      "file": "uslugi/bi-big-data/index.html",
+      "title": "Внедрение систем бизнес аналитики BI и Big Data для бизнеса: разработка корпоративных хранилищ данных — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/blockchain-web3/",
+      "file": "uslugi/blockchain-web3/index.html",
+      "title": "Технология разработки блокчейн приложений: написание смарт-контрактов и Web3 решений для бизнеса — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/digital-health/",
+      "file": "uslugi/digital-health/index.html",
+      "title": "Разработка медицинских информационных систем МИС и телемедицинских платформ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/fintech/",
+      "file": "uslugi/fintech/index.html",
+      "title": "Разработка FinTech приложений и платежных систем на заказ: кастомный мобильный банкинг — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/iskusstvennyj-intellekt/",
+      "file": "uslugi/iskusstvennyj-intellekt/index.html",
+      "title": "Внедрение искусственного интеллекта в бизнес-процессы: разработка AI решений и машинное обучение на заказ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/it-autstaffing/",
+      "file": "uslugi/it-autstaffing/index.html",
+      "title": "IT аутстаффинг программистов и разработчиков Middle+ / Senior: услуги аутстаффинга IT специалистов — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/mobilnaya-razrabotka/",
+      "file": "uslugi/mobilnaya-razrabotka/index.html",
+      "title": "Заказать разработку мобильного приложения: стоимость и этапы создания мобильных приложений iOS / Android на заказ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-crm-sistem/",
+      "file": "uslugi/razrabotka-crm-sistem/index.html",
+      "title": "Разработка CRM систем для бизнеса на заказ: стоимость и этапы внедрения кастомных CRM систем для продаж — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-erp-sistem/",
+      "file": "uslugi/razrabotka-erp-sistem/index.html",
+      "title": "Разработка и внедрение ERP систем для предприятий: стоимость и этапы внедрения кастомных ERP на заказ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-internet-magazinov/",
+      "file": "uslugi/razrabotka-internet-magazinov/index.html",
+      "title": "Разработка сайтов интернет магазинов под ключ: стоимость и создание высоконагруженного e-commerce — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-marketplejsov/",
+      "file": "uslugi/razrabotka-marketplejsov/index.html",
+      "title": "Разработка маркетплейсов под ключ B2B/B2C: создание сайта торговой онлайн площадки — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-saas/",
+      "file": "uslugi/razrabotka-saas/index.html",
+      "title": "Разработка SaaS платформ и облачных сервисов для бизнеса на заказ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/scm-upravlenie-postavkami/",
+      "file": "uslugi/scm-upravlenie-postavkami/index.html",
+      "title": "Разработка систем управления цепочками поставок SCM и WMS на заказ: логистические системы под ключ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/telegram-mini-apps/",
+      "file": "uslugi/telegram-mini-apps/index.html",
+      "title": "Разработка Telegram Mini Apps на заказ: создание чат-ботов и мини-приложений в Телеграм для бизнеса — BUDGET SOFT"
+    }
+  ]
+}
