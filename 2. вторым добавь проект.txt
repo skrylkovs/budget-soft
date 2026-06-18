@@ -1,0 +1,63 @@
+2. вторым добавь проект
+
+CAR5
+
+Приложение каршеринга 
+
+картинка /home/sergei/Pictures/Screenshots/Screenshot from 2026-06-16 21-01-58.png
+
+картинку обрежь сверху 
+
+
+3. добавь 3им пунктом в портфолио
+
+SMARTWILL
+
+Web-3 сервис цифрового наследования
+
+Tags: web3 blockchain ethereum fintech
+
+/home/sergei/Pictures/Screenshots/smartwill1.png
+
+
+
+/home/sergei/Pictures/Screenshots/smartwill3.png
+
+
+3. добавь 3им пунктом в портфолио
+
+app.dental 
+
+Saas сервис (CRM для стоматологий) - текст сам придумай
+
+теги Web SaaS CRM
+
+/home/sergei/Pictures/Screenshots/app-dental.png
+
+картинку так же сожми как для smartwill, а исходник положи рядом
+
+/home/sergei/Pictures/Screenshots/car5.png
+
+4.
+
+4ый проект в портфолио 
+
+EX211
+
+Miniapp Telegram для обмена валюты 
+
+/home/sergei/Pictures/Screenshots/ex211.png
+
+теги Telegram Miniapp, Fintech
+
+5.
+
+5ый проект в портфолио 
+
+PROLOGISTICS
+
+Бэкофис для управления складами и логистикой (напиши корректнее, но не длинно, примерно как у остальных)
+
+Теги сам подбери
+
+/home/sergei/Pictures/Screenshots/prolog.png
