@@ -1145,6 +1145,7 @@ button.nav__link {
     object-fit: contain;
     object-position: center;
     transform: scale(0.975);
+    clip-path: inset(15% 0 15% 0);
 }
 
 .bento-showcase__media--center {
