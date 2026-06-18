@@ -1845,12 +1845,12 @@ Responsive
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .footer__nav {
+    .footer__top {
         grid-template-columns: 1fr;
     }
 
-    .footer__links.footer__links--services {
-        grid-template-columns: 1fr;
+    .footer__col--services .footer__links--services {
+        grid-template-columns: 1fr 1fr;
     }
 
     .hero__actions .btn {
