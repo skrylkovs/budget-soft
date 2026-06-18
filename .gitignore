@@ -11,3 +11,12 @@ Thumbs.db
 # Logs / runtime
 *.log
 .cache/
+
+# Tooling / session artifacts
+.playwright-mcp/
+__pycache__/
+
+# Review screenshots (рабочие, не для репозитория)
+/mobile-shots/
+/mobile-shots-v2/
+/*.png
