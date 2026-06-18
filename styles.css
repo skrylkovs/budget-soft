@@ -2280,28 +2280,30 @@ body.has-announce .hero {
 }
 
 .role-card__count {
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: #b9a8ff;
-    padding: 5px 12px;
+    padding: 4px 9px;
     border-radius: 999px;
     background: rgba(111, 76, 255, 0.12);
     border: 1px solid rgba(111, 76, 255, 0.28);
     letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
 .role-card__title {
-    font-size: 1.12rem;
+    font-size: 0.98rem;
     font-weight: 700;
+    line-height: 1.25;
     margin: 0 0 8px;
     color: var(--text);
 }
 
 .role-card__desc {
-    font-size: 0.92rem;
-    line-height: 1.55;
+    font-size: 0.82rem;
+    line-height: 1.45;
     color: rgba(255, 255, 255, 0.62);
-    margin: 0 0 18px;
+    margin: 0 0 16px;
 }
 
 .role-card__tools {
@@ -2310,32 +2312,34 @@ body.has-announce .hero {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: 6px;
 }
 
 .role-card__tools li {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.78);
-    padding: 4px 10px;
-    border-radius: 8px;
+    padding: 3px 8px;
+    border-radius: 7px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.09);
+    white-space: nowrap;
 }
 
-@media (max-width: 920px) {
+/* Below the single-row breakpoint: keep one row, scroll horizontally */
+@media (max-width: 1100px) {
     .team__roles {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 560px) {
-    .team__roles {
-        grid-template-columns: 1fr;
-        gap: 14px;
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(210px, 1fr);
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        padding-bottom: 14px;
+        -webkit-overflow-scrolling: touch;
     }
 
     .role-card {
+        scroll-snap-align: start;
         padding: 24px 22px;
     }
 }
