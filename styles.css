@@ -2996,7 +2996,8 @@ body.has-announce .hero {
 main:has(.cta--simple) + .footer {
     position: relative;
     z-index: 1;
-    padding-top: calc(80px + 120px);
+    /* card overlaps footer by 220px (its negative margin) + breathing room */
+    padding-top: calc(220px + 64px);
 }
 
 .cta__perks {
