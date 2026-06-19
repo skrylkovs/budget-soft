@@ -3494,8 +3494,17 @@ main:has(.cta--simple) + .footer {
         padding: 48px 24px;
     }
 
+    /* Без нижнего паддинга контейнера отрицательный margin-bottom карточки
+       схлопывается, и она не выступает за светлую секцию на тёмный футер
+       («наезд» пропадает). Возвращаем padding-bottom — карточка выступает
+       на футер на 32px; футер-паддинг уменьшаем на те же 48px, чтобы зазор
+       до контента футера остался ~56px. */
+    .cta--simple .container {
+        padding-bottom: 48px;
+    }
+
     main:has(.cta--simple) + .footer {
-        padding-top: calc(56px + 80px);
+        padding-top: calc(56px + 80px - 48px);
     }
 }
 
