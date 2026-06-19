@@ -3,6 +3,12 @@
 > Базовое ТЗ: [plan-ai-calkulyator-stoimosti-razrabotki.md](plan-ai-calkulyator-stoimosti-razrabotki.md).
 > Этот документ — сжатый план **первой версии (MVP)**: что делаем, чем, как выглядит и в каком порядке.
 
+> ✅ **MVP реализован** и работает end-to-end. Код: [../calculator/](../calculator/) (отдельное Laravel-приложение, свой git).
+> Запуск и описание — [../calculator/README.md](../calculator/README.md). Скриншоты — [../calculator/docs/screenshots/](../calculator/docs/screenshots/).
+> Ради запускаемости без внешней инфраструктуры приняты отклонения от стека (SQLite вместо Postgres/Redis,
+> Blade+Alpine вместо Inertia/React, кастомная Blade-админка вместо Filament, dompdf вместо Browsershot,
+> mail `log` вместо SMTP) — см. таблицу в README. Дизайн-токены Revolut применены.
+
 ---
 
 ## 0. Цель MVP
