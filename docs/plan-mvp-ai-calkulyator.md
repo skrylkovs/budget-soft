@@ -88,9 +88,9 @@
   --rv-on-light-bg:#FFFFFF;  /* для светлых форм/PDF             */
   --rv-on-light-fg:#000000;
 
-  /* Типографика (rui font-marketing / font-brand) */
-  --rv-font-display: "Aeonik Pro", "Inter", system-ui, sans-serif; /* заголовки */
-  --rv-font-body:    "Inter", system-ui, sans-serif;               /* текст     */
+  /* Типографика — бесплатный фолбэк вместо Aeonik Pro (решение §12.4) */
+  --rv-font-display: "Hanken Grotesk", "Manrope", "Inter", system-ui, sans-serif; /* заголовки */
+  --rv-font-body:    "Inter", system-ui, sans-serif;                              /* текст     */
   /* размеры (rui marketing display 1/2/3) */
   --rv-display1: 3.5rem;  /* 56px, weight 500, ls ≈ -0.023em, lh 1   */
   --rv-display2: 2.5rem;  /* 40px */
