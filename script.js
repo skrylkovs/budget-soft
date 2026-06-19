@@ -630,6 +630,35 @@
     });
   })();
 
+  /* ---------- Карусель команды: стрелки на мобиле ---------- */
+  (function teamCarousel() {
+    const track = document.getElementById('teamRoles');
+    if (!track) return;
+    const prev = document.querySelector('.team__arrow--prev');
+    const next = document.querySelector('.team__arrow--next');
+    if (!prev || !next) return;
+
+    const update = () => {
+      const overflow = track.scrollWidth - track.clientWidth;
+      const scrollable = overflow > 1;
+      prev.hidden = !scrollable;
+      next.hidden = !scrollable;
+      if (!scrollable) return;
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= overflow - 1;
+    };
+
+    const page = (dir) => {
+      track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+    };
+
+    prev.addEventListener('click', () => page(-1));
+    next.addEventListener('click', () => page(1));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
   /* ---------- Блок 14a. Cookie consent ---------- */
   (function cookieConsent() {
     const cookie = document.getElementById('cookie');
