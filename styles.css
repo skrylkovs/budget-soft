@@ -3228,7 +3228,7 @@ body.has-announce .hero {
 }
 
 .cta__inner--centered .section-title {
-    font-size: clamp(40px, 5vw, 34px);
+    font-size: clamp(26px, 5vw, 40px);
     line-height: 1.25;
     margin: 0;
     font-weight: 300;
