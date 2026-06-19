@@ -1243,6 +1243,35 @@ button.nav__link {
     border-top-left-radius: 0.75rem;
 }
 
+/* Иконки вместо картинок в блоке «Преимущества» на узких экранах (≈ < 1000px) */
+.bento-showcase__icon {
+    display: none;
+}
+
+@media (max-width: 1023.98px) {
+    .bento-showcase__media img,
+    .bento-showcase__media--phone .bento-showcase__phone {
+        display: none;
+    }
+
+    .bento-showcase__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+    }
+
+    .bento-showcase__media--phone,
+    .bento-showcase__media--code {
+        min-height: 0;
+    }
+}
+
 .bento-showcase__ide {
     position: absolute;
     top: 2.5rem;
