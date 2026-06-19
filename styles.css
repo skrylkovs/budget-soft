@@ -752,6 +752,13 @@ button.nav__link {
     white-space: nowrap;
 }
 
+/* На ультра-узких экранах разрешаем перенос, чтобы строка не обрезалась */
+@media (max-width: 359px) {
+    .hero__nowrap {
+        white-space: normal;
+    }
+}
+
 .hero__actions {
     display: flex;
     flex-wrap: wrap;
