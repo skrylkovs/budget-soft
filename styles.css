@@ -2560,6 +2560,21 @@ body.has-announce .hero {
         scroll-snap-align: start;
         padding: 24px 22px;
     }
+
+    /* На узких экранах стрелки не накладываем на карточки —
+       выносим их в отдельный ряд под каруселью. */
+    .team__carousel {
+        padding-bottom: 60px;
+    }
+
+    .team__arrow {
+        top: auto;
+        bottom: 0;
+        transform: none;
+    }
+
+    .team__arrow--prev { left: calc(50% - 52px); }
+    .team__arrow--next { right: calc(50% - 52px); }
 }
 
 /* exactly 2 cards visible */
