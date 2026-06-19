@@ -2260,11 +2260,53 @@ body.has-announce .hero {
 }
 
 /* Team roles row (AI-native company) */
-.team__roles {
+.team__carousel {
+    position: relative;
     margin-top: 56px;
+}
+
+.team__roles {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 12px;
+}
+
+.team__arrow {
+    position: absolute;
+    top: calc(50% - 7px);
+    transform: translateY(-50%);
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(168, 140, 255, 0.5);
+    background: rgba(20, 18, 40, 0.82);
+    color: #cdbcff;
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+.team__arrow--prev { left: -6px; }
+.team__arrow--next { right: -6px; }
+
+.team__arrow:hover {
+    background: rgba(111, 76, 255, 0.9);
+    border-color: rgba(168, 140, 255, 0.9);
+    color: #fff;
+}
+
+.team__arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.team__arrow:disabled:hover {
+    background: rgba(20, 18, 40, 0.82);
+    border-color: rgba(168, 140, 255, 0.5);
+    color: #cdbcff;
 }
 
 .role-card {
