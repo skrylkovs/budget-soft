@@ -652,7 +652,7 @@ button.nav__link {
 ================================================================ */
 .hero {
     position: relative;
-    padding: calc(var(--header-h) + 60px) 0 84px;
+    padding: calc(var(--header-h) + 60px) 0 126px;
     background: #0a0a14;
     overflow: hidden;
 }
