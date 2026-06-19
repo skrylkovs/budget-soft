@@ -120,7 +120,7 @@
 }
 ```
 
-> Шрифт **Aeonik Pro** — коммерческий (CoType Foundry). Для MVP либо лицензируем, либо ставим близкий бесплатный гротеск-фолбэк (Inter уже в стеке Revolut как fallback; ещё ближе по форме — **Hanken Grotesk** / **Manrope**).
+> Шрифт **Aeonik Pro** у Revolut коммерческий (CoType Foundry). **Решение §12.4 — не лицензируем**, берём бесплатный близкий гротеск: заголовки **Hanken Grotesk** (запасные Manrope/Inter), текст **Inter**. Подключаем через Google Fonts / self-host.
 
 **Компоненты (по факту Revolut):**
 - **Кнопка primary** (на тёмном): белый фон `--rv-fg`, чёрный текст, `border-radius: var(--rv-radius-pill)`, padding `10px 24px`, высота 40–52px, font-weight 500.
