@@ -748,6 +748,10 @@ button.nav__link {
     white-space: nowrap;
 }
 
+.hero__nowrap {
+    white-space: nowrap;
+}
+
 .hero__actions {
     display: flex;
     flex-wrap: wrap;
