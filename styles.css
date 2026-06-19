@@ -3352,6 +3352,16 @@ main:has(.cta--simple) + .footer {
     padding-top: calc(180px + 64px);
 }
 
+/* Ниже 1441px глобальный .container { padding: 3rem } отключается, и зазор
+   между CTA-карточкой и контентом футера схлопывается. Возвращаем недостающие
+   96px (48px от паддинга контейнера CTA + 48px от паддинга контейнера футера),
+   чтобы наложение выглядело так же, как на широких экранах. */
+@media (min-width: 901px) and (max-width: 1440px) {
+    main:has(.cta--simple) + .footer {
+        padding-top: calc(180px + 64px + 96px);
+    }
+}
+
 .cta__perks {
     margin: 28px 0 0;
     display: flex;
