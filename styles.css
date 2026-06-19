@@ -1343,6 +1343,86 @@ button.nav__link {
     }
 }
 
+/* ---- Единое отображение картинок в блоке «Преимущества» на моб./планшете ---- */
+@media (max-width: 1023px) {
+    /* Общий контейнер картинки: фиксированная высота, картинка по центру */
+    .bento-showcase__media {
+        flex: none;
+        min-height: 0;
+        height: 180px;
+        margin: 1.25rem 0 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .bento-showcase__media img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        object-fit: contain;
+    }
+
+    /* tec1 — сбрасываем десктопный абсолютный сдвиг (left:-55px и т.п.) */
+    .bento-showcase__media--phone {
+        max-width: none;
+    }
+
+    .bento-showcase__phone {
+        position: relative;
+        inset: auto;
+        left: 0;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .bento-showcase__phone img {
+        width: auto;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    /* tec2 / tec3 — убираем собственные отступы, чтобы высота была общей */
+    .bento-showcase__media--center,
+    .bento-showcase__media--security {
+        margin: 1.25rem 0 0;
+        padding: 0;
+    }
+
+    .bento-showcase__media--center img,
+    .bento-showcase__media--security img {
+        width: auto;
+        height: 100%;
+    }
+
+    /* tec4 — относительный поток вместо absolute + contain вместо cover */
+    .bento-showcase__media--code {
+        position: relative;
+        min-height: 0;
+        padding: 0;
+    }
+
+    .bento-showcase__media--code img {
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+        width: auto;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 0;
+    }
+}
+
 .clients-strip {
     position: relative;
     z-index: 5;
