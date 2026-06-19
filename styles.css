@@ -1960,7 +1960,7 @@ Responsive
 
 @media (max-width: 900px) {
     .hero {
-        padding: calc(var(--header-h) + 28px) 0 50px;
+        padding: calc(var(--header-h) + 28px) 0 90px;
     }
 
     .hero__inner {
