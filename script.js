@@ -242,7 +242,7 @@
   if (window.Swiper && document.getElementById('caseSwiper')) {
     const progress = document.getElementById('caseProgress');
     new Swiper('#caseSwiper', {
-      slidesPerView: 1.1,
+      slidesPerView: 1,
       spaceBetween: 25,
       grabCursor: true,
       navigation: { prevEl: '#casePrev', nextEl: '#caseNext' },
