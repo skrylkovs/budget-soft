@@ -1,0 +1,25 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="rsq"><rect x="0" y="0" width="512" height="512" rx="96" ry="96"/></clipPath>
+  </defs>
+  <g clip-path="url(#rsq)">
+    <rect x="0" y="0" width="512" height="512" fill="#12092A"/>
+
+    <!-- circle 1: wrench -->
+    <circle cx="123" cy="256" r="95" fill="#12092A" stroke="#FFFFFF" stroke-width="15"/>
+    <!-- wrench: diagonal open-end spanner -->
+    <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M 93 299 L 143 249" stroke-width="17"/>
+      <path d="M 183.4 226.6 A 24 24 0 1 1 157.1 208.2" stroke-width="14"/>
+    </g>
+
+    <!-- circle 2: play -->
+    <circle cx="256" cy="256" r="95" fill="#12092A" stroke="#FFFFFF" stroke-width="15"/>
+    <path d="M 234 214 L 234 298 L 300 256 Z" fill="#FFFFFF"/>
+
+    <!-- circle 3: disc (on top) -->
+    <circle cx="389" cy="256" r="95" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="15"/>
+    <circle cx="389" cy="256" r="22" fill="#12092A"/>
+    <circle cx="389" cy="256" r="7" fill="#FFFFFF"/>
+  </g>
+</svg>
