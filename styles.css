@@ -3062,12 +3062,11 @@ body.has-announce .hero {
     position: relative;
     z-index: 1;
     width: 100%;
-    margin: 0 auto -263px;
-    padding: 109px 56px;
+    margin: 0 auto -237px;
+    padding: 70px 56px;
     background: linear-gradient(90deg, #0d0326 0%, #000000 45%, #0c042a 100%);
-    /* border: 1px solid rgba(255, 255, 255, 0.1); */
     border-radius: 0;
-    box-shadow: 0 28px 64px -16px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 28px 64px -16px rgb(111 76 255 / 20%);
     overflow: hidden;
 }
 
