@@ -1846,6 +1846,31 @@ Responsive
         display: none;
     }
 
+    /* На мобиле шапка скрыта — подписываем ячейки, чтобы было видно, где что */
+    .compare__cell--legacy::before,
+    .compare__cell--ai::before {
+        content: "Прошлое";
+        position: static;
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 0 6px;
+        background: none;
+        border-radius: 0;
+        transform: none;
+        opacity: 1;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #9a9aa6;
+    }
+
+    .compare__cell--ai::before {
+        content: "Наше настоящее";
+        color: var(--primary);
+    }
+
     .footer {
         padding: 56px 0 24px;
     }
