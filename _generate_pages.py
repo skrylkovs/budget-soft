@@ -1509,9 +1509,9 @@ def main() -> None:
             "content_fn": lambda p: content_prose(
                 f"""<p>Оставьте заявку прямо сейчас, и мы подготовим первичный концепт решения и расчёт бюджета для вашего проекта.</p>
 <ul class="page-contacts">
-<li><strong>Телефон:</strong> <a href="tel:+74950000000">+7 (495) 000-00-00</a></li>
+<li><strong>Telegram:</strong> <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">@skrylkovs</a></li>
+<li><strong>WhatsApp:</strong> <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">+66634340262</a></li>
 <li><strong>Email:</strong> <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
-<li><strong>Telegram:</strong> <a href="https://t.me/" target="_blank" rel="noopener">Написать в Telegram</a></li>
 <li><strong>Офис:</strong> {OFFICE_ADDRESS}</li>
 </ul>
 <p><button type="button" class="btn btn--primary btn--lg js-open-contact">Обсудить проект</button></p>""",
