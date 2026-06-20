@@ -1493,6 +1493,7 @@ def update_index_html() -> None:
 
     html = fix_home_contacts(html)
     html = inject_home_seo(html)
+    html = inject_metrika(html)
 
     path.write_text(html, encoding="utf-8")
     print(f"  {path.relative_to(ROOT)} (menu sync)")
