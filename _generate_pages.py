@@ -1465,8 +1465,59 @@ def update_index_html() -> None:
         '<li><a href="importozameshchenie/">Импортозамещение</a></li>',
         '',
     )
+
+    html = inject_home_seo(html)
+
     path.write_text(html, encoding="utf-8")
     print(f"  {path.relative_to(ROOT)} (menu sync)")
+
+
+def inject_home_seo(html_doc: str) -> str:
+    """Добавляет canonical, Open Graph, Twitter Card и JSON-LD Organization в <head> главной.
+
+    description на главной уже есть в index.html — берём её текст для OG/Twitter.
+    Идемпотентно: повторный прогон ничего не дублирует.
+    """
+    if 'rel="canonical"' in html_doc:
+        return html_doc
+
+    m_title = re.search(r"<title>(.*?)</title>", html_doc, flags=re.DOTALL)
+    m_desc = re.search(r'<meta name="description" content="(.*?)">', html_doc, flags=re.DOTALL)
+    title = m_title.group(1).strip() if m_title else "BUDGET SOFT"
+    desc = m_desc.group(1).strip() if m_desc else ""
+    url = f"{SITE_URL}/"
+
+    org = json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "BUDGET SOFT",
+            "url": url,
+            "email": "info@budget-soft.ru",
+            "logo": f"{SITE_URL}/logos/budget-soft.svg",
+            "image": OG_IMAGE,
+            "description": desc,
+            "sameAs": [CONTACT_TELEGRAM, CONTACT_WHATSAPP],
+        },
+        ensure_ascii=False,
+    )
+
+    block = (
+        f'  <link rel="canonical" href="{url}">\n'
+        '  <meta property="og:type" content="website">\n'
+        '  <meta property="og:site_name" content="BUDGET SOFT">\n'
+        '  <meta property="og:locale" content="ru_RU">\n'
+        f'  <meta property="og:title" content="{html.escape(title, quote=True)}">\n'
+        f'  <meta property="og:description" content="{html.escape(desc, quote=True)}">\n'
+        f'  <meta property="og:url" content="{url}">\n'
+        f'  <meta property="og:image" content="{OG_IMAGE}">\n'
+        '  <meta name="twitter:card" content="summary_large_image">\n'
+        f'  <meta name="twitter:title" content="{html.escape(title, quote=True)}">\n'
+        f'  <meta name="twitter:description" content="{html.escape(desc, quote=True)}">\n'
+        f'  <meta name="twitter:image" content="{OG_IMAGE}">\n'
+        f'  <script type="application/ld+json">{org}</script>\n'
+    )
+    return html_doc.replace("</head>", block + "</head>", 1)
 
 
 def main() -> None:
