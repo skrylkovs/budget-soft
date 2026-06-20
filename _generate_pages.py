@@ -1096,7 +1096,7 @@ def render_footer(prefix: str) -> str:
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <ul class="footer__contacts">
             <li><a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">Telegram: @skrylkovs</a></li>
-            <li><a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp: +66634340262</a></li>
+            <li><a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
             <li><span>{OFFICE_ADDRESS}</span></li>
           </ul>
@@ -1166,7 +1166,7 @@ def render_contact_modal() -> str:
               </span>
               <span class="contact-modal__tile-text">
                 <strong>WhatsApp</strong>
-                <span>+66634340262</span>
+                <span>Написать</span>
               </span>
             </a>
           </div>
@@ -1410,7 +1410,7 @@ def update_index_html() -> None:
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp: +66634340262</a>
+              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M2 6l10 7L22 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -1488,7 +1488,7 @@ def fix_home_contacts(html_doc: str) -> str:
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp: +66634340262</a>
+              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
             </li>""",
     )
     # Соц-блок в подвале
@@ -1519,7 +1519,7 @@ def fix_home_contacts(html_doc: str) -> str:
         """                <strong>WhatsApp</strong>
                 <span>Написать в мессенджер</span>""",
         """                <strong>WhatsApp</strong>
-                <span>+66634340262</span>""",
+                <span>Написать</span>""",
     )
     # Contact-modal: убрать плитку «Телефон» целиком
     html_doc = html_doc.replace(
@@ -1679,7 +1679,7 @@ def main() -> None:
                 f"""<p>Оставьте заявку прямо сейчас, и мы подготовим первичный концепт решения и расчёт бюджета для вашего проекта.</p>
 <ul class="page-contacts">
 <li><strong>Telegram:</strong> <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">@skrylkovs</a></li>
-<li><strong>WhatsApp:</strong> <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">+66634340262</a></li>
+<li><strong>WhatsApp:</strong> <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">Написать</a></li>
 <li><strong>Email:</strong> <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
 <li><strong>Офис:</strong> {OFFICE_ADDRESS}</li>
 </ul>

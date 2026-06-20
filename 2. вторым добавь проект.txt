@@ -61,3 +61,31 @@ PROLOGISTICS
 Теги сам подбери
 
 /home/sergei/Pictures/Screenshots/prolog.png
+
+
+6.
+
+6ой проект в портфолио 
+
+AIRDEVELOPPA
+
+AirDeveloppa — это приложение, которое помогает находить общественные места с чистым воздухом внутри помещений. Оно показывает текущий уровень загрязнения воздуха (AQI/PM2.5) в кафе, ресторанах, спортзалах, коворкингах и других заведениях, где установлены датчики качества воздуха. Пользователи могут выбрать место с безопасным воздухом, а бизнесы — демонстрировать заботу о здоровье клиентов. (напиши корректнее, но не длинно, примерно как у остальных)
+
+Теги сам подбери
+/home/sergei/Pictures/Screenshots/airdev.png
+
+
+
+/home/sergei/Pictures/Screenshots/111.png
+
+
+
+  
+замени все картинки в 4ех блоках размера преимущества
+/home/sergei/Pictures/Screenshots/tec1.png
+/home/sergei/Pictures/Screenshots/tec2.png
+/home/sergei/Pictures/Screenshots/tec3.png
+/home/sergei/Pictures/Screenshots/tec4.png 
+
+В 4ом блоке вместо кода поставь картинку, по border-radius оставь
+
