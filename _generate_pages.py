@@ -1609,6 +1609,19 @@ def main() -> None:
         },
     ]
 
+    page_descriptions = {
+        "etapy": "Как мы ведём проект: от консультации и ТЗ до разработки, тестирования и поддержки. Прозрачные этапы реализации и поэтапная оплата в BUDGET SOFT.",
+        "sroki": "Запускаем продукты за недели, а не месяцы: AI-Native подход сокращает time-to-market без потери качества. Реальные сроки разработки ПО в BUDGET SOFT.",
+        "garantii": "Гарантии результата и безопасность данных: поэтапная оплата 30·30·40, прозрачный процесс и передача прав на код. Как BUDGET SOFT снижает риски проекта.",
+        "stoimost": "Новая математика разработки: вы платите за результат и архитектуру, а не за человеко-часы. Снижение издержек до 10 раз. Рассчитайте стоимость в BUDGET SOFT.",
+        "importozameshchenie": "Импортозамещение ПО без простоя: миграция с зарубежных систем на собственное независимое ПО, рефакторинг legacy и передача прав. BUDGET SOFT.",
+        "o-nas": "BUDGET SOFT — команда AI-дирижёров: проджект-менеджеры с технической экспертизой управляют пулом AI-агентов и заменяют классический ИТ-отдел.",
+        "kontakty": "Связаться с BUDGET SOFT: Telegram, WhatsApp, email. Оставьте заявку — подготовим первичный концепт решения и расчёт бюджета вашего проекта.",
+        "portfolio": "Портфолио BUDGET SOFT: проекты для финтеха, логистики, ритейла и промышленности. Кейсы заказной разработки ПО, AI и автоматизации бизнеса.",
+        "privacy": "Политика конфиденциальности BUDGET SOFT: как мы обрабатываем и защищаем персональные данные посетителей сайта в соответствии с законодательством РФ.",
+        "blog": "Блог BUDGET SOFT об AI-Native разработке, кейсах и технологических трендах. Раздел скоро откроется.",
+    }
+
     for cfg in pages_depth1:
         slug = cfg["slug"]
         prefix = rel_prefix(1)
@@ -1620,6 +1633,8 @@ def main() -> None:
             title_html=cfg["title_html"],
             lead=cfg["lead"],
             content=cfg["content_fn"](prefix),
+            description=page_descriptions[slug],
+            canonical_path=slug,
             section_id=cfg.get("section_id", slug),
             accent=cfg.get("accent", ""),
             second_btn=cfg.get("second_btn"),
@@ -1636,6 +1651,8 @@ def main() -> None:
         lead="Заказная разработка для каждой функции бизнеса — от корпоративных систем до AI, мобильных продуктов и инфраструктуры.",
         content=render_uslugi_catalog(uslugi_prefix)
         + render_ai_directions_block(uslugi_prefix, copy_key="uslugi"),
+        description="Услуги BUDGET SOFT: заказная разработка ERP, CRM, мобильных и SaaS-приложений, внедрение ИИ, BI и Big Data, FinTech и автоматизация бизнес-процессов.",
+        canonical_path="uslugi",
         section_id="services",
         second_btn=(page_href(uslugi_prefix, "stoimost"), "Рассчитать стоимость"),
     )
@@ -1653,6 +1670,9 @@ def main() -> None:
             title_html=page.h1,
             lead=page.lead,
             content=content,
+            description=page.description,
+            canonical_path=f"uslugi/{page.slug}",
+            jsonld=breadcrumb_jsonld(page.menu_label, page.slug),
             section_id=page.slug,
             second_btn=(page_href(rel_prefix(2), "stoimost"), "Рассчитать стоимость"),
             hero_h1=page.h1,
