@@ -1380,6 +1380,7 @@ def content_prose(
 
 def write_page(path: Path, html: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    html = inject_metrika(html)
     path.write_text(html, encoding="utf-8")
     print(f"  {path.relative_to(ROOT)}")
 
