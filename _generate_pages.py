@@ -2,6 +2,8 @@
 """Generate inner pages in stoimost-style layout. Run: python3 _generate_pages.py"""
 from __future__ import annotations
 
+import html
+import json
 import random
 import re
 from pathlib import Path
