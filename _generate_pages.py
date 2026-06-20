@@ -1466,6 +1466,7 @@ def update_index_html() -> None:
         '',
     )
 
+    html = fix_home_contacts(html)
     html = inject_home_seo(html)
 
     path.write_text(html, encoding="utf-8")
