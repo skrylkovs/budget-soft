@@ -84,6 +84,7 @@ class ServicePage:
     h1: str
     lead: str
     body_html: str
+    description: str
 
 
 def inline_md(text: str) -> str:
