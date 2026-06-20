@@ -24,6 +24,30 @@ OG_IMAGE = f"{SITE_URL}/aurora-team.png"
 CONTACT_TELEGRAM = "https://t.me/skrylkovs"
 CONTACT_WHATSAPP = "https://wa.me/66634340262"
 
+# Yandex.Metrika (счётчик 110021925). Единый сниппет на все страницы сайта.
+YANDEX_METRIKA_ID = "110021925"
+YANDEX_METRIKA = """  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110021925', 'ym');
+
+    ym(110021925, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/110021925" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+"""
+
+
+def inject_metrika(html_doc: str) -> str:
+    """Вставляет счётчик Яндекс.Метрики перед </head>. Идемпотентно."""
+    if "mc.yandex.ru/metrika" in html_doc:
+        return html_doc
+    return html_doc.replace("</head>", YANDEX_METRIKA + "</head>", 1)
+
 STATS_CASES_PARTIAL = (ROOT / "partials" / "stats-cases.html").read_text(encoding="utf-8")
 
 BTN_ARROW_SM = (
