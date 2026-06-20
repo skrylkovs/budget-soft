@@ -1151,16 +1151,16 @@ def render_contact_modal() -> str:
         </header>
         <div class="contact-modal__grid">
           <div class="contact-modal__row contact-modal__row--messengers">
-            <a class="contact-modal__tile contact-modal__tile--telegram" href="https://t.me/" target="_blank" rel="noopener">
+            <a class="contact-modal__tile contact-modal__tile--telegram" href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">
               <span class="contact-modal__tile-icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
               </span>
               <span class="contact-modal__tile-text">
                 <strong>Telegram</strong>
-                <span>Написать в мессенджер</span>
+                <span>@skrylkovs</span>
               </span>
             </a>
-            <a class="contact-modal__tile contact-modal__tile--whatsapp" href="https://wa.me/74950000000" target="_blank" rel="noopener">
+            <a class="contact-modal__tile contact-modal__tile--whatsapp" href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">
               <span class="contact-modal__tile-icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.2 9.8c.3 1.1 1.4 2.6 3.1 3.4 1 .5 1.9.7 2.2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
               </span>
