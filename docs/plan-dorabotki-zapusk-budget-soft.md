@@ -85,7 +85,7 @@ Sitemap: https://budget-soft.ru/sitemap.xml
 
 ### 8. schema.org JSON-LD (нет нигде)
 
-- `Organization` на главной (name, url `https://budget-soft.ru`, email `info@budget-soft.ru`, телефон из п.1).
+- `Organization` на главной (name, url `https://budget-soft.ru`, email `info@budget-soft.ru`; телефон не указываем — его на сайте нет; при желании `contactPoint`/`sameAs` с Telegram/WhatsApp).
 - `BreadcrumbList` / `Service` на страницах `uslugi/*` — опционально, через генератор.
 
 ## 🟡 Контент и индексация
