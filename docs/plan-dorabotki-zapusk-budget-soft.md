@@ -102,7 +102,7 @@ Sitemap: https://budget-soft.ru/sitemap.xml
 
 ## Порядок выполнения
 
-1. Телефон — заменить плейсхолдер в генераторе (нужен реальный номер).
+1. Контакты — убрать телефон из генератора; Telegram → `@skrylkovs`, WhatsApp → `+66634340262`.
 2. `CNAME` + базовый URL `https://budget-soft.ru` зафиксировать в генераторе.
 3. Генератор за один проход: `description` (+ поле в `_uslugi_data.py`), canonical, OG, JSON-LD в `render_page` и `update_index_html`; функции `write_robots()` и `write_sitemap()`.
 4. Перегнать: `python3 _generate_pages.py`.
