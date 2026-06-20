@@ -1473,6 +1473,71 @@ def update_index_html() -> None:
     print(f"  {path.relative_to(ROOT)} (menu sync)")
 
 
+def fix_home_contacts(html_doc: str) -> str:
+    """Убирает телефон-плейсхолдер и прописывает Telegram/WhatsApp в собственной
+    разметке index.html (футер, соц-блок, contact-modal). Идемпотентно."""
+    # Футер: <li> с телефоном → Telegram + WhatsApp
+    html_doc = html_doc.replace(
+        """            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.8a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <a href="tel:+74950000000">+7 (495) 000-00-00</a>
+            </li>""",
+        f"""            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+              <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">Telegram: @skrylkovs</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp: +66634340262</a>
+            </li>""",
+    )
+    # Соц-блок в подвале
+    html_doc = html_doc.replace(
+        '<a href="https://t.me/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Telegram">',
+        f'<a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener" class="footer__social-link" aria-label="Telegram">',
+    )
+    html_doc = html_doc.replace(
+        '<a href="https://wa.me/74950000000" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp">',
+        f'<a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp">',
+    )
+    # Contact-modal: ссылки мессенджеров и подписи
+    html_doc = html_doc.replace(
+        '<a class="contact-modal__tile contact-modal__tile--telegram" href="https://t.me/" target="_blank" rel="noopener">',
+        f'<a class="contact-modal__tile contact-modal__tile--telegram" href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">',
+    )
+    html_doc = html_doc.replace(
+        '<a class="contact-modal__tile contact-modal__tile--whatsapp" href="https://wa.me/74950000000" target="_blank" rel="noopener">',
+        f'<a class="contact-modal__tile contact-modal__tile--whatsapp" href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">',
+    )
+    html_doc = html_doc.replace(
+        """                <strong>Telegram</strong>
+                <span>Написать в мессенджер</span>""",
+        """                <strong>Telegram</strong>
+                <span>@skrylkovs</span>""",
+    )
+    html_doc = html_doc.replace(
+        """                <strong>WhatsApp</strong>
+                <span>Написать в мессенджер</span>""",
+        """                <strong>WhatsApp</strong>
+                <span>+66634340262</span>""",
+    )
+    # Contact-modal: убрать плитку «Телефон» целиком
+    html_doc = html_doc.replace(
+        """            <a class="contact-modal__tile" href="tel:+74950000000">
+              <span class="contact-modal__tile-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2 1a13 13 0 006 6l1-2 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="contact-modal__tile-text">
+                <strong>Телефон</strong>
+                <span>+7 (495) 000-00-00</span>
+              </span>
+            </a>
+            <a class="contact-modal__tile" href="mailto:info@budget-soft.ru">""",
+        """            <a class="contact-modal__tile" href="mailto:info@budget-soft.ru">""",
+    )
+    return html_doc
+
+
 def inject_home_seo(html_doc: str) -> str:
     """Добавляет canonical, Open Graph, Twitter Card и JSON-LD Organization в <head> главной.
 
