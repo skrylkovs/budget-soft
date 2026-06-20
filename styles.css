@@ -2069,12 +2069,41 @@ Responsive
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .footer {
+        padding: 48px 0 24px;
+    }
+
+    /* Компания | Ресурсы — рядом, бренд и услуги — на всю ширину */
     .footer__top {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 20px;
+        padding-bottom: 28px;
+    }
+
+    .footer__col--brand,
+    .footer__col--services {
+        grid-column: 1 / -1;
+    }
+
+    .footer__col--brand {
+        max-width: none;
     }
 
     .footer__col--services .footer__links--services {
         grid-template-columns: 1fr 1fr;
+        gap: 10px 20px;
+    }
+
+    /* Нижняя строка: соцсети сверху, копирайт и политика — в столбик слева */
+    .footer__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding-top: 24px;
+    }
+
+    .footer__social {
+        order: -1;
     }
 
     .hero__actions .btn {
