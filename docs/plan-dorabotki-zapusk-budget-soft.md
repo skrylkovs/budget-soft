@@ -132,40 +132,40 @@ Sitemap: https://budget-soft.ru/sitemap.xml
 ## Чеклист выполнения
 
 ### Входные данные от пользователя
-- [ ] Выбрана картинка `og:image` (`aurora-team.png` / `hero-section.png` / другая)
-- [ ] Подтверждён базовый домен `https://budget-soft.ru`
+- [x] Выбрана картинка `og:image` — `aurora-team.png`
+- [x] Подтверждён базовый домен `https://budget-soft.ru`
 
 ### 🔴 Блокеры
-- [ ] Телефон убран из футера `_generate_pages.py` (`<li>` ~1090)
-- [ ] Плитка «Телефон» удалена из contact-modal (~1162–1173)
-- [ ] Телефон убран со страницы контактов (футер ~1361 и `page-contacts` ~1512)
-- [ ] Telegram → `https://t.me/skrylkovs` (1145 и 1514)
-- [ ] WhatsApp → `https://wa.me/66634340262` (1154)
-- [ ] Создан `CNAME` со значением `budget-soft.ru`
+- [x] Телефон убран из футера (`render_footer` + `update_index_html`/`fix_home_contacts`)
+- [x] Плитка «Телефон» удалена из contact-modal (inner-страницы и `index.html`)
+- [x] Телефон убран со страницы контактов (футер и `page-contacts`)
+- [x] Telegram → `https://t.me/skrylkovs` (модалка, соц-блок, страница контактов)
+- [x] WhatsApp → `https://wa.me/66634340262` (модалка, соц-блок, страница контактов)
+- [x] Создан `CNAME` со значением `budget-soft.ru` (через `write_cname()`)
 
 ### 🟠 Технический SEO (через генератор)
-- [ ] `write_robots()` добавлена и вызвана из `main()` → создан `robots.txt`
-- [ ] `write_sitemap()` добавлена и вызвана из `main()` → создан `sitemap.xml` (26 URL, без блога)
-- [ ] Параметр `description` добавлен в `render_page`, `<meta name="description">` в `<head>`
-- [ ] Поле `description` добавлено для всех страниц услуг в `_uslugi_data.py`
-- [ ] `description` передан во все 4 вызова `render_page` и в `update_index_html()`
-- [ ] `<link rel="canonical">` добавлен в `<head>`-шаблон и в `update_index_html()`
-- [ ] Open Graph / Twitter Card добавлены в `<head>`-шаблон (главная, портфолио, услуги)
-- [ ] JSON-LD `Organization` добавлен на главную
-- [ ] (Опц.) JSON-LD `Service` / `BreadcrumbList` на страницах услуг
+- [x] `write_robots()` добавлена и вызвана из `main()` → создан `robots.txt`
+- [x] `write_sitemap()` добавлена и вызвана из `main()` → создан `sitemap.xml` (26 URL, без блога)
+- [x] Параметр `description` добавлен в `render_page`, `<meta name="description">` в `<head>` (через `seo_head()`)
+- [x] Поле `description` добавлено для всех страниц услуг в `_uslugi_data.py`
+- [x] `description` передан во все вызовы `render_page` и в `update_index_html()`
+- [x] `<link rel="canonical">` добавлен в `<head>` и в `update_index_html()` (`inject_home_seo`)
+- [x] Open Graph / Twitter Card добавлены на всех страницах (включая главную)
+- [x] JSON-LD `Organization` добавлен на главную
+- [x] JSON-LD `BreadcrumbList` на всех 15 страницах услуг
 
 ### 🟡 Контент и индексация
-- [ ] `/blog/` исключён из sitemap
-- [ ] Битые ссылки на `/blog/<slug>/` в `blog/index.html` устранены
+- [x] `/blog/` исключён из sitemap
+- [x] Битые ссылки на `/blog/<slug>/` в `blog/index.html` — отсутствуют (страница-заглушка)
 
 ### Перегон и проверка
-- [ ] `python3 _generate_pages.py` отработал без ошибок
-- [ ] `grep -L 'name="description"' */index.html index.html` — пусто
-- [ ] `grep -L 'rel="canonical"' */index.html index.html` — пусто
-- [ ] `grep -rn '000-00-00\|+74950000000' .` — пусто
-- [ ] В корне присутствуют `CNAME`, `robots.txt`, `sitemap.xml`
-- [ ] Локальный просмотр: в `<head>` видны description, canonical, og:*, ld+json
-- [ ] JSON-LD прошёл валидацию (Schema Markup Validator)
+- [x] `python3 _generate_pages.py` отработал без ошибок
+- [x] `grep -L 'name="description"' */index.html index.html` — пусто
+- [x] `grep -L 'rel="canonical"' */index.html index.html` — пусто
+- [x] `grep -rn '000-00-00\|+74950000000' .` — пусто (в HTML; остаются только строки-образцы в генераторе)
+- [x] В корне присутствуют `CNAME`, `robots.txt`, `sitemap.xml`
+- [x] JSON-LD валиден (16 блоков, 0 ошибок — проверено `json.loads`)
+- [ ] Финальная валидация JSON-LD через Schema Markup Validator / Яндекс.Вебмастер (после деплоя)
 
 ### Пользователь (после деплоя)
 - [ ] Куплен домен, настроены DNS (ALIAS/CNAME на GitHub Pages)
