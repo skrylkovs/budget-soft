@@ -1732,12 +1732,42 @@ def main() -> None:
 
     update_index_html()
 
+    write_cname()
+    write_robots()
+    write_sitemap()
+
     stoimost_css = ROOT / "stoimost" / "stoimost.css"
     if stoimost_css.exists():
         stoimost_css.unlink()
         print(f"  deleted {stoimost_css.relative_to(ROOT)}")
 
     print("Done.")
+
+
+def write_cname() -> None:
+    (ROOT / "CNAME").write_text("budget-soft.ru\n", encoding="utf-8")
+    print("  CNAME")
+
+
+def write_robots() -> None:
+    content = "User-agent: *\nAllow: /\n\n" f"Sitemap: {SITE_URL}/sitemap.xml\n"
+    (ROOT / "robots.txt").write_text(content, encoding="utf-8")
+    print("  robots.txt")
+
+
+def write_sitemap() -> None:
+    """Генерирует sitemap.xml по urls.json. Блог исключён (скрыт до запуска)."""
+    data = json.loads((ROOT / "urls.json").read_text(encoding="utf-8"))
+    urls = [p["url"] for p in data["pages"] if p["url"] != "/blog/"]
+    items = "\n".join(f"  <url>\n    <loc>{SITE_URL}{u}</loc>\n  </url>" for u in urls)
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{items}\n"
+        "</urlset>\n"
+    )
+    (ROOT / "sitemap.xml").write_text(xml, encoding="utf-8")
+    print(f"  sitemap.xml ({len(urls)} url)")
 
 
 if __name__ == "__main__":
