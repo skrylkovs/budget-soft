@@ -1166,20 +1166,11 @@ def render_contact_modal() -> str:
               </span>
               <span class="contact-modal__tile-text">
                 <strong>WhatsApp</strong>
-                <span>Написать в мессенджер</span>
+                <span>+66634340262</span>
               </span>
             </a>
           </div>
           <div class="contact-modal__row contact-modal__row--contacts">
-            <a class="contact-modal__tile" href="tel:+74950000000">
-              <span class="contact-modal__tile-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2 1a13 13 0 006 6l1-2 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-              </span>
-              <span class="contact-modal__tile-text">
-                <strong>Телефон</strong>
-                <span>+7 (495) 000-00-00</span>
-              </span>
-            </a>
             <a class="contact-modal__tile" href="mailto:info@budget-soft.ru">
               <span class="contact-modal__tile-icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
