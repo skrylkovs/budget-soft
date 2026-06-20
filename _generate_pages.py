@@ -1095,7 +1095,8 @@ def render_footer(prefix: str) -> str:
           </a>
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <ul class="footer__contacts">
-            <li><a href="tel:+74950000000">+7 (495) 000-00-00</a></li>
+            <li><a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">Telegram: @skrylkovs</a></li>
+            <li><a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp: +66634340262</a></li>
             <li><a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
             <li><span>{OFFICE_ADDRESS}</span></li>
           </ul>
