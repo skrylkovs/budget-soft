@@ -991,13 +991,12 @@ def render_hero(
         href, label = second_btn
         second = f"""
             <a href="{href}" class="btn btn--outline btn--lg">{label}</a>"""
-    if hero_h1:
-        title_html = hero_h1
-    else:
-        title_html = (
-            'Разрабатываем ПО любой сложности для '
-            '<span class="text-gradient">автоматизации бизнеса</span>'
-        )
+    # Единый hero-заголовок на всех страницах (hero_h1 намеренно игнорируется
+    # для заголовка — текст должен быть одинаковым по всему сайту).
+    title_html = (
+        'Разрабатываем ПО любой сложности для '
+        '<span class="text-gradient">автоматизации бизнеса</span>'
+    )
     return f"""    <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
         <video class="hero__video" autoplay muted loop playsinline>
