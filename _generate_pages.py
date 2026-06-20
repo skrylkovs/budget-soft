@@ -18,6 +18,12 @@ from _uslugi_data import (
 
 ROOT = Path(__file__).parent
 
+# Базовый абсолютный URL сайта (для canonical / Open Graph / sitemap).
+SITE_URL = "https://budget-soft.ru"
+OG_IMAGE = f"{SITE_URL}/aurora-team.png"
+CONTACT_TELEGRAM = "https://t.me/skrylkovs"
+CONTACT_WHATSAPP = "https://wa.me/66634340262"
+
 STATS_CASES_PARTIAL = (ROOT / "partials" / "stats-cases.html").read_text(encoding="utf-8")
 
 BTN_ARROW_SM = (
