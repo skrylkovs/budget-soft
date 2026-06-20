@@ -1216,6 +1216,50 @@ def render_scripts(prefix: str) -> str:
     return f'  <script src="{prefix}script.js"></script>'
 
 
+def canonical_url(path: str) -> str:
+    """Абсолютный canonical-URL по «красивому» пути (без хвостовых слешей на входе)."""
+    path = path.strip("/")
+    return f"{SITE_URL}/{path}/" if path else f"{SITE_URL}/"
+
+
+def seo_head(*, title: str, description: str, canonical_path: str, jsonld: str = "") -> str:
+    """Блок <head>: description, canonical, Open Graph, Twitter Card и (опц.) JSON-LD."""
+    url = canonical_url(canonical_path)
+    desc = html.escape(description or "", quote=True)
+    t = html.escape(title or "", quote=True)
+    lines = [
+        f'  <meta name="description" content="{desc}">',
+        f'  <link rel="canonical" href="{url}">',
+        '  <meta property="og:type" content="website">',
+        '  <meta property="og:site_name" content="BUDGET SOFT">',
+        '  <meta property="og:locale" content="ru_RU">',
+        f'  <meta property="og:title" content="{t}">',
+        f'  <meta property="og:description" content="{desc}">',
+        f'  <meta property="og:url" content="{url}">',
+        f'  <meta property="og:image" content="{OG_IMAGE}">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{t}">',
+        f'  <meta name="twitter:description" content="{desc}">',
+        f'  <meta name="twitter:image" content="{OG_IMAGE}">',
+    ]
+    if jsonld:
+        lines.append(f'  <script type="application/ld+json">{jsonld}</script>')
+    return "\n".join(lines) + "\n"
+
+
+def breadcrumb_jsonld(menu_label: str, slug: str) -> str:
+    data = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Главная", "item": f"{SITE_URL}/"},
+            {"@type": "ListItem", "position": 2, "name": "Услуги", "item": f"{SITE_URL}/uslugi/"},
+            {"@type": "ListItem", "position": 3, "name": menu_label, "item": canonical_url(f"uslugi/{slug}")},
+        ],
+    }
+    return json.dumps(data, ensure_ascii=False)
+
+
 def render_page(
     *,
     depth: int,
@@ -1225,6 +1269,9 @@ def render_page(
     title_html: str,
     lead: str,
     content: str,
+    description: str = "",
+    canonical_path: str = "",
+    jsonld: str = "",
     section_id: str = "",
     accent: str = "",
     second_btn: tuple[str, str] | None = None,
@@ -1234,13 +1281,14 @@ def render_page(
     p = rel_prefix(depth)
     portfolio_head, portfolio_tail = render_portfolio_assets(p) if include_stats_cases else ("", "")
     stats_cases = render_stats_cases(p) if include_stats_cases else ""
+    seo = seo_head(title=title, description=description, canonical_path=canonical_path, jsonld=jsonld)
     return f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+{seo}  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{p}styles.css">
