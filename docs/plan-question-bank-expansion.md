@@ -7,14 +7,16 @@
 > Цель этого документа: спроектировать **ветвящийся банк вопросов** с общим ядром и
 > **отдельными наборами вопросов под каждый тип системы** (CRM, ERP, WMS, …), максимально полно.
 
-> ✅ **Базовая реализация выполнена** (config-driven, не БД): после выбора продукта анкета
-> подмешивает его type-specific вопросы (ветвление по `for_type`, поддержка `show_if`), а движок
-> учитывает их в расчёте (часы/риск/сложность). Банк: **79 vertical-вопросов по 12 продуктам**.
-> Файлы: [../calculator/config/verticals.php](../calculator/config/verticals.php),
-> [../calculator/app/Support/QuestionnaireBuilder.php](../calculator/app/Support/QuestionnaireBuilder.php),
-> обработка — в `EstimationEngine::applyVerticalAnswers()`.
-> Не реализовано (фаза 4+): перенос банка в БД и конструктор вопросов в админке, числовые/шкальные
-> инпуты (пока смоделированы бакетами), доп. вертикали из Части VI.
+> ✅ **Реализовано (фазы 1–4):** после выбора продукта анкета подмешивает его type-specific
+> вопросы (ветвление по `for_type`, поддержка `show_if`), движок учитывает их в расчёте
+> (часы/риск/сложность). **Банк перенесён в БД** (`questions` + `question_options`, 88 вопросов /
+> 250 опций) — источник истины БД, читается через `App\Services\QuestionBank` (кеш). **Редактирование
+> вопросов и effect-маппинга — в админке** `/admin/questions` (без кода). Конфиги
+> [../calculator/config/questionnaire.php](../calculator/config/questionnaire.php) и
+> [../calculator/config/verticals.php](../calculator/config/verticals.php) остаются первичным
+> сидом (`QuestionBankSeeder`).
+> Не реализовано (фаза 5+): числовые/шкальные инпуты (пока бакетами), доп. вертикали из Части VI,
+> версионирование банка и локализация.
 
 ---
 
