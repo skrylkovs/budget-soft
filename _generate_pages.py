@@ -53,7 +53,8 @@ STATS_CASES_PARTIAL = (ROOT / "partials" / "stats-cases.html").read_text(encodin
 # чтобы синхронизировать его на index.html (там stats и cases — в разных местах).
 _CASES_MARKER = '    <section class="cases"'
 _STATS_PART, _CASES_PART_BODY = STATS_CASES_PARTIAL.split(_CASES_MARKER, 1)
-CASES_PARTIAL = _CASES_MARKER + _CASES_PART_BODY
+# rstrip: без хвостового \n, иначе при regex-замене на index.html копится пустая строка.
+CASES_PARTIAL = (_CASES_MARKER + _CASES_PART_BODY).rstrip("\n")
 
 BTN_ARROW_SM = (
     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
