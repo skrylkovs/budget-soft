@@ -1448,65 +1448,25 @@ def update_index_html() -> None:
         flags=re.DOTALL,
     )
 
-    footer_links = "".join(
-        f'          <li><a href="uslugi/{p.slug}/">{p.menu_label}</a></li>\n'
-        for p in SERVICE_PAGES
-    )
-    footer_block = f"""      <div class="footer__main">
-        <div class="footer__col footer__col--brand">
-          <a href="./" class="logo logo--footer">
-            <img src="logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
-          </a>
-          <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
-          <ul class="footer__contacts">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-              <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">Telegram: @skrylkovs</a>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M2 6l10 7L22 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"></circle></svg>
-              <span>Москва, ул. Бауманская, 11, стр. 8, оф. 402</span>
-            </li>
-          </ul>
-        </div>
-        <div class="footer__nav">
-          <div class="footer__col">
-            <h4 class="footer__title">Компания</h4>
-            <ul class="footer__links">
-              <li><a href="portfolio/">Портфолио</a></li>
-              <li><a href="stoimost/">Стоимость</a></li>
-              <li><a href="o-nas/">О нас</a></li>
-              <li><a href="kontakty/">Контакты</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4 class="footer__title">Ресурсы</h4>
-            <ul class="footer__links">
-              <li><a href="etapy/">Этапы реализации</a></li>
-              <li><a href="sroki/">Сроки</a></li>
-              <li><a href="garantii/">Гарантии</a></li>
-              <li><a href="blog/" class="footer__links-soon">Блог <span class="badge-soon">скоро</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <section class="footer__services" aria-labelledby="footerServicesTitle">
-        <h4 class="footer__title" id="footerServicesTitle">Услуги</h4>
-        <ul class="footer__links footer__links--services">
-{footer_links}          <li class="footer__links-all-item"><a href="uslugi/" class="footer__links-all">Все услуги →</a></li>
-        </ul>
-      </section>"""
+    # Блоки cta / cases / footer на главной берём из тех же render-функций,
+    # что и внутренние страницы — единый источник правды, без расхождений.
     html = re.sub(
-        r'<div class="footer__grid">.*?</div>\s*<div class="footer__bottom">',
-        footer_block + '\n\n      <div class="footer__bottom">',
+        r'<section class="cta cta--simple".*?</section>',
+        lambda _m: render_cta(prefix),
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    html = re.sub(
+        r'<section class="cases" id="portfolio".*?</section>',
+        lambda _m: render_cases(prefix),
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    html = re.sub(
+        r'<footer class="footer".*?</footer>',
+        lambda _m: render_footer(prefix),
         html,
         count=1,
         flags=re.DOTALL,
