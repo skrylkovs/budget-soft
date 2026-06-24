@@ -1106,9 +1106,11 @@ def render_cta(prefix: str) -> str:
     return f"""    <section class="cta cta--simple" id="cta" data-fab-theme="light">
       <div class="container">
         <div class="cta__card cta__inner cta__inner--centered">
-          <div class="cta__text">
-            <h2 class="section-title section-title--light">Следующий прорыв на рынке может быть <span class="text-gradient">вашим</span>. Давайте воплотим это в жизнь.</h2>
-            <button type="button" class="btn btn--primary btn--lg cta__submit js-open-contact">Связаться с нами</button>
+          <div class="cta__bg" aria-hidden="true"></div>
+          <div class="cta__text reveal">
+            <h2 class="section-title section-title--light">Следующий успех на рынке может стать <span class="text-gradient">вашим</span>.</h2>
+            <button type="button" class="btn btn--primary btn--lg cta__submit js-open-contact">Связаться с нами {BTN_ARROW_SM}</button>
+            <h2 class="section-title section-title--light">Давайте сделаем это.</h2>
           </div>
         </div>
       </div>
