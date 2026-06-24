@@ -1085,6 +1085,11 @@ def render_stats_cases(prefix: str) -> str:
     return STATS_CASES_PARTIAL.replace("{{ROOT}}", prefix)
 
 
+def render_cases(prefix: str) -> str:
+    """Только секция cases (портфолио) — для синхронизации блока на index.html."""
+    return CASES_PARTIAL.replace("{{ROOT}}", prefix)
+
+
 def render_portfolio_assets(prefix: str) -> tuple[str, str]:
     head = '  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">\n'
     tail = f"""  <script type="importmap">
