@@ -49,6 +49,11 @@ def inject_metrika(html_doc: str) -> str:
     return html_doc.replace("</head>", YANDEX_METRIKA + "</head>", 1)
 
 STATS_CASES_PARTIAL = (ROOT / "partials" / "stats-cases.html").read_text(encoding="utf-8")
+# Разбиваем партиал на секцию stats и секцию cases: cases-блок нужен отдельно,
+# чтобы синхронизировать его на index.html (там stats и cases — в разных местах).
+_CASES_MARKER = '    <section class="cases"'
+_STATS_PART, _CASES_PART_BODY = STATS_CASES_PARTIAL.split(_CASES_MARKER, 1)
+CASES_PARTIAL = _CASES_MARKER + _CASES_PART_BODY
 
 BTN_ARROW_SM = (
     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
