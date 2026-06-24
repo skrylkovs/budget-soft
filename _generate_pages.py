@@ -1451,21 +1451,21 @@ def update_index_html() -> None:
     # Блоки cta / cases / footer на главной берём из тех же render-функций,
     # что и внутренние страницы — единый источник правды, без расхождений.
     html = re.sub(
-        r'<section class="cta cta--simple".*?</section>',
+        r'[ \t]*<section class="cta cta--simple".*?</section>',
         lambda _m: render_cta(prefix),
         html,
         count=1,
         flags=re.DOTALL,
     )
     html = re.sub(
-        r'<section class="cases" id="portfolio".*?</section>',
+        r'[ \t]*<section class="cases" id="portfolio".*?</section>',
         lambda _m: render_cases(prefix),
         html,
         count=1,
         flags=re.DOTALL,
     )
     html = re.sub(
-        r'<footer class="footer".*?</footer>',
+        r'[ \t]*<footer class="footer".*?</footer>',
         lambda _m: render_footer(prefix),
         html,
         count=1,
