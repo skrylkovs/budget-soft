@@ -1118,54 +1118,72 @@ def render_cta(prefix: str) -> str:
 
 
 def render_footer(prefix: str) -> str:
+    home = prefix or "./"
     footer_service_links = "".join(
-        f"<li><a href=\"{page_href(prefix, f'uslugi/{slug}')}\">{label}</a></li>"
+        f"\n            <li><a href=\"{page_href(prefix, f'uslugi/{slug}')}\">{label}</a></li>"
         for slug, label, _, _ in SERVICES
     )
     return f"""  <footer class="footer" data-fab-theme="dark">
     <div class="container">
-      <div class="footer__main">
+      <div class="footer__top">
         <div class="footer__col footer__col--brand">
-          <a href="{prefix}" class="logo logo--footer">
+          <a href="{home}" class="logo logo--footer">
             <img src="{prefix}logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
           </a>
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <ul class="footer__contacts">
-            <li><a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">Telegram: @skrylkovs</a></li>
-            <li><a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a></li>
-            <li><span>{OFFICE_ADDRESS}</span></li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+              <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">Telegram: @skrylkovs</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M2 6l10 7L22 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"></circle></svg>
+              <span>{OFFICE_ADDRESS}</span>
+            </li>
           </ul>
         </div>
-        <div class="footer__nav">
-          <div class="footer__col">
-            <h4 class="footer__title">Компания</h4>
-            <ul class="footer__links">
-              <li><a href="{page_href(prefix, 'portfolio')}">Портфолио</a></li>
-              <li><a href="{page_href(prefix, 'stoimost')}">Стоимость</a></li>
-              <li><a href="{page_href(prefix, 'o-nas')}">О нас</a></li>
-              <li><a href="{page_href(prefix, 'kontakty')}">Контакты</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4 class="footer__title">Ресурсы</h4>
-            <ul class="footer__links">
-              <li><a href="{page_href(prefix, 'etapy')}">Этапы реализации</a></li>
-              <li><a href="{page_href(prefix, 'sroki')}">Сроки</a></li>
-              <li><a href="{page_href(prefix, 'garantii')}">Гарантии</a></li>
-              <li><a href="{page_href(prefix, 'blog')}" class="footer__links-soon">Блог <span class="badge-soon">скоро</span></a></li>
-            </ul>
-          </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Компания</h4>
+          <ul class="footer__links">
+            <li><a href="{page_href(prefix, 'portfolio')}">Портфолио</a></li>
+            <li><a href="{page_href(prefix, 'stoimost')}">Стоимость</a></li>
+            <li><a href="{page_href(prefix, 'o-nas')}">О нас</a></li>
+            <li><a href="{page_href(prefix, 'kontakty')}">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Ресурсы</h4>
+          <ul class="footer__links">
+            <li><a href="{page_href(prefix, 'etapy')}">Этапы реализации</a></li>
+            <li><a href="{page_href(prefix, 'sroki')}">Сроки</a></li>
+            <li><a href="{page_href(prefix, 'garantii')}">Гарантии</a></li>
+            <li><a href="{page_href(prefix, 'blog')}" class="footer__links-soon">Блог <span class="badge-soon">скоро</span></a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__col--services" aria-labelledby="footerServicesTitle">
+          <h4 class="footer__title" id="footerServicesTitle">Услуги</h4>
+          <ul class="footer__links footer__links--services">{footer_service_links}
+            <li class="footer__links-all-item"><a href="{page_href(prefix, 'uslugi')}" class="footer__links-all">Все услуги →</a></li>
+          </ul>
         </div>
       </div>
-      <section class="footer__services" aria-labelledby="footerServicesTitle">
-        <h4 class="footer__title" id="footerServicesTitle">Услуги</h4>
-        <ul class="footer__links footer__links--services">
-          {footer_service_links}
-          <li class="footer__links-all-item"><a href="{page_href(prefix, 'uslugi')}" class="footer__links-all">Все услуги →</a></li>
-        </ul>
-      </section>
       <div class="footer__bottom">
+        <div class="footer__social" aria-label="Социальные сети">
+          <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener" class="footer__social-link" aria-label="Telegram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+          </a>
+          <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8.2 9.8c.3 1.1 1.4 2.6 3.1 3.4 1 .5 1.9.7 2.2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+          </a>
+        </div>
         <div class="footer__copy">© 2026 BUDGET SOFT</div>
         <div class="footer__legal"><a href="{page_href(prefix, 'privacy')}">Политика конфиденциальности</a></div>
       </div>
