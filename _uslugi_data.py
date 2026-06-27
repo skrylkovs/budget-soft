@@ -238,8 +238,13 @@ def parse_texts_uslugi(path: Path = TEXTS_USLUGI_MD) -> list[ServicePage]:
         body = re.sub(r"^---\s*$", "", body, flags=re.MULTILINE).strip()
 
         body_html = md_body_to_html(body)
+        # Первый абзац служит вводным lead'ом под заголовком (section-lead).
+        # Удаляем его из body_html, иначе он продублируется в начале page-prose.
         lead_m = re.search(r"<p>(.+?)</p>", body_html)
-        first_p = re.sub(r"<[^>]+>", "", lead_m.group(1)) if lead_m else ""
+        lead_html = lead_m.group(1).strip() if lead_m else ""
+        first_p = re.sub(r"<[^>]+>", "", lead_html)
+        if lead_m:
+            body_html = (body_html[: lead_m.start()] + body_html[lead_m.end() :]).lstrip("\n")
 
         pages.append(
             ServicePage(
@@ -247,7 +252,7 @@ def parse_texts_uslugi(path: Path = TEXTS_USLUGI_MD) -> list[ServicePage]:
                 menu_label=menu_label,
                 meta_title=title_m.group(1).strip(),
                 h1=h1_m.group(1).strip(),
-                lead=first_p[:280] + ("…" if len(first_p) > 280 else ""),
+                lead=lead_html,
                 body_html=body_html,
                 description=first_p[:157].rstrip() + ("…" if len(first_p) > 157 else ""),
             )
