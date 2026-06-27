@@ -19,7 +19,7 @@ from _uslugi_data import (
 ROOT = Path(__file__).parent
 
 # Базовый абсолютный URL сайта (для canonical / Open Graph / sitemap).
-SITE_URL = "https://budget-soft.ru"
+SITE_URL = "https://www.budget-soft.ru"
 OG_IMAGE = f"{SITE_URL}/aurora-team.png"
 CONTACT_TELEGRAM = "https://t.me/skrylkovs"
 CONTACT_WHATSAPP = "https://wa.me/66634340262"
@@ -1828,7 +1828,7 @@ def main() -> None:
 
 
 def write_cname() -> None:
-    (ROOT / "CNAME").write_text("budget-soft.ru\n", encoding="utf-8")
+    (ROOT / "CNAME").write_text("www.budget-soft.ru\n", encoding="utf-8")
     print("  CNAME")
 
 
