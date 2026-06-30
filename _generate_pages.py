@@ -1069,13 +1069,15 @@ def render_revolution(
 ) -> str:
     id_attr = f' id="{section_id}"' if section_id else ""
     accent_html = f'\n          <p class="section-accent">{accent}</p>' if accent else ""
+    # На сервисных страницах вводный абзац перенесён в page-prose--service,
+    # поэтому section-lead в шапке не выводим, если lead пуст.
+    lead_html = f'\n          <p class="section-lead">{lead}</p>' if lead else ""
     return f"""    <section class="revolution"{id_attr} data-fab-theme="light">
       <div class="container">
         <div class="section-head reveal">
           <span class="section-rule"></span>
           <span class="eyebrow">{eyebrow}</span>
-          <h2 class="section-title">{title_html}</h2>
-          <p class="section-lead">{lead}</p>{accent_html}
+          <h2 class="section-title">{title_html}</h2>{lead_html}{accent_html}
         </div>
         {content}
       </div>
@@ -1389,6 +1391,7 @@ def content_prose(
     screen_key: str | None = None,
     pricing_key: str | None = None,
     middle: str = "",
+    lead: str = "",
 ) -> str:
     body = body.replace("{home}", prefix.rstrip("/") or ".")
     screen = ""
@@ -1398,9 +1401,13 @@ def content_prose(
         pricing = render_service_pricing_table(
             SERVICE_PRICING[pricing_key], sidebar=True
         )
+        # Вводный абзац (lead) идёт первым внутри page-prose--service.
+        lead_block = (
+            f'<p class="page-prose__heading--lead">{lead}</p>' if lead else ""
+        )
         return f"""<div class="page-layout page-layout--with-sidebar reveal">
   <div class="page-layout__main">
-    <div class="page-prose page-prose--service">{body}</div>
+    <div class="page-prose page-prose--service">{lead_block}{body}</div>
   </div>
   <aside class="page-layout__sidebar" aria-label="Условия и стоимость">
     {pricing}
@@ -1795,14 +1802,16 @@ def main() -> None:
     for page in SERVICE_PAGES:
         prefix = rel_prefix(2)
         middle = render_ai_directions_block(prefix, copy_key=page.slug)
-        content = content_prose(page.body_html, prefix, pricing_key=page.slug, middle=middle)
+        content = content_prose(
+            page.body_html, prefix, pricing_key=page.slug, middle=middle, lead=page.lead
+        )
         html = render_page(
             depth=2,
             title=f"{page.meta_title} — BUDGET SOFT",
             active=f"uslugi/{page.slug}",
             eyebrow=page.menu_label,
             title_html=page.h1,
-            lead=page.lead,
+            lead="",  # вводный абзац перенесён в page-prose--service
             content=content,
             description=page.description,
             canonical_path=f"uslugi/{page.slug}",
