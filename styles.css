@@ -749,6 +749,8 @@ button.nav__link {
 }
 
 .hero__nowrap {
+    display: inline-block;
+    margin-top: 15px;
     white-space: nowrap;
 }
 
