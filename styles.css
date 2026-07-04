@@ -1,5 +1,27 @@
 /* ================================================================
 ================================================================ */
+/* ---------- Self-hosted Inter (variable, cyrillic + latin) ----------
+   Заменяет внешний Google Fonts: убирает рендер-блокирующие запросы к
+   fonts.googleapis.com / fonts.gstatic.com. Файлы — переменные (вес 100–900). */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('fonts/inter-cyrillic-wght-normal.woff2') format('woff2');
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('fonts/inter-latin-wght-normal.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ---------- Tokens (10clouds-inspired violet palette) ---------- */
 :root {
     --bg: #0a0a14;
@@ -1775,6 +1797,12 @@ button.nav__link {
     opacity: 1;
 }
 
+/* Вариант .compare для сравнительного блока внутри текстовых полос
+   сервисных страниц (например «ERP на заказ или 1С:ERP») */
+.page-prose .compare--service {
+    margin: 2.5em 0 0;
+}
+
 /* ================================================================
 ================================================================ */
 .footer {
@@ -2038,6 +2066,13 @@ Responsive
     .compare__cell--ai::before {
         content: "Наше настоящее";
         color: var(--primary);
+    }
+
+    /* На сервисных страницах подписи колонок берём из названий подходов,
+       а не из захардкоженных «Прошлое / Наше настоящее» (цвет — из базовых правил) */
+    .compare--service .compare__cell--legacy::before,
+    .compare--service .compare__cell--ai::before {
+        content: attr(data-label);
     }
 
     .footer {
@@ -4062,6 +4097,50 @@ prefers-reduced-motion
 
 .page-breadcrumb__sep {
     opacity: 0.4;
+}
+
+/* Хлебные крошки в hero — «пилюли» на тёмном фоне (референс: haulmont.ru):
+   белые пилюли-ссылки с тёмным текстом, тонированная пилюля текущей страницы,
+   разделитель-стрелка «→». */
+.page-breadcrumb--hero {
+    margin: 0 0 30px;
+    gap: 12px;
+    font-size: 15px;
+}
+
+.page-breadcrumb--hero a,
+.page-breadcrumb--hero [aria-current] {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    border-radius: 999px;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.page-breadcrumb--hero a {
+    background: #fff;
+    color: #2b3649;
+    font-weight: 500;
+}
+
+.page-breadcrumb--hero a:hover {
+    background: #efeaff;
+    color: var(--primary);
+}
+
+.page-breadcrumb--hero [aria-current] {
+    background: rgba(129, 99, 255, 0.22);
+    border: 1px solid rgba(129, 99, 255, 0.38);
+    color: #d8c9ff;
+    font-weight: 600;
+}
+
+.page-breadcrumb--hero .page-breadcrumb__sep {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 16px;
+    opacity: 1;
 }
 
 .page-hero__eyebrow {

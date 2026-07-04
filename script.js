@@ -238,38 +238,83 @@
     window.addEventListener('load', run);
   })();
 
-  /* ---------- Блок 9b. Cases carousel (Swiper) ---------- */
-  if (window.Swiper && document.getElementById('caseSwiper')) {
-    const progress = document.getElementById('caseProgress');
-    new Swiper('#caseSwiper', {
-      slidesPerView: 1,
-      spaceBetween: 25,
-      grabCursor: true,
-      navigation: { prevEl: '#casePrev', nextEl: '#caseNext' },
-      breakpoints: {
-        640: { slidesPerView: 2, spaceBetween: 25 },
-        1024: { slidesPerView: 3, spaceBetween: 30 },
-      },
-      on: {
-        progress(sw, p) { if (progress) progress.style.width = Math.max(8, p * 100) + '%'; },
-        init(sw) { if (progress) progress.style.width = Math.max(8, (1 / sw.slides.length) * 100) + '%'; },
-      },
-    });
-  }
+  /* ---------- Блоки 9b/11b. Swiper-карусели (ленивая загрузка) ----------
+     Swiper (CSS+JS) грузится с CDN только когда карусель приближается к
+     вьюпорту — не тянем бандл на страницах/экранах, где он не виден. */
+  (function lazySwiper() {
+    const caseEl = document.getElementById('caseSwiper');
+    const testimonialsEl = document.getElementById('testimonialsSwiper');
+    if (!caseEl && !testimonialsEl) return;
 
-  /* ---------- Блок 11b. Testimonials (Swiper coverflow) ---------- */
-  if (window.Swiper && document.getElementById('testimonialsSwiper')) {
-    new Swiper('#testimonialsSwiper', {
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 1.15,
-      loop: false,
-      coverflowEffect: { rotate: 0, stretch: 0, depth: 120, modifier: 2, slideShadows: false },
-      pagination: { el: '#testimonialsPagination', clickable: true },
-      breakpoints: { 768: { slidesPerView: 1.8 }, 1100: { slidesPerView: 2.4 } },
-    });
-  }
+    const SWIPER_CSS = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
+    const SWIPER_JS = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+    let loading = null;
+
+    const loadSwiper = () => {
+      if (window.Swiper) return Promise.resolve();
+      if (loading) return loading;
+      loading = new Promise((resolve, reject) => {
+        if (!document.querySelector('link[data-swiper]')) {
+          const css = document.createElement('link');
+          css.rel = 'stylesheet';
+          css.href = SWIPER_CSS;
+          css.setAttribute('data-swiper', '');
+          document.head.appendChild(css);
+        }
+        const s = document.createElement('script');
+        s.src = SWIPER_JS;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.body.appendChild(s);
+      });
+      return loading;
+    };
+
+    const initCases = () => {
+      const progress = document.getElementById('caseProgress');
+      new Swiper('#caseSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 25,
+        grabCursor: true,
+        navigation: { prevEl: '#casePrev', nextEl: '#caseNext' },
+        breakpoints: {
+          640: { slidesPerView: 2, spaceBetween: 25 },
+          1024: { slidesPerView: 3, spaceBetween: 30 },
+        },
+        on: {
+          progress(sw, p) { if (progress) progress.style.width = Math.max(8, p * 100) + '%'; },
+          init(sw) { if (progress) progress.style.width = Math.max(8, (1 / sw.slides.length) * 100) + '%'; },
+        },
+      });
+    };
+
+    const initTestimonials = () => {
+      new Swiper('#testimonialsSwiper', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 1.15,
+        loop: false,
+        coverflowEffect: { rotate: 0, stretch: 0, depth: 120, modifier: 2, slideShadows: false },
+        pagination: { el: '#testimonialsPagination', clickable: true },
+        breakpoints: { 768: { slidesPerView: 1.8 }, 1100: { slidesPerView: 2.4 } },
+      });
+    };
+
+    const observe = (el, init) => {
+      if (!el) return;
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          loadSwiper().then(init).catch(() => {});
+        }
+      }, { rootMargin: '300px' });
+      io.observe(el);
+    };
+
+    observe(caseEl, initCases);
+    observe(testimonialsEl, initTestimonials);
+  })();
 
   /* ---------- Блок 12. CTA spotlight + form ---------- */
   (function ctaSection() {

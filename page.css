@@ -113,6 +113,44 @@
     margin-top: 0.5em;
 }
 
+/* Список с иконками (маркер {icon: …} в MD, напр. модули ERP) */
+.page-prose--service .page-prose__list--icons {
+    padding-left: 0;
+    list-style: none;
+}
+
+.page-prose--service .page-prose__list--icons li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.page-prose--service .page-prose__list--icons li + li {
+    margin-top: 0.85em;
+}
+
+.page-prose__list-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    color: var(--primary);
+    background: var(--primary-soft);
+    border: 1px solid rgba(111, 76, 255, 0.25);
+}
+
+.page-prose__list-icon svg {
+    width: 21px;
+    height: 21px;
+}
+
+.page-prose__list-body {
+    min-width: 0;
+}
+
 .page-prose--service .page-prose__quote {
     margin: 1.25em 0 0;
     padding: 1rem 1.25rem;
@@ -137,6 +175,104 @@
     border: 1px solid rgba(10, 10, 18, 0.08);
 }
 
+/* Сервисная проза секциями: каждый заголовок услуги — отдельная
+   горизонтальная карточка на светлом фоне секции (визуально как
+   bento-showcase: белый фон, скруглённые углы, мягкая тень). */
+.page-prose-bands {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Ряд из двух секций-карточек: «2 блока в ширину» на широком экране,
+   на мобильных — в одну колонку. Карточки тянутся до равной высоты. */
+.page-prose-bands__row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+}
+
+/* Карточки парных рядов образуют единый блок (как bento-showcase__grid):
+   внутренние стыки скруглены на 8px, внешние углы всей группы — на 32px. */
+.page-inner .page-prose-bands__row .page-prose--band {
+    border-radius: 8px;
+}
+
+.page-inner .page-prose-bands__row--first > .page-prose--band:first-child {
+    border-top-left-radius: 32px;
+}
+
+.page-inner .page-prose-bands__row--first > .page-prose--band:last-child {
+    border-top-right-radius: 32px;
+}
+
+.page-inner .page-prose-bands__row--last > .page-prose--band:first-child {
+    border-bottom-left-radius: 32px;
+}
+
+.page-inner .page-prose-bands__row--last > .page-prose--band:last-child {
+    border-bottom-right-radius: 32px;
+}
+
+/* Внутренние отступы всех блоков-карточек внутри контейнера секций. */
+.page-inner .page-prose-bands .page-prose--band {
+    padding: 3rem 2rem 25px 2rem;
+}
+
+.page-inner .page-prose--band {
+    border: 1px solid rgba(10, 10, 18, 0.05);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 3px rgba(10, 10, 18, 0.08);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.page-inner .page-prose--band:hover {
+    box-shadow: 0 12px 32px rgba(10, 10, 18, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Полоса-«обёртка» сравнительного блока .compare: без фона, рамки и тени —
+   блок стоит на странице самостоятельно, как «Революция 2026» на главной. */
+.page-inner .page-prose--band--bare,
+.page-inner .page-prose-bands .page-prose--band--bare {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.page-inner .page-prose--band--bare:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+/* Вводная секция-«прокладка» (внутри только .section-head, контент идёт
+   следующими карточками): нижний отступ шапки здесь не нужен. */
+.page-inner .page-prose--band--bare > .section-head:last-child {
+    margin-bottom: 0;
+}
+
+/* Первая полоса сразу после H1 страницы (например .erp-map): без своего
+   section-head — верхний паддинг карточки здесь не нужен, иначе после
+   заголовка страницы образуется двойной отступ. */
+.page-inner .page-prose-bands > .page-prose--band--bare:first-child {
+    padding-top: 0;
+}
+
+/* Заголовок — первый элемент карточки: убираем верхний отступ/линию,
+   которые нужны были только внутри единого блока. */
+.page-prose--band > .page-prose__heading:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.page-prose--band > .page-prose__heading--lead:first-child {
+    padding-top: 0;
+}
+
 .page-spec {
     border: 1px solid rgba(10, 10, 18, 0.12);
     border-left: 3px solid var(--primary);
@@ -151,7 +287,7 @@
 .page-spec__label {
     display: block;
     margin-bottom: 8px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -188,7 +324,7 @@
 
 .page-spec__metric dd {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 1.55;
     letter-spacing: -0.01em;
@@ -212,7 +348,7 @@
 
 .page-spec__payment-format {
     margin: 0 0 20px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.35;
@@ -220,20 +356,20 @@
 }
 
 .page-spec__steps {
-    margin: 0;
+    margin: 30px 0px 10px 0px;
     padding: 0;
     list-style: none;
     display: grid;
-    gap: 20px;
+    gap: 25px;
 }
 
 .page-spec__step {
     display: grid;
-    grid-template-columns: 36px minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 18px;
     align-items: center;
-    font-size: 14px;
-    line-height: 1.55;
+    font-size: 15px;
+    line-height: 1.35;
     color: var(--text-dark-muted);
 }
 
@@ -243,7 +379,7 @@
 }
 
 .page-spec__step-num {
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.02em;
@@ -251,12 +387,116 @@
     color: var(--primary);
 }
 
+/* ── Спецификация услуги: Цена / Сроки / Формат оплаты ─────────────────
+   Карточка-бокс с цветной левой полосой (как прежний .page-spec):
+   белый фон, лейблы капсом в акцентном цвете, крупное значение. Колонка
+   «Формат оплаты» выделена лёгкой фиолетовой подложкой — как раньше
+   отдельный блок .page-spec__payment. */
+.page-spec-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 40px;
+    background: #fff;
+    border: 1px solid rgba(10, 10, 18, 0.12);
+    border-left: 3px solid var(--primary);
+}
+
+/* Когда блок вставлен внутрь секций-полос (PRICING_BEFORE_BAND), отступ снизу
+   задаёт flex-gap контейнера — свой margin убираем, чтобы ритм был ровным. */
+.page-prose-bands > .page-spec-cards {
+    margin-bottom: 0;
+}
+
+.page-spec-cards__item {
+    padding: 24px 28px;
+    border-left: 1px solid rgba(10, 10, 18, 0.08);
+}
+
+.page-spec-cards__item:first-child {
+    border-left: none;
+}
+
+.page-spec-cards__item:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+.page-spec-cards__item:last-child {
+    background: rgba(111, 76, 255, 0.04);
+    border-left: 1px solid rgba(111, 76, 255, 0.08);
+    transition-delay: 0.16s;
+}
+
+.page-spec-cards__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.page-spec-cards__icon {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    color: var(--primary);
+}
+
+.page-spec-cards__value {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+@media (max-width: 720px) {
+    .page-spec-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .page-spec-cards__item {
+        padding: 20px 20px 20px 24px;
+        border-left: none;
+        border-top: 1px solid rgba(10, 10, 18, 0.08);
+    }
+
+    .page-spec-cards__item:first-child {
+        border-top: none;
+    }
+
+    .page-spec-cards__item:last-child {
+        border-top: 1px solid rgba(111, 76, 255, 0.08);
+    }
+}
+
+/* Текст услуги на всю ширину контейнера (без правого сайдбара) */
+.page-prose--full {
+    max-width: none;
+}
+
 /* AI: отрасли и направления бизнеса */
 .ai-directions {
     --ai-dir-scale: 1.15;
     margin-top: calc(56px * var(--ai-dir-scale));
-    padding-top: calc(48px * var(--ai-dir-scale));
-    border-top: 1px solid rgba(111, 76, 255, 0.1);
+    /* Full-bleed: блок выходит за пределы .container на всю ширину страницы,
+       содержимое при этом центрируется в колонке шириной ~1400px */
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: calc(48px * var(--ai-dir-scale)) max(calc(48px * var(--ai-dir-scale)), calc(50vw - 700px));
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0;
+    background:
+        radial-gradient(72% 60% at 88% -5%, rgba(177, 75, 255, 0.22), transparent 60%),
+        radial-gradient(60% 65% at -5% 105%, rgba(45, 212, 191, 0.12), transparent 62%),
+        linear-gradient(160deg, #13132f 0%, #0a0a14 62%);
+    color: var(--text);
+    overflow: hidden;
 }
 
 .ai-directions__layout {
@@ -287,12 +527,12 @@
     font-weight: 600;
     letter-spacing: -0.01em;
     text-transform: none;
-    color: var(--primary);
+    color: #a78bff;
 }
 
 .ai-directions__title {
     margin: 0 0 calc(18px * var(--ai-dir-scale));
-    color: var(--text-dark);
+    color: var(--text);
 }
 
 .ai-directions__title-main {
@@ -301,7 +541,7 @@
     font-weight: 600;
     letter-spacing: -0.04em;
     line-height: 1.15;
-    color: var(--text-dark);
+    color: var(--text);
 }
 
 .ai-directions__title-main .text-gradient {
@@ -318,7 +558,7 @@
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.4;
-    color: var(--text-dark-muted);
+    color: var(--text-muted);
 }
 
 .ai-directions__lead {
@@ -327,7 +567,7 @@
     font-size: clamp(calc(15px * var(--ai-dir-scale)), calc(1.35vw * var(--ai-dir-scale)), calc(17px * var(--ai-dir-scale)));
     font-weight: 400;
     line-height: 1.7;
-    color: var(--text-dark-muted);
+    color: var(--text-muted);
 }
 
 .ai-directions__meta {
@@ -336,7 +576,8 @@
     gap: calc(4px * var(--ai-dir-scale));
     margin: calc(32px * var(--ai-dir-scale)) 0 0;
     padding-top: calc(24px * var(--ai-dir-scale));
-    border-top: 1px solid rgba(111, 76, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
 }
 
 .ai-directions__count {
@@ -362,7 +603,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: clamp(calc(24px * var(--ai-dir-scale)), calc(3vw * var(--ai-dir-scale)), calc(48px * var(--ai-dir-scale)));
-    row-gap: calc(2px * var(--ai-dir-scale));
+    row-gap: calc(7px * var(--ai-dir-scale));
     margin: 0;
     padding: 0;
     list-style: none;
@@ -374,12 +615,12 @@
     gap: calc(12px * var(--ai-dir-scale));
     margin: 0;
     padding: calc(11px * var(--ai-dir-scale)) 0;
-    border-bottom: 1px solid rgba(10, 10, 18, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: border-color 0.2s ease;
 }
 
 .ai-direction:hover {
-    border-bottom-color: rgba(10, 10, 18, 0.12);
+    border-bottom-color: rgba(255, 255, 255, 0.18);
 }
 
 .ai-direction__icon {
@@ -410,12 +651,12 @@
     font-weight: 500;
     line-height: 1.45;
     letter-spacing: -0.012em;
-    color: rgba(10, 10, 18, 0.76);
+    color: rgba(255, 255, 255, 0.82);
     transition: color 0.2s ease;
 }
 
 .ai-direction:hover .ai-direction__label {
-    color: var(--text-dark);
+    color: #fff;
 }
 
 @media (max-width: 1024px) {
@@ -438,7 +679,7 @@
 
 @media (max-width: 640px) {
     .ai-directions {
-        padding-top: calc(40px * var(--ai-dir-scale));
+        padding: calc(28px * var(--ai-dir-scale));
     }
 
     .ai-directions__list {
@@ -494,6 +735,22 @@
     .page-inner .page-prose--service {
         padding: calc(24px * 0.7) 22px;
     }
+}
+
+@media (max-width: 720px) {
+    .page-prose-bands__row {
+        grid-template-columns: 1fr;
+    }
+
+    /* В одну колонку карточки стоят стопкой — возвращаем ровное скругление,
+       чтобы не оставались «срезанные» углы от раскладки в две колонки. */
+    .page-inner .page-prose-bands__row--first > .page-prose--band:first-child,
+    .page-inner .page-prose-bands__row--first > .page-prose--band:last-child,
+    .page-inner .page-prose-bands__row--last > .page-prose--band:first-child,
+    .page-inner .page-prose-bands__row--last > .page-prose--band:last-child {
+        border-radius: 8px;
+    }
+
 }
 
 @media (max-width: 900px) {
@@ -1528,6 +1785,200 @@
     }
 }
 
+/* ================================================================
+   FAQ — аккордеон на нативном <details>/<summary> (без JS):
+   серифный вопрос слева, chevron справа, тонкие разделители.
+   Ответ остаётся в DOM (только свёрнут) — видимый текст совпадает
+   1:1 с FAQPage-разметкой schema.org (требование Google).
+   Взаимоисключающее раскрытие — общий атрибут name у <details>.
+================================================================ */
+#faq {
+    scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.page-faq {
+    max-width: none; /* на всю ширину контейнера */
+    margin: 0;
+    border-top: 1px solid rgba(10, 10, 18, 0.12);
+}
+
+/* Обёртка .reveal — только триггер IntersectionObserver:
+   анимируют исключительно пункты, иначе сдвиг двоится */
+.page-faq.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+.page-faq__item {
+    border-bottom: 1px solid rgba(10, 10, 18, 0.1);
+}
+
+/* Строка вопроса: клик по всей ширине, chevron прижат вправо */
+.page-faq__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(20px, 3vw, 40px);
+    padding: clamp(20px, 2.4vw, 28px) 2px;
+    cursor: pointer;
+    list-style: none; /* убрать нативный треугольник (Firefox) */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.page-faq__summary::-webkit-details-marker {
+    display: none; /* убрать нативный треугольник (WebKit/Blink) */
+}
+
+.page-faq__summary:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.page-faq__q {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", "PT Serif", serif;
+    font-size: clamp(17px, 1.55vw, 21px);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.4;
+    color: var(--text-dark);
+    transition: color 0.25s ease;
+}
+
+.page-faq__summary:hover .page-faq__q,
+.page-faq__item[open] > .page-faq__summary .page-faq__q {
+    color: var(--primary);
+}
+
+.page-faq__icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    color: rgba(10, 10, 18, 0.45);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.25s ease;
+}
+
+.page-faq__summary:hover .page-faq__icon {
+    color: var(--primary);
+}
+
+.page-faq__item[open] > .page-faq__summary .page-faq__icon {
+    transform: rotate(180deg);
+    color: var(--primary);
+}
+
+.page-faq__answer {
+    padding: 0 2px clamp(22px, 2.4vw, 28px);
+}
+
+/* Плавное появление ответа при раскрытии */
+.page-faq__item[open] > .page-faq__answer {
+    animation: pageFaqReveal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pageFaqReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.page-faq__a {
+    margin: 0;
+    max-width: none; /* ответ на всю ширину */
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    color: var(--text-dark-muted);
+}
+
+.page-faq__a a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.page-faq__a a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Каскадное появление пунктов при скролле */
+.page-faq.reveal .page-faq__item {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-faq.reveal.is-visible .page-faq__item {
+    opacity: 1;
+    transform: none;
+}
+
+.page-faq.reveal.is-visible .page-faq__item:nth-child(2) {
+    transition-delay: 0.07s;
+}
+
+.page-faq.reveal.is-visible .page-faq__item:nth-child(3) {
+    transition-delay: 0.14s;
+}
+
+.page-faq.reveal.is-visible .page-faq__item:nth-child(4) {
+    transition-delay: 0.21s;
+}
+
+.page-faq.reveal.is-visible .page-faq__item:nth-child(5) {
+    transition-delay: 0.28s;
+}
+
+.page-faq.reveal.is-visible .page-faq__item:nth-child(6) {
+    transition-delay: 0.35s;
+}
+
+.page-faq.reveal.is-visible .page-faq__item:nth-child(7) {
+    transition-delay: 0.42s;
+}
+
+@media (max-width: 640px) {
+    .page-faq__q {
+        font-size: clamp(16px, 4.4vw, 18px);
+    }
+
+    .page-faq__a {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-faq__item,
+    .page-faq__icon,
+    .page-faq__q,
+    .page-faq.reveal .page-faq__item {
+        transition: none;
+    }
+
+    .page-faq__item[open] > .page-faq__answer {
+        animation: none;
+    }
+
+    .page-faq.reveal .page-faq__item {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* Услуги — каталог (layout как у страниц услуг) */
 .page-inner #services .section-lead {
     max-width: 36rem;
@@ -1694,5 +2145,169 @@
 @media (max-width: 900px) {
     .svc-group__num {
         font-size: 36px;
+    }
+}
+
+/* ================================================================
+   «О решении» на странице ERP (.erp-map).
+   Верхняя панель (.erp-map__about) — карточка с заголовком секции и
+   вводным текстом «что такое ERP». Нижняя панель — чек-лист сигналов
+   01–05. Панели собраны в группу: внутренние стыки 8px, внешние углы
+   var(--radius-xl) — как у page-prose-bands__row. Разметка
+   генерируется в _generate_pages.py (render_erp_about_body).
+   ================================================================ */
+.erp-map {
+    margin-top: 8px;
+}
+
+/* ---------- Единая карточка: что такое ERP + сигналы к внедрению ---------- */
+.erp-map__about {
+    padding: 3rem 2rem 25px 2rem;
+    background: #fff;
+    border: 1px solid rgba(10, 10, 18, 0.08);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 1px 3px rgba(10, 10, 18, 0.08);
+}
+
+.erp-map__about-title {
+    margin: 0 0 16px;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+/* .erp-map в селекторе — чтобы перебить .page-prose--service p из этого
+   файла независимо от порядка правил в каскаде. */
+.erp-map .erp-map__about p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(10, 10, 18, 0.78);
+}
+
+/* .erp-map в селекторе — чтобы перебить .page-prose--service h3
+   (display: none для подзаголовков #### в обычной прозе). */
+.erp-map .erp-map__about-subtitle {
+    display: block;
+    margin: 20px 0 16px;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+/* ---------- Сигналы к внедрению: секция внутри той же карточки, отделённая
+   сверху линией — без собственного фона/рамки, чтобы не дублировать
+   .erp-map__about и не выглядеть как карточка в карточке. ---------- */
+.erp-map__signals {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: center;
+    gap: 32px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(10, 10, 18, 0.1);
+}
+
+.erp-map__signals-visual {
+    width: 100%;
+    aspect-ratio: 380 / 330;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
+/* Карточки «Цена / Сроки / Оплата» встроены в нижнюю строку той же панели —
+   без собственного фона/рамки-бокса (иначе получается карточка в карточке),
+   просто третья строка сетки, отделённая тонкой линией сверху. */
+.erp-map__signals > .page-spec-cards {
+    grid-column: 1 / -1;
+    margin: 8px 0 0;
+    padding-top: 24px;
+    background: transparent;
+    border: none;
+    border-top: 1px solid rgba(10, 10, 18, 0.1);
+}
+
+/* .erp-map в селекторе — чтобы перебить .page-prose--service h3
+   (display: none для подзаголовков #### в обычной прозе). */
+.erp-map .erp-map__signals-title {
+    display: block;
+    margin: 0 0 16px;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+.erp-map .erp-map__signals-list {
+    counter-reset: erp-signal;
+    margin: 0;
+    padding-top: 14px;
+    list-style: none;
+}
+
+.erp-map .erp-map__signals-list li {
+    counter-increment: erp-signal;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(10, 10, 18, 0.78);
+}
+
+.erp-map .erp-map__signals-list li:first-child {
+    padding-top: 2px;
+}
+
+.erp-map .erp-map__signals-list li:last-child {
+    padding-bottom: 2px;
+}
+
+.erp-map .erp-map__signals-list li + li {
+    margin-top: 0;
+    border-top: 1px dashed rgba(10, 10, 18, 0.14);
+}
+
+.erp-map .erp-map__signals-list li::before {
+    content: counter(erp-signal, decimal-leading-zero);
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--primary);
+}
+
+/* ---------- Адаптив (брейкпоинты как в остальном файле) ---------- */
+@media (max-width: 900px) {
+    .erp-map__signals {
+        grid-template-columns: 1fr;
+    }
+
+    .erp-map__signals-visual {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 720px) {
+    .erp-map__about {
+        padding: 24px 18px;
+    }
+
+    .erp-map__signals {
+        margin-top: 22px;
+        padding-top: 22px;
     }
 }

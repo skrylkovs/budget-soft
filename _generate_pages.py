@@ -6,6 +6,7 @@ import html
 import json
 import random
 import re
+from datetime import date, datetime
 from pathlib import Path
 
 from _uslugi_data import (
@@ -74,7 +75,7 @@ OFFICE_ADDRESS = random.choice(_OFFICE_ADDRESSES)
 
 SERVICE_PRICING = {
     "razrabotka-erp-sistem": {
-        "price": "От 300 000 руб. (расчитывается индивидуально под масштаб бизнеса)",
+        "price": "От 300 000 руб.",
         "terms": "От 2.5 до 6 месяцев",
         "payment_steps": [
             "30% — Предоплата, аналитика и ТЗ",
@@ -199,6 +200,72 @@ AI_DIRECTIONS_DEFAULT = (
     "для вашего проекта",
     "Внедряем решения с учётом отраслевой специфики — от финтеха и ритейла до промышленности и медицины.",
 )
+
+# Per-slug SEO-переопределения. Заголовок (<title>/H1) берётся из
+# docs/texts-usligi.md, а meta description для отдельных страниц задаём явным
+# цельным предложением — чтобы оно не обрезалось «на полуслове» авто-обрезкой
+# первого абзаца (см. ServicePage.description).
+SEO_DESCRIPTIONS: dict[str, str] = {
+    "razrabotka-erp-sistem": (
+        "Разработка и внедрение ERP-систем на заказ: аудит процессов, "
+        "проектирование архитектуры, прототип и промышленный релиз. "
+        "Бесшовная интеграция с CRM и 1С."
+    ),
+}
+
+# meta keywords — Яндекс всё ещё слабо учитывает тег. Задаём точечно и только
+# под видимый контент страницы (без спама). Пусто = тег не выводится.
+SEO_KEYWORDS: dict[str, str] = {
+    "razrabotka-erp-sistem": (
+        "разработка ERP-систем, внедрение ERP на заказ, кастомная ERP, "
+        "ERP для производственного предприятия, стоимость внедрения ERP, "
+        "интеграция с 1С, внедрение 1С:ERP, автоматизация предприятия"
+    ),
+}
+
+# Блок «Частые вопросы»: виден на странице (question-led H3) и дублируется в
+# FAQPage-разметке. Ответы — простой текст, чтобы видимый контент и schema
+# совпадали 1:1 (требование Google к FAQPage).
+# Порядок пунктов: методология → интеграции → мобильный доступ → оплата.
+SERVICE_FAQ: dict[str, dict] = {
+    "razrabotka-erp-sistem": {
+        "title": "Частые вопросы о разработке ERP-систем",
+        "items": [
+            (
+                "По какой методологии вы разрабатываете ERP-системы?",
+                "Основной подход — гибкие методологии (Agile): систему "
+                "проектируем, разрабатываем и вводим в эксплуатацию поэтапно, "
+                "отдельными модулями. Подготовка занимает меньше времени, а для "
+                "старта проекта не требуется детальное ТЗ на каждую функцию. Если "
+                "объём и требования зафиксированы заранее, работаем по каскадной "
+                "модели (Waterfall).",
+            ),
+            (
+                "С какими системами интегрируется ERP?",
+                "С любым сторонним ПО: CRM, 1С, СЭД, BI-платформами, системами "
+                "риск-менеджмента и решениями для госсектора. Интеграции строим "
+                "через REST/GraphQL API и прямой обмен с корпоративными базами "
+                "данных.",
+            ),
+            (
+                "Можно ли работать с ERP-системой с мобильного устройства?",
+                "Да. Разрабатываем мобильные приложения, которые открывают доступ "
+                "к основной функциональности ERP со смартфона или планшета — под "
+                "iOS, Android и российскую ОС «Аврора». Популярный сценарий — "
+                "приложение для выездных сотрудников, работающих на объектах и у "
+                "заказчиков.",
+            ),
+            (
+                "Как оплачивается разработка ERP-системы?",
+                "Вы выбираете удобную модель оплаты. Fixed Price — фиксированная "
+                "цена за оговорённую функциональность и сроки; подходит, когда "
+                "видение готовой системы есть с самого начала. Time & Material — "
+                "оплата по фактическим трудозатратам; оптимальна, когда на старте "
+                "есть общая идея, а требования уточняются в процессе работы.",
+            ),
+        ],
+    },
+}
 
 SCREENS: dict[str, tuple[str, str]] = {
     "razrabotka-erp-sistem": ("cases/digital-twin.png", "Скриншот цифрового двойника производства"),
@@ -536,18 +603,44 @@ def render_workflow() -> str:
     return f'<ol class="page-workflow page-workflow--layout reveal">{row_html}</ol>'
 
 
-def render_service_pricing_table(pricing: dict, *, sidebar: bool = False) -> str:
+def render_service_pricing_table(
+    pricing: dict, *, sidebar: bool = False, band: bool = False
+) -> str:
+    if band:
+        payment_format = pricing.get("payment_format", "Поэтапный · 30% / 30% / 40%")
+        cards = [
+            (
+                "Цена",
+                pricing["price"],
+                '<path d="M12.59 3H5a2 2 0 00-2 2v7.59a2 2 0 00.59 1.41l7.4 7.4a2 2 0 002.83 0l7.59-7.59a2 2 0 000-2.83L14 3.59A2 2 0 0012.59 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.6"></circle>',
+            ),
+            (
+                "Сроки",
+                pricing["terms"],
+                '<circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"></circle><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>',
+            ),
+            (
+                "Формат оплаты",
+                payment_format,
+                '<rect x="2.5" y="5" width="19" height="14" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M2.5 9.5h19" stroke="currentColor" stroke-width="1.6"></path><path d="M6.5 14.5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>',
+            ),
+        ]
+        cards_html = "".join(
+            f"""<div class="page-spec-cards__item reveal">
+    <p class="page-spec-cards__label"><svg class="page-spec-cards__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">{icon}</svg><span>{label}</span></p>
+    <p class="page-spec-cards__value">{value}</p>
+  </div>"""
+            for label, value, icon in cards
+        )
+        return f'<div class="page-spec-cards">{cards_html}</div>'
+
     if sidebar:
         steps = "".join(
             f'<li class="page-spec__step"><span class="page-spec__step-num">{i:02d}</span>'
-            f"<span>{step}</span></li>"
+            f"<span>{re.sub(r'^\d+%\s*—\s*', '', step)}</span></li>"
             for i, step in enumerate(pricing["payment_steps"], start=1)
         )
         return f"""<div class="page-spec">
-  <div class="page-spec__head">
-    <span class="page-spec__label">Коммерческие условия</span>
-    <h3 class="page-spec__title">Условия проекта</h3>
-  </div>
   <dl class="page-spec__metrics">
     <div class="page-spec__metric">
       <dt>Цена</dt>
@@ -560,7 +653,7 @@ def render_service_pricing_table(pricing: dict, *, sidebar: bool = False) -> str
   </dl>
   <div class="page-spec__payment">
     <p class="page-spec__payment-label">Формат оплаты</p>
-    <p class="page-spec__payment-format">Поэтапный · 30 / 30 / 40</p>
+    <p class="page-spec__payment-format">Поэтапный · 30% / 30% / 40%</p>
     <ol class="page-spec__steps">{steps}</ol>
   </div>
 </div>"""
@@ -770,14 +863,18 @@ def render_ai_directions_block(
     prefix: str,
     *,
     copy_key: str,
+    label_alt: bool = False,
 ) -> str:
     title_main, title_sub, lead = AI_DIRECTIONS_COPY.get(copy_key, AI_DIRECTIONS_DEFAULT)
     items = []
     for slug, label in AI_BUSINESS_DIRECTIONS:
+        # Иконка декоративна (родитель aria-hidden), но осмысленный alt =
+        # название отрасли помогает поисковым краулерам и убирает «пустой alt».
+        alt = f' alt="{html.escape(label, quote=True)}"' if label_alt else ' alt=""'
         items.append(
             f"""<li class="ai-direction">
   <span class="ai-direction__icon" aria-hidden="true">
-    <img src="{prefix}images/ai-directions/{slug}.svg" alt="" width="32" height="32" loading="lazy">
+    <img src="{prefix}images/ai-directions/{slug}.svg"{alt} width="32" height="32" loading="lazy">
   </span>
   <span class="ai-direction__label">{label}</span>
 </li>"""
@@ -1023,30 +1120,37 @@ def render_hero(
     second_btn: tuple[str, str] | None = None,
     *,
     hero_h1: str | None = None,
+    as_h1: bool = True,
+    breadcrumb: str = "",
 ) -> str:
     second = ""
     if second_btn:
         href, label = second_btn
         second = f"""
             <a href="{href}" class="btn btn--outline btn--lg">{label}</a>"""
+    breadcrumb_html = f"\n          {breadcrumb}" if breadcrumb else ""
     # Единый hero-заголовок на всех страницах (hero_h1 намеренно игнорируется
     # для заголовка — текст должен быть одинаковым по всему сайту).
     title_html = (
         'Разрабатываем ПО любой сложности для '
         '<span class="text-gradient">автоматизации бизнеса</span>'
     )
+    # На отдельных страницах H1 переносится в блок .revolution (ближе к
+    # ключевому запросу страницы), а hero-заголовок остаётся визуально прежним,
+    # но становится не-заголовочным тегом, чтобы H1 на странице был один.
+    hero_tag = "h1" if as_h1 else "p"
     return f"""    <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
-        <video class="hero__video" autoplay muted loop playsinline>
+        <video class="hero__video" autoplay muted loop playsinline poster="{prefix}hero-poster.jpg">
           <source src="{prefix}hero-background.webm" type="video/webm">
         </video>
         <div class="hero__overlay"></div>
       </div>
       <div class="container hero__inner">
-        <div class="hero__content reveal">
-          <h1 class="hero__title">
+        <div class="hero__content reveal">{breadcrumb_html}
+          <{hero_tag} class="hero__title">
             {title_html}
-          </h1>
+          </{hero_tag}>
           <div class="hero__actions">
             <button type="button" class="btn btn--primary btn--lg js-open-contact">
               Обсудить проект
@@ -1058,6 +1162,20 @@ def render_hero(
     </section>"""
 
 
+def render_breadcrumb(prefix: str, menu_label: str) -> str:
+    """Видимая навигационная цепочка «Главная → Услуги → {menu_label}» в hero.
+    «Пилюльный» стиль на тёмном фоне (референс — haulmont.ru). JSON-LD
+    BreadcrumbList формируется отдельно (service_jsonld/breadcrumb_jsonld)."""
+    sep = '<span class="page-breadcrumb__sep" aria-hidden="true">→</span>'
+    return (
+        '<nav class="page-breadcrumb page-breadcrumb--hero" aria-label="Хлебные крошки">'
+        f'<a href="{prefix}">Главная</a>{sep}'
+        f'<a href="{prefix}uslugi/">Услуги</a>{sep}'
+        f'<span aria-current="page">{html.escape(menu_label)}</span>'
+        "</nav>"
+    )
+
+
 def render_revolution(
     *,
     eyebrow: str,
@@ -1066,6 +1184,7 @@ def render_revolution(
     content: str,
     section_id: str = "",
     accent: str = "",
+    title_tag: str = "h2",
 ) -> str:
     id_attr = f' id="{section_id}"' if section_id else ""
     accent_html = f'\n          <p class="section-accent">{accent}</p>' if accent else ""
@@ -1077,7 +1196,7 @@ def render_revolution(
         <div class="section-head reveal">
           <span class="section-rule"></span>
           <span class="eyebrow">{eyebrow}</span>
-          <h2 class="section-title">{title_html}</h2>{lead_html}{accent_html}
+          <{title_tag} class="section-title">{title_html}</{title_tag}>{lead_html}{accent_html}
         </div>
         {content}
       </div>
@@ -1094,11 +1213,13 @@ def render_cases(prefix: str) -> str:
 
 
 def render_portfolio_assets(prefix: str) -> tuple[str, str]:
-    head = '  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">\n'
+    # Swiper (CSS+JS) и three.js больше не грузятся безусловно: их подтягивает
+    # ленивый загрузчик в script.js / case3d.js при приближении блока к вьюпорту.
+    # importmap оставляем — по нему резолвится динамический import('three').
+    head = ""
     tail = f"""  <script type="importmap">
   {{ "imports": {{ "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" }} }}
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="{prefix}script.js"></script>
   <script type="module" src="{prefix}case3d.js"></script>
 """
@@ -1111,9 +1232,9 @@ def render_cta(prefix: str) -> str:
         <div class="cta__card cta__inner cta__inner--centered">
           <div class="cta__bg" aria-hidden="true"></div>
           <div class="cta__text reveal">
-            <h2 class="section-title section-title--light">Следующий успех на рынке может стать <span class="text-gradient">вашим</span>.</h2>
+            <p class="section-title section-title--light">Следующий успех на рынке может стать <span class="text-gradient">вашим</span>.</p>
             <button type="button" class="btn btn--primary btn--lg cta__submit js-open-contact">Связаться с нами {BTN_ARROW_SM}</button>
-            <h2 class="section-title section-title--light">Давайте сделаем это.</h2>
+            <p class="section-title section-title--light">Давайте сделаем это.</p>
           </div>
         </div>
       </div>
@@ -1279,13 +1400,17 @@ def canonical_url(path: str) -> str:
     return f"{SITE_URL}/{path}/" if path else f"{SITE_URL}/"
 
 
-def seo_head(*, title: str, description: str, canonical_path: str, jsonld: str = "") -> str:
+def seo_head(*, title: str, description: str, canonical_path: str, jsonld: str = "", keywords: str = "") -> str:
     """Блок <head>: description, canonical, Open Graph, Twitter Card и (опц.) JSON-LD."""
     url = canonical_url(canonical_path)
     desc = html.escape(description or "", quote=True)
     t = html.escape(title or "", quote=True)
     lines = [
         f'  <meta name="description" content="{desc}">',
+    ]
+    if keywords:
+        lines.append(f'  <meta name="keywords" content="{html.escape(keywords, quote=True)}">')
+    lines += [
         f'  <link rel="canonical" href="{url}">',
         '  <meta property="og:type" content="website">',
         '  <meta property="og:site_name" content="BUDGET SOFT">',
@@ -1334,30 +1459,31 @@ def render_page(
     second_btn: tuple[str, str] | None = None,
     include_stats_cases: bool = True,
     hero_h1: str | None = None,
+    h1_in_revolution: bool = False,
+    extra_html: str = "",
+    breadcrumb: str = "",
+    keywords: str = "",
 ) -> str:
     p = rel_prefix(depth)
     portfolio_head, portfolio_tail = render_portfolio_assets(p) if include_stats_cases else ("", "")
     stats_cases = render_stats_cases(p) if include_stats_cases else ""
-    seo = seo_head(title=title, description=description, canonical_path=canonical_path, jsonld=jsonld)
+    seo = seo_head(title=title, description=description, canonical_path=canonical_path, jsonld=jsonld, keywords=keywords)
     return f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
-{seo}  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{p}styles.css">
+{seo}  <link rel="stylesheet" href="{p}styles.css">
   <link rel="stylesheet" href="{p}page.css">
 {portfolio_head}</head>
 <body class="page-body page-inner">
 {render_header(p, active)}
   <main>
-{render_hero(p, second_btn, hero_h1=hero_h1)}
+{render_hero(p, second_btn, hero_h1=hero_h1, as_h1=not h1_in_revolution, breadcrumb=breadcrumb)}
 {render_clients_strip(p)}
-{render_revolution(eyebrow=eyebrow, title_html=title_html, lead=lead, content=content, section_id=section_id, accent=accent)}
-{stats_cases}{render_cta(p)}
+{render_revolution(eyebrow=eyebrow, title_html=title_html, lead=lead, content=content, section_id=section_id, accent=accent, title_tag=("h1" if h1_in_revolution else "h2"))}
+{extra_html}{stats_cases}{render_cta(p)}
   </main>
 {render_footer(p)}
 {render_tail(p)}
@@ -1385,6 +1511,248 @@ def content_stoimost(prefix: str) -> str:
 </div>"""
 
 
+# Пары соседних секций-карточек, которые на широком экране выводятся в две
+# колонки (2 блока в ширину). Ключ — slug услуги, значение — список групп
+# заголовков; секции из одной группы оборачиваются в общий ряд-грид, а на
+# мобильных схлопываются обратно в одну колонку.
+SERVICE_BAND_ROWS: dict[str, list[tuple[str, ...]]] = {
+    "razrabotka-erp-sistem": [
+        (
+            "Этапы комплексного внедрения ERP-систем",
+            "Из каких модулей состоит ERP-система",
+        ),
+        (
+            "Технологии и стек разработки",
+            "Интеграции: 1С, CRM и внешние сервисы",
+        ),
+    ],
+}
+
+
+# Куда поместить блок «Цена/Сроки/Оплата» (.page-spec-cards): по умолчанию он
+# идёт над секциями-полосами. Для перечисленных slug блок вставляется ВНУТРЬ
+# .page-prose-bands непосредственно перед полосой с указанным eyebrow.
+PRICING_BEFORE_BAND: dict[str, str] = {}
+
+# razrabotka-erp-sistem — особый случай: блок «Цена/Сроки/Оплата» встраивается
+# не отдельной полосой, а внутрь .erp-map__signals (см. render_erp_about_body).
+# content_prose кладёт сюда HTML карточек перед вызовом render_service_bands.
+_ERP_SIGNALS_PRICING_HTML = ""
+
+
+# Кастомные рендереры тела секции: ключ — (slug, eyebrow из маркера {section}),
+# значение — функция, получающая HTML сегмента (после _promote_section_head)
+# и возвращающая новую разметку. Текст секции остаётся в MD — рендерер лишь
+# переоформляет уже сгенерированный HTML, извлекая из него абзацы и пункты.
+SECTION_BODY_RENDERERS: dict[tuple[str, str], "callable"] = {}
+
+
+# Заголовок, помеченный в MD маркером {section} (несёт data-eyebrow), + идущий
+# следом вводный абзац оформляются как .section-head (см. _promote_section_head).
+_SECTION_HEAD_RE = re.compile(
+    r'^\s*<h2 class="page-prose__heading" data-eyebrow="(?P<eyebrow>[^"]*)">'
+    r'(?P<title>.*?)</h2>'
+    r'\s*(?:<p>(?P<lead>.*?)</p>)?',
+    re.S,
+)
+
+
+def _gradient_title(title: str) -> str:
+    """Подсвечивает градиентом хвост заголовка (после «—» или два последних
+    слова) — как «Новая математика <span>вашей разработки</span>»."""
+    if "—" in title:
+        head, tail = title.rsplit("—", 1)
+        return f'{head.strip()} — <span class="text-gradient">{tail.strip()}</span>'
+    words = title.split()
+    if len(words) > 2:
+        return (
+            " ".join(words[:-2])
+            + f' <span class="text-gradient">{" ".join(words[-2:])}</span>'
+        )
+    return f'<span class="text-gradient">{title}</span>'
+
+
+def _promote_section_head(seg: str) -> str:
+    """Заголовок с маркером {section} и следующий за ним вводный абзац оформляем
+    как .section-head (эйтбрау + крупный .section-title + центрированный
+    .section-lead), чтобы блок выглядел как самостоятельная секция «Революция
+    2026» на главной."""
+    m = _SECTION_HEAD_RE.match(seg)
+    if not m:
+        return seg
+    eyebrow = m.group("eyebrow").strip()
+    eyebrow_html = f'<span class="eyebrow">{eyebrow}</span>' if eyebrow else ""
+    lead = m.group("lead")
+    lead_html = f'<p class="section-lead">{lead}</p>' if lead else ""
+    section_head = (
+        '<div class="section-head">'
+        '<span class="section-rule"></span>'
+        f'{eyebrow_html}'
+        f'<h2 class="section-title">{_gradient_title(m.group("title"))}</h2>'
+        f'{lead_html}</div>'
+    )
+    return section_head + seg[m.end():]
+
+
+# --- «О решении» на странице ERP: вводная карточка + чек-лист сигналов ---
+
+# Тело секции «О решении»: section-head + вводный абзац + список сигналов.
+_ERP_ABOUT_BODY_RE = re.compile(
+    r'(?P<head><div class="section-head">.*?</div>)\s*'
+    r"<p>(?P<intro>.*?)</p>\s*"
+    r'<ul class="page-prose__list">(?P<items>.*?)</ul>\s*$',
+    re.S,
+)
+
+# Заголовок и лид секции («что такое ERP») переносим из шапки в карточку
+# .erp-map__about — над текстом ставим заголовок, шапка остаётся с eyebrow.
+_ERP_ABOUT_TITLE_RE = re.compile(r'<h2 class="section-title">(?P<title>.*?)</h2>', re.S)
+_ERP_ABOUT_LEAD_RE = re.compile(r'<p class="section-lead">(?P<lead>.*?)</p>', re.S)
+
+# В исходном тексте (docs/texts-usligi.md) вводный абзац заканчивается фразой
+# «Типичные сигналы к внедрению ERP:» — выносим её из абзаца в заголовок
+# чек-листа сигналов.
+_ERP_SIGNALS_HEADING = "Типичные сигналы к внедрению ERP"
+_ERP_SIGNALS_HEADING_SUFFIX_RE = re.compile(
+    r"\s*" + re.escape(_ERP_SIGNALS_HEADING) + r":?\s*$"
+)
+
+# Абзац-«диагностика» переносим из чек-листа сигналов в карточку .erp-map__about
+# — как второй, самостоятельный смысловой блок под отдельным подзаголовком.
+_ERP_ABOUT_SUBTITLE = "Когда ERP-платформа оправдана"
+
+
+def render_erp_about_body(seg: str) -> str:
+    """«О решении» (ERP): заголовок секции и лид («что такое ERP») переносим
+    из шапки в верхнюю карточку .erp-map__about (заголовок над текстом), а под
+    ней — диагностический чек-лист сигналов к внедрению. Тексты берём из уже
+    сгенерированного HTML (источник истины — docs/texts-usligi.md); если
+    структура секции в MD изменится, разметка остаётся прозой."""
+    m = _ERP_ABOUT_BODY_RE.match(seg)
+    if not m:
+        return seg
+    items = re.findall(r"<li>(.*?)</li>", m.group("items"), re.S)
+    if not items:
+        return seg
+
+    head = m.group("head")
+    title_m = _ERP_ABOUT_TITLE_RE.search(head)
+    lead_m = _ERP_ABOUT_LEAD_RE.search(head)
+    if not (title_m and lead_m):
+        return seg
+
+    signals = "".join(f"<li>{item}</li>" for item in items)
+    intro = _ERP_SIGNALS_HEADING_SUFFIX_RE.sub("", m.group("intro"))
+
+    return f"""<div class="erp-map">
+  <div class="erp-map__about">
+    <h2 class="erp-map__about-title">{title_m.group("title")}</h2>
+    <p>{lead_m.group("lead")}</p>
+    <h3 class="erp-map__about-subtitle">{_ERP_ABOUT_SUBTITLE}</h3>
+    <p>{intro}</p>
+    <div class="erp-map__signals">
+      <div class="erp-map__signals-text">
+        <h3 class="erp-map__signals-title">{_ERP_SIGNALS_HEADING}</h3>
+        <ul class="erp-map__signals-list">{signals}</ul>
+      </div>
+      <img class="erp-map__signals-visual" src="../../images/erp-signals.webp" alt="Диагностика сигналов к внедрению ERP: рост показателей, автоматизация и аналитика производства" width="380" height="330" loading="lazy">
+      {_ERP_SIGNALS_PRICING_HTML}
+    </div>
+  </div>
+</div>"""
+
+
+SECTION_BODY_RENDERERS[("razrabotka-erp-sistem", "О решении")] = render_erp_about_body
+
+
+def render_service_bands(
+    inner_html: str,
+    slug: str | None = None,
+    inject_html: str = "",
+    inject_before: str = "",
+) -> str:
+    """Разбивает сервисную прозу на секции-карточки: каждый заголовок услуги
+    (`### ` → h2, а также h4 у импортозамещения) начинает отдельный
+    горизонтальный блок на светлом фоне секции — визуально как bento-showcase.
+    Подзаголовки `#### ` → h3 секцию не делят (они внутри карточки).
+    Соседние секции, перечисленные в SERVICE_BAND_ROWS для данного slug,
+    объединяются в ряд из двух колонок."""
+    parts = re.split(r'(<h[24] class="page-prose__heading"[^>]*>)', inner_html)
+    segments: list[str] = []
+    if parts[0].strip():  # вводный абзац и всё до первого заголовка
+        segments.append(parts[0])
+    for i in range(1, len(parts), 2):  # пары «заголовок + содержимое секции»
+        segments.append(parts[i] + parts[i + 1])
+
+    def band(seg: str) -> str:
+        # Заголовок с маркером {section} (data-eyebrow) выводится как отдельная
+        # секция: центрированный .section-head + полоса без фона-карточки —
+        # то есть блок выглядит как самостоятельная «Революция 2026» на главной.
+        bare = ""
+        eyebrow_m = re.search(r'data-eyebrow="([^"]*)"', seg)
+        if eyebrow_m:
+            seg = _promote_section_head(seg)
+            renderer = SECTION_BODY_RENDERERS.get((slug or "", html.unescape(eyebrow_m.group(1))))
+            if renderer:
+                seg = renderer(seg)
+            bare = " page-prose--band--bare"
+        return (
+            '<div class="page-prose page-prose--service page-prose--full '
+            f'page-prose--band{bare} reveal">{seg}</div>'
+        )
+
+    def heading_of(seg: str) -> str:
+        m = re.search(r'<h[24] class="page-prose__heading"[^>]*>(.*?)</h', seg)
+        return m.group(1).strip() if m else ""
+
+    # Карта «заголовок → номер ряда» для склейки соседних карточек в 2 колонки.
+    row_of: dict[str, int] = {}
+    for r, group in enumerate(SERVICE_BAND_ROWS.get(slug or "", [])):
+        for head in group:
+            row_of[head] = r
+
+    # Собираем элементы: одиночные карточки ("single") и ряды парных секций
+    # ("row"). Ряды нужно потом различать по позиции в непрерывной серии.
+    items: list[tuple[str, list[str]]] = []
+    i = 0
+    while i < len(segments):
+        row = row_of.get(heading_of(segments[i]))
+        if row is None:
+            items.append(("single", [band(segments[i])]))
+            i += 1
+            continue
+        group_bands: list[str] = []
+        while i < len(segments) and row_of.get(heading_of(segments[i])) == row:
+            group_bands.append(band(segments[i]))
+            i += 1
+        items.append(("row", group_bands))
+
+    # Помечаем первый и последний ряд в каждой непрерывной серии рядов, чтобы
+    # скруглить только внешние углы всей группы (как в bento-showcase__grid).
+    out: list[str] = []
+    for idx, (kind, bands) in enumerate(items):
+        if kind == "single":
+            out.append(bands[0])
+            continue
+        prev_is_row = idx > 0 and items[idx - 1][0] == "row"
+        next_is_row = idx + 1 < len(items) and items[idx + 1][0] == "row"
+        classes = "page-prose-bands__row"
+        if not prev_is_row:
+            classes += " page-prose-bands__row--first"
+        if not next_is_row:
+            classes += " page-prose-bands__row--last"
+        out.append(f'<div class="{classes}">{"".join(bands)}</div>')
+
+    # По конфигурации вставляем блок .page-spec-cards прямо перед нужной полосой
+    # (внутри контейнера секций). Если полоса не найдена — оставляем сверху.
+    if inject_html and inject_before:
+        marker = f'<span class="eyebrow">{inject_before}</span>'
+        pos = next((k for k, block in enumerate(out) if marker in block), 0)
+        out.insert(pos, inject_html)
+
+    return f'<div class="page-prose-bands">{"".join(out)}</div>'
+
+
 def content_prose(
     body: str,
     prefix: str,
@@ -1399,20 +1767,31 @@ def content_prose(
         screen = render_screen_card(prefix, *SCREENS[screen_key])
     if pricing_key and pricing_key in SERVICE_PRICING:
         pricing = render_service_pricing_table(
-            SERVICE_PRICING[pricing_key], sidebar=True
+            SERVICE_PRICING[pricing_key], band=True
         )
-        # Вводный абзац (lead) идёт первым внутри page-prose--service.
+        # Три карточки «Цена/Сроки/Оплата» под заголовком, ниже —
+        # текст услуги секциями-карточками: каждый заголовок = отдельный
+        # горизонтальный блок. Вводный абзац (lead) идёт первым.
         lead_block = (
             f'<p class="page-prose__heading--lead">{lead}</p>' if lead else ""
         )
-        return f"""<div class="page-layout page-layout--with-sidebar reveal">
-  <div class="page-layout__main">
-    <div class="page-prose page-prose--service">{lead_block}{body}</div>
-  </div>
-  <aside class="page-layout__sidebar" aria-label="Условия и стоимость">
-    {pricing}
-  </aside>
-</div>{middle}{screen}"""
+        if pricing_key == "razrabotka-erp-sistem":
+            global _ERP_SIGNALS_PRICING_HTML
+            _ERP_SIGNALS_PRICING_HTML = pricing
+            return f"""{render_service_bands(lead_block + body, slug=pricing_key)}{middle}{screen}"""
+        # Для slug из PRICING_BEFORE_BAND блок «Цена/Сроки/Оплата» вставляется
+        # внутрь секций перед нужной полосой, иначе — над ними.
+        inject_before = PRICING_BEFORE_BAND.get(pricing_key, "")
+        if inject_before:
+            bands = render_service_bands(
+                lead_block + body,
+                slug=pricing_key,
+                inject_html=pricing,
+                inject_before=inject_before,
+            )
+            return f"""{bands}{middle}{screen}"""
+        return f"""{pricing}
+{render_service_bands(lead_block + body, slug=pricing_key)}{middle}{screen}"""
     return f'<div class="page-prose reveal">{body}</div>{middle}{screen}'
 
 
@@ -1610,6 +1989,199 @@ def inject_home_seo(html_doc: str) -> str:
     return html_doc.replace("</head>", block + "</head>", 1)
 
 
+def render_faq(items: list[tuple[str, str]], *, title: str, section_id: str = "faq") -> str:
+    """Секция «Частые вопросы»: аккордеон на нативном <details>/<summary>.
+
+    Вопрос — question-led H3 внутри <summary>, ответ остаётся в DOM (свёрнут):
+    видимый текст совпадает 1:1 с FAQPage-разметкой schema.org (требование Google).
+    Общий атрибут name делает раскрытие взаимоисключающим (exclusive accordion),
+    без JS. Chevron декоративен (aria-hidden). Стили — .page-faq в page.css.
+    """
+    chevron = (
+        '<svg width="16" height="16" viewBox="0 0 16 16" fill="none">'
+        '<path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" '
+        'stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    rows = "\n".join(
+        f'''      <details class="page-faq__item" name="faq-{section_id}">
+        <summary class="page-faq__summary">
+          <h3 class="page-faq__q">{html.escape(q)}</h3>
+          <span class="page-faq__icon" aria-hidden="true">{chevron}</span>
+        </summary>
+        <div class="page-faq__answer">
+          <p class="page-faq__a">{html.escape(a)}</p>
+        </div>
+      </details>'''
+        for q, a in items
+    )
+    content = f'''<div class="page-faq reveal">
+{rows}
+    </div>'''
+    return render_revolution(
+        eyebrow="FAQ",
+        title_html=html.escape(title),
+        lead="",
+        content=content,
+        section_id=section_id,
+        title_tag="h2",
+    )
+
+
+def service_jsonld(
+    page: ServicePage,
+    *,
+    title: str,
+    description: str,
+    service_type: str,
+    low_price: str | None = None,
+    faq_items: list[tuple[str, str]] | None = None,
+) -> str:
+    """JSON-LD @graph для сервисной страницы: Organization, WebSite, WebPage,
+    BreadcrumbList, Service и (опционально) FAQPage."""
+    url = canonical_url(f"uslugi/{page.slug}")
+    org_id = f"{SITE_URL}/#organization"
+    website_id = f"{SITE_URL}/#website"
+    breadcrumb_id = f"{url}#breadcrumb"
+
+    service: dict = {
+        "@type": "Service",
+        "@id": f"{url}#service",
+        "name": page.h1,
+        "serviceType": service_type,
+        "url": url,
+        "description": description,
+        "provider": {"@id": org_id},
+        "areaServed": {"@type": "Country", "name": "Россия"},
+    }
+    if low_price:
+        service["offers"] = {
+            "@type": "AggregateOffer",
+            "priceCurrency": "RUB",
+            "lowPrice": low_price,
+            "url": url,
+        }
+
+    graph: list[dict] = [
+        {
+            "@type": "Organization",
+            "@id": org_id,
+            "name": "BUDGET SOFT",
+            "url": f"{SITE_URL}/",
+            "logo": f"{SITE_URL}/logos/budget-soft.svg",
+            "email": "info@budget-soft.ru",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Пресненская наб., 12, БЦ «Меркурий», оф. 1804",
+                "addressLocality": "Москва",
+                "addressCountry": "RU",
+            },
+            "sameAs": [CONTACT_TELEGRAM, CONTACT_WHATSAPP],
+        },
+        {
+            "@type": "WebSite",
+            "@id": website_id,
+            "name": "BUDGET SOFT",
+            "url": f"{SITE_URL}/",
+            "inLanguage": "ru-RU",
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": breadcrumb_id,
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Главная", "item": f"{SITE_URL}/"},
+                {"@type": "ListItem", "position": 2, "name": "Услуги", "item": f"{SITE_URL}/uslugi/"},
+                {"@type": "ListItem", "position": 3, "name": page.menu_label, "item": url},
+            ],
+        },
+        {
+            "@type": "WebPage",
+            "@id": f"{url}#webpage",
+            "url": url,
+            "name": title,
+            "description": description,
+            "inLanguage": "ru-RU",
+            "isPartOf": {"@id": website_id},
+            "breadcrumb": {"@id": breadcrumb_id},
+            "primaryImageOfPage": OG_IMAGE,
+        },
+        service,
+    ]
+    if faq_items:
+        graph.append(
+            {
+                "@type": "FAQPage",
+                "@id": f"{url}#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": q,
+                        "acceptedAnswer": {"@type": "Answer", "text": a},
+                    }
+                    for q, a in faq_items
+                ],
+            }
+        )
+    return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)
+
+
+# Slug'и, у которых H1 переносится из hero в блок .revolution (ближе к
+# ключевому запросу), а также расширенная Service/FAQPage-разметка.
+SEO_ENHANCED_SLUGS = {
+    "razrabotka-erp-sistem": {"service_type": "Разработка и внедрение ERP-систем", "low_price": "300000"},
+}
+
+
+def build_service_page(page: ServicePage) -> None:
+    prefix = rel_prefix(2)
+    enhanced = SEO_ENHANCED_SLUGS.get(page.slug)
+    is_enhanced = enhanced is not None
+
+    middle = render_ai_directions_block(prefix, copy_key=page.slug, label_alt=is_enhanced)
+    content = content_prose(
+        page.body_html, prefix, pricing_key=page.slug, middle=middle, lead=page.lead
+    )
+
+    title_full = f"{page.meta_title} — BUDGET SOFT"
+    description = SEO_DESCRIPTIONS.get(page.slug, page.description)
+
+    faq = SERVICE_FAQ.get(page.slug)
+    faq_items = faq["items"] if faq else None
+    extra_html = render_faq(faq_items, title=faq["title"]) if faq else ""
+
+    if is_enhanced:
+        jsonld = service_jsonld(
+            page,
+            title=title_full,
+            description=description,
+            service_type=enhanced["service_type"],
+            low_price=enhanced.get("low_price"),
+            faq_items=faq_items,
+        )
+    else:
+        jsonld = breadcrumb_jsonld(page.menu_label, page.slug)
+
+    html_doc = render_page(
+        depth=2,
+        title=title_full,
+        active=f"uslugi/{page.slug}",
+        eyebrow=page.menu_label,
+        title_html=page.h1,
+        lead="",  # вводный абзац перенесён в page-prose--service
+        content=content,
+        description=description,
+        canonical_path=f"uslugi/{page.slug}",
+        jsonld=jsonld,
+        section_id=page.slug,
+        second_btn=(page_href(prefix, "stoimost"), "Рассчитать стоимость"),
+        hero_h1=page.h1,
+        h1_in_revolution=is_enhanced,
+        extra_html=extra_html,
+        breadcrumb=render_breadcrumb(prefix, page.menu_label),
+        keywords=SEO_KEYWORDS.get(page.slug, ""),
+    )
+    write_page(ROOT / "uslugi" / page.slug / "index.html", html_doc)
+
+
 def main() -> None:
     print("Generating pages…")
 
@@ -1800,27 +2372,7 @@ def main() -> None:
     write_page(ROOT / "uslugi" / "index.html", uslugi_html)
 
     for page in SERVICE_PAGES:
-        prefix = rel_prefix(2)
-        middle = render_ai_directions_block(prefix, copy_key=page.slug)
-        content = content_prose(
-            page.body_html, prefix, pricing_key=page.slug, middle=middle, lead=page.lead
-        )
-        html = render_page(
-            depth=2,
-            title=f"{page.meta_title} — BUDGET SOFT",
-            active=f"uslugi/{page.slug}",
-            eyebrow=page.menu_label,
-            title_html=page.h1,
-            lead="",  # вводный абзац перенесён в page-prose--service
-            content=content,
-            description=page.description,
-            canonical_path=f"uslugi/{page.slug}",
-            jsonld=breadcrumb_jsonld(page.menu_label, page.slug),
-            section_id=page.slug,
-            second_btn=(page_href(rel_prefix(2), "stoimost"), "Рассчитать стоимость"),
-            hero_h1=page.h1,
-        )
-        write_page(ROOT / "uslugi" / page.slug / "index.html", html)
+        build_service_page(page)
 
     update_index_html()
 
@@ -1847,11 +2399,26 @@ def write_robots() -> None:
     print("  robots.txt")
 
 
+def _page_lastmod(page: dict) -> str:
+    """Дата последнего изменения страницы (YYYY-MM-DD) по mtime её файла.
+    Если файл не найден — сегодняшняя дата."""
+    file_rel = page.get("file")
+    if file_rel:
+        fp = ROOT / file_rel
+        if fp.exists():
+            return datetime.fromtimestamp(fp.stat().st_mtime).strftime("%Y-%m-%d")
+    return date.today().strftime("%Y-%m-%d")
+
+
 def write_sitemap() -> None:
     """Генерирует sitemap.xml по urls.json. Блог исключён (скрыт до запуска)."""
     data = json.loads((ROOT / "urls.json").read_text(encoding="utf-8"))
-    urls = [p["url"] for p in data["pages"] if p["url"] != "/blog/"]
-    items = "\n".join(f"  <url>\n    <loc>{SITE_URL}{u}</loc>\n  </url>" for u in urls)
+    pages = [p for p in data["pages"] if p["url"] != "/blog/"]
+    items = "\n".join(
+        f"  <url>\n    <loc>{SITE_URL}{p['url']}</loc>\n"
+        f"    <lastmod>{_page_lastmod(p)}</lastmod>\n  </url>"
+        for p in pages
+    )
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -1859,7 +2426,7 @@ def write_sitemap() -> None:
         "</urlset>\n"
     )
     (ROOT / "sitemap.xml").write_text(xml, encoding="utf-8")
-    print(f"  sitemap.xml ({len(urls)} url)")
+    print(f"  sitemap.xml ({len(pages)} url)")
 
 
 if __name__ == "__main__":

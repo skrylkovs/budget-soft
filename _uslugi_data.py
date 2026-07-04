@@ -56,6 +56,19 @@ SERVICE_ICONS: dict[str, str] = {
     "it-autstaffing": '<circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c0-3.3 2.7-6 6-6M16 11h5M16 15h5M16 19h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>',
 }
 
+# Иконки пунктов списков в прозе услуг (маркер `{icon: key}` в начале пункта
+# MD-списка). Стиль — как SERVICE_ICONS: контурные, viewBox 24×24, stroke 1.6,
+# цвет currentColor.
+PROSE_LIST_ICONS: dict[str, str] = {
+    "finance": '<rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 7h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 14.75h.01M12 14.75h.01M15.5 14.75h.01M8.5 18h.01M12 18h.01M15.5 18h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+    "warehouse": '<rect x="3.5" y="13" width="7.5" height="7.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><rect x="13" y="13" width="7.5" height="7.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><rect x="8.25" y="3.5" width="7.5" height="7.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 3.5v3M7.25 13v3M16.75 13v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+    "procurement": '<path d="M9 4H7a2 2 0 00-2 2v13a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2h-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="9" y="2.5" width="6" height="3" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M9 13l2 2 4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>',
+    "production": '<path d="M3 21V4.5A1.5 1.5 0 014.5 3H8a1.5 1.5 0 011.5 1.5V13l5.5-4v4l6-4.5V21H3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 17.5h.01M12 17.5h.01M17 17.5h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    "sales": '<path d="M3.5 4.5h17L14 12.5v5.5l-4 3v-8.5L3.5 4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',
+    "hr": '<circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 20.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15.5 5.2a3.2 3.2 0 010 5.6M17.5 15.6c1.8 1 3 2.8 3 4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+    "bi": '<path d="M4 19a8 8 0 1116 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 19l4.2-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="19" r="1.4" fill="currentColor"/>',
+}
+
 DIRECTION_ICONS: dict[str, str] = {
     "razrabotka-erp-sistem": """<rect x="10" y="10" width="30" height="30" rx="2" stroke="currentColor" stroke-width="1.6"/>
                   <rect x="22" y="22" width="30" height="30" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.6"/>""",
@@ -93,10 +106,74 @@ def inline_md(text: str) -> str:
     return text
 
 
+def _plain_attr(text: str) -> str:
+    """Текст без markdown-разметки, безопасный как значение HTML-атрибута."""
+    text = re.sub(r"\*\*(.+?)\*\*", r"\1", text.strip())
+    return html.escape(text, quote=True)
+
+
+def render_compare(header_cells: list[str], rows: list[list[str]]) -> str:
+    """Сравнительная таблица в стиле блока «Революция 2026» (.compare).
+
+    Первая колонка — параметр, остальные — сравниваемые подходы. В заголовке
+    подхода можно задать пилюлю-тег синтаксисом ``Тег :: Название``. Последняя
+    колонка оформляется как акцентная (--ai), предыдущие — приглушённые
+    (--legacy), как в исходном блоке на главной.
+    """
+    def split_head(raw: str) -> tuple[str, str]:
+        if "::" in raw:
+            tag, title = raw.split("::", 1)
+            return tag.strip(), title.strip()
+        return "", raw.strip()
+
+    option_heads = [split_head(h) for h in header_cells[1:]]
+    last = len(option_heads) - 1
+
+    def variant(j: int) -> str:
+        return "ai" if j == last else "legacy"
+
+    head_cells = [
+        f'<div class="compare__head-cell compare__head-cell--label">{inline_md(header_cells[0])}</div>'
+    ]
+    for j, (tag, title) in enumerate(option_heads):
+        v = variant(j)
+        tag_html = (
+            f'<span class="compare__tag compare__tag--{v}">{inline_md(tag)}</span>'
+            if tag
+            else ""
+        )
+        head_cells.append(
+            f'<div class="compare__head-cell compare__head-cell--{v}">{tag_html}{inline_md(title)}</div>'
+        )
+
+    titles_attr = [_plain_attr(title) for _, title in option_heads]
+
+    row_html: list[str] = []
+    for row in rows:
+        cells = [
+            f'<div class="compare__cell compare__cell--label">{inline_md(row[0])}</div>'
+        ]
+        for j, value in enumerate(row[1:]):
+            v = variant(j)
+            label = titles_attr[j] if j < len(titles_attr) else ""
+            cells.append(
+                f'<div class="compare__cell compare__cell--{v}" data-label="{label}">{inline_md(value)}</div>'
+            )
+        row_html.append(f'<div class="compare__row">{"".join(cells)}</div>')
+
+    return (
+        '<div class="compare compare--service">'
+        f'<div class="compare__head">{"".join(head_cells)}</div>'
+        f'{"".join(row_html)}</div>'
+    )
+
+
 def md_body_to_html(body: str) -> str:
     lines = body.strip().split("\n")
     parts: list[str] = []
     i = 0
+    compare_next = False
+    section_next: str | None = None
     while i < len(lines):
         line = lines[i]
         stripped = line.strip()
@@ -105,16 +182,35 @@ def md_body_to_html(body: str) -> str:
             i += 1
             continue
 
-        if stripped.startswith("### "):
-            parts.append(
-                f'<h4 class="page-prose__heading">{inline_md(stripped[4:])}</h4>'
-            )
+        # Маркер: следующую таблицу рендерим как .compare (блок «Новая математика»)
+        if stripped == "{compare}":
+            compare_next = True
+            i += 1
+            continue
+
+        # Маркер: следующий заголовок оформляем как самостоятельную секцию
+        # (центрированный .section-head + полоса без фона), как «Революция 2026».
+        # Необязательный текст после «:» становится эйтбрау над заголовком.
+        sec_m = re.match(r"^\{section(?::\s*(?P<eyebrow>.+?))?\}$", stripped)
+        if sec_m:
+            section_next = (sec_m.group("eyebrow") or "").strip()
             i += 1
             continue
 
         if stripped.startswith("#### "):
             parts.append(
-                f'<h4 class="page-prose__heading">{inline_md(stripped[5:])}</h4>'
+                f'<h3 class="page-prose__heading">{inline_md(stripped[5:])}</h3>'
+            )
+            i += 1
+            continue
+
+        if stripped.startswith("### "):
+            eyebrow_attr = ""
+            if section_next is not None:
+                eyebrow_attr = f' data-eyebrow="{html.escape(section_next, quote=True)}"'
+                section_next = None
+            parts.append(
+                f'<h2 class="page-prose__heading"{eyebrow_attr}>{inline_md(stripped[4:])}</h2>'
             )
             i += 1
             continue
@@ -143,6 +239,10 @@ def md_body_to_html(body: str) -> str:
                     [c.strip() for c in lines[i].strip().strip("|").split("|")]
                 )
                 i += 1
+            if compare_next:
+                compare_next = False
+                parts.append(render_compare(header_cells, rows))
+                continue
             thead = "".join(f"<th>{inline_md(c)}</th>" for c in header_cells)
             tbody_rows = []
             for row in rows:
@@ -174,13 +274,33 @@ def md_body_to_html(body: str) -> str:
 
         if re.match(r"^[*\-]\s+", stripped):
             items: list[str] = []
+            with_icons = False
             while i < len(lines) and re.match(
                 r"^[*\-]\s+", lines[i].strip()
             ):
                 item_text = re.sub(r"^[*\-]\s+", "", lines[i].strip())
-                items.append(f"<li>{inline_md(item_text)}</li>")
+                # Пункт вида `- {icon: key} текст` получает контурную иконку
+                # из PROSE_LIST_ICONS, а весь список — модификатор --icons.
+                icon_m = re.match(r"^\{icon:\s*(?P<key>[\w-]+)\}\s*", item_text)
+                if icon_m:
+                    key = icon_m.group("key")
+                    if key not in PROSE_LIST_ICONS:
+                        raise ValueError(f"Неизвестная иконка списка: {key}")
+                    with_icons = True
+                    items.append(
+                        '<li><span class="page-prose__list-icon" aria-hidden="true">'
+                        '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
+                        f'{PROSE_LIST_ICONS[key]}</svg></span>'
+                        '<span class="page-prose__list-body">'
+                        f'{inline_md(item_text[icon_m.end():])}</span></li>'
+                    )
+                else:
+                    items.append(f"<li>{inline_md(item_text)}</li>")
                 i += 1
-            parts.append(f'<ul class="page-prose__list">{"".join(items)}</ul>')
+            list_cls = "page-prose__list"
+            if with_icons:
+                list_cls += " page-prose__list--icons"
+            parts.append(f'<ul class="{list_cls}">{"".join(items)}</ul>')
             continue
 
         if re.match(r"^\d+\.\s+", stripped):
@@ -238,11 +358,15 @@ def parse_texts_uslugi(path: Path = TEXTS_USLUGI_MD) -> list[ServicePage]:
         body = re.sub(r"^---\s*$", "", body, flags=re.MULTILINE).strip()
 
         body_html = md_body_to_html(body)
-        # Первый абзац служит вводным lead'ом под заголовком (section-lead).
-        # Удаляем его из body_html, иначе он продублируется в начале page-prose.
-        lead_m = re.search(r"<p>(.+?)</p>", body_html)
+        # description строится из первого абзаца текста (без разметки).
+        p_m = re.search(r"<p>(.+?)</p>", body_html)
+        first_p = re.sub(r"<[^>]+>", "", p_m.group(1).strip()) if p_m else ""
+        # Вводным lead'ом служит только абзац ДО первого заголовка; он
+        # вырезается из body_html, иначе продублируется в начале page-prose.
+        # Если секция начинается сразу с заголовка — lead-блока у страницы нет.
+        h_m = re.search(r"<h\d", body_html)
+        lead_m = p_m if p_m and (not h_m or p_m.start() < h_m.start()) else None
         lead_html = lead_m.group(1).strip() if lead_m else ""
-        first_p = re.sub(r"<[^>]+>", "", lead_html)
         if lead_m:
             body_html = (body_html[: lead_m.start()] + body_html[lead_m.end() :]).lstrip("\n")
 

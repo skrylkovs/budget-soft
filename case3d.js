@@ -1,10 +1,33 @@
 // Блок 9a. 3D-сцена для featured-кейса (Three.js).
 // Вращающийся «процессорный» каркас как абстрактный визуал продукта.
 // Деградирует на статичный градиент при отсутствии WebGL или prefers-reduced-motion.
-import * as THREE from 'three';
+// three.js (~0.6 МБ) загружается динамически и только когда блок приближается
+// к вьюпорту — на страницах без прокрутки до портфолио бандл не качается.
 
 const mount = document.getElementById('case3d');
 if (mount) {
+  const load = () => import('three')
+    .then((THREE) => initScene(THREE))
+    .catch(() => {
+      mount.style.background = 'radial-gradient(circle at 60% 40%, rgba(177,75,255,0.4), transparent 60%)';
+    });
+  // Наблюдаем за секцией портфолио (надёжно виден и имеет размеры), а не за
+  // самим #case3d — он может быть position:absolute/скрыт до reveal-анимации.
+  const trigger = mount.closest('.cases') || document.getElementById('portfolio') || mount;
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        load();
+      }
+    }, { rootMargin: '600px' });
+    io.observe(trigger);
+  } else {
+    load();
+  }
+}
+
+function initScene(THREE) {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let renderer;
   try {
