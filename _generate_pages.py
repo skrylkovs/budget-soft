@@ -1743,7 +1743,7 @@ def render_erp_why_body(seg: str) -> str:
     return seg[: m.start()] + white + seg[m.end() :]
 
 
-SECTION_BODY_RENDERERS[("razrabotka-erp-sistem", "О компании")] = render_erp_why_body
+SECTION_BODY_RENDERERS[("razrabotka-erp-sistem", "Почему мы")] = render_erp_why_body
 
 
 def render_service_bands(
