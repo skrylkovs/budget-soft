@@ -186,7 +186,7 @@ img, svg {
 }
 
 .section-head {
-    max-width: 1000px;
+    max-width: 95%;
     margin: 0 auto 56px;
     text-align: center;
 }
