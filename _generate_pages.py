@@ -1601,6 +1601,18 @@ SERVICE_BAND_ROWS: dict[str, list[tuple[str, ...]]] = {
 }
 
 
+# Иконки-иллюстрации для карточек-преимуществ блока «Почему выбирают BUDGET
+# SOFT»: заголовок карточки → (файл в images/why/, ширина, высота исходника).
+# Иконка выводится над заголовком карточки; размеры нужны, чтобы браузер знал
+# пропорции и не было сдвига разметки при загрузке.
+SERVICE_BAND_ICONS: dict[str, tuple[str, int, int]] = {
+    "60+ проектов за 17 лет": ("projects.png", 278, 220),
+    "От 2 недель до MVP": ("mvp.png", 374, 220),
+    "До 4× дешевле": ("price.png", 265, 220),
+    "Обе экспертизы под одной крышей": ("expertise.png", 290, 220),
+}
+
+
 # Куда поместить блок «Цена/Сроки/Оплата» (.page-spec-cards): по умолчанию он
 # идёт над секциями-полосами. Для перечисленных slug блок вставляется ВНУТРЬ
 # .page-prose-bands непосредственно перед полосой с указанным eyebrow.
@@ -1742,6 +1754,7 @@ def render_service_bands(
     slug: str | None = None,
     inject_html: str = "",
     inject_before: str = "",
+    prefix: str = "",
 ) -> str:
     """Разбивает сервисную прозу на секции-карточки: каждый заголовок услуги
     (`### ` → h2, а также h4 у импортозамещения) начинает отдельный
@@ -1761,6 +1774,7 @@ def render_service_bands(
         # секция: центрированный .section-head + полоса без фона-карточки —
         # то есть блок выглядит как самостоятельная «Революция 2026» на главной.
         bare = ""
+        media = ""
         eyebrow_m = re.search(r'data-eyebrow="([^"]*)"', seg)
         if eyebrow_m:
             seg = _promote_section_head(seg)
@@ -1768,9 +1782,19 @@ def render_service_bands(
             if renderer:
                 seg = renderer(seg)
             bare = " page-prose--band--bare"
+        else:
+            icon = SERVICE_BAND_ICONS.get(heading_of(seg))
+            if icon:
+                name, iw, ih = icon
+                seg = (
+                    f'<img class="page-prose__icon" src="{prefix}images/why/{name}"'
+                    f' width="{iw}" height="{ih}" alt="" loading="lazy" decoding="async">'
+                    f'<div class="page-prose__body">{seg}</div>'
+                )
+                media = " page-prose--band--media"
         return (
             '<div class="page-prose page-prose--service page-prose--full '
-            f'page-prose--band{bare} reveal">{seg}</div>'
+            f'page-prose--band{bare}{media} reveal">{seg}</div>'
         )
 
     def heading_of(seg: str) -> str:
@@ -1850,7 +1874,7 @@ def content_prose(
         if pricing_key == "razrabotka-erp-sistem":
             global _ERP_SIGNALS_PRICING_HTML
             _ERP_SIGNALS_PRICING_HTML = pricing
-            return f"""{render_service_bands(lead_block + body, slug=pricing_key)}{middle}{screen}"""
+            return f"""{render_service_bands(lead_block + body, slug=pricing_key, prefix=prefix)}{middle}{screen}"""
         # Для slug из PRICING_BEFORE_BAND блок «Цена/Сроки/Оплата» вставляется
         # внутрь секций перед нужной полосой, иначе — над ними.
         inject_before = PRICING_BEFORE_BAND.get(pricing_key, "")
@@ -1860,10 +1884,11 @@ def content_prose(
                 slug=pricing_key,
                 inject_html=pricing,
                 inject_before=inject_before,
+                prefix=prefix,
             )
             return f"""{bands}{middle}{screen}"""
         return f"""{pricing}
-{render_service_bands(lead_block + body, slug=pricing_key)}{middle}{screen}"""
+{render_service_bands(lead_block + body, slug=pricing_key, prefix=prefix)}{middle}{screen}"""
     return f'<div class="page-prose reveal">{body}</div>{middle}{screen}'
 
 
