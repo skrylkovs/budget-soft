@@ -277,6 +277,46 @@
     padding-top: 0;
 }
 
+/* Иконка-иллюстрация рядом с заголовком карточки-преимущества (блок «Почему
+   выбирают BUDGET SOFT»): ширина фиксирована, высота — по пропорции исходника. */
+.page-prose__icon {
+    display: block;
+    width: 115px;
+    height: auto;
+    margin: 0;
+}
+
+/* Карточка-преимущество с иконкой: картинка слева, заголовок и текст справа. */
+.page-inner .page-prose-bands .page-prose--band--media {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.page-prose--band--media > .page-prose__icon {
+    flex: 0 0 auto;
+}
+
+.page-prose__body {
+    min-width: 0;
+}
+
+/* Заголовок — первый элемент текстового блока рядом с иконкой — не должен
+   получать верхнюю линию/отступ: они нужны только заголовкам-разделителям. */
+.page-prose__body > .page-prose__heading:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+@media (max-width: 640px) {
+    .page-inner .page-prose-bands .page-prose--band--media {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 .page-spec {
     border: 1px solid rgba(10, 10, 18, 0.12);
     border-left: 3px solid var(--primary);
