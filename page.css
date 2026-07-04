@@ -113,6 +113,10 @@
     margin-top: 0.5em;
 }
 
+.page-prose--service .page-prose__list + p {
+    margin-top: 1em;
+}
+
 /* Список с иконками (маркер {icon: …} в MD, напр. модули ERP) */
 .page-prose--service .page-prose__list--icons {
     padding-left: 0;
