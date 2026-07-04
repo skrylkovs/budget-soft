@@ -15,6 +15,7 @@ Thumbs.db
 # Tooling / session artifacts
 .playwright-mcp/
 __pycache__/
+.claude/settings.local.json
 
 # Review screenshots (рабочие, не для репозитория)
 /mobile-shots/
