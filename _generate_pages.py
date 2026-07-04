@@ -207,9 +207,16 @@ AI_DIRECTIONS_DEFAULT = (
 # первого абзаца (см. ServicePage.description).
 SEO_DESCRIPTIONS: dict[str, str] = {
     "razrabotka-erp-sistem": (
-        "Разработка и внедрение ERP-систем на заказ: аудит процессов, "
-        "проектирование архитектуры, прототип и промышленный релиз. "
-        "Бесшовная интеграция с CRM и 1С."
+        "Услуги по разработке и внедрению ERP-систем для предприятий: от "
+        "аудита процессов до промышленного релиза. От 300 000 ₽, MVP за "
+        "2–4 недели, интеграция с 1С и CRM, 100% прав на код — у вас."
+    ),
+}
+
+SEO_TITLES: dict[str, str] = {
+    "razrabotka-erp-sistem": (
+        "Разработка и внедрение ERP-систем на заказ — от 300 000 ₽ | "
+        "BUDGET SOFT"
     ),
 }
 
@@ -226,45 +233,88 @@ SEO_KEYWORDS: dict[str, str] = {
 # Блок «Частые вопросы»: виден на странице (question-led H3) и дублируется в
 # FAQPage-разметке. Ответы — простой текст, чтобы видимый контент и schema
 # совпадали 1:1 (требование Google к FAQPage).
-# Порядок пунктов: методология → интеграции → мобильный доступ → оплата.
 SERVICE_FAQ: dict[str, dict] = {
     "razrabotka-erp-sistem": {
         "title": "Частые вопросы о разработке ERP-систем",
         "items": [
             (
-                "По какой методологии вы разрабатываете ERP-системы?",
-                "Основной подход — гибкие методологии (Agile): систему "
-                "проектируем, разрабатываем и вводим в эксплуатацию поэтапно, "
-                "отдельными модулями. Подготовка занимает меньше времени, а для "
-                "старта проекта не требуется детальное ТЗ на каждую функцию. Если "
-                "объём и требования зафиксированы заранее, работаем по каскадной "
-                "модели (Waterfall).",
+                "Сколько стоит разработка и внедрение ERP-системы?",
+                "От 300 000 ₽ за MVP — первый работающий контур из 1–2 модулей. "
+                "Комплексная ERP с миграцией данных и обучением — от 1 500 000 ₽. "
+                "На цену влияют количество модулей, интеграции, объём данных и "
+                "модель развёртывания — облако или on-premise. Точную смету "
+                "рассчитываем бесплатно после аудита процессов.",
             ),
             (
-                "С какими системами интегрируется ERP?",
-                "С любым сторонним ПО: CRM, 1С, СЭД, BI-платформами, системами "
-                "риск-менеджмента и решениями для госсектора. Интеграции строим "
-                "через REST/GraphQL API и прямой обмен с корпоративными базами "
-                "данных.",
+                "Сколько времени занимает внедрение ERP-системы?",
+                "Полный цикл — от 2,5 до 6 месяцев. Первый работающий контур "
+                "показываем через 2–4 недели. Проекты масштаба замены SAP занимают "
+                "до 8 месяцев — поэтапно и без остановки работы компании.",
             ),
             (
-                "Можно ли работать с ERP-системой с мобильного устройства?",
-                "Да. Разрабатываем мобильные приложения, которые открывают доступ "
-                "к основной функциональности ERP со смартфона или планшета — под "
-                "iOS, Android и российскую ОС «Аврора». Популярный сценарий — "
-                "приложение для выездных сотрудников, работающих на объектах и у "
-                "заказчиков.",
+                "Из каких этапов состоит внедрение ERP?",
+                "Пять этапов: аудит и моделирование процессов, проектирование "
+                "архитектуры, кликабельный прототип, разработка и тестирование, "
+                "релиз, перенос данных и обучение. Каждый этап завершается "
+                "результатом, который можно проверить.",
+            ),
+            (
+                "Что выбрать: 1С:ERP или разработку на заказ?",
+                "Коробка быстрее стартует на типовых процессах; заказная "
+                "разработка выигрывает, когда процессы нестандартные, важна "
+                "гибкость и нужны 100% прав на код. Мы делаем и то и другое — "
+                "включая миграцию с SAP на 1С:ERP, — поэтому на аудите рекомендуем "
+                "вариант под вашу задачу, а не «своё».",
             ),
             (
                 "Как оплачивается разработка ERP-системы?",
-                "Вы выбираете удобную модель оплаты. Fixed Price — фиксированная "
-                "цена за оговорённую функциональность и сроки; подходит, когда "
-                "видение готовой системы есть с самого начала. Time & Material — "
-                "оплата по фактическим трудозатратам; оптимальна, когда на старте "
-                "есть общая идея, а требования уточняются в процессе работы.",
+                "Fixed Price — фиксированная цена за оговорённую функциональность "
+                "и сроки. Time & Material — оплата по фактическим трудозатратам, "
+                "когда требования уточняются в процессе. Оплата поэтапная: "
+                "30% / 30% / 40%.",
+            ),
+            (
+                "С какими системами интегрируется ERP?",
+                "С любым сторонним ПО: 1С, CRM, СЭД, BI-платформы, банки, ЭДО, "
+                "маркировка «Честный ЗНАК», телефония, маркетплейсы, службы "
+                "доставки. Интеграции строим через REST/GraphQL API и прямой "
+                "обмен с базами данных.",
+            ),
+            (
+                "По какой методологии вы разрабатываете ERP-системы?",
+                "Основной подход — Agile: проектируем, разрабатываем и вводим "
+                "систему в эксплуатацию поэтапно, отдельными модулями, без "
+                "детального ТЗ на каждую функцию на старте. Если объём и "
+                "требования зафиксированы заранее — работаем по Waterfall.",
+            ),
+            (
+                "Можно ли работать с ERP-системой с мобильного устройства?",
+                "Да. Разрабатываем мобильные приложения под iOS, Android и "
+                "российскую ОС «Аврора» — популярный сценарий для выездных "
+                "сотрудников, работающих на объектах и у заказчиков.",
+            ),
+            (
+                "Кому принадлежат права на разработанную ERP-систему?",
+                "Заказчику — 100% прав на исходный код, документацию и "
+                "интеллектуальную собственность. NDA подписываем на этапе первых "
+                "переговоров.",
+            ),
+            (
+                "Что происходит с системой после запуска?",
+                "Сопровождаем по SLA: мониторинг, резервное копирование, "
+                "обновления, развитие функционала. Систему можно развивать и "
+                "силами вашей команды — код и документация полностью у вас.",
             ),
         ],
     },
+}
+
+SERVICE_CTA: dict[str, tuple[str, str, str]] = {
+    "razrabotka-erp-sistem": (
+        "Расскажите о задаче — посчитаем смету и предложим план внедрения.",
+        "Обсудить проект",
+        "Обычно отвечаем в течение рабочего дня.",
+    ),
 }
 
 SCREENS: dict[str, tuple[str, str]] = {
@@ -871,8 +921,15 @@ def render_ai_directions_block(
         # Иконка декоративна (родитель aria-hidden), но осмысленный alt =
         # название отрасли помогает поисковым краулерам и убирает «пустой alt».
         alt = f' alt="{html.escape(label, quote=True)}"' if label_alt else ' alt=""'
+        # Якорь #proizvodstvo на карточке «Промышленные предприятия» ERP-страницы —
+        # цель для подкластера «внедрение erp производство» (seo-pages/uslugi/razrabotka-erp-sistem.md).
+        li_id = (
+            ' id="proizvodstvo"'
+            if copy_key == "razrabotka-erp-sistem" and slug == "industry"
+            else ""
+        )
         items.append(
-            f"""<li class="ai-direction">
+            f"""<li class="ai-direction"{li_id}>
   <span class="ai-direction__icon" aria-hidden="true">
     <img src="{prefix}images/ai-directions/{slug}.svg"{alt} width="32" height="32" loading="lazy">
   </span>
@@ -1226,15 +1283,20 @@ def render_portfolio_assets(prefix: str) -> tuple[str, str]:
     return head, tail
 
 
-def render_cta(prefix: str) -> str:
+def render_cta(prefix: str, copy: tuple[str, str, str] | None = None) -> str:
+    title, button, note = copy or (
+        'Следующий успех на рынке может стать <span class="text-gradient">вашим</span>.',
+        "Связаться с нами",
+        "Давайте сделаем это.",
+    )
     return f"""    <section class="cta cta--simple" id="cta" data-fab-theme="light">
       <div class="container">
         <div class="cta__card cta__inner cta__inner--centered">
           <div class="cta__bg" aria-hidden="true"></div>
           <div class="cta__text reveal">
-            <p class="section-title section-title--light">Следующий успех на рынке может стать <span class="text-gradient">вашим</span>.</p>
-            <button type="button" class="btn btn--primary btn--lg cta__submit js-open-contact">Связаться с нами {BTN_ARROW_SM}</button>
-            <p class="section-title section-title--light">Давайте сделаем это.</p>
+            <p class="section-title section-title--light">{title}</p>
+            <button type="button" class="btn btn--primary btn--lg cta__submit js-open-contact">{button} {BTN_ARROW_SM}</button>
+            <p class="section-title section-title--light">{note}</p>
           </div>
         </div>
       </div>
@@ -1463,6 +1525,7 @@ def render_page(
     extra_html: str = "",
     breadcrumb: str = "",
     keywords: str = "",
+    cta_copy: tuple[str, str, str] | None = None,
 ) -> str:
     p = rel_prefix(depth)
     portfolio_head, portfolio_tail = render_portfolio_assets(p) if include_stats_cases else ("", "")
@@ -1483,7 +1546,7 @@ def render_page(
 {render_hero(p, second_btn, hero_h1=hero_h1, as_h1=not h1_in_revolution, breadcrumb=breadcrumb)}
 {render_clients_strip(p)}
 {render_revolution(eyebrow=eyebrow, title_html=title_html, lead=lead, content=content, section_id=section_id, accent=accent, title_tag=("h1" if h1_in_revolution else "h2"))}
-{extra_html}{stats_cases}{render_cta(p)}
+{extra_html}{stats_cases}{render_cta(p, cta_copy)}
   </main>
 {render_footer(p)}
 {render_tail(p)}
@@ -2138,10 +2201,14 @@ def build_service_page(page: ServicePage) -> None:
 
     middle = render_ai_directions_block(prefix, copy_key=page.slug, label_alt=is_enhanced)
     content = content_prose(
-        page.body_html, prefix, pricing_key=page.slug, middle=middle, lead=page.lead
+        page.body_html,
+        prefix,
+        pricing_key=page.slug,
+        middle=middle,
+        lead="" if is_enhanced else page.lead,
     )
 
-    title_full = f"{page.meta_title} — BUDGET SOFT"
+    title_full = SEO_TITLES.get(page.slug, f"{page.meta_title} — BUDGET SOFT")
     description = SEO_DESCRIPTIONS.get(page.slug, page.description)
 
     faq = SERVICE_FAQ.get(page.slug)
@@ -2166,7 +2233,7 @@ def build_service_page(page: ServicePage) -> None:
         active=f"uslugi/{page.slug}",
         eyebrow=page.menu_label,
         title_html=page.h1,
-        lead="",  # вводный абзац перенесён в page-prose--service
+        lead=page.lead if is_enhanced else "",
         content=content,
         description=description,
         canonical_path=f"uslugi/{page.slug}",
@@ -2178,6 +2245,7 @@ def build_service_page(page: ServicePage) -> None:
         extra_html=extra_html,
         breadcrumb=render_breadcrumb(prefix, page.menu_label),
         keywords=SEO_KEYWORDS.get(page.slug, ""),
+        cta_copy=SERVICE_CTA.get(page.slug),
     )
     write_page(ROOT / "uslugi" / page.slug / "index.html", html_doc)
 

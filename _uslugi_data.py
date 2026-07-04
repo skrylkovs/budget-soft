@@ -103,6 +103,11 @@ class ServicePage:
 def inline_md(text: str) -> str:
     text = html.escape(text.strip())
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(
+        r"\[([^\]]+)\]\((/[^)]+)\)",
+        r'<a class="page-inline-link" href="\2">\1</a>',
+        text,
+    )
     return text
 
 
@@ -263,12 +268,14 @@ def md_body_to_html(body: str) -> str:
             continue
 
         if stripped.startswith("> "):
+            # Каждая строка цитаты — отдельная строка выноски: склеиваем через
+            # <br> (паттерн «жирный лид / тело» и перечисления читаются построчно).
             quote_lines: list[str] = []
             while i < len(lines) and lines[i].strip().startswith("> "):
-                quote_lines.append(lines[i].strip()[2:])
+                quote_lines.append(inline_md(lines[i].strip()[2:]))
                 i += 1
             parts.append(
-                f'<blockquote class="page-prose__quote"><p>{inline_md(" ".join(quote_lines))}</p></blockquote>'
+                f'<blockquote class="page-prose__quote"><p>{"<br>".join(quote_lines)}</p></blockquote>'
             )
             continue
 
