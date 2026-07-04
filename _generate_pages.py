@@ -1728,6 +1728,24 @@ def render_erp_about_body(seg: str) -> str:
 SECTION_BODY_RENDERERS[("razrabotka-erp-sistem", "О решении")] = render_erp_about_body
 
 
+def render_erp_why_body(seg: str) -> str:
+    """«Почему выбирают BUDGET SOFT» (ERP): шапка секции (бровь + заголовок +
+    лид) остаётся на фоне секции, а список преимуществ заворачиваем в отдельный
+    белый блок-карточку — структура «бровь + заголовок + текст + белый блок»,
+    как вводный блок под H1 страницы."""
+    m = re.search(r'<ul class="page-prose__list">.*?</ul>', seg, re.S)
+    if not m:
+        return seg
+    white = (
+        '<div class="page-prose page-prose--service page-prose--full '
+        f'page-prose--band reveal">{m.group(0)}</div>'
+    )
+    return seg[: m.start()] + white + seg[m.end() :]
+
+
+SECTION_BODY_RENDERERS[("razrabotka-erp-sistem", "О компании")] = render_erp_why_body
+
+
 def render_service_bands(
     inner_html: str,
     slug: str | None = None,
