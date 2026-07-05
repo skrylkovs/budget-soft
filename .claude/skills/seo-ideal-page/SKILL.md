@@ -16,8 +16,6 @@ description: "Собирай «идеальную страницу» (конте
   конкурентов, правила фильтрации, синтеза и продающего копирайта;
 - [references/shablon.md](references/shablon.md) — обязательный формат результата.
 
-Структурный пример результата:
-[seo-pages/uslugi/razrabotka-erp-sistem.md](../../../seo-pages/uslugi/razrabotka-erp-sistem.md).
 
 Место в конвейере: `seo-semantic-core` собирает ядро (`seo-core/<путь>.md`) →
 **этот скилл** строит эталонный контент по конкурентам (`seo-pages/<путь>.md`) →

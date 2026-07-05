@@ -1,0 +1,58 @@
+Корпоративные системы
+Разработка мобильных приложений	20	haulmont, tektosoft, surf, pyrobyte, nlabteam, atwinta, sibdev, kozhindev, chillicode, purrweb, wnfx, simbirsoft, appfox, softmg, is-art, koyutech, rarus, smorodina, cetera, novacom
+Разработка CRM-систем	14	bpadevelop, novacom, clientbase, longcatdev, haulmont, tektosoft, surf, fichright, sibdev, kozhindev, purrweb, cetera, 10sec, salesap¹
+Разработка ERP-систем	14	bpadevelop, novacom, longcatdev, haulmont, tektosoft, surf, pyrobyte, nlabteam, atwinta, fichright, sibdev, kozhindev, purrweb, salesap¹
+Разработка корпоративных порталов (вкл. B2B, интранет)	8	bpadevelop, novacom, haulmont, surf, sibdev, simbirsoft, cetera, frog-studios
+Разработка BI-систем	7	bpadevelop, surf, nlabteam, atwinta, fichright, sibdev, purrweb
+Разработка личных кабинетов	6	novacom, longcatdev, surf, kozhindev, wnfx, cetera
+Разработка WMS / автоматизация склада	6	bpadevelop, tektosoft, surf, sibdev, purrweb, viant (на 1С)
+Разработка LMS / платформ онлайн-обучения	6	haulmont, surf, nlabteam, sibdev, is-art, purrweb
+Разработка SaaS-платформ	6	bpadevelop, novacom, atwinta, fichright, kozhindev, sibdev
+Системы документооборота (СЭД/ЭДО)	4	haulmont, sibdev, purrweb, viant (1С:ДО)
+Автоматизация бизнес-процессов / RPA	4	tektosoft (АБП + RPA), sibdev, simbirsoft (внедрение RPA + RPA-разработка)
+Разработка MES-систем	2	bpadevelop, sibdev
+
+Веб-разработка
+Разработка сайтов	15	bpadevelop, longcatdev, surf, pyrobyte, atwinta, fichright, sibdev, purrweb, appfox, softmg, is-art, cetera, 10sec, frog-studios, simbirsoft
+Разработка веб-приложений / веб-сервисов	13	bpadevelop, novacom, haulmont, surf, pyrobyte, nlabteam, atwinta, fichright, sibdev, kozhindev, purrweb, unitech, frog-studios
+Разработка интернет-магазинов / e-commerce	10	bpadevelop, surf, atwinta, fichright, sibdev, purrweb, softmg, is-art, cetera, 10sec
+Разработка MVP	7	bpadevelop, surf, pyrobyte, sibdev, purrweb, metalamp, smorodina
+Разработка маркетплейсов	6	bpadevelop, surf, atwinta, sibdev, purrweb, cetera
+Разработка для стартапов	5	pyrobyte, sibdev, purrweb, appfox, smorodina
+Лендинги (Landing Page)	4	fichright, softmg, is-art, 10sec
+Разработка агрегаторов, досок объявлений, соцсетей, поисковых и почтовых сервисов	1	bpadevelop
+
+Аутстаффинг, аутсорсинг, команды
+ИТ-аутстаффинг	11	haulmont, novacom, surf, atwinta, sibdev, purrweb, simbirsoft, appfox, softmg, wnfx, metalamp
+ИТ-аутсорсинг разработки	9	haulmont, novacom, surf, sibdev, purrweb, simbirsoft, softmg, wnfx, metalamp
+Выделенная команда / выделенный ИТ-центр	3	novacom, sibdev, simbirsoft
+IT-рекрутинг	1	sibdev
+
+
+Поддержка и инфраструктура
+Техподдержка и сопровождение (сайтов, приложений, по SLA)	14	bpadevelop, novacom, tektosoft, surf, atwinta, sibdev, purrweb, simbirsoft, appfox, softmg, is-art, koyutech, wnfx, cetera
+DevOps-услуги	5	surf, purrweb, simbirsoft, softmg, sibdev (аутсорсинг DevOps)
+Администрирование серверов / хостинг	4	novacom, softmg, tektosoft, cetera
+
+Консалтинг, аудит, аналитика
+Интеграции с внешними системами (1С, CRM, CMS, маркетплейсы, телефония)	9	haulmont, novacom, purrweb, sibdev, wnfx (8 страниц интеграций), softmg, cetera, viant, rarus
+Модернизация legacy / миграции	5	novacom (9 страниц миграций), haulmont, simbirsoft, sibdev, is-art (перенос на другую CMS)
+Разработка ТЗ и спецификаций	5	bpadevelop (4 страницы), atwinta, sibdev, purrweb, appfox
+ИТ-консалтинг	4	surf, purrweb, simbirsoft, metalamp (web3)
+Аудит кода	4	novacom, surf, purrweb, softmg
+Аудит ИТ-инфраструктуры	3	surf, purrweb, simbirsoft
+Бизнес- и системный анализ	3	simbirsoft, surf, softmg
+Предпроектное обследование (Discovery, Sprint Zero, проектная карта)	3	simbirsoft, surf, bpadevelop
+Спасение проектов (Project Rescue)	2	novacom, simbirsoft
+Импортозамещение ПО	1	haulmont
+
+Экосистема 1С
+Внедрение / доработка / сопровождение 1С	7	viant (весь сайт, 35 страниц), rarus (весь каталог), cetera (11 страниц), simbirsoft, tektosoft, softmg (интеграция), wnfx (интеграция)
+
+Маркетинг и продвижение
+SEO-продвижение	8	bpadevelop, longcatdev, atwinta, fichright, appfox, softmg, is-art, cetera
+Контекстная / таргетированная реклама	5	bpadevelop, atwinta, appfox, is-art, magnetto
+SMM	3	atwinta, appfox, is-art
+Продвижение в Telegram / Telegram Ads	1	magnetto (10+ страниц)
+ASO-продвижение приложений	1	appfox
+Отраслевые страницы-лендинги («разработка для <отрасли>»)
