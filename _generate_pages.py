@@ -84,7 +84,8 @@ SERVICE_PRICING = {
         ],
     },
     "razrabotka-crm-sistem": {
-        "price": "От 160 000 руб. (зависит от количества интеграций и архитектуры)",
+        # Факторы цены раскрыты в блоке «Сколько стоит разработка CRM-системы».
+        "price": "От 160 000 руб.",
         "terms": "От 1.5 до 3 месяцев",
         "payment_steps": [
             "30% — Предоплата, проектирование воронки и User Flow",
@@ -211,6 +212,12 @@ SEO_DESCRIPTIONS: dict[str, str] = {
         "аудита процессов до промышленного релиза. От 300 000 ₽, MVP за "
         "2–4 недели, интеграция с 1С и CRM, 100% прав на код — у вас."
     ),
+    "razrabotka-crm-sistem": (
+        "Услуги по разработке и внедрению CRM-систем на заказ для B2B и "
+        "enterprise-продаж: воронка, телефония, мессенджеры, интеграция с 1С. "
+        "От 160 000 ₽, MVP за 2 недели, 100% прав на код — у вас. Точная "
+        "смета после аудита — бесплатно."
+    ),
 }
 
 SEO_TITLES: dict[str, str] = {
@@ -227,6 +234,11 @@ SEO_KEYWORDS: dict[str, str] = {
         "разработка ERP-систем, внедрение ERP на заказ, кастомная ERP, "
         "ERP для производственного предприятия, стоимость внедрения ERP, "
         "интеграция с 1С, внедрение 1С:ERP, автоматизация предприятия"
+    ),
+    "razrabotka-crm-sistem": (
+        "разработка CRM-систем, разработка CRM на заказ, кастомная CRM для "
+        "бизнеса, стоимость разработки CRM, внедрение CRM, CRM для продаж, "
+        "интеграция CRM с 1С, доработка CRM"
     ),
 }
 
@@ -307,11 +319,94 @@ SERVICE_FAQ: dict[str, dict] = {
             ),
         ],
     },
+    "razrabotka-crm-sistem": {
+        "title": "Частые вопросы о разработке CRM-систем",
+        "items": [
+            (
+                "Сколько стоит разработка CRM-системы на заказ?",
+                "От 160 000 ₽ за MVP — первый рабочий контур с воронкой, "
+                "карточками клиентов и одной интеграцией. Комплексная CRM с "
+                "обменом с 1С и обучением — от 900 000 ₽. На цену влияют число "
+                "интеграций, архитектура, объём переноса данных и требования к "
+                "аналитике. Точную смету считаем бесплатно после аудита.",
+            ),
+            (
+                "Сколько времени занимает разработка и внедрение CRM?",
+                "Полный цикл — от 1,5 до 3 месяцев. Первый работающий контур "
+                "(MVP) показываем уже через 2 недели, дальше развиваем систему "
+                "итерациями по 1–2 недели, не останавливая работу отдела продаж.",
+            ),
+            (
+                "Что выбрать: заказную CRM или готовую (Bitrix24, amoCRM)?",
+                "Готовая коробка быстрее и дешевле стартует на типовых продажах; "
+                "заказная разработка выигрывает, когда процесс нестандартный, "
+                "важна гибкость, нет абонплаты за пользователей и нужны 100% "
+                "прав на код. Мы делаем и то и другое, поэтому на аудите "
+                "советуем вариант под вашу задачу.",
+            ),
+            (
+                "Можно ли доработать нашу текущую CRM, а не делать с нуля?",
+                "Да. Добавляем недостающие модули, интеграции, роли и отчёты к "
+                "вашей действующей системе — от 90 000 ₽. Часто это самый "
+                "быстрый способ снять острую проблему без «большого» проекта.",
+            ),
+            (
+                "Как происходит перенос данных из старой CRM или таблиц?",
+                "Переносим базу клиентов, сделки и историю на этапе запуска: "
+                "сопоставляем поля, чистим дубли, проверяем корректность на "
+                "тестовой копии и только потом переключаем работу на новую "
+                "систему.",
+            ),
+            (
+                "С какими сервисами интегрируется CRM?",
+                "С телефонией и мессенджерами (WhatsApp, Telegram), 1С, сайтом "
+                "и формами, сквозной аналитикой и коллтрекингом, банками и "
+                "эквайрингом, ЭДО и службами доставки. Интеграции строим через "
+                "REST/GraphQL API и прямой обмен с базами данных.",
+            ),
+            (
+                "Можно ли подключить телефонию и записывать звонки?",
+                "Да. Звонки попадают в карточку клиента с записью разговора, из "
+                "пропущенного вызова автоматически создаётся сделка или задача — "
+                "менеджеру не нужно фиксировать обращение вручную.",
+            ),
+            (
+                "Кому принадлежат права на разработанную CRM?",
+                "Заказчику — 100% прав на исходный код, документацию и данные. "
+                "NDA подписываем на этапе первых переговоров. Абонентской платы "
+                "за пользователей и вендор-лока нет.",
+            ),
+            (
+                "Как оплачивается разработка CRM-системы?",
+                "Оплата поэтапная — 30% / 30% / 40%. Работаем по Fixed Price "
+                "(фиксированная цена за оговорённую функциональность) или "
+                "Time & Material (по фактическим трудозатратам), когда "
+                "требования уточняются в процессе.",
+            ),
+            (
+                "Можно ли работать с CRM с телефона?",
+                "Да. Разрабатываем мобильные приложения под iOS, Android и "
+                "российскую ОС «Аврора» — популярный сценарий для руководителей "
+                "и выездных менеджеров.",
+            ),
+            (
+                "Что происходит с CRM после запуска?",
+                "Сопровождаем по SLA: мониторинг, резервное копирование, "
+                "обновления и развитие функционала. Систему можно развивать и "
+                "силами вашей команды — код и документация полностью у вас.",
+            ),
+        ],
+    },
 }
 
 SERVICE_CTA: dict[str, tuple[str, str, str]] = {
     "razrabotka-erp-sistem": (
         "Расскажите о задаче — посчитаем смету и предложим план внедрения.",
+        "Обсудить проект",
+        "Обычно отвечаем в течение рабочего дня.",
+    ),
+    "razrabotka-crm-sistem": (
+        "Расскажите о задаче — посчитаем смету и предложим план внедрения CRM.",
         "Обсудить проект",
         "Обычно отвечаем в течение рабочего дня.",
     ),
@@ -1598,6 +1693,21 @@ SERVICE_BAND_ROWS: dict[str, list[tuple[str, ...]]] = {
             "Обе экспертизы под одной крышей",
         ),
     ],
+    "razrabotka-crm-sistem": [
+        (
+            "Этапы разработки и внедрения CRM",
+            "Из каких модулей состоит CRM-система",
+        ),
+        # Блок «Почему выбирают BUDGET SOFT» — 4 карточки-преимущества по два в ряд.
+        (
+            "60+ проектов за 17 лет",
+            "MVP за 2 недели",
+        ),
+        (
+            "До 4× дешевле",
+            "Коробка и заказ под одной крышей",
+        ),
+    ],
 }
 
 
@@ -1608,8 +1718,10 @@ SERVICE_BAND_ROWS: dict[str, list[tuple[str, ...]]] = {
 SERVICE_BAND_ICONS: dict[str, tuple[str, int, int]] = {
     "60+ проектов за 17 лет": ("projects.png", 278, 220),
     "От 2 недель до MVP": ("mvp.png", 374, 220),
+    "MVP за 2 недели": ("mvp.png", 374, 220),
     "До 4× дешевле": ("price.png", 265, 220),
     "Обе экспертизы под одной крышей": ("expertise.png", 290, 220),
+    "Коробка и заказ под одной крышей": ("expertise.png", 290, 220),
 }
 
 
@@ -1618,10 +1730,12 @@ SERVICE_BAND_ICONS: dict[str, tuple[str, int, int]] = {
 # .page-prose-bands непосредственно перед полосой с указанным eyebrow.
 PRICING_BEFORE_BAND: dict[str, str] = {}
 
-# razrabotka-erp-sistem — особый случай: блок «Цена/Сроки/Оплата» встраивается
-# не отдельной полосой, а внутрь .erp-map__signals (см. render_erp_about_body).
-# content_prose кладёт сюда HTML карточек перед вызовом render_service_bands.
-_ERP_SIGNALS_PRICING_HTML = ""
+# У slug'ов из PRICING_IN_SIGNALS — особый случай: блок «Цена/Сроки/Оплата»
+# встраивается не отдельной полосой, а внутрь .erp-map__signals секции
+# «О решении» (см. make_about_body_renderer). content_prose кладёт сюда HTML
+# карточек перед вызовом render_service_bands.
+PRICING_IN_SIGNALS = {"razrabotka-erp-sistem", "razrabotka-crm-sistem"}
+_SIGNALS_PRICING_HTML = ""
 
 
 # Кастомные рендереры тела секции: ключ — (slug, eyebrow из маркера {section}),
@@ -1678,75 +1792,81 @@ def _promote_section_head(seg: str) -> str:
     return section_head + seg[m.end():]
 
 
-# --- «О решении» на странице ERP: вводная карточка + чек-лист сигналов ---
+# --- «О решении» на странице услуги: вводная карточка + чек-лист сигналов ---
 
 # Тело секции «О решении»: section-head + вводный абзац + список сигналов.
-_ERP_ABOUT_BODY_RE = re.compile(
+_ABOUT_BODY_RE = re.compile(
     r'(?P<head><div class="section-head">.*?</div>)\s*'
     r"<p>(?P<intro>.*?)</p>\s*"
     r'<ul class="page-prose__list">(?P<items>.*?)</ul>\s*$',
     re.S,
 )
 
-# Заголовок и лид секции («что такое ERP») переносим из шапки в карточку
+# Заголовок и лид секции («что такое …») переносим из шапки в карточку
 # .erp-map__about — над текстом ставим заголовок, шапка остаётся с eyebrow.
-_ERP_ABOUT_TITLE_RE = re.compile(r'<h2 class="section-title">(?P<title>.*?)</h2>', re.S)
-_ERP_ABOUT_LEAD_RE = re.compile(r'<p class="section-lead">(?P<lead>.*?)</p>', re.S)
-
-# В исходном тексте (docs/texts-usligi.md) вводный абзац заканчивается фразой
-# «Типичные сигналы к внедрению ERP:» — выносим её из абзаца в заголовок
-# чек-листа сигналов.
-_ERP_SIGNALS_HEADING = "Типичные сигналы к внедрению ERP"
-_ERP_SIGNALS_HEADING_SUFFIX_RE = re.compile(
-    r"\s*" + re.escape(_ERP_SIGNALS_HEADING) + r":?\s*$"
-)
-
-# Абзац-«диагностика» переносим из чек-листа сигналов в карточку .erp-map__about
-# — как второй, самостоятельный смысловой блок под отдельным подзаголовком.
-_ERP_ABOUT_SUBTITLE = "Когда ERP-платформа оправдана"
+_ABOUT_TITLE_RE = re.compile(r'<h2 class="section-title">(?P<title>.*?)</h2>', re.S)
+_ABOUT_LEAD_RE = re.compile(r'<p class="section-lead">(?P<lead>.*?)</p>', re.S)
 
 
-def render_erp_about_body(seg: str) -> str:
-    """«О решении» (ERP): заголовок секции и лид («что такое ERP») переносим
-    из шапки в верхнюю карточку .erp-map__about (заголовок над текстом), а под
-    ней — диагностический чек-лист сигналов к внедрению. Тексты берём из уже
-    сгенерированного HTML (источник истины — docs/texts-usligi.md); если
-    структура секции в MD изменится, разметка остаётся прозой."""
-    m = _ERP_ABOUT_BODY_RE.match(seg)
-    if not m:
-        return seg
-    items = re.findall(r"<li>(.*?)</li>", m.group("items"), re.S)
-    if not items:
-        return seg
+def make_about_body_renderer(subtitle: str, signals_heading: str, img_alt: str):
+    """Собирает рендерер секции «О решении» для страницы услуги: заголовок
+    секции и лид («что такое …») переносятся из шапки в верхнюю карточку
+    .erp-map__about (заголовок над текстом), а под ней — диагностический
+    чек-лист сигналов. В исходном MD вводный абзац заканчивается фразой
+    ``<signals_heading>:`` — она выносится из абзаца в заголовок чек-листа;
+    абзац-«диагностика» становится вторым смысловым блоком под подзаголовком
+    ``subtitle``. Тексты берутся из уже сгенерированного HTML (источник
+    истины — docs/texts-usligi.md); если структура секции в MD изменится,
+    разметка остаётся прозой."""
+    heading_suffix_re = re.compile(r"\s*" + re.escape(signals_heading) + r":?\s*$")
 
-    head = m.group("head")
-    title_m = _ERP_ABOUT_TITLE_RE.search(head)
-    lead_m = _ERP_ABOUT_LEAD_RE.search(head)
-    if not (title_m and lead_m):
-        return seg
+    def render_about_body(seg: str) -> str:
+        m = _ABOUT_BODY_RE.match(seg)
+        if not m:
+            return seg
+        items = re.findall(r"<li>(.*?)</li>", m.group("items"), re.S)
+        if not items:
+            return seg
 
-    signals = "".join(f"<li>{item}</li>" for item in items)
-    intro = _ERP_SIGNALS_HEADING_SUFFIX_RE.sub("", m.group("intro"))
+        head = m.group("head")
+        title_m = _ABOUT_TITLE_RE.search(head)
+        lead_m = _ABOUT_LEAD_RE.search(head)
+        if not (title_m and lead_m):
+            return seg
 
-    return f"""<div class="erp-map">
+        signals = "".join(f"<li>{item}</li>" for item in items)
+        intro = heading_suffix_re.sub("", m.group("intro"))
+
+        return f"""<div class="erp-map">
   <div class="erp-map__about">
     <h2 class="erp-map__about-title">{title_m.group("title")}</h2>
     <p>{lead_m.group("lead")}</p>
-    <h3 class="erp-map__about-subtitle">{_ERP_ABOUT_SUBTITLE}</h3>
+    <h3 class="erp-map__about-subtitle">{subtitle}</h3>
     <p>{intro}</p>
     <div class="erp-map__signals">
       <div class="erp-map__signals-text">
-        <h3 class="erp-map__signals-title">{_ERP_SIGNALS_HEADING}</h3>
+        <h3 class="erp-map__signals-title">{signals_heading}</h3>
         <ul class="erp-map__signals-list">{signals}</ul>
       </div>
-      <img class="erp-map__signals-visual" src="../../images/erp-signals.webp" alt="Диагностика сигналов к внедрению ERP: рост показателей, автоматизация и аналитика производства" width="380" height="330" loading="lazy">
-      {_ERP_SIGNALS_PRICING_HTML}
+      <img class="erp-map__signals-visual" src="../../images/erp-signals.webp" alt="{img_alt}" width="380" height="330" loading="lazy">
+      {_SIGNALS_PRICING_HTML}
     </div>
   </div>
 </div>"""
 
+    return render_about_body
 
-SECTION_BODY_RENDERERS[("razrabotka-erp-sistem", "О решении")] = render_erp_about_body
+
+SECTION_BODY_RENDERERS[("razrabotka-erp-sistem", "О решении")] = make_about_body_renderer(
+    subtitle="Когда ERP-платформа оправдана",
+    signals_heading="Типичные сигналы к внедрению ERP",
+    img_alt="Диагностика сигналов к внедрению ERP: рост показателей, автоматизация и аналитика производства",
+)
+SECTION_BODY_RENDERERS[("razrabotka-crm-sistem", "О решении")] = make_about_body_renderer(
+    subtitle="Когда своя CRM оправдана",
+    signals_heading="Типичные сигналы, что пора заказывать свою CRM",
+    img_alt="Сигналы к внедрению CRM: рост продаж, единая воронка и аналитика в реальном времени",
+)
 
 
 def render_service_bands(
@@ -1871,9 +1991,9 @@ def content_prose(
         lead_block = (
             f'<p class="page-prose__heading--lead">{lead}</p>' if lead else ""
         )
-        if pricing_key == "razrabotka-erp-sistem":
-            global _ERP_SIGNALS_PRICING_HTML
-            _ERP_SIGNALS_PRICING_HTML = pricing
+        if pricing_key in PRICING_IN_SIGNALS:
+            global _SIGNALS_PRICING_HTML
+            _SIGNALS_PRICING_HTML = pricing
             return f"""{render_service_bands(lead_block + body, slug=pricing_key, prefix=prefix)}{middle}{screen}"""
         # Для slug из PRICING_BEFORE_BAND блок «Цена/Сроки/Оплата» вставляется
         # внутрь секций перед нужной полосой, иначе — над ними.
@@ -2225,6 +2345,7 @@ def service_jsonld(
 # ключевому запросу), а также расширенная Service/FAQPage-разметка.
 SEO_ENHANCED_SLUGS = {
     "razrabotka-erp-sistem": {"service_type": "Разработка и внедрение ERP-систем", "low_price": "300000"},
+    "razrabotka-crm-sistem": {"service_type": "Разработка и внедрение CRM-систем", "low_price": "160000"},
 }
 
 

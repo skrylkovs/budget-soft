@@ -265,6 +265,11 @@
     padding-top: 0;
 }
 
+/* Первый блок на странице услуги — скругление отличается от остальных карточек. */
+.page-inner .page-prose-bands > .page-prose--band:first-child {
+    border-radius: 16px;
+}
+
 /* Заголовок — первый элемент карточки: убираем верхний отступ/линию,
    которые нужны были только внутри единого блока. */
 .page-prose--band > .page-prose__heading:first-child {
@@ -515,6 +520,119 @@
 
     .page-spec-cards__item:last-child {
         border-top: 1px solid rgba(111, 76, 255, 0.08);
+    }
+}
+
+/* ── Карточки пакетов стоимости (блок «Сколько стоит…») ─────────────────
+   Тарифная сетка вместо табличного прайса: 4 карточки в ряд, MVP выделен
+   акцентной рамкой и бейджем; срок прижат к низу карточки, поэтому нижние
+   строки всех карточек выровнены. Планшет — 2×2, мобильные — колонка. */
+.page-price-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.page-price-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 24px 22px;
+    background: #fff;
+    border: 1px solid rgba(10, 10, 18, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(10, 10, 18, 0.08);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.page-price-card:hover {
+    box-shadow: 0 12px 32px rgba(10, 10, 18, 0.1);
+    transform: translateY(-2px);
+}
+
+.page-price-card:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+.page-price-card:nth-child(3) {
+    transition-delay: 0.16s;
+}
+
+.page-price-card:nth-child(4) {
+    transition-delay: 0.24s;
+}
+
+.page-price-card--featured {
+    border-color: rgba(111, 76, 255, 0.45);
+    background: linear-gradient(180deg, rgba(111, 76, 255, 0.05), rgba(111, 76, 255, 0.01));
+}
+
+.page-price-card__badge {
+    position: absolute;
+    top: -11px;
+    left: 22px;
+    margin: 0;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--primary);
+    border-radius: 999px;
+}
+
+.page-price-card__name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.page-price-card__price {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+.page-price-card__desc {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-dark-muted);
+}
+
+.page-price-card__term {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: auto 0 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(10, 10, 18, 0.08);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.page-price-card__term svg {
+    flex: 0 0 auto;
+    color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+    .page-price-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .page-price-cards {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -2209,7 +2327,7 @@
     padding: 3rem 2rem 25px 2rem;
     background: #fff;
     border: 1px solid rgba(10, 10, 18, 0.08);
-    border-radius: var(--radius-xl);
+    border-radius: 16px;
     box-shadow: 0 1px 3px rgba(10, 10, 18, 0.08);
 }
 

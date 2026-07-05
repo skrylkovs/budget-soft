@@ -1,0 +1,151 @@
+1.
+
+у меня есть сайт 
+
+я хочу доработать страницу https://www.budget-soft.ru/uslugi/razrabotka-erp-sistem/
+
+1) изучи топ конкуретнов через поиск в yandex.ru
+2) собери идеальную страницу (контент в формате .md) версия 2
+3) контент на странице должен быть интересным, информативным, полезным, при этом продающим
+
+сохрани в F:\projects2\m-soft-it\prototype-main\seo-pages\uslugi
+
+2. 
+
+
+используй веб-поиск чтобы найти актуальную информацию как провести СЕО оптимизацию для яндекс конкретной страницы сайта. 
+когда уже имеется файл с с семантическим ядром (пример seo-core/uslugi/razrabotka-erp-sistem.md)
+
+сделай очень подробный анализ
+
+входные данные
+1) адрес страницы сайта
+2) файл с семантическим ядром (уже готов)
+
+и на основе этого создай подробный скилл
+
+
+Запускай процесс обновления страницы. Пункты 1 и 2 уже выполнены - пропускай их.
+
+
+
+Создай скилл - разработка страницы услуги на сайте
+Целевая страница http://localhost:8000/uslugi/mobilnaya-razrabotka/
+
+Шаги
+
+1. Собрать семантическое ядро .claude\skills\seo-semantic-core\SKILL.md
+2. Разработать идеальный контент страницы .claude\skills\seo-ideal-page\SKILL.md
+3. Проведи SEO-оптимизацию файла контента страницы (п.2) на основе семантического ядра (п.1)
+
+Скилл .claude\skills\seo-page-optimization\SKILL.md 
+
+4. Полность скопируй всё кроме блоков Отрасли + Цифры + Портфолио + Обсудить проект со страницы /uslugi/razrabotka-erp-sistem/ на целевую страницу
+5. Обнови контент целевой страницы из файла который собрал п.2.
+следи чтобы не потерялось оформление блоков
+
+
+// 3. Для каждого блока в файле сгененированном в п.2 выбери тип блока из скилла .claude\skills\inner-page-blocks\SKILL.md и адаптируй контент под сущестующие типы блоков
+
+
+
+
+
+Блоки контента на неглавных страницах:
+
+1. Тип блока 1
+
+Бровь + Заголовок + Небольшой текст + Большой блок с белым фоном (внутри разнообразный контент и картинки, визу 3 блока в ширину Цена + Сроки + Формат оплаты)
+
+<span class="eyebrow">.....</span>
+<h1/h2 class="section-title">.....</h1/h2>
+
+<div class="page-prose page-prose--service page-prose--full page-prose--band reveal is-visible">
+
+<h2 class="page-prose__heading">....</h2>
+
+<p>...........</p>
+<p>...........</p>
+<p>...........</p>
+
+<h2 class="page-prose__heading">....</h2>
+
+<p>...........</p>
+<p>...........</p>
+<p>...........</p>
+
+<div class="page-spec-cards">....</div>
+
+</div>
+
+2. Тип блока 2
+
+Бровь + Заголовок + Небольшой текст + Большая сравнительная таблица
+
+<span class="eyebrow">.....</span>
+<h1/h2 class="section-title">.....</h1/h2>
+
+<div class="compare compare--service">....</div>
+
+3. Тип блока 3
+
+Бровь + Заголовок + Небольшой текст + от 2ух до 6ти bento-блоков по одному, два или три по ширине
+
+<span class="eyebrow">.....</span>
+<h1/h2 class="section-title">.....</h1/h2>
+
+<div class="page-prose-bands__row page-prose-bands__row--first">
+
+    <div class="page-prose page-prose--service page-prose--full page-prose--band reveal is-visible">
+        <h2 class="page-prose__heading">...</h2>
+        <p>...</p>
+        <p>...</p>
+    </div>
+
+    <div class="page-prose page-prose--service page-prose--full page-prose--band reveal is-visible">
+        <h2 class="page-prose__heading">...</h2>
+        <p>...</p>
+        <p>...</p>
+    </div>
+
+</div>
+
+<div class="page-prose-bands__row page-prose-bands__row--first">
+
+    <div class="page-prose page-prose--service page-prose--full page-prose--band reveal is-visible">
+        <h2 class="page-prose__heading">...</h2>
+        <p>...</p>
+        <p>...</p>
+    </div>
+
+    <div class="page-prose page-prose--service page-prose--full page-prose--band reveal is-visible">
+        <h2 class="page-prose__heading">...</h2>
+        <p>...</p>
+        <p>...</p>
+    </div>
+
+</div>
+
+4. Тип блока Отрасли
+
+5. Тип блока FAQ
+
+
+
+
+5.
+
+обнови контент  страницы http://localhost:8000/uslugi/razrabotka-erp-sistem/
+
+контент страницы должен полностью совпадать с файлом seo-pages\uslugi\razrabotka-erp-sistem.md
+
+при этом используй скилл .claude\skills\compose-inner-page-blocks\SKILL.md
+
+все блоки должны быть типовыми
+
+
+
+c:\Users\skryl\Pictures\55555.png
+
+раздели картинку на 4 разных файла
+и обрежь пустые края

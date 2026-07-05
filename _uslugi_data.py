@@ -102,6 +102,9 @@ class ServicePage:
 
 def inline_md(text: str) -> str:
     text = html.escape(text.strip())
+    # Явный перенос строки: литеральный <br> в MD-источнике (пункты списков
+    # «заголовок / описание», двухстрочные лиды) пропускается как разметка.
+    text = text.replace("&lt;br&gt;", "<br>")
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(
         r"\[([^\]]+)\]\((/[^)]+)\)",
@@ -173,11 +176,42 @@ def render_compare(header_cells: list[str], rows: list[list[str]]) -> str:
     )
 
 
+def render_price_cards(rows: list[list[str]]) -> str:
+    """Пакеты стоимости карточками (.page-price-cards). Колонки исходной
+    таблицы: «Пакет | Цена | Состав | Срок»; строка заголовка служит
+    документацией и не выводится. Пакет с пилюлей-бейджем задаётся синтаксисом
+    ``Бейдж :: Название`` и оформляется как акцентная карточка (--featured)."""
+    clock = (
+        '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+        '<circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"></circle>'
+        '<path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.6" '
+        'stroke-linecap="round" stroke-linejoin="round"></path></svg>'
+    )
+    cards: list[str] = []
+    for row in rows:
+        name, price, desc, term = (c.strip() for c in row[:4])
+        badge_html = ""
+        featured = ""
+        if "::" in name:
+            badge, name = (part.strip() for part in name.split("::", 1))
+            badge_html = f'<p class="page-price-card__badge">{inline_md(badge)}</p>'
+            featured = " page-price-card--featured"
+        cards.append(
+            f'<div class="page-price-card{featured} reveal">{badge_html}'
+            f'<p class="page-price-card__name">{inline_md(name)}</p>'
+            f'<p class="page-price-card__price">{inline_md(price)}</p>'
+            f'<p class="page-price-card__desc">{inline_md(desc)}</p>'
+            f'<p class="page-price-card__term">{clock}{inline_md(term)}</p></div>'
+        )
+    return f'<div class="page-price-cards">{"".join(cards)}</div>'
+
+
 def md_body_to_html(body: str) -> str:
     lines = body.strip().split("\n")
     parts: list[str] = []
     i = 0
     compare_next = False
+    price_cards_next = False
     section_next: str | None = None
     while i < len(lines):
         line = lines[i]
@@ -190,6 +224,12 @@ def md_body_to_html(body: str) -> str:
         # Маркер: следующую таблицу рендерим как .compare (блок «Новая математика»)
         if stripped == "{compare}":
             compare_next = True
+            i += 1
+            continue
+
+        # Маркер: следующую таблицу рендерим карточками пакетов (.page-price-cards)
+        if stripped == "{price-cards}":
+            price_cards_next = True
             i += 1
             continue
 
@@ -247,6 +287,10 @@ def md_body_to_html(body: str) -> str:
             if compare_next:
                 compare_next = False
                 parts.append(render_compare(header_cells, rows))
+                continue
+            if price_cards_next:
+                price_cards_next = False
+                parts.append(render_price_cards(rows))
                 continue
             thead = "".join(f"<th>{inline_md(c)}</th>" for c in header_cells)
             tbody_rows = []
