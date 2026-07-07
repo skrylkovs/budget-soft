@@ -5278,76 +5278,77 @@ assert len(USLUGI_MENU_CATEGORIES) == len(USLUGI_DIRECTORY), (
     "USLUGI_MENU_CATEGORIES должен повторять категории USLUGI_DIRECTORY"
 )
 
-# Короткие описания услуг в панелях меню «Услуги» (ключ — target из
-# USLUGI_DIRECTORY). Стиль — как в исходном мегаменю: одна строка о сути
-# услуги, ~40-60 знаков, без повторения слова «Разработка» из названия пункта.
-USLUGI_MENU_ITEM_DESCRIPTIONS: dict[str, str] = {
+# Пункты панелей меню «Услуги» (ключ — target из USLUGI_DIRECTORY):
+# короткое название и описание в стиле исходного мегаменю
+# («ERP-системы» / «Разработка ERP для управления ресурсами...»).
+# Длинные названия из USLUGI_DIRECTORY остаются на странице каталога /uslugi/.
+USLUGI_MENU_ITEMS: dict[str, tuple[str, str]] = {
     # Корпоративные системы
-    "uslugi/mobilnaya-razrabotka": "Нативные и кроссплатформенные приложения iOS/Android.",
-    "uslugi/razrabotka-crm-sistem": "CRM для продаж, лидов и клиентских коммуникаций.",
-    "uslugi/razrabotka-erp-sistem": "ERP для управления ресурсами, финансами и процессами.",
-    "uslugi/korporativnye-portaly": "B2B-порталы и интранеты для сотрудников и партнёров.",
-    "uslugi/bi-big-data": "BI-платформы: DWH, ETL и аналитические дашборды.",
-    "uslugi/lichnye-kabinety": "Кабинеты клиентов с интеграцией в учётные системы.",
-    "uslugi/razrabotka-scm-sistem": "SCM для управления цепочками поставок.",
-    "uslugi/razrabotka-wms-sistem": "WMS: приёмка, хранение, комплектация, отгрузка.",
-    "uslugi/razrabotka-lms": "Платформы онлайн-обучения: курсы, тесты, аналитика.",
-    "uslugi/razrabotka-saas": "SaaS-платформы с multi-tenant архитектурой и API.",
-    "uslugi/sistemy-dokumentooborota": "СЭД/ЭДО: согласования и юридически значимый обмен.",
-    "uslugi/avtomatizaciya-biznesa": "Комплексная автоматизация процессов и RPA.",
-    "uslugi/razrabotka-mes-sistem": "MES для оперативного управления производством.",
+    "uslugi/mobilnaya-razrabotka": ("Мобильная разработка", "Разработка iOS/Android-приложений, MVP и enterprise-решений."),
+    "uslugi/razrabotka-crm-sistem": ("CRM-системы", "Разработка CRM для продаж, лидов и клиентских коммуникаций."),
+    "uslugi/razrabotka-erp-sistem": ("ERP-системы", "Разработка ERP для управления ресурсами, финансами и процессами."),
+    "uslugi/korporativnye-portaly": ("Корпоративные порталы", "Разработка B2B-порталов и интранетов для команд и партнёров."),
+    "uslugi/bi-big-data": ("BI и Big Data", "Разработка BI-платформ: DWH, ETL и аналитические дашборды."),
+    "uslugi/lichnye-kabinety": ("Личные кабинеты", "Разработка кабинетов клиента с интеграцией в учётные системы."),
+    "uslugi/razrabotka-scm-sistem": ("SCM-системы", "Разработка SCM для управления цепочками поставок."),
+    "uslugi/razrabotka-wms-sistem": ("WMS-системы", "Разработка WMS для автоматизации склада и логистики."),
+    "uslugi/razrabotka-lms": ("LMS-платформы", "Разработка платформ онлайн-обучения: курсы, тесты, аналитика."),
+    "uslugi/razrabotka-saas": ("SaaS-платформы", "Разработка SaaS-платформ с multi-tenant архитектурой и API."),
+    "uslugi/sistemy-dokumentooborota": ("СЭД / ЭДО", "Разработка систем документооборота и юридически значимого обмена."),
+    "uslugi/avtomatizaciya-biznesa": ("Автоматизация бизнеса", "Разработка решений для комплексной автоматизации бизнеса."),
+    "uslugi/razrabotka-mes-sistem": ("MES-системы", "Разработка MES для оперативного управления производством."),
     # Веб-разработка
-    "uslugi/razrabotka-sajtov": "Корпоративные сайты и веб-платформы под ключ.",
-    "uslugi/razrabotka-veb-prilozhenij": "Веб-сервисы со сложной бизнес-логикой.",
-    "uslugi/razrabotka-internet-magazinov": "Интернет-магазины с highload-интеграциями.",
-    "uslugi/razrabotka-mvp": "MVP за 4–8 недель для проверки гипотез.",
-    "uslugi/razrabotka-marketplejsov": "Маркетплейсы B2B/B2C с кабинетами продавцов.",
-    "uslugi/razrabotka-dlya-startapov": "Продукт для стартапа: от идеи до релиза.",
-    "uslugi/razrabotka-lendingov": "Продающие посадочные страницы под трафик.",
-    "uslugi/razrabotka-agregatorov": "Агрегаторы, доски объявлений и онлайн-сервисы.",
+    "uslugi/razrabotka-sajtov": ("Разработка сайтов", "Корпоративные сайты и веб-платформы под ключ."),
+    "uslugi/razrabotka-veb-prilozhenij": ("Веб-приложения", "Разработка веб-сервисов со сложной бизнес-логикой."),
+    "uslugi/razrabotka-internet-magazinov": ("Интернет-магазины", "Разработка интернет-магазинов с highload-интеграциями."),
+    "uslugi/razrabotka-mvp": ("Разработка MVP", "MVP за 4–8 недель для проверки гипотез и запуска."),
+    "uslugi/razrabotka-marketplejsov": ("Маркетплейсы", "Разработка маркетплейсов B2B/B2C с кабинетами продавцов."),
+    "uslugi/razrabotka-dlya-startapov": ("Для стартапов", "Разработка продукта от идеи до релиза и масштабирования."),
+    "uslugi/razrabotka-lendingov": ("Лендинги", "Продающие посадочные страницы под рекламный трафик."),
+    "uslugi/razrabotka-agregatorov": ("Агрегаторы и сервисы", "Разработка агрегаторов, досок объявлений и соцсервисов."),
     # Аутстаффинг, аутсорсинг и команды
-    "uslugi/it-autstaffing": "Middle+/Senior специалисты в вашу команду.",
-    "uslugi/it-autsorsing": "Разработка под ключ силами выделенной команды.",
-    "uslugi/vydelennaya-komanda": "Команда и удалённый ИТ-центр под ваши задачи.",
-    "uslugi/it-rekruting": "Подбор ИТ-специалистов под ваш стек и бюджет.",
+    "uslugi/it-autstaffing": ("IT-аутстаффинг", "Middle+/Senior специалисты в вашу команду."),
+    "uslugi/it-autsorsing": ("IT-аутсорсинг", "Разработка под ключ силами выделенной команды."),
+    "uslugi/vydelennaya-komanda": ("Выделенная команда", "Команда разработки и удалённый ИТ-центр под ваши задачи."),
+    "uslugi/it-rekruting": ("IT-рекрутинг", "Подбор ИТ-специалистов под ваш стек и бюджет."),
     # Поддержка и инфраструктура
-    "uslugi/tehpodderzhka-i-soprovozhdenie": "Поддержка и развитие систем по SLA.",
-    "uslugi/devops-uslugi": "CI/CD, контейнеризация, мониторинг, автоматизация.",
-    "uslugi/administrirovanie-serverov": "Серверы, хостинг, резервное копирование.",
+    "uslugi/tehpodderzhka-i-soprovozhdenie": ("Техподдержка и SLA", "Сопровождение и развитие систем по SLA."),
+    "uslugi/devops-uslugi": ("DevOps", "CI/CD, контейнеризация, мониторинг и автоматизация."),
+    "uslugi/administrirovanie-serverov": ("Администрирование", "Серверы, хостинг и резервное копирование."),
     # Консалтинг, аудит и аналитика
-    "uslugi/integracii-s-sistemami": "Интеграции с 1С, CRM, платёжными и внешними API.",
-    "uslugi/modernizaciya-legacy": "Обновление legacy-систем и миграции без простоя.",
-    "uslugi/razrabotka-tz": "Требования, архитектура и смета проекта.",
-    "uslugi/it-konsalting": "ИТ-стратегия, выбор стека и архитектуры.",
-    "uslugi/audit-koda": "Качество, безопасность и производительность кода.",
-    "uslugi/audit-it-infrastruktury": "Отказоустойчивость, безопасность, оптимизация затрат.",
-    "uslugi/biznes-i-sistemnyj-analiz": "Проработка требований и бизнес-процессов.",
-    "uslugi/predproektnoe-obsledovanie": "Discovery: цели, риски, прототип, оценка.",
-    "uslugi/spasenie-proektov": "Аудит проблемного проекта, план и перезапуск.",
-    "importozameshchenie": "Переход на российское ПО и независимый стек.",
+    "uslugi/integracii-s-sistemami": ("Интеграции", "Интеграции с 1С, CRM, платёжными и внешними API."),
+    "uslugi/modernizaciya-legacy": ("Модернизация legacy", "Обновление устаревших систем и миграции без простоя."),
+    "uslugi/razrabotka-tz": ("Разработка ТЗ", "Требования, архитектура и смета будущего проекта."),
+    "uslugi/it-konsalting": ("IT-консалтинг", "ИТ-стратегия, выбор стека и архитектуры."),
+    "uslugi/audit-koda": ("Аудит кода", "Качество, безопасность и производительность кода."),
+    "uslugi/audit-it-infrastruktury": ("Аудит инфраструктуры", "Отказоустойчивость, безопасность и оптимизация затрат."),
+    "uslugi/biznes-i-sistemnyj-analiz": ("Бизнес-анализ", "Проработка требований и бизнес-процессов."),
+    "uslugi/predproektnoe-obsledovanie": ("Discovery-фаза", "Предпроектное обследование: цели, риски, прототип, оценка."),
+    "uslugi/spasenie-proektov": ("Спасение проектов", "Аудит проблемного проекта, план и перезапуск."),
+    "importozameshchenie": ("Импортозамещение", "Переход на российское ПО и независимый стек."),
     # Экосистема 1С
-    "uslugi/vnedrenie-1c": "Внедрение, доработка и сопровождение конфигураций 1С.",
+    "uslugi/vnedrenie-1c": ("Внедрение 1С", "Внедрение, доработка и сопровождение конфигураций 1С."),
     # Маркетинг и продвижение
-    "uslugi/seo-prodvizhenie": "Продвижение сайтов в Яндексе и Google.",
-    "uslugi/kontekstnaya-reklama": "Яндекс Директ и таргет под ключ.",
-    "uslugi/smm-prodvizhenie": "Стратегия, контент и продвижение в соцсетях.",
-    "uslugi/prodvizhenie-v-telegram": "Каналы, посевы и Telegram Ads.",
-    "uslugi/aso-prodvizhenie": "Видимость приложений в App Store и Google Play.",
+    "uslugi/seo-prodvizhenie": ("SEO-продвижение", "Продвижение сайтов в Яндексе и Google."),
+    "uslugi/kontekstnaya-reklama": ("Контекстная реклама", "Яндекс Директ и таргетированная реклама под ключ."),
+    "uslugi/smm-prodvizhenie": ("SMM", "Стратегия, контент и продвижение в соцсетях."),
+    "uslugi/prodvizhenie-v-telegram": ("Продвижение в Telegram", "Каналы, посевы и Telegram Ads."),
+    "uslugi/aso-prodvizhenie": ("ASO-продвижение", "Видимость приложений в App Store и Google Play."),
     # Технологии и отраслевые решения
-    "uslugi/iskusstvennyj-intellekt": "AI-решения и ML-модели для автоматизации задач.",
-    "uslugi/telegram-mini-apps": "Mini Apps и боты с интеграциями и оплатой.",
-    "uslugi/blockchain-web3": "dApps, DeFi, смарт-контракты, токенизация.",
-    "uslugi/fintech": "Платежи, процессинг, банкинг, антифрод.",
-    "uslugi/digital-health": "МИС, телемедицина и Digital Health платформы.",
+    "uslugi/iskusstvennyj-intellekt": ("Внедрение ИИ", "Разработка AI-решений и ML-моделей для автоматизации задач."),
+    "uslugi/telegram-mini-apps": ("Telegram Mini Apps", "Разработка Telegram Mini Apps и ботов с интеграциями."),
+    "uslugi/blockchain-web3": ("Блокчейн и Web3", "Разработка blockchain/Web3-решений: dApps, DeFi, смарт-контракты."),
+    "uslugi/fintech": ("FinTech", "Разработка FinTech-продуктов: платежи, процессинг, банкинг."),
+    "uslugi/digital-health": ("Digital Health / МИС", "Разработка МИС и Digital Health платформ для медицины."),
 }
 
-_missing_descs = [
+_missing_items = [
     target
     for _title, _items in USLUGI_DIRECTORY
     for _name, target in _items
-    if target and target not in USLUGI_MENU_ITEM_DESCRIPTIONS
+    if target and target not in USLUGI_MENU_ITEMS
 ]
-assert not _missing_descs, f"Нет описаний для пунктов меню: {_missing_descs}"
+assert not _missing_items, f"Нет пунктов меню для: {_missing_items}"
 
 
 def plural_ru(n: int, one: str, few: str, many: str) -> str:
@@ -5811,9 +5812,9 @@ def render_submenu(prefix: str) -> str:
     ):
         links = "".join(
             f'<a class="submenu-cat__item" href="{page_href(prefix, target)}" role="menuitem">'
-            f'<span class="submenu-cat__item-name">{name}</span>'
-            f'<span class="submenu-cat__item-desc">{USLUGI_MENU_ITEM_DESCRIPTIONS[target]}</span></a>'
-            for name, target in items
+            f'<span class="submenu-cat__item-name">{USLUGI_MENU_ITEMS[target][0]}</span>'
+            f'<span class="submenu-cat__item-desc">{USLUGI_MENU_ITEMS[target][1]}</span></a>'
+            for _name, target in items
             if target
         )
         count = sum(1 for _name, target in items if target)
