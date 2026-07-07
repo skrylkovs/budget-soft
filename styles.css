@@ -473,9 +473,9 @@ button.nav__link {
 .submenu-cats {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     width: var(--submenu-rail);
-    padding: 24px 16px 24px clamp(16px, 3vw, 40px);
+    padding: 20px 16px 20px clamp(16px, 3vw, 40px);
     background: #f7f8fb;
     border-right: 1px solid rgba(10, 10, 20, 0.08);
 }
@@ -484,7 +484,7 @@ button.nav__link {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 15px 16px;
+    padding: 11px 16px;
     border-radius: var(--radius-sm);
     transition: background 0.18s ease;
 }
@@ -564,9 +564,14 @@ button.nav__link {
     transition: opacity 0.16s ease, visibility 0.16s ease;
 }
 
+/* Правило «по умолчанию» действует только при ОТКРЫТОМ меню (:hover/:focus-within
+   на пункте навигации): иначе visibility:visible у панели перебивает hidden
+   закрытого меню, и невидимая панель ловит hover над контентом страницы,
+   открывая меню (например, с полосы .clients-strip под шапкой). */
 .submenu-cat:hover .submenu-cat__panel,
 .submenu-cat:focus-within .submenu-cat__panel,
-.submenu-cats:not(:hover):not(:focus-within) .submenu-cat:first-child .submenu-cat__panel {
+.nav__item--has-submenu:hover .submenu-cats:not(:hover):not(:focus-within) .submenu-cat:first-child .submenu-cat__panel,
+.nav__item--has-submenu:focus-within .submenu-cats:not(:hover):not(:focus-within) .submenu-cat:first-child .submenu-cat__panel {
     opacity: 1;
     visibility: visible;
     /* активная панель поверх затухающей панели другой категории:
@@ -635,9 +640,27 @@ button.nav__link {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* Самая большая категория (13 услуг): плотнее типографика, чтобы панель
+   не превышала высоту колонки категорий и не появлялась прокрутка */
 .submenu-cat__panel-list--cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: clamp(24px, 3vw, 48px);
+    row-gap: 6px;
+}
+
+.submenu-cat__panel-list--cols-3 .submenu-cat__item {
+    padding: 6px 0;
+}
+
+.submenu-cat__panel-list--cols-3 .submenu-cat__item-name {
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+.submenu-cat__panel-list--cols-3 .submenu-cat__item-desc {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 /* Пункты услуг — в дизайне исходного мегаменю: жирный заголовок и
@@ -683,8 +706,8 @@ button.nav__link {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    margin-top: 16px;
-    padding: 16px 16px 4px;
+    margin-top: 10px;
+    padding: 12px 16px 2px;
     border-top: 1px solid rgba(10, 10, 20, 0.08);
     color: var(--primary);
     font-size: 15px;
