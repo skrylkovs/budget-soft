@@ -669,7 +669,7 @@ button.nav__link {
     display: block;
     padding: 10px 0;
     border-left: 4px solid transparent;
-    transition: border-left-color 0.22s ease, padding-left 0.22s ease;
+    transition: border-left-color 0.22s ease, padding-left 0.22s ease, margin-right 0.22s ease;
 }
 
 .submenu-cat__item-name {
@@ -694,6 +694,9 @@ button.nav__link {
 .submenu-cat__item:hover {
     border-left-color: #6f4cff;
     padding-left: 10px;
+    /* компенсирует padding-left: ширина текста не меняется, строки не
+       переносятся заново и высота пункта не «прыгает» */
+    margin-right: -10px;
 }
 
 .submenu-cat__item:hover .submenu-cat__item-name {
