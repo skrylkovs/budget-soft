@@ -1,7 +1,7 @@
 {
   "_comment": "Реестр постоянных URL сайта. Эти пути НЕЛЬЗЯ менять — на них могут быть внешние ссылки, индексация в поиске и закладки. Менять можно только содержимое страниц, не их адреса. При добавлении новой страницы — добавляй сюда новую запись, существующие не трогай.",
   "url_style": "directory-pretty-urls (каждая страница — <dir>/index.html, отдаётся как /<dir>/)",
-  "count": 27,
+  "count": 60,
   "pages": [
     {
       "url": "/",
@@ -71,12 +71,12 @@
     {
       "url": "/uslugi/bi-big-data/",
       "file": "uslugi/bi-big-data/index.html",
-      "title": "Внедрение систем бизнес аналитики BI и Big Data для бизнеса: разработка корпоративных хранилищ данных — BUDGET SOFT"
+      "title": "Разработка и внедрение BI-систем и Big Data-аналитики: стоимость, этапы, хранилища данных (DWH) и дашборды под ключ — BUDGET SOFT"
     },
     {
       "url": "/uslugi/blockchain-web3/",
       "file": "uslugi/blockchain-web3/index.html",
-      "title": "Технология разработки блокчейн приложений: написание смарт-контрактов и Web3 решений для бизнеса — BUDGET SOFT"
+      "title": "Блокчейн-разработка под ключ — от 150 000 ₽: смарт-контракты, dApps и Web3-решения на заказ — BUDGET SOFT"
     },
     {
       "url": "/uslugi/digital-health/",
@@ -96,7 +96,7 @@
     {
       "url": "/uslugi/it-autstaffing/",
       "file": "uslugi/it-autstaffing/index.html",
-      "title": "IT аутстаффинг программистов и разработчиков Middle+ / Senior: услуги аутстаффинга IT специалистов — BUDGET SOFT"
+      "title": "IT-аутстаффинг разработчиков и IT-специалистов Middle+/Senior: вывод от 3 дней, ставки от 1 400 ₽/час — BUDGET SOFT"
     },
     {
       "url": "/uslugi/mobilnaya-razrabotka/",
@@ -116,27 +116,192 @@
     {
       "url": "/uslugi/razrabotka-internet-magazinov/",
       "file": "uslugi/razrabotka-internet-magazinov/index.html",
-      "title": "Разработка сайтов интернет магазинов под ключ: стоимость и создание высоконагруженного e-commerce — BUDGET SOFT"
+      "title": "Разработка интернет-магазина под ключ — от 200 000 ₽: стоимость создания сайта e-commerce на заказ — BUDGET SOFT"
     },
     {
       "url": "/uslugi/razrabotka-marketplejsov/",
       "file": "uslugi/razrabotka-marketplejsov/index.html",
-      "title": "Разработка маркетплейсов под ключ B2B/B2C: создание сайта торговой онлайн площадки — BUDGET SOFT"
+      "title": "Разработка маркетплейса под ключ — от 900 000 ₽: стоимость создания торговой площадки B2B/B2C — BUDGET SOFT"
     },
     {
       "url": "/uslugi/razrabotka-saas/",
       "file": "uslugi/razrabotka-saas/index.html",
-      "title": "Разработка SaaS платформ и облачных сервисов для бизнеса на заказ — BUDGET SOFT"
-    },
-    {
-      "url": "/uslugi/scm-upravlenie-postavkami/",
-      "file": "uslugi/scm-upravlenie-postavkami/index.html",
-      "title": "Разработка систем управления цепочками поставок SCM и WMS на заказ: логистические системы под ключ — BUDGET SOFT"
+      "title": "Разработка SaaS-платформ и облачных сервисов под ключ — от 250 000 ₽: создание SaaS на заказ — BUDGET SOFT"
     },
     {
       "url": "/uslugi/telegram-mini-apps/",
       "file": "uslugi/telegram-mini-apps/index.html",
       "title": "Разработка Telegram Mini Apps и чат-ботов на заказ: мини-приложения и боты в Телеграм под ключ для бизнеса — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/korporativnye-portaly/",
+      "file": "uslugi/korporativnye-portaly/index.html",
+      "title": "Разработка корпоративных порталов — интранет, HR и B2B от 350 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/lichnye-kabinety/",
+      "file": "uslugi/lichnye-kabinety/index.html",
+      "title": "Разработка личного кабинета — для клиентов и B2B от 250 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-scm-sistem/",
+      "file": "uslugi/razrabotka-scm-sistem/index.html",
+      "title": "Разработка SCM-систем — управление цепочками поставок от 450 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-wms-sistem/",
+      "file": "uslugi/razrabotka-wms-sistem/index.html",
+      "title": "Разработка WMS-систем — управление складом от 400 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-lms/",
+      "file": "uslugi/razrabotka-lms/index.html",
+      "title": "Разработка LMS — платформа для онлайн-обучения от 600 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/sistemy-dokumentooborota/",
+      "file": "uslugi/sistemy-dokumentooborota/index.html",
+      "title": "Разработка систем документооборота — СЭД под ключ от 500 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-mes-sistem/",
+      "file": "uslugi/razrabotka-mes-sistem/index.html",
+      "title": "Разработка MES-систем — управление производством от 400 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-sajtov/",
+      "file": "uslugi/razrabotka-sajtov/index.html",
+      "title": "Разработка сайтов под ключ — корпоративный сайт от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-veb-prilozhenij/",
+      "file": "uslugi/razrabotka-veb-prilozhenij/index.html",
+      "title": "Разработка веб-приложений на заказ — от MVP за 400 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-mvp/",
+      "file": "uslugi/razrabotka-mvp/index.html",
+      "title": "Разработка MVP на заказ — жизнеспособный продукт от 400 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-dlya-startapov/",
+      "file": "uslugi/razrabotka-dlya-startapov/index.html",
+      "title": "Разработка для стартапов — MVP и приложения от 400 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-lendingov/",
+      "file": "uslugi/razrabotka-lendingov/index.html",
+      "title": "Разработка лендингов под ключ — продающий Landing Page от 45 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-agregatorov/",
+      "file": "uslugi/razrabotka-agregatorov/index.html",
+      "title": "Разработка сайтов-агрегаторов под ключ — MVP от 600 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/it-autsorsing/",
+      "file": "uslugi/it-autsorsing/index.html",
+      "title": "ИТ-аутсорсинг разработки — проект под ключ или команда от 2 недель — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/vydelennaya-komanda/",
+      "file": "uslugi/vydelennaya-komanda/index.html",
+      "title": "Выделенная команда разработчиков на проект — от 450 000 ₽/мес — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/it-rekruting/",
+      "file": "uslugi/it-rekruting/index.html",
+      "title": "Подбор IT-специалистов — рекрутинг с техпроверкой кандидатов инженерами — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/tehpodderzhka-i-soprovozhdenie/",
+      "file": "uslugi/tehpodderzhka-i-soprovozhdenie/index.html",
+      "title": "Техническая поддержка сайтов и систем — тарифы от 15 000 ₽/мес — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/devops-uslugi/",
+      "file": "uslugi/devops-uslugi/index.html",
+      "title": "DevOps-услуги — CI/CD, Kubernetes, мониторинг: проект от 90 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/administrirovanie-serverov/",
+      "file": "uslugi/administrirovanie-serverov/index.html",
+      "title": "Администрирование и обслуживание серверов — удалённо, 24/7 — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/integracii-s-sistemami/",
+      "file": "uslugi/integracii-s-sistemami/index.html",
+      "title": "Интеграция с внешними системами и API — 1С, CRM, платежи, маркетплейсы — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/modernizaciya-legacy/",
+      "file": "uslugi/modernizaciya-legacy/index.html",
+      "title": "Модернизация legacy-систем — доработка и миграция ПО от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-tz/",
+      "file": "uslugi/razrabotka-tz/index.html",
+      "title": "Разработка технического задания на ПО и сайты — ТЗ от 60 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/it-konsalting/",
+      "file": "uslugi/it-konsalting/index.html",
+      "title": "ИТ-консалтинг для бизнеса — стратегия, архитектура, ИТ-бюджет — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/audit-koda/",
+      "file": "uslugi/audit-koda/index.html",
+      "title": "Аудит кода и архитектуры ПО — отчёт с планом исправлений за 1–3 недели — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/audit-it-infrastruktury/",
+      "file": "uslugi/audit-it-infrastruktury/index.html",
+      "title": "Аудит ИТ-инфраструктуры — отчёт и план модернизации от 5 дней — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/biznes-i-sistemnyj-analiz/",
+      "file": "uslugi/biznes-i-sistemnyj-analiz/index.html",
+      "title": "Бизнес- и системный анализ для ИТ-проектов — требования, процессы, спецификации — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/predproektnoe-obsledovanie/",
+      "file": "uslugi/predproektnoe-obsledovanie/index.html",
+      "title": "Предпроектное обследование ИТ-систем — отчёт и смета от 80 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/spasenie-proektov/",
+      "file": "uslugi/spasenie-proektov/index.html",
+      "title": "Спасение ИТ-проектов — доработаем сайт или систему за другими от 50 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/vnedrenie-1c/",
+      "file": "uslugi/vnedrenie-1c/index.html",
+      "title": "Внедрение 1С под ключ — ERP, УТ, ЗУП от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/seo-prodvizhenie/",
+      "file": "uslugi/seo-prodvizhenie/index.html",
+      "title": "SEO-продвижение сайтов в Яндексе — комплексное SEO от 50 000 ₽/мес — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/kontekstnaya-reklama/",
+      "file": "uslugi/kontekstnaya-reklama/index.html",
+      "title": "Настройка и ведение контекстной рекламы — Директ и таргет от 30 000 ₽/мес — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/smm-prodvizhenie/",
+      "file": "uslugi/smm-prodvizhenie/index.html",
+      "title": "SMM-продвижение в соцсетях — ведение и таргет от 60 000 ₽/мес — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/prodvizhenie-v-telegram/",
+      "file": "uslugi/prodvizhenie-v-telegram/index.html",
+      "title": "Продвижение в Telegram — канал, Telegram Ads и посевы от 60 000 ₽/мес — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/aso-prodvizhenie/",
+      "file": "uslugi/aso-prodvizhenie/index.html",
+      "title": "ASO-продвижение мобильных приложений — App Store, Google Play, RuStore — BUDGET SOFT"
     }
   ]
 }

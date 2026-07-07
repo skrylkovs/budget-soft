@@ -451,51 +451,18 @@ button.nav__link {
     transform: translateX(-50%) translateY(0);
 }
 
-.submenu__link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-height: 52px;
-    padding: 10px 12px;
-    border-radius: var(--radius-sm);
-    color: var(--text-dark-muted);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.35;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.submenu__link:hover {
-    background: var(--primary-soft);
-    color: var(--text-dark);
-}
-
-.submenu__icon {
-    display: inline-grid;
-    place-items: center;
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: var(--primary-soft);
-    color: var(--primary);
-}
-
-.submenu__link:hover .submenu__icon {
-    background: rgba(111, 76, 255, 0.22);
-    color: var(--primary-hover);
-}
-
-/* Services mega-menu (full-width layout) */
+/* Services mega-menu: слева 8 категорий, справа панель услуг наведённой категории */
 .submenu--services {
+    --submenu-rail: 430px;
+    display: block;
     left: 50%;
     width: 100%;
     max-width: 1400px;
-    padding: 24px 40px 28px;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    column-gap: clamp(40px, 8vw, 120px);
-    row-gap: 14px;
-    justify-items: stretch;
+    /* на невысоких экранах меню целиком не помещается — прокручиваем его,
+       чтобы нижние категории и «Все услуги» оставались доступны */
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding: 0;
     border-top: 1px solid rgba(10, 10, 20, 0.08);
     border-left: none;
     border-right: none;
@@ -503,92 +470,245 @@ button.nav__link {
     box-shadow: 0 14px 34px rgba(10, 10, 20, 0.08);
 }
 
-.submenu--services .submenu__icon {
-    display: none;
+.submenu-cats {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: var(--submenu-rail);
+    padding: 24px 16px 24px clamp(16px, 3vw, 40px);
+    border-right: 1px solid rgba(10, 10, 20, 0.08);
 }
 
-.submenu--services .submenu__link {
+.submenu-cat__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 15px 16px;
+    border-radius: var(--radius-sm);
+    transition: background 0.18s ease;
+}
+
+.submenu-cat__icon {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+.submenu-cat__text {
+    min-width: 0;
+}
+
+.submenu-cat__name {
     display: block;
-    min-height: auto;
-    padding: 10px 0;
-    border-radius: 0;
-    border-left: 4px solid transparent;
-    background: transparent;
     color: #0f1115;
-    text-align: left;
-    transition: border-left-color 0.22s ease, padding-left 0.22s ease, color 0.22s ease;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
 }
 
-.submenu--services .submenu__link:hover {
-    background: transparent;
-    color: #6f4cff;
-    border-left-color: #6f4cff;
-    padding-left: 10px;
-}
-
-.submenu--services .submenu__link:last-child {
-    grid-column: -2 / -1;
-    justify-self: stretch;
-}
-
-.submenu--services .submenu__link > span:last-child {
+.submenu-cat__desc {
     display: block;
-    margin: 0;
+    margin-top: 3px;
+    color: #5d6472;
+    font-size: 13.5px;
+    line-height: 1.35;
+}
+
+.submenu-cat__chevron {
+    flex-shrink: 0;
+    margin-left: auto;
+    color: #a6adbb;
+    transition: transform 0.18s ease, color 0.18s ease;
+}
+
+/* Наведённая категория; пока курсор не в меню — подсвечена первая */
+.submenu-cat:hover > .submenu-cat__link,
+.submenu-cat:focus-within > .submenu-cat__link,
+.submenu-cats:not(:hover):not(:focus-within) .submenu-cat:first-child > .submenu-cat__link {
+    background: var(--primary-soft);
+}
+
+.submenu-cat:hover .submenu-cat__icon,
+.submenu-cat:focus-within .submenu-cat__icon,
+.submenu-cats:not(:hover):not(:focus-within) .submenu-cat:first-child .submenu-cat__icon {
+    background: var(--primary);
+    color: #fff;
+}
+
+.submenu-cat:hover .submenu-cat__chevron,
+.submenu-cat:focus-within .submenu-cat__chevron,
+.submenu-cats:not(:hover):not(:focus-within) .submenu-cat:first-child .submenu-cat__chevron {
+    color: var(--primary);
+    transform: translateX(2px);
+}
+
+/* Панель услуг категории занимает правую часть меню; плавное скрытие даёт
+   довести курсор от пункта категории до панели без «моргания» */
+.submenu-cat__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: var(--submenu-rail);
+    padding: 24px clamp(24px, 4vw, 48px) 26px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.16s ease, visibility 0.16s ease;
+}
+
+.submenu-cat:hover .submenu-cat__panel,
+.submenu-cat:focus-within .submenu-cat__panel,
+.submenu-cats:not(:hover):not(:focus-within) .submenu-cat:first-child .submenu-cat__panel {
+    opacity: 1;
+    visibility: visible;
+    /* активная панель поверх затухающей панели другой категории:
+       без этого панель более поздней в DOM категории 160 мс перехватывает
+       курсор над активной и «залипает» */
+    z-index: 1;
+}
+
+/* Курсор в колонке категорий, но не на категории (на «Все услуги», паддинге,
+   зазоре): после короткой паузы показываем первую категорию, чтобы правая
+   часть меню не пустела. Пауза сохраняет «мост» — быстрый проезд через зазор
+   в сторону открытой панели не перехватывается. Браузеры без :has()
+   пропустят эти правила: у них правая часть в этом состоянии просто пустеет. */
+.submenu-cats:hover:not(:has(.submenu-cat:hover, .submenu-cat:focus-within)) .submenu-cat:first-child > .submenu-cat__link {
+    background: var(--primary-soft);
+    transition-delay: 0.25s;
+}
+
+.submenu-cats:hover:not(:has(.submenu-cat:hover, .submenu-cat:focus-within)) .submenu-cat:first-child .submenu-cat__icon {
+    background: var(--primary);
+    color: #fff;
+    transition-delay: 0.25s;
+}
+
+.submenu-cats:hover:not(:has(.submenu-cat:hover, .submenu-cat:focus-within)) .submenu-cat:first-child .submenu-cat__chevron {
+    color: var(--primary);
+    transform: translateX(2px);
+    transition-delay: 0.25s;
+}
+
+.submenu-cats:hover:not(:has(.submenu-cat:hover, .submenu-cat:focus-within)) .submenu-cat:first-child .submenu-cat__panel {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+    transition-delay: 0.25s;
+}
+
+.submenu-cat__panel-title {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 10px;
+    color: #0f1115;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.submenu-cat__panel-count {
+    color: #5d6472;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.submenu-cat__panel-list {
+    display: grid;
+    grid-template-columns: minmax(0, 480px);
+    align-content: start;
+    row-gap: 10px;
+    column-gap: clamp(28px, 4vw, 64px);
+}
+
+.submenu-cat__panel-list--cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.submenu-cat__panel-list--cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(24px, 3vw, 48px);
+}
+
+/* Пункты услуг — в дизайне исходного мегаменю: жирный заголовок и
+   серое описание под ним */
+.submenu-cat__item {
+    display: block;
+    padding: 8px 0;
+    border-left: 4px solid transparent;
+    transition: border-left-color 0.22s ease, padding-left 0.22s ease;
+}
+
+.submenu-cat__item-name {
+    display: block;
+    color: #0f1115;
     font-size: 18px;
     font-weight: 600;
     line-height: 1.38;
     letter-spacing: 0.01em;
+    transition: color 0.22s ease;
 }
 
-.submenu--services .submenu__link > span:last-child::after {
-    content: "";
+.submenu-cat__item-desc {
     display: block;
-    margin-top: 6px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.45;
+    margin-top: 5px;
     color: #5d6472;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.4;
 }
 
-.submenu--services .submenu__link:nth-child(1) > span:last-child::after { content: "Разработка ERP для управления ресурсами, финансами и процессами."; }
-.submenu--services .submenu__link:nth-child(2) > span:last-child::after { content: "Разработка CRM для продаж, лидов и клиентских коммуникаций."; }
-.submenu--services .submenu__link:nth-child(3) > span:last-child::after { content: "Разработка AI-решений и ML-моделей для автоматизации задач."; }
-.submenu--services .submenu__link:nth-child(4) > span:last-child::after { content: "Разработка iOS/Android-приложений, MVP и enterprise-решений."; }
-.submenu--services .submenu__link:nth-child(5) > span:last-child::after { content: "Разработка Telegram Mini Apps и ботов с интеграциями."; }
-.submenu--services .submenu__link:nth-child(6) > span:last-child::after { content: "Разработка SCM/WMS для управления поставками и складом."; }
-.submenu--services .submenu__link:nth-child(7) > span:last-child::after { content: "Разработка BI-платформ: DWH, ETL и аналитические дашборды."; }
-.submenu--services .submenu__link:nth-child(8) > span:last-child::after { content: "Разработка SaaS-платформ с multi-tenant архитектурой и API."; }
-.submenu--services .submenu__link:nth-child(9) > span:last-child::after { content: "Разработка интернет-магазинов с highload-интеграциями."; }
-.submenu--services .submenu__link:nth-child(10) > span:last-child::after { content: "Разработка маркетплейсов B2B/B2C с кабинетами продавцов."; }
-.submenu--services .submenu__link:nth-child(11) > span:last-child::after { content: "Разработка решений для комплексной автоматизации бизнеса."; }
-.submenu--services .submenu__link:nth-child(12) > span:last-child::after { content: "Разработка МИС и Digital Health платформ для медицины."; }
-.submenu--services .submenu__link:nth-child(13) > span:last-child::after { content: "Разработка FinTech-продуктов: платежи, процессинг, банкинг."; }
-.submenu--services .submenu__link:nth-child(14) > span:last-child::after { content: "Разработка blockchain/Web3-решений: dApps, DeFi, смарт-контракты."; }
-.submenu--services .submenu__link:nth-child(15) > span:last-child::after { content: "Middle+/Senior специалисты в вашу команду."; }
-.submenu--services .submenu__link:nth-child(16) > span:last-child::after { content: "Все направления разработки и цифровых услуг компании."; }
-
-@media (max-width: 1200px) {
-    .submenu--services {
-        padding: 18px 24px 22px;
-        column-gap: 28px;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
+.submenu-cat__item:hover {
+    border-left-color: #6f4cff;
+    padding-left: 10px;
 }
 
-@media (max-width: 900px) {
-    .submenu--services {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
+.submenu-cat__item:hover .submenu-cat__item-name {
+    color: #6f4cff;
 }
 
-@media (max-width: 640px) {
-    .submenu--services {
-        grid-template-columns: 1fr;
-    }
+/* «Все услуги» — итоговая строка под категориями */
+.submenu-cats__all {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 16px 16px 4px;
+    border-top: 1px solid rgba(10, 10, 20, 0.08);
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 0.18s ease;
+}
 
-    .submenu--services .submenu__link:last-child {
-        grid-column: auto;
-    }
+.submenu-cats__all-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #5d6472;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.submenu-cats__all-note svg {
+    color: var(--primary);
+    transition: transform 0.18s ease;
+}
+
+.submenu-cats__all:hover {
+    color: var(--primary-hover);
+}
+
+.submenu-cats__all:hover .submenu-cats__all-note svg {
+    transform: translateX(3px);
 }
 
 /* Header actions */

@@ -2165,6 +2165,8 @@
 .svc-group {
     padding: calc(28px * 0.7) 0;
     border-top: 1px solid rgba(10, 10, 18, 0.08);
+    /* при переходе по якорю категории из меню заголовок не прячется под шапкой */
+    scroll-margin-top: 96px;
 }
 
 .svc-catalog__grid > .svc-group:first-child {
@@ -2253,7 +2255,10 @@
     padding-top: 4px;
 }
 
+/* .svc-catalog-panel в селекторе — чтобы перебить .page-prose--service h3
+   (display: none для подзаголовков #### в обычной прозе). */
 .svc-catalog-panel .svc-group__title {
+    display: block;
     margin: 0;
     font-size: 22px;
     font-weight: 400;
@@ -2302,6 +2307,74 @@
     font-weight: 400;
     line-height: 1.65;
     color: rgba(10, 10, 18, 0.68);
+}
+
+/* ---------- Компактный каталог-справочник услуг (/uslugi/) ----------
+   Пункты в две колонки: услуги со страницей — ссылки со стрелкой,
+   остальные — приглушённый текст без ссылки. */
+.svc-catalog--directory .svc-group__head {
+    margin-bottom: 12px;
+}
+
+.svc-dir {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    column-gap: 32px;
+}
+
+.svc-dir__item {
+    border-bottom: 1px solid rgba(10, 10, 18, 0.07);
+}
+
+.svc-dir__link,
+.svc-dir__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 15px;
+    letter-spacing: -0.015em;
+    line-height: 1.4;
+}
+
+.svc-dir__link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.svc-dir__link .svc-dir__name {
+    padding: 0;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: color 0.2s ease;
+}
+
+.svc-dir__link:hover .svc-dir__name {
+    color: var(--primary);
+}
+
+.svc-dir__name--muted {
+    font-weight: 500;
+    color: rgba(10, 10, 18, 0.58);
+}
+
+.svc-dir__arrow {
+    flex-shrink: 0;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--primary);
+    opacity: 0.5;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.svc-dir__link:hover .svc-dir__arrow {
+    opacity: 1;
+    transform: translateX(2px);
 }
 
 @media (max-width: 900px) {
