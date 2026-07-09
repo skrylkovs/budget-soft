@@ -1963,25 +1963,13 @@ button.nav__link {
 
 .footer__top {
     display: grid;
-    grid-template-columns: minmax(260px, 1.5fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.7fr);
-    gap: clamp(28px, 4vw, 56px);
-    padding-bottom: 48px;
-    border-bottom: 1px solid var(--border);
-}
-
-.footer__col--services .footer__links--services {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px 28px;
-}
-
-.footer__links--services .footer__links-all-item {
-    grid-column: 1 / -1;
-    margin-top: 6px;
+    grid-template-columns: minmax(240px, 1.25fr) minmax(0, 0.85fr) minmax(0, 0.85fr) minmax(0, 1.2fr);
+    gap: clamp(28px, 4vw, 64px);
+    padding-bottom: 44px;
 }
 
 .footer__col--brand {
-    max-width: 360px;
+    max-width: 340px;
 }
 
 .logo--footer {
@@ -1989,7 +1977,7 @@ button.nav__link {
 }
 
 .footer__tagline {
-    margin: 0 0 24px;
+    margin: 0 0 20px;
     font-size: 14px;
     line-height: 1.6;
     color: var(--text-muted);
@@ -2003,9 +1991,14 @@ button.nav__link {
 
 .footer__contacts li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     font-size: 14px;
+}
+
+.footer__contacts svg {
+    flex-shrink: 0;
+    margin-top: 3px;
 }
 
 .footer__contacts a {
@@ -2045,6 +2038,53 @@ button.nav__link {
 .footer__links-all {
     color: var(--primary-hover) !important;
     font-weight: 600;
+    font-size: 14px;
+}
+
+/* Услуги: отдельная полоса под верхним рядом — 4 колонки категорий */
+.footer__services {
+    padding: 40px 0 48px;
+    border-top: 1px solid var(--border);
+}
+
+.footer__services-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.footer__services-head .footer__title {
+    margin: 0;
+}
+
+.footer__services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px clamp(24px, 3.5vw, 56px);
+}
+
+.footer__services-col {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-width: 0;
+}
+
+.footer__group-title {
+    display: inline-block;
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    transition: color 0.2s ease;
+}
+
+.footer__group-title:hover {
+    color: var(--primary-hover);
 }
 
 .footer__links-soon {
@@ -2072,7 +2112,8 @@ button.nav__link {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    padding-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
     font-size: 13px;
     color: var(--text-muted);
 }
@@ -2080,7 +2121,6 @@ button.nav__link {
 .footer__social {
     display: flex;
     gap: 10px;
-    order: -1;
 }
 
 .footer__social-link {
@@ -2119,15 +2159,7 @@ Responsive
     }
 
     .footer__top {
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
-    }
-
-    .footer__col--services {
-        grid-column: 1 / -1;
-    }
-
-    .footer__col--services .footer__links--services {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px 24px;
     }
 }
 
@@ -2239,8 +2271,24 @@ Responsive
         max-width: none;
     }
 
-    .footer__col--services .footer__links--services {
+    /* Контакты — на всю ширину, пункты в два столбца */
+    .footer__col--contacts {
+        grid-column: 1 / -1;
+    }
+
+    .footer__col--contacts .footer__contacts {
+        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px 24px;
+    }
+
+    .footer__services {
+        padding: 32px 0 40px;
+    }
+
+    .footer__services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 24px;
     }
 
     .footer__bottom {
@@ -2259,37 +2307,48 @@ Responsive
         padding: 48px 0 24px;
     }
 
-    /* Компания | Ресурсы — рядом, бренд и услуги — на всю ширину */
+    /* Компания | Ресурсы — рядом, бренд и контакты — на всю ширину */
     .footer__top {
         grid-template-columns: 1fr 1fr;
         gap: 28px 20px;
         padding-bottom: 28px;
     }
 
-    .footer__col--brand,
-    .footer__col--services {
-        grid-column: 1 / -1;
-    }
-
     .footer__col--brand {
+        grid-column: 1 / -1;
         max-width: none;
     }
 
-    .footer__col--services .footer__links--services {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px 20px;
+    .footer__col--contacts .footer__contacts {
+        grid-template-columns: 1fr;
     }
 
-    /* Нижняя строка: соцсети сверху, копирайт и политика — в столбик слева */
+    /* Услуги: группы в один столбец, ссылки внутри группы — в два */
+    .footer__services {
+        padding: 28px 0 32px;
+    }
+
+    .footer__services-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .footer__services-col {
+        gap: 24px;
+    }
+
+    .footer__group .footer__links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 16px;
+    }
+
+    /* Нижняя строка: копирайт и политика — в столбик слева */
     .footer__bottom {
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 12px;
         padding-top: 24px;
-    }
-
-    .footer__social {
-        order: -1;
     }
 
     .hero__actions .btn {

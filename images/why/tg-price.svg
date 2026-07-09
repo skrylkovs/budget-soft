@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 265 220">
+  <defs>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fccff"/>
+      <stop offset=".45" stop-color="#4aa3ec"/>
+      <stop offset=".55" stop-color="#2478cc"/>
+      <stop offset="1" stop-color="#0d4a94"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d3a5f"/>
+      <stop offset=".25" stop-color="#12233a"/>
+      <stop offset="1" stop-color="#0c1622"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+
+  <!-- тень под композицией -->
+  <ellipse cx="130" cy="203" rx="115" ry="9" fill="#0a1420" opacity=".16" filter="url(#soft)"/>
+
+  <!-- убывающие столбики диаграммы -->
+  <g>
+    <rect x="22" y="108" width="36" height="88" rx="5" fill="url(#navy)"/>
+    <rect x="22" y="108" width="36" height="7" rx="3.5" fill="#4aa3ec"/>
+    <rect x="68" y="132" width="36" height="64" rx="5" fill="url(#navy)"/>
+    <rect x="68" y="132" width="36" height="7" rx="3.5" fill="#4aa3ec"/>
+    <rect x="114" y="152" width="36" height="44" rx="5" fill="url(#navy)"/>
+    <rect x="114" y="152" width="36" height="7" rx="3.5" fill="#4aa3ec"/>
+    <rect x="160" y="168" width="36" height="28" rx="5" fill="url(#navy)"/>
+    <rect x="160" y="168" width="36" height="7" rx="3.5" fill="#cfe6fb"/>
+  </g>
+
+  <!-- монета Telegram Stars на «земле» — куда упала цена -->
+  <g transform="translate(228 171)">
+    <circle r="26" fill="#0a2a4d"/>
+    <circle cy="-2" r="24" fill="url(#gloss)"/>
+    <circle cy="-2" r="18" fill="none" stroke="#0a2a4d" stroke-width="2" opacity=".5"/>
+    <path d="M0,-13.5 L3.69,-5.07 L12.84,-4.18 L5.96,1.94 L7.94,10.93 L0,6.27
+             L-7.94,10.93 L-5.96,1.94 L-12.84,-4.18 L-3.69,-5.07 Z"
+          transform="translate(0 -2)" fill="#fff"/>
+    <ellipse cx="0" cy="-13" rx="19" ry="9" fill="url(#shine)"/>
+  </g>
+
+  <!-- глянцевая стрелка вниз-вправо: скользит над верхушками к монете -->
+  <g transform="translate(34 88) rotate(21.7)">
+    <path d="M0,-12 L147,-12 L147,-26 L189,0 L147,26 L147,12 L0,12 Z"
+          fill="url(#gloss)" stroke="#0a2a4d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M0,-12 L147,-12 L147,-26 L189,0 L147,26 L147,12 L0,12 Z"
+          fill="url(#shine)"/>
+    <rect x="6" y="-9" width="136" height="7" rx="3.5" fill="#fff" opacity=".35"/>
+  </g>
+
+  <!-- 4× — доминанта -->
+  <g font-family="Arial, 'Segoe UI', sans-serif" font-weight="900" font-size="98"
+     text-anchor="middle" transform="rotate(-4 168 52)">
+    <text x="172" y="87" fill="#0a2a4d">4&#215;</text>
+    <text x="168" y="82" fill="url(#gloss)" stroke="#0a2a4d" stroke-width="2" paint-order="stroke">4&#215;</text>
+    <text x="168" y="82" fill="url(#shine)">4&#215;</text>
+  </g>
+</svg>

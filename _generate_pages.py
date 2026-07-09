@@ -6083,12 +6083,48 @@ def render_cta(prefix: str, copy: tuple[str, str, str] | None = None) -> str:
     </section>"""
 
 
+# Колонки блока «Услуги» в футере: индексы категорий USLUGI_DIRECTORY,
+# подобранные так, чтобы высоты колонок были близки
+# (13 / 8+5 / 10+3 / 4+1+5 ссылок).
+FOOTER_SERVICE_COLUMNS = [[0], [1, 6], [4, 3], [2, 5, 7]]
+
+
+def render_footer_services(prefix: str) -> str:
+    uslugi_href = page_href(prefix, "uslugi")
+    cols = []
+    for cat_indexes in FOOTER_SERVICE_COLUMNS:
+        groups = []
+        for i in cat_indexes:
+            anchor, cat_name, _tagline, _icon = USLUGI_MENU_CATEGORIES[i]
+            _title, items = USLUGI_DIRECTORY[i]
+            links = "".join(
+                f'\n              <li><a href="{page_href(prefix, target)}">{USLUGI_MENU_ITEMS[target][0]}</a></li>'
+                for _name, target in items
+                if target
+            )
+            groups.append(f"""<div class="footer__group">
+            <a class="footer__group-title" href="{uslugi_href}#{anchor}">{cat_name}</a>
+            <ul class="footer__links">{links}
+            </ul>
+          </div>""")
+        groups_html = "\n          ".join(groups)
+        cols.append(f"""<div class="footer__services-col">
+          {groups_html}
+        </div>""")
+    cols_html = "\n        ".join(cols)
+    return f"""<nav class="footer__services" aria-labelledby="footerServicesTitle">
+        <div class="footer__services-head">
+          <h4 class="footer__title" id="footerServicesTitle">Услуги</h4>
+          <a href="{uslugi_href}" class="footer__links-all">Все услуги →</a>
+        </div>
+        <div class="footer__services-grid">
+        {cols_html}
+        </div>
+      </nav>"""
+
+
 def render_footer(prefix: str) -> str:
     home = prefix or "./"
-    footer_service_links = "".join(
-        f"\n            <li><a href=\"{page_href(prefix, f'uslugi/{slug}')}\">{label}</a></li>"
-        for slug, label, _, _ in SERVICES
-    )
     return f"""  <footer class="footer" data-fab-theme="dark">
     <div class="container">
       <div class="footer__top">
@@ -6097,24 +6133,14 @@ def render_footer(prefix: str) -> str:
             <img src="{prefix}logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
           </a>
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
-          <ul class="footer__contacts">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-              <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">Telegram: @skrylkovs</a>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M2 6l10 7L22 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"></circle></svg>
-              <span>{OFFICE_ADDRESS}</span>
-            </li>
-          </ul>
+          <div class="footer__social" aria-label="Социальные сети">
+            <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener" class="footer__social-link" aria-label="Telegram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+            </a>
+            <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8.2 9.8c.3 1.1 1.4 2.6 3.1 3.4 1 .5 1.9.7 2.2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+            </a>
+          </div>
         </div>
         <div class="footer__col">
           <h4 class="footer__title">Компания</h4>
@@ -6134,22 +6160,30 @@ def render_footer(prefix: str) -> str:
             <li><a href="{page_href(prefix, 'blog')}" class="footer__links-soon">Блог <span class="badge-soon">скоро</span></a></li>
           </ul>
         </div>
-        <div class="footer__col footer__col--services" aria-labelledby="footerServicesTitle">
-          <h4 class="footer__title" id="footerServicesTitle">Услуги</h4>
-          <ul class="footer__links footer__links--services">{footer_service_links}
-            <li class="footer__links-all-item"><a href="{page_href(prefix, 'uslugi')}" class="footer__links-all">Все услуги →</a></li>
+        <div class="footer__col footer__col--contacts">
+          <h4 class="footer__title">Контакты</h4>
+          <ul class="footer__contacts">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+              <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener">Telegram: @skrylkovs</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+              <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M2 6l10 7L22 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <a href="mailto:info@budget-soft.ru">info@budget-soft.ru</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-7.58 8-13a8 8 0 10-16 0c0 5.42 8 13 8 13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"></circle></svg>
+              <span>{OFFICE_ADDRESS}</span>
+            </li>
           </ul>
         </div>
       </div>
+      {render_footer_services(prefix)}
       <div class="footer__bottom">
-        <div class="footer__social" aria-label="Социальные сети">
-          <a href="{CONTACT_TELEGRAM}" target="_blank" rel="noopener" class="footer__social-link" aria-label="Telegram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.5 4.5L2 12l6 2 2 6 4-4 6 5 1.5-16.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>
-          </a>
-          <a href="{CONTACT_WHATSAPP}" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 00-9.2 14L2 22l6.1-1.6A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8.2 9.8c.3 1.1 1.4 2.6 3.1 3.4 1 .5 1.9.7 2.2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
-          </a>
-        </div>
         <div class="footer__copy">© 2026 BUDGET SOFT</div>
         <div class="footer__legal"><a href="{page_href(prefix, 'privacy')}">Политика конфиденциальности</a></div>
       </div>
@@ -7396,6 +7430,20 @@ SERVICE_BAND_ICONS: dict[str, tuple[str, int, int]] = {
 }
 
 
+# Переопределение иконок карточек-преимуществ для конкретной страницы:
+# slug → {заголовок карточки → (файл в images/why/, ширина, высота исходника)}.
+# Нужно, когда у страницы свои иллюстрации, а заголовок карточки совпадает
+# с общим для многих страниц (например, «60+ проектов за 17 лет»).
+SERVICE_BAND_ICONS_BY_SLUG: dict[str, dict[str, tuple[str, int, int]]] = {
+    "telegram-mini-apps": {
+        "60+ проектов за 17 лет": ("tg-projects.svg", 280, 220),
+        "Первый прототип за 2 недели": ("tg-mvp.svg", 375, 220),
+        "До 4× дешевле": ("tg-price.svg", 265, 220),
+        "Не шаблон, а интеграции": ("tg-integrations.svg", 300, 220),
+    },
+}
+
+
 # Куда поместить блок «Цена/Сроки/Оплата» (.page-spec-cards): по умолчанию он
 # идёт над секциями-полосами. Для перечисленных slug блок вставляется ВНУТРЬ
 # .page-prose-bands непосредственно перед полосой с указанным eyebrow.
@@ -7790,7 +7838,9 @@ def render_service_bands(
                 seg = renderer(seg)
             bare = " page-prose--band--bare"
         else:
-            icon = SERVICE_BAND_ICONS.get(heading_of(seg))
+            icon = SERVICE_BAND_ICONS_BY_SLUG.get(slug or "", {}).get(
+                heading_of(seg)
+            ) or SERVICE_BAND_ICONS.get(heading_of(seg))
             if icon:
                 name, iw, ih = icon
                 seg = (
@@ -7830,19 +7880,45 @@ def render_service_bands(
             i += 1
         items.append(("row", group_bands))
 
-    # Помечаем первый и последний ряд в каждой непрерывной серии рядов, чтобы
-    # скруглить только внешние углы всей группы (как в bento-showcase__grid).
+    # Bento-группа — это непрерывная серия «карточек»: рядов (row) и одиночных
+    # контентных карточек (single с фоном, НЕ bare-«прокладок»). Скругляем только
+    # внешние углы всей серии (32px), внутренние стыки — 8px, как в
+    # bento-showcase__grid. Одиночные карточки-прокладки (bare: центрированный
+    # section-head, списки без карточки) в серию не входят и её разрывают.
+    def is_card(idx: int) -> bool:
+        """Элемент участвует в bento-серии: ряд или одиночная карточка с фоном."""
+        if not (0 <= idx < len(items)):
+            return False
+        kind, bands = items[idx]
+        if kind == "row":
+            return True
+        return "page-prose--band--bare" not in bands[0]
+
     out: list[str] = []
     for idx, (kind, bands) in enumerate(items):
+        prev_is_card = is_card(idx - 1)
+        next_is_card = is_card(idx + 1)
         if kind == "single":
-            out.append(bands[0])
+            # bare-прокладки оставляем как есть; одиночные карточки с фоном,
+            # примыкающие к серии, помечаем крайними в bento-серии.
+            if is_card(idx) and (prev_is_card or next_is_card):
+                extra = " page-prose--band--bento"
+                if not prev_is_card:
+                    extra += " page-prose--band--bento-first"
+                if not next_is_card:
+                    extra += " page-prose--band--bento-last"
+                out.append(bands[0].replace(
+                    "page-prose--band reveal",
+                    "page-prose--band" + extra + " reveal",
+                    1,
+                ))
+            else:
+                out.append(bands[0])
             continue
-        prev_is_row = idx > 0 and items[idx - 1][0] == "row"
-        next_is_row = idx + 1 < len(items) and items[idx + 1][0] == "row"
         classes = "page-prose-bands__row"
-        if not prev_is_row:
+        if not prev_is_card:
             classes += " page-prose-bands__row--first"
-        if not next_is_row:
+        if not next_is_card:
             classes += " page-prose-bands__row--last"
         out.append(f'<div class="{classes}">{"".join(bands)}</div>')
 
@@ -7963,10 +8039,6 @@ def update_index_html() -> None:
     html = html.replace(
         '<p class="footer__tagline">Разработка ПО для бизнеса. Импортозамещение и автоматизация.</p>',
         '<p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>',
-    )
-    html = html.replace(
-        '<li><a href="importozameshchenie/">Импортозамещение</a></li>',
-        '',
     )
 
     html = fix_home_contacts(html)

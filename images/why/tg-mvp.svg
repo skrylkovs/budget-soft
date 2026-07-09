@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 220">
+  <defs>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fccff"/>
+      <stop offset=".45" stop-color="#4aa3ec"/>
+      <stop offset=".55" stop-color="#2478cc"/>
+      <stop offset="1" stop-color="#0d4a94"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d3a5f"/>
+      <stop offset=".25" stop-color="#12233a"/>
+      <stop offset="1" stop-color="#0c1622"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+
+  <!-- тень под композицией -->
+  <ellipse cx="195" cy="199" rx="148" ry="11" fill="#0a1420" opacity=".16" filter="url(#soft)"/>
+
+  <!-- штрихи скорости слева -->
+  <g stroke="#4aa3ec" stroke-width="9" stroke-linecap="round" opacity=".9">
+    <line x1="26" y1="94" x2="72" y2="94"/>
+    <line x1="36" y1="120" x2="68" y2="120"/>
+    <line x1="28" y1="146" x2="76" y2="146"/>
+  </g>
+
+  <!-- смартфон, наклонён на 10° -->
+  <g transform="rotate(10 245 108)">
+    <rect x="193" y="10" width="104" height="185" rx="20" fill="url(#navy)" stroke="#0a2a4d" stroke-width="3"/>
+    <rect x="200" y="26" width="90" height="156" rx="10" fill="#0e1c30"/>
+    <rect x="232" y="15" width="26" height="4" rx="2" fill="#1d3a5f"/>
+    <rect x="228" y="186" width="34" height="4" rx="2" fill="#1d3a5f"/>
+    <!-- чат бота -->
+    <rect x="206" y="38" width="54" height="24" rx="9" fill="#cfe6fb"/>
+    <rect x="212" y="72" width="76" height="46" rx="13" fill="url(#gloss)" stroke="#0a2a4d" stroke-width="2.5"/>
+    <text x="250" y="106" text-anchor="middle" font-family="Arial, 'Segoe UI', sans-serif" font-weight="900" font-size="29" fill="#fff">MVP</text>
+    <rect x="206" y="128" width="48" height="22" rx="9" fill="#cfe6fb"/>
+    <circle cx="219" cy="139" r="3" fill="#2478cc"/>
+    <circle cx="230" cy="139" r="3" fill="#2478cc"/>
+    <circle cx="241" cy="139" r="3" fill="#2478cc"/>
+    <!-- блик по верхней половине корпуса -->
+    <rect x="193" y="10" width="104" height="92" rx="20" fill="url(#shine)" opacity=".45"/>
+  </g>
+
+  <!-- молния спереди справа -->
+  <g transform="translate(297 66) rotate(16) scale(1.1)">
+    <path d="M36 0 L2 66 L26 66 L12 122 L64 44 L38 44 L56 0 Z" fill="url(#gloss)" stroke="#0a2a4d" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M36 0 L2 66 L26 66 L12 122 L64 44 L38 44 L56 0 Z" fill="url(#shine)"/>
+  </g>
+
+  <!-- секундомер: доминанта спереди -->
+  <g>
+    <!-- кнопка сбоку -->
+    <rect x="68" y="57" width="12" height="18" rx="3" transform="rotate(-45 74 66)" fill="url(#gloss)" stroke="#0a2a4d" stroke-width="3"/>
+    <!-- шток и кнопка сверху -->
+    <rect x="121" y="28" width="14" height="16" fill="url(#gloss)" stroke="#0a2a4d" stroke-width="3"/>
+    <rect x="112" y="15" width="32" height="13" rx="6" fill="url(#gloss)" stroke="#0a2a4d" stroke-width="3"/>
+    <!-- корпус -->
+    <circle cx="128" cy="120" r="74" fill="url(#gloss)" stroke="#0a2a4d" stroke-width="5"/>
+    <!-- циферблат -->
+    <circle cx="128" cy="120" r="56" fill="#ecf6ff" stroke="#0a2a4d" stroke-width="3"/>
+    <!-- деления -->
+    <g stroke="#0d4a94" stroke-linecap="round">
+      <line x1="128" y1="70" x2="128" y2="82" stroke-width="4.5"/>
+      <line x1="128" y1="70" x2="128" y2="82" stroke-width="4.5" transform="rotate(90 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="82" stroke-width="4.5" transform="rotate(180 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="82" stroke-width="4.5" transform="rotate(270 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="78" stroke-width="3" transform="rotate(30 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="78" stroke-width="3" transform="rotate(60 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="78" stroke-width="3" transform="rotate(120 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="78" stroke-width="3" transform="rotate(150 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="78" stroke-width="3" transform="rotate(210 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="78" stroke-width="3" transform="rotate(240 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="78" stroke-width="3" transform="rotate(300 128 120)"/>
+      <line x1="128" y1="70" x2="128" y2="78" stroke-width="3" transform="rotate(330 128 120)"/>
+    </g>
+    <!-- стрелка на «2» -->
+    <polygon points="124.5,126 131.5,126 128,72" fill="#0a2a4d" transform="rotate(60 128 120)"/>
+    <circle cx="128" cy="120" r="8" fill="#0a2a4d"/>
+    <circle cx="128" cy="120" r="3.5" fill="#cfe6fb"/>
+    <!-- глянец -->
+    <circle cx="128" cy="120" r="71" fill="url(#shine)"/>
+    <ellipse cx="100" cy="70" rx="26" ry="10" transform="rotate(-32 100 70)" fill="#fff" opacity=".3"/>
+  </g>
+</svg>

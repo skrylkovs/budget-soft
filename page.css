@@ -155,6 +155,26 @@
     min-width: 0;
 }
 
+/* Списки с иконками и нумерованные шаги внутри секции-«прокладки» (bare-band:
+   центрированный section-head без фона) — сами по себе висели прямо на фоне
+   страницы. Заворачиваем их в белую карточку, как остальные bento-блоки:
+   белый фон, мягкая рамка, тень и скругление 32px (внешний угол системы). */
+.page-inner .page-prose--band--bare > .page-prose__list--icons,
+.page-inner .page-prose--band--bare > .page-prose__list--num {
+    margin-top: 0;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid rgba(10, 10, 18, 0.05);
+    border-radius: 32px;
+    box-shadow: 0 1px 3px rgba(10, 10, 18, 0.08);
+}
+
+/* Нумерованный список внутри карточки: убираем «двойной» отступ первого
+   элемента (padding карточки уже даёт воздух сверху). */
+.page-inner .page-prose--band--bare > .page-prose__list--num {
+    padding-left: 3.25rem;
+}
+
 .page-prose--service .page-prose__quote {
     margin: 1.25em 0 0;
     padding: 1rem 1.25rem;
@@ -216,6 +236,25 @@
 }
 
 .page-inner .page-prose-bands__row--last > .page-prose--band:last-child {
+    border-bottom-right-radius: 32px;
+}
+
+/* Одиночная карточка на всю ширину, примыкающая к ряду (bento-серия
+   «ряд + карточка»): та же логика углов, что и у рядов — внутренние стыки
+   8px, внешние углы всей серии 32px. Класс .page-prose добавлен для веса
+   селектора: иначе правило первого блока (…:first-child{radius:16px}) с
+   бо́льшей специфичностью перебивало бы эти углы. */
+.page-inner .page-prose-bands .page-prose.page-prose--band--bento {
+    border-radius: 8px;
+}
+
+.page-inner .page-prose-bands .page-prose.page-prose--band--bento-first {
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+}
+
+.page-inner .page-prose-bands .page-prose.page-prose--band--bento-last {
+    border-bottom-left-radius: 32px;
     border-bottom-right-radius: 32px;
 }
 
@@ -531,6 +570,13 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
+}
+
+/* Абзац-примечание сразу после карточек пакетов («Что влияет на цену…»):
+   у .page-prose--service p сброшен margin, поэтому без этого правила текст
+   прилипал вплотную к карточкам. Даём воздух сверху. */
+.page-price-cards + p {
+    margin-top: 1.5em;
 }
 
 .page-price-card {
@@ -909,7 +955,8 @@
     .page-inner .page-prose-bands__row--first > .page-prose--band:first-child,
     .page-inner .page-prose-bands__row--first > .page-prose--band:last-child,
     .page-inner .page-prose-bands__row--last > .page-prose--band:first-child,
-    .page-inner .page-prose-bands__row--last > .page-prose--band:last-child {
+    .page-inner .page-prose-bands__row--last > .page-prose--band:last-child,
+    .page-inner .page-prose-bands .page-prose.page-prose--band--bento {
         border-radius: 8px;
     }
 
