@@ -17,6 +17,10 @@ Thumbs.db
 __pycache__/
 .claude/settings.local.json
 
+# Рабочие каталоги генерации картинок (не для репозитория)
+/output/
+/tmp/
+
 # Review screenshots (рабочие, не для репозитория)
 /mobile-shots/
 /mobile-shots-v2/
