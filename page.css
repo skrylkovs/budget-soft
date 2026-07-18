@@ -572,10 +572,18 @@
     gap: 1rem;
 }
 
-/* Абзац-примечание сразу после карточек пакетов («Что влияет на цену…»):
-   у .page-prose--service p сброшен margin, поэтому без этого правила текст
-   прилипал вплотную к карточкам. Даём воздух сверху. */
-.page-price-cards + p {
+/* Абзац сразу после не-абзацного блока (карточки пакетов, таблица, список,
+   блоки стековых лендингов): у .page-prose--service p сброшен margin, поэтому
+   без этих правил текст прилипал вплотную к предыдущему блоку. Даём воздух. */
+.page-price-cards + p,
+.page-service-table + p,
+.page-prose__list + p,
+.tech-verdict + p,
+.tech-eco + p,
+.tech-price-models + p,
+.tech-rescue + p,
+.tech-staff + p,
+.tech-steps + p {
     margin-top: 1.5em;
 }
 
@@ -1323,17 +1331,13 @@
     }
 }
 
-.page-speed-table {
-    margin-top: 40px;
-}
-
 /* —— Time-to-Market (страница «Сроки») —— */
 #speed .section-head {
     margin-bottom: clamp(36px, 4.5vw, 52px);
 }
 
 #speed .section-lead {
-    max-width: 36rem;
+    max-width: 46rem;
     margin-left: auto;
     margin-right: auto;
     color: var(--text-dark-muted);
@@ -1347,199 +1351,134 @@
 .ttm-metrics {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    margin: 0 0 clamp(52px, 6.5vw, 80px);
-    background: rgba(10, 10, 18, 0.09);
-    border: 1px solid rgba(10, 10, 18, 0.09);
+    gap: clamp(14px, 1.8vw, 20px);
+    margin: 0 0 clamp(48px, 5.5vw, 68px);
 }
 
 .ttm-metric {
-    padding: clamp(28px, 3.2vw, 40px) clamp(18px, 2vw, 28px);
+    position: relative;
+    padding: clamp(30px, 3.2vw, 40px) clamp(20px, 2.2vw, 30px) clamp(26px, 2.8vw, 34px);
     background: #fff;
+    border: 1px solid rgba(10, 10, 18, 0.07);
+    border-radius: var(--radius-md);
     text-align: center;
+    box-shadow: 0 14px 34px rgba(10, 10, 18, 0.05);
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.ttm-metric:hover {
+    transform: translateY(-3px);
+    border-color: rgba(111, 76, 255, 0.22);
+    box-shadow: 0 22px 48px rgba(10, 10, 18, 0.09);
+}
+
+.ttm-metric::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 46px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
 .ttm-metric__value {
     margin: 0;
-    font-size: clamp(34px, 4.2vw, 50px);
+    font-size: clamp(42px, 4.8vw, 60px);
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 1;
-    color: var(--text-dark);
+    background: linear-gradient(120deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-variant-numeric: tabular-nums;
 }
 
 .ttm-metric__unit {
-    margin-left: 0.12em;
-    font-size: 0.38em;
-    font-weight: 500;
+    margin-left: 0.24em;
+    font-size: 0.46em;
+    font-weight: 600;
     letter-spacing: -0.02em;
-    color: var(--primary);
 }
 
 .ttm-metric__label {
-    margin: 14px 0 0;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(10, 10, 18, 0.45);
+    margin: 12px 0 0;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--text-dark-muted);
 }
 
 .ttm-kicker {
-    margin: 0 0 clamp(24px, 2.8vw, 32px);
-    font-size: 11px;
+    margin: 0 0 clamp(18px, 2.2vw, 26px);
+    text-align: center;
+    font-size: 11.5px;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--primary);
 }
 
-.ttm-pillars {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(14px, 1.6vw, 18px);
-    margin-bottom: clamp(60px, 7vw, 88px);
+/* Тёмная секция AI First: sticky-сторителлинг на фоне блока Time-to-Market
+   с главной (классы .timeline переиспользуются из styles.css, шаги
+   активирует timelineStory() в script.js). */
+.timeline--sroki .timeline__step {
+    padding-bottom: 56px;
 }
 
-.ttm-pillar {
-    padding: clamp(26px, 2.8vw, 34px) clamp(22px, 2.4vw, 30px);
-    background: #fff;
-    border: 1px solid rgba(10, 10, 18, 0.07);
-    transition: border-color 0.28s ease, box-shadow 0.28s ease;
+.timeline--sroki .timeline__step:last-child {
+    padding-bottom: 0;
 }
 
-.ttm-pillar:hover {
-    border-color: rgba(111, 76, 255, 0.2);
-    box-shadow: 0 20px 44px rgba(10, 10, 18, 0.07);
+.timeline__deliv {
+    margin-top: 18px;
 }
 
-.ttm-pillar__index {
-    display: block;
-    margin-bottom: 18px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    color: rgba(111, 76, 255, 0.5);
-}
-
-.ttm-pillar__title {
-    margin: 0 0 12px;
-    font-size: clamp(16px, 1.4vw, 18px);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.3;
-    color: var(--text-dark);
-}
-
-.ttm-pillar__tag {
-    display: block;
-    margin-top: 5px;
+.timeline__deliv-label {
+    margin: 0 0 10px;
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(10, 10, 18, 0.4);
-}
-
-.ttm-pillar__text {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.68;
-    color: var(--text-dark-muted);
-}
-
-.ttm-standards__title {
-    margin: 0 0 clamp(20px, 2.5vw, 28px);
-    font-size: 11px;
-    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(10, 10, 18, 0.42);
+    color: rgba(255, 255, 255, 0.38);
 }
 
-.ttm-standards__list {
-    border-top: 1px solid rgba(10, 10, 18, 0.1);
-}
-
-.ttm-stage {
+.timeline__deliv-list {
+    list-style: none;
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 20px;
-    padding: clamp(18px, 2.2vw, 24px) 0;
-    border-bottom: 1px solid rgba(10, 10, 18, 0.07);
-}
-
-.ttm-stage__name {
-    font-size: clamp(13px, 1.15vw, 15px);
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    line-height: 1.4;
-    color: var(--text-dark-muted);
-}
-
-.ttm-stage__term {
-    flex-shrink: 0;
-    font-size: clamp(20px, 2.2vw, 30px);
-    font-weight: 600;
-    letter-spacing: -0.035em;
-    line-height: 1;
-    color: var(--text-dark);
-    font-variant-numeric: tabular-nums;
-}
-
-.ttm-stage--highlight .ttm-stage__name {
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.ttm-stage--highlight .ttm-stage__term {
-    color: var(--primary);
-}
-
-.ttm-quote {
-    margin: clamp(52px, 6.5vw, 72px) 0 0;
-    padding: 0;
-}
-
-.ttm-quote blockquote {
+    flex-wrap: wrap;
+    gap: 8px;
     margin: 0;
     padding: 0;
-    border: none;
-    background: none;
-    font-style: normal;
-    font-size: clamp(18px, 2vw, 24px);
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: -0.025em;
-    text-align: center;
-    color: var(--text-dark);
 }
 
-.ttm-quote blockquote::before {
+.timeline__deliv-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    font-size: 12.5px;
+    line-height: 1.35;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+}
+
+.timeline__deliv-list li::before {
     content: "";
-    display: block;
-    width: 40px;
-    height: 1px;
-    margin: 0 auto clamp(22px, 2.8vw, 28px);
-    background: var(--primary);
-    opacity: 0.55;
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
 }
 
 @media (max-width: 768px) {
     .ttm-metrics {
         grid-template-columns: 1fr;
-    }
-
-    .ttm-pillars {
-        grid-template-columns: 1fr;
-    }
-
-    .ttm-stage {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
     }
 }
 
@@ -2591,5 +2530,596 @@
     .erp-map__signals {
         margin-top: 22px;
         padding-top: 22px;
+    }
+}
+
+/* ==========================================================================
+   Стековые лендинги /tehnologii/ (трек B): строка фактов первого экрана,
+   вердикт-пары «подходит / не подходит», карта экосистемы и две модели цены.
+   Блоки живут в bare-полосах .revolution (светлый фон), карточки — белые,
+   в стилистике .page-price-card / .page-prose--band.
+   ========================================================================== */
+
+/* Интро-панель первого экрана: тёмная витрина — крупные цифры фактов слева,
+   картинка стека справа. Стилистически рифмуется с .stats и .ai-directions
+   (тёмные акценты на светлой .revolution). */
+.tech-intro {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: stretch;
+    gap: 0;
+    margin: -6px 0 40px;
+    background: #101018;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.tech-intro__facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tech-intro__fact {
+    padding: 34px 36px 30px;
+}
+
+.tech-intro__fact::before {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin-bottom: 16px;
+    background: #22d3ee;
+}
+
+.tech-intro__fact:nth-child(even)::before {
+    background: #8b7bff;
+}
+
+.tech-intro__fact:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-intro__fact:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-intro__num {
+    margin: 0 0 8px;
+    font-size: clamp(28px, 2.9vw, 40px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.tech-intro__label {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.tech-intro__media {
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-intro__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Тёмная система блоков /tehnologii/: графит #12121b, неон циан #22d3ee и
+   фиолет #6f4cff/#8b7bff, тонкие 1px-рамки, малые радиусы, без мягких теней
+   и transform-подъёмов — минимализм, строгий cyberpunk. */
+
+/* Вердикт-пары «подходит / не подходит» */
+.tech-verdict {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+    margin-top: 2em;
+}
+
+.tech-verdict__card {
+    background: #12121b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 26px 26px 24px;
+}
+
+.tech-verdict__card--yes {
+    border-left: 2px solid #22d3ee;
+}
+
+.tech-verdict__card--no {
+    border-left: 2px solid rgba(255, 255, 255, 0.16);
+}
+
+.tech-verdict__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.tech-verdict__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+    border-radius: 9px;
+}
+
+.tech-verdict__card--yes .tech-verdict__mark {
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.07);
+    color: #22d3ee;
+}
+
+.tech-verdict__card--no .tech-verdict__mark {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.tech-verdict__text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-muted);
+}
+
+/* Карта экосистемы: «инструмент → выгода бизнесу» */
+.tech-eco {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 2em 0 0;
+    padding: 0;
+}
+
+.tech-eco__item {
+    background: #12121b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 2px solid #6f4cff;
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+    transition: border-color 0.25s ease;
+}
+
+.tech-eco__item:hover {
+    border-color: rgba(34, 211, 238, 0.4);
+    border-left-color: #22d3ee;
+}
+
+.tech-eco__name {
+    margin: 0 0 6px;
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #fff;
+}
+
+.tech-eco__desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Две равноправные модели цены: Fixed Price и Time & Materials */
+.tech-price-models {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+    margin-top: 2em;
+}
+
+.tech-price-model {
+    display: flex;
+    flex-direction: column;
+    background: #12121b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 26px 26px 22px;
+    transition: border-color 0.25s ease;
+}
+
+.tech-price-model:hover {
+    border-color: rgba(34, 211, 238, 0.4);
+}
+
+.tech-price-model__name {
+    margin: 0 0 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #22d3ee;
+}
+
+.tech-price-model:nth-child(2) .tech-price-model__name {
+    color: #8b7bff;
+}
+
+.tech-price-model__value {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.tech-price-model__desc {
+    margin: 0 0 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.tech-price-model__link {
+    margin: auto 0 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.tech-price-model__link .page-inline-link {
+    color: #22d3ee;
+    text-decoration-color: rgba(34, 211, 238, 0.4);
+}
+
+.tech-price-model:nth-child(2) .tech-price-model__link .page-inline-link {
+    color: #8b7bff;
+    text-decoration-color: rgba(139, 123, 255, 0.4);
+}
+
+/* Карточки-ссылки стековых лендингов: гасим подчёркивание и цвет из
+   правила `.page-prose a` (styles.css) — оформление задают внутренние спаны */
+.page-prose a.tech-rescue__card,
+.page-prose a.tech-staff__format {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Карточки услуг «чужой код» — вся карточка кликабельна */
+.tech-rescue {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2em;
+}
+
+.tech-rescue__card {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    padding: 24px 26px 22px;
+    background: #12121b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tech-rescue__card:hover {
+    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow: 0 0 28px rgba(34, 211, 238, 0.08);
+}
+
+.tech-rescue__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 auto;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.06);
+    color: #22d3ee;
+}
+
+.tech-rescue__body {
+    display: block;
+    min-width: 0;
+}
+
+.tech-rescue__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.tech-rescue__arrow {
+    display: inline-flex;
+    color: #22d3ee;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tech-rescue__card:hover .tech-rescue__arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.tech-rescue__desc {
+    display: block;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Панель аутстаффинга: три условия цифрами + карточки форматов */
+.tech-staff {
+    margin-top: 2em;
+    background: #12121b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 10px 10px 12px;
+}
+
+.tech-staff__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tech-staff__stat {
+    padding: 24px 26px 20px;
+}
+
+.tech-staff__stat::before {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin-bottom: 14px;
+    background: #22d3ee;
+}
+
+.tech-staff__stat:nth-child(2)::before {
+    background: #8b7bff;
+}
+
+.tech-staff__stat + .tech-staff__stat {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-staff__value {
+    margin: 0 0 6px;
+    font-size: clamp(24px, 2.3vw, 32px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #fff;
+}
+
+.tech-staff__label {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.tech-staff__formats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.tech-staff__format {
+    display: block;
+    padding: 20px 24px 18px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(139, 123, 255, 0.3);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.tech-staff__format:hover {
+    border-color: rgba(34, 211, 238, 0.5);
+    background: rgba(34, 211, 238, 0.04);
+}
+
+.tech-staff__format-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #8b7bff;
+}
+
+.tech-staff__format-arrow {
+    display: inline-flex;
+    transition: transform 0.25s ease;
+}
+
+.tech-staff__format:hover .tech-staff__format-arrow {
+    transform: translateX(3px);
+}
+
+.tech-staff__format-desc {
+    display: block;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+
+/* Таймлайн «три шага до первого спринта» */
+.tech-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 2em 0 0;
+    padding: 0;
+    counter-reset: none;
+}
+
+.tech-steps__item {
+    position: relative;
+    padding: 28px 26px 24px;
+    background: #12121b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.tech-steps__num {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: rgba(34, 211, 238, 0.13);
+    pointer-events: none;
+}
+
+.tech-steps__title {
+    margin: 4px 0 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.tech-steps__title::before {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin-bottom: 14px;
+    background: #22d3ee;
+}
+
+.tech-steps__item:nth-child(2) .tech-steps__title::before {
+    background: #8b7bff;
+}
+
+.tech-steps__text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    position: relative;
+}
+
+/* Читаемость на графите: --text-muted (#a8a8c0) рассчитан на сине-тёмный фон
+   сайта и на #12121b тускнеет. Описания — светло-серые, подписи чуть тише. */
+.tech-verdict__text,
+.tech-eco__desc,
+.tech-price-model__desc,
+.tech-price-model__link,
+.tech-rescue__desc,
+.tech-staff__format-desc,
+.tech-steps__text {
+    color: #cdcdd9;
+}
+
+.tech-intro__label,
+.tech-staff__label {
+    color: #bfbfd2;
+}
+
+/* Мобильная раскладка блоков /tehnologii/ */
+@media (max-width: 1024px) {
+    .tech-intro {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-intro__media {
+        order: -1;
+        min-height: 240px;
+        max-height: 320px;
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}
+
+@media (max-width: 900px) {
+    .tech-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-staff__stats {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-staff__stat + .tech-staff__stat {
+        border-left: none;
+        border-top: 1px solid rgba(10, 10, 18, 0.08);
+    }
+
+    .tech-staff__formats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-verdict,
+    .tech-price-models,
+    .tech-rescue {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-intro__fact {
+        padding: 20px 18px 16px;
+    }
+
+    .tech-intro__num {
+        font-size: 26px;
+    }
+
+    .tech-intro__label {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-intro__facts {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+
+    .tech-intro__fact:nth-child(odd) {
+        border-right: none;
+    }
+
+    .tech-intro__fact:not(:last-child) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 }

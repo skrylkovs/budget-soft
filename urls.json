@@ -1,7 +1,7 @@
 {
   "_comment": "Реестр постоянных URL сайта. Эти пути НЕЛЬЗЯ менять — на них могут быть внешние ссылки, индексация в поиске и закладки. Менять можно только содержимое страниц, не их адреса. При добавлении новой страницы — добавляй сюда новую запись, существующие не трогай.",
   "url_style": "directory-pretty-urls (каждая страница — <dir>/index.html, отдаётся как /<dir>/)",
-  "count": 60,
+  "count": 134,
   "pages": [
     {
       "url": "/",
@@ -49,11 +49,6 @@
       "title": "Политика конфиденциальности — BUDGET SOFT"
     },
     {
-      "url": "/sroki/",
-      "file": "sroki/index.html",
-      "title": "Сроки — BUDGET SOFT"
-    },
-    {
       "url": "/stoimost/",
       "file": "stoimost/index.html",
       "title": "Стоимость — BUDGET SOFT"
@@ -86,7 +81,7 @@
     {
       "url": "/uslugi/fintech/",
       "file": "uslugi/fintech/index.html",
-      "title": "Разработка FinTech приложений и платежных систем на заказ: кастомный мобильный банкинг — BUDGET SOFT"
+      "title": "Разработка финтех-приложений и платёжных сервисов — MVP от 600 000 ₽ — BUDGET SOFT"
     },
     {
       "url": "/uslugi/iskusstvennyj-intellekt/",
@@ -302,6 +297,381 @@
       "url": "/uslugi/aso-prodvizhenie/",
       "file": "uslugi/aso-prodvizhenie/index.html",
       "title": "ASO-продвижение мобильных приложений — App Store, Google Play, RuStore — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/vnedrenie-rpa/",
+      "file": "uslugi/vnedrenie-rpa/index.html",
+      "title": "Внедрение RPA и роботизация бизнес-процессов на заказ — от 90 000 ₽: программные роботы для рутины — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-bpm-sistem/",
+      "file": "uslugi/razrabotka-bpm-sistem/index.html",
+      "title": "Разработка BPM-системы на заказ — от 500 000 ₽: движок бизнес-процессов и согласований под ваши регламенты — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-hrm-sistem/",
+      "file": "uslugi/razrabotka-hrm-sistem/index.html",
+      "title": "Разработка HRM-системы на заказ — от 450 000 ₽: управление персоналом под ваши HR-процессы — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-helpdesk-sistem/",
+      "file": "uslugi/razrabotka-helpdesk-sistem/index.html",
+      "title": "Разработка helpdesk и service desk системы на заказ — от 350 000 ₽: заявки, SLA и база знаний — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-pm-sistem/",
+      "file": "uslugi/razrabotka-pm-sistem/index.html",
+      "title": "Разработка системы управления проектами на заказ — от 400 000 ₽: свой таск-трекер под ваш процесс — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-pos-sistem/",
+      "file": "uslugi/razrabotka-pos-sistem/index.html",
+      "title": "Разработка POS-системы на заказ — от 500 000 ₽: касса, 54-ФЗ, склад и лояльность — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-pim-sistem/",
+      "file": "uslugi/razrabotka-pim-sistem/index.html",
+      "title": "Разработка PIM-системы на заказ — от 500 000 ₽: единый товарный контент и выгрузка на маркетплейсы — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/ux-ui-dizajn/",
+      "file": "uslugi/ux-ui-dizajn/index.html",
+      "title": "Заказать UX/UI-дизайн интерфейсов — от 60 000 ₽: дизайн сайтов, мобильных приложений и корпоративных систем — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/vysokonagruzhennye-sistemy/",
+      "file": "uslugi/vysokonagruzhennye-sistemy/index.html",
+      "title": "Разработка высоконагруженных систем на заказ — архитектура под нагрузку, отказоустойчивость и масштабирование — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-mikroservisov/",
+      "file": "uslugi/razrabotka-mikroservisov/index.html",
+      "title": "Микросервисная разработка на заказ — проектирование архитектуры, декомпозиция монолита и API Gateway — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/desktop-prilozheniya/",
+      "file": "uslugi/desktop-prilozheniya/index.html",
+      "title": "Разработка десктопных приложений на заказ — от 400 000 ₽: Windows, macOS и Linux — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/testirovanie-po/",
+      "file": "uslugi/testirovanie-po/index.html",
+      "title": "Тестирование ПО и QA на заказ — от 1 400 ₽/час: ручное, автоматизированное и мобильное тестирование на аутсорсе — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/nagruzochnoe-testirovanie/",
+      "file": "uslugi/nagruzochnoe-testirovanie/index.html",
+      "title": "Нагрузочное тестирование на заказ — от 100 000 ₽: поиск узких мест и стресс-тесты — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/ux-audit/",
+      "file": "uslugi/ux-audit/index.html",
+      "title": "UX-аудит сайта и приложения на заказ — от 40 000 ₽: найдём, где теряются пользователи и конверсия — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/pentest/",
+      "file": "uslugi/pentest/index.html",
+      "title": "Пентест (тестирование на проникновение) на заказ — от 150 000 ₽: поиск уязвимостей и отчёт — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/ios-razrabotka/",
+      "file": "uslugi/ios-razrabotka/index.html",
+      "title": "Разработка iOS-приложений на заказ — от 300 000 ₽: нативные приложения для iPhone и iPad на Swift — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/android-razrabotka/",
+      "file": "uslugi/android-razrabotka/index.html",
+      "title": "Разработка Android-приложений на заказ — от 250 000 ₽: нативные приложения на Kotlin с публикацией в Google Play и RuStore — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/krossplatformennaya-razrabotka/",
+      "file": "uslugi/krossplatformennaya-razrabotka/index.html",
+      "title": "Кроссплатформенная разработка приложений на заказ — от 450 000 ₽: iOS и Android на Flutter из одной кодовой базы — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-chat-botov/",
+      "file": "uslugi/razrabotka-chat-botov/index.html",
+      "title": "Разработка чат-ботов на заказ — от 40 000 ₽: боты для WhatsApp, VK, сайта и мессенджеров с интеграциями и ИИ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/golosovye-boty/",
+      "file": "uslugi/golosovye-boty/index.html",
+      "title": "Разработка голосовых ботов на заказ — от 200 000 ₽: роботы для звонков, ASR и синтез речи — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/vk-mini-apps/",
+      "file": "uslugi/vk-mini-apps/index.html",
+      "title": "Разработка VK Mini Apps на заказ — от 300 000 ₽: мини-приложения ВКонтакте — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/boty-dlya-max/",
+      "file": "uslugi/boty-dlya-max/index.html",
+      "title": "Разработка ботов для мессенджера MAX на заказ — от 150 000 ₽: чат-боты и мини-приложения — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-igr/",
+      "file": "uslugi/razrabotka-igr/index.html",
+      "title": "Разработка игр на заказ — от 500 000 ₽: мобильные, браузерные и промо-игры — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/smart-tv-prilozheniya/",
+      "file": "uslugi/smart-tv-prilozheniya/index.html",
+      "title": "Разработка приложений для Smart TV на заказ — от 500 000 ₽: Samsung, LG и Android TV — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/ar-vr-razrabotka/",
+      "file": "uslugi/ar-vr-razrabotka/index.html",
+      "title": "Разработка AR/VR-приложений для бизнеса на заказ — от 300 000 ₽: дополненная и виртуальная реальность — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/iot-razrabotka/",
+      "file": "uslugi/iot-razrabotka/index.html",
+      "title": "Разработка IoT-решений для бизнеса на заказ — телеметрия, датчики и платформа мониторинга — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/",
+      "file": "tehnologii/index.html",
+      "title": "Технологии разработки: стеки, сроки и цены — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/laravel/",
+      "file": "tehnologii/laravel/index.html",
+      "title": "Разработка на Laravel на заказ — сайты и веб-приложения от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-brendinga/",
+      "file": "uslugi/razrabotka-brendinga/index.html",
+      "title": "Разработка брендинга и айдентики: логотип, фирменный стиль, брендбук — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/frontend-razrabotka/",
+      "file": "uslugi/frontend-razrabotka/index.html",
+      "title": "Frontend-разработка на заказ — от 250 000 ₽: SPA и PWA на React, Vue и Angular — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/backend-razrabotka/",
+      "file": "uslugi/backend-razrabotka/index.html",
+      "title": "Backend-разработка на заказ — серверная логика, API, базы данных и highload — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-api/",
+      "file": "uslugi/razrabotka-api/index.html",
+      "title": "Разработка API на заказ — от 200 000 ₽: REST, GraphQL, gRPC и API Gateway — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/pwa-razrabotka/",
+      "file": "uslugi/pwa-razrabotka/index.html",
+      "title": "Разработка PWA-приложений на заказ: офлайн, push и установка без сторов — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-parserov/",
+      "file": "uslugi/razrabotka-parserov/index.html",
+      "title": "Разработка парсеров и сбор данных с сайтов на заказ — от 30 000 ₽: мониторинг цен, парсинг маркетплейсов — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/zashchita-kii/",
+      "file": "uslugi/zashchita-kii/index.html",
+      "title": "Защита объектов КИИ по 187-ФЗ: категорирование, система безопасности, АСУ ТП — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/data-engineering/",
+      "file": "uslugi/data-engineering/index.html",
+      "title": "Разработка хранилища данных (DWH) и платформы данных — Data Engineering от 150 000 ₽: ETL, витрины, качество данных — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/avtomatizaciya-komplaens/",
+      "file": "uslugi/avtomatizaciya-komplaens/index.html",
+      "title": "Автоматизация комплаенса и управления рисками (GRC): реестр рисков, внутренний аудит, СМК — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-ai-agentov/",
+      "file": "uslugi/razrabotka-ai-agentov/index.html",
+      "title": "Разработка ИИ-агентов на LLM на заказ: tool-calling, RAG и мультиагентные сценарии — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/rechevaya-analitika/",
+      "file": "uslugi/rechevaya-analitika/index.html",
+      "title": "Система речевой аналитики звонков на заказ — от 350 000 ₽: ASR и контроль качества колл-центра — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/computer-vision/",
+      "file": "uslugi/computer-vision/index.html",
+      "title": "Разработка систем компьютерного зрения и видеоаналитики — от 500 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-smart-kontraktov/",
+      "file": "uslugi/razrabotka-smart-kontraktov/index.html",
+      "title": "Разработка смарт-контрактов на заказ — Solidity, TON (FunC), токены и DeFi — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/razrabotka-pod-avroru/",
+      "file": "uslugi/razrabotka-pod-avroru/index.html",
+      "title": "Разработка приложений под ОС «Аврора» на заказ — порт с iOS/Android и импортозамещение — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/vstraivaemye-sistemy/",
+      "file": "uslugi/vstraivaemye-sistemy/index.html",
+      "title": "Разработка встраиваемого ПО и прошивок на заказ: firmware, RTOS, драйверы, BSP — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/vnedrenie-bitrix24/",
+      "file": "uslugi/vnedrenie-bitrix24/index.html",
+      "title": "Внедрение и настройка Битрикс24: CRM, портал, бизнес-процессы и интеграция с 1С — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/prodvizhenie-v-nejrosetyah/",
+      "file": "uslugi/prodvizhenie-v-nejrosetyah/index.html",
+      "title": "Продвижение в нейросетях (GEO/AEO) — попадание бренда в ответы ChatGPT и Алисы — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/python/",
+      "file": "tehnologii/python/index.html",
+      "title": "Разработка на Python на заказ — веб-сервисы, ИИ и аналитика от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/react/",
+      "file": "tehnologii/react/index.html",
+      "title": "Разработка на React на заказ — сайты, SPA и веб-приложения от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/nodejs/",
+      "file": "tehnologii/nodejs/index.html",
+      "title": "Разработка на Node.js на заказ — веб-приложения и API от 250 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/vue/",
+      "file": "tehnologii/vue/index.html",
+      "title": "Разработка на Vue.js на заказ — сайты, SPA и интерфейсы от 45 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/flutter/",
+      "file": "tehnologii/flutter/index.html",
+      "title": "Разработка на Flutter на заказ — мобильные приложения для iOS и Android от 220 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/react-native/",
+      "file": "tehnologii/react-native/index.html",
+      "title": "Разработка на React Native на заказ — мобильные приложения для iOS и Android от 220 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/kotlin/",
+      "file": "tehnologii/kotlin/index.html",
+      "title": "Разработка на Kotlin на заказ — мобильные приложения и бэкенд от 220 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/swift/",
+      "file": "tehnologii/swift/index.html",
+      "title": "Разработка на Swift на заказ — нативные iOS-приложения от 300 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/angular/",
+      "file": "tehnologii/angular/index.html",
+      "title": "Разработка на Angular на заказ — SPA, кабинеты и порталы от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/typescript/",
+      "file": "tehnologii/typescript/index.html",
+      "title": "Разработка на TypeScript на заказ — веб-приложения и сайты от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/golang/",
+      "file": "tehnologii/golang/index.html",
+      "title": "Разработка на Go (Golang) на заказ — бэкенд, API и микросервисы от 250 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/java/",
+      "file": "tehnologii/java/index.html",
+      "title": "Разработка на Java на заказ — highload, микросервисы и API от 250 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/dotnet/",
+      "file": "tehnologii/dotnet/index.html",
+      "title": "Разработка на .NET на заказ — корпоративные системы и веб-приложения от 160 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/php/",
+      "file": "tehnologii/php/index.html",
+      "title": "Разработка на PHP на заказ — сайты и веб-приложения от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/symfony/",
+      "file": "tehnologii/symfony/index.html",
+      "title": "Разработка на PHP-фреймворке Symfony — порталы и веб-приложения от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/yii/",
+      "file": "tehnologii/yii/index.html",
+      "title": "Разработка на PHP-фреймворке Yii — сайты, порталы и веб-приложения от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/wordpress/",
+      "file": "tehnologii/wordpress/index.html",
+      "title": "Разработка сайтов на WordPress на заказ — магазины на WooCommerce от 45 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/bitrix/",
+      "file": "tehnologii/bitrix/index.html",
+      "title": "Разработка сайтов на 1С-Битрикс на заказ — интернет-магазины и порталы от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/drupal/",
+      "file": "tehnologii/drupal/index.html",
+      "title": "Разработка сайтов на CMS Drupal — порталы и интернет-магазины от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/django/",
+      "file": "tehnologii/django/index.html",
+      "title": "Разработка на Django на заказ — сайты и веб-приложения от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/fastapi/",
+      "file": "tehnologii/fastapi/index.html",
+      "title": "Разработка на FastAPI на заказ — бэкенд, API и микросервисы от 180 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/nextjs/",
+      "file": "tehnologii/nextjs/index.html",
+      "title": "Разработка на Next.js на заказ — сайты и веб-приложения от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/nestjs/",
+      "file": "tehnologii/nestjs/index.html",
+      "title": "Разработка на Node.js-фреймворке NestJS — API, SaaS и веб-приложения от 160 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/nuxt/",
+      "file": "tehnologii/nuxt/index.html",
+      "title": "Разработка на Vue-фреймворке Nuxt — сайты и веб-приложения от 45 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/spring/",
+      "file": "tehnologii/spring/index.html",
+      "title": "Разработка на Java-фреймворке Spring — бэкенд и микросервисы от 160 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/rust/",
+      "file": "tehnologii/rust/index.html",
+      "title": "Разработка на Rust на заказ — высоконагруженный backend и блокчейн от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/ruby/",
+      "file": "tehnologii/ruby/index.html",
+      "title": "Разработка на Ruby on Rails на заказ — веб-приложения, SaaS и MVP от 160 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/cpp/",
+      "file": "tehnologii/cpp/index.html",
+      "title": "Разработка на C++ на заказ — highload, десктоп и встроенное ПО от 400 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/solidity/",
+      "file": "tehnologii/solidity/index.html",
+      "title": "Разработка смарт-контрактов на Solidity — токены, DeFi и NFT от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/tehnologii/1c/",
+      "file": "tehnologii/1c/index.html",
+      "title": "Разработка на 1С:Предприятие на заказ — доработка конфигураций, ERP и интеграции от 150 000 ₽ — BUDGET SOFT"
     }
   ]
 }

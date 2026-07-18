@@ -475,6 +475,11 @@ button.nav__link {
     flex-direction: column;
     gap: 4px;
     width: var(--submenu-rail);
+    /* Высоту меню задаёт колонка категорий, а панель услуг растянута по ней
+       (position: absolute, top/bottom: 0). В короткой группе («ИТ-услуги» —
+       5 категорий) рельсы не хватало на самую объёмную категорию, и список
+       услуг обрезался скроллом — держим минимум под панель на 8 услуг. */
+    min-height: 540px;
     padding: 20px 16px 20px clamp(16px, 3vw, 40px);
     background: #f7f8fb;
     border-right: 1px solid rgba(10, 10, 20, 0.08);
@@ -648,6 +653,34 @@ button.nav__link {
     row-gap: 6px;
 }
 
+/* Панель «Технологии»: стеков втрое больше, чем услуг в средней категории —
+   раскладываем в 4 колонки. Подписи здесь короткие (несколько слов), иначе при
+   ширине колонки ~190px они переносятся на 3–4 строки и панель прокручивается. */
+.submenu-cat__panel-list--cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: clamp(20px, 2.4vw, 40px);
+    row-gap: 4px;
+}
+
+.submenu-cat__panel-list--cols-4 .submenu-cat__item {
+    padding: 8px 0;
+}
+
+.submenu-cat__panel-list--cols-4 .submenu-cat__item-name {
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+.submenu-cat__panel-list--cols-4 .submenu-cat__item-desc {
+    margin-top: 3px;
+    font-size: 13.5px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .submenu-cat__panel-list--cols-3 .submenu-cat__item {
     padding: 6px 0;
 }
@@ -657,10 +690,16 @@ button.nav__link {
     line-height: 1.35;
 }
 
+/* Описание не длиннее двух строк: иначе самые крупные категории (20+ услуг)
+   перерастают высоту колонки категорий и панель начинает прокручиваться */
 .submenu-cat__panel-list--cols-3 .submenu-cat__item-desc {
     margin-top: 4px;
     font-size: 14px;
     line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* Пункты услуг — в дизайне исходного мегаменю: жирный заголовок и
@@ -1957,7 +1996,10 @@ button.nav__link {
 .footer {
     background: #06060d;
     color: var(--text-muted);
-    padding: 80px 0 32px;
+    /* padding-top на всех текущих страницах перекрыт правилом
+       main:has(.cta--simple) + .footer — там карточка CTA наезжает на футер
+       и запас считается от неё; это значение — для страниц без CTA. */
+    padding: 80px 0 28px;
     border-top: 1px solid var(--border);
 }
 
@@ -1965,7 +2007,7 @@ button.nav__link {
     display: grid;
     grid-template-columns: minmax(240px, 1.25fr) minmax(0, 0.85fr) minmax(0, 0.85fr) minmax(0, 1.2fr);
     gap: clamp(28px, 4vw, 64px);
-    padding-bottom: 44px;
+    padding-bottom: 32px;
 }
 
 .footer__col--brand {
@@ -2041,9 +2083,11 @@ button.nav__link {
     font-size: 14px;
 }
 
-/* Услуги: отдельная полоса под верхним рядом — 4 колонки категорий */
+/* Услуги: полоса под верхним рядом — 16 категорий каталога в 4 колонки.
+   Полный список услуг здесь не дублируется: он есть в сквозном меню шапки,
+   а по «Все услуги» — каталог /uslugi/. */
 .footer__services {
-    padding: 40px 0 48px;
+    padding: 32px 0 36px;
     border-top: 1px solid var(--border);
 }
 
@@ -2052,29 +2096,42 @@ button.nav__link {
     align-items: baseline;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
 }
 
 .footer__services-head .footer__title {
     margin: 0;
 }
 
-.footer__services-grid {
+.footer__cats {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 32px clamp(24px, 3.5vw, 56px);
+    gap: 10px clamp(24px, 3.5vw, 56px);
 }
 
-.footer__services-col {
+.footer__cats a {
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.footer__cats a:hover {
+    color: #fff;
+}
+
+/* Стек — одной строкой под категориями, а не отдельной колонкой:
+   12 ссылок колонкой вытягивали полосу вдвое. */
+.footer__stack {
     display: flex;
-    flex-direction: column;
-    gap: 28px;
-    min-width: 0;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px clamp(14px, 1.6vw, 22px);
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
 }
 
-.footer__group-title {
-    display: inline-block;
-    margin: 0 0 12px;
+.footer__stack-title {
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -2083,8 +2140,26 @@ button.nav__link {
     transition: color 0.2s ease;
 }
 
-.footer__group-title:hover {
+.footer__stack-title:hover {
     color: var(--primary-hover);
+}
+
+.footer__stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px clamp(14px, 1.6vw, 22px);
+    min-width: 0;
+}
+
+.footer__stack-list a {
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.footer__stack-list a:hover {
+    color: #fff;
 }
 
 .footer__links-soon {
@@ -2112,7 +2187,7 @@ button.nav__link {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    padding-top: 28px;
+    padding-top: 20px;
     border-top: 1px solid var(--border);
     font-size: 13px;
     color: var(--text-muted);
@@ -2283,12 +2358,12 @@ Responsive
     }
 
     .footer__services {
-        padding: 32px 0 40px;
+        padding: 28px 0 32px;
     }
 
-    .footer__services-grid {
+    .footer__cats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px 24px;
+        gap: 10px 24px;
     }
 
     .footer__bottom {
@@ -2323,24 +2398,20 @@ Responsive
         grid-template-columns: 1fr;
     }
 
-    /* Услуги: группы в один столбец, ссылки внутри группы — в два */
+    /* Услуги: категории в два столбца — по одному имена категорий слишком
+       разрежены, а в два строка вида «Документооборот и процессы» ещё влезает */
     .footer__services {
-        padding: 28px 0 32px;
+        padding: 24px 0 28px;
     }
 
-    .footer__services-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .footer__services-col {
-        gap: 24px;
-    }
-
-    .footer__group .footer__links {
-        display: grid;
+    .footer__cats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px 16px;
+    }
+
+    .footer__cats a,
+    .footer__stack-list a {
+        font-size: 13px;
     }
 
     /* Нижняя строка: копирайт и политика — в столбик слева */
@@ -3387,86 +3458,300 @@ body.has-announce .hero {
 
 /* ================================================================
 ================================================================ */
+/* ================================================================
+   Блок 10. Технологический стек — LogoLoop
+   Тёмная разделительная лента между Портфолио и FAQ.
+   ================================================================ */
 .techstack {
-    background: var(--bg-light);
-    padding: var(--section-pad) 0;
-    display: none;
-}
-
-.marquee {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-
-.marquee__row {
+    position: relative;
+    background: #0a0a14;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     overflow: hidden;
 }
 
-.marquee__track {
+/* Тонкий фиолетовый блик по верхней кромке — лента читается как
+   осознанный разделитель, а не как провал между светлыми секциями. */
+.techstack::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(111, 76, 255, 0.5), transparent);
+    pointer-events: none;
+}
+
+.techstack__loop {
+    width: 100%;
+}
+
+/* Статический список-семя: источник ссылок для JS и фолбэк без JS.
+   Скрипт забирает из него элементы и очищает контейнер. */
+.techstack__seed {
     display: flex;
-    gap: 16px;
-    width: max-content;
-    animation: marquee-left 40s linear infinite;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0 20px;
+    list-style: none;
 }
-
-.marquee__track--reverse {
-    animation: marquee-right 46s linear infinite;
-}
-
-.marquee:hover .marquee__track {
-    animation-play-state: paused;
-}
-
-@keyframes marquee-left {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes marquee-right {
-    from {
-        transform: translateX(-50%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}
-
-.tech-chip {
-    flex-shrink: 0;
+.techstack__seed a {
     display: inline-flex;
     align-items: center;
-    padding: 14px 28px;
+    height: 44px;
+    padding: 0 18px;
     border-radius: 999px;
-    background: #fff;
-    border: 1px solid rgba(10, 10, 18, 0.08);
-    font-size: 16px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 14px;
     font-weight: 600;
-    color: #8a8aa0;
-    filter: grayscale(1);
-    transition: color 0.25s ease, border-color 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+    text-decoration: none;
 }
 
-.tech-chip:hover {
-    color: var(--primary);
-    border-color: var(--primary);
-    filter: grayscale(0);
-    transform: translateY(-2px);
+/* ---------- Ядро LogoLoop (порт reactbits.dev/animations/logo-loop) ---------- */
+.logoloop {
+    position: relative;
+    overflow: hidden;
+    --logoloop-gap: 32px;
+    --logoloop-logoHeight: 28px;
+    --logoloop-fadeColorAuto: #0a0a14;
+}
+
+.logoloop--vertical {
+    height: 100%;
+    display: inline-block;
+}
+
+.logoloop--scale-hover {
+    padding-top: calc(var(--logoloop-logoHeight) * 0.14);
+    padding-bottom: calc(var(--logoloop-logoHeight) * 0.14);
+}
+
+.logoloop__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    user-select: none;
+    position: relative;
+    z-index: 0;
+}
+
+.logoloop--vertical .logoloop__track {
+    flex-direction: column;
+    height: max-content;
+    width: 100%;
+}
+
+.logoloop__list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.logoloop--vertical .logoloop__list {
+    flex-direction: column;
+}
+
+/* display:flex вместо инлайн-потока: иначе строчный «страт» размером
+   font-size (= logoHeight) распирал бы <li> выше самой плашки. */
+.logoloop__item {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    margin-right: var(--logoloop-gap);
+    font-size: var(--logoloop-logoHeight);
+    line-height: 1;
+}
+
+.logoloop--vertical .logoloop__item {
+    margin-right: 0;
+    margin-bottom: var(--logoloop-gap);
+}
+
+.logoloop__node {
+    display: inline-flex;
+    align-items: center;
+}
+
+.logoloop__item img {
+    height: var(--logoloop-logoHeight);
+    width: auto;
+    display: block;
+    object-fit: contain;
+    -webkit-user-drag: none;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop--scale-hover .logoloop__item {
+    overflow: visible;
+}
+
+.logoloop--scale-hover .logoloop__node {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop--scale-hover .logoloop__item:hover img,
+.logoloop--scale-hover .logoloop__item:hover .logoloop__node {
+    transform: scale(1.2);
+    transform-origin: center center;
+}
+
+.logoloop__link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: opacity 0.2s ease;
+}
+
+.logoloop__link:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+/* Краевые растворения. Цвет совпадает с фоном ленты. */
+.logoloop--fade::before,
+.logoloop--fade::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(40px, 10%, 160px);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.logoloop--fade::before {
+    left: 0;
+    background: linear-gradient(to right, var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%, rgba(10, 10, 20, 0) 100%);
+}
+
+.logoloop--fade::after {
+    right: 0;
+    background: linear-gradient(to left, var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%, rgba(10, 10, 20, 0) 100%);
+}
+
+.logoloop--vertical.logoloop--fade::before,
+.logoloop--vertical.logoloop--fade::after {
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: clamp(24px, 8%, 120px);
+}
+
+.logoloop--vertical.logoloop--fade::before {
+    top: 0;
+    bottom: auto;
+    background: linear-gradient(to bottom, var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%, rgba(10, 10, 20, 0) 100%);
+}
+
+.logoloop--vertical.logoloop--fade::after {
+    bottom: 0;
+    top: auto;
+    background: linear-gradient(to top, var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%, rgba(10, 10, 20, 0) 100%);
+}
+
+/* Режим без анимации: одна копия, лента прокручивается пальцем/колесом. */
+.logoloop--static {
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+.logoloop--static .logoloop__track {
+    transform: translate3d(0, 0, 0) !important;
+    padding: 0 20px;
+}
+.logoloop--static .logoloop__item img,
+.logoloop--static .logoloop__node {
+    transition: none !important;
+}
+
+/* ---------- Плашка технологии (кастомный рендер, useCustomRender) ---------- */
+.tech-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Плашка = иконка (--logoloop-logoHeight) + паддинг 8px с двух сторон. */
+    width: calc(var(--logoloop-logoHeight) + 16px);
+    height: calc(var(--logoloop-logoHeight) + 16px);
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid #8b5cf6;
+    background: rgba(139, 92, 246, 0.1);
+    color: #fff;
+    text-decoration: none;
+    /* Теней нет намеренно: на ховере меняем только фон и цвет рамки. */
+    transition: border-color 0.3s ease, background 0.3s ease,
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-logo__mark {
+    flex: 0 0 auto;
+    width: var(--logoloop-logoHeight);
+    height: var(--logoloop-logoHeight);
+    color: #fff;
+    transition: color 0.3s ease;
+}
+.tech-logo__mark svg,
+.tech-logo__mark img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Логотип файлом: SVG одноцветный и чёрный, поэтому кладём его в маску
+   и заливаем currentColor — цвет наследуется от чипа и меняется на ховере. */
+.tech-logo__mark--icon {
+    background-color: currentColor;
+    -webkit-mask: var(--tech-icon) center / contain no-repeat;
+    mask: var(--tech-icon) center / contain no-repeat;
+}
+
+/* Название остаётся в разметке: плашка показывает только логотип, но
+   скринридер и краулер по-прежнему получают текст ссылки. */
+.tech-logo__name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.logoloop__item:hover .tech-logo,
+.logoloop__item .tech-logo:focus-visible {
+    border-color: #a78bfa;
+    background: rgba(139, 92, 246, 0.22);
+}
+.logoloop__item:hover .tech-logo .tech-logo__mark {
+    color: #fff;
+}
+
+/* Пилюля широкая — 1.2 из оригинала смотрится грубо, берём мягкий масштаб. */
+.logoloop--scale-hover .logoloop__item:hover .tech-logo {
+    transform: scale(1.06);
 }
 
 @media (max-width: 900px) {
     .techstack {
-        padding: 80px 0;
+        padding: 14px 0;
+    }
+    .tech-logo {
+        border-radius: 8px;
     }
 }
+
 
 /* ================================================================
 ================================================================ */
@@ -4145,10 +4430,6 @@ a.contact-modal__tile--whatsapp:hover {
 prefers-reduced-motion
 ================================================================ */
 @media (prefers-reduced-motion: reduce) {
-    .marquee__track, .marquee__track--reverse {
-        animation: none;
-    }
-
     .messenger-fab {
         animation: none;
         transition: background 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
@@ -4900,6 +5181,299 @@ prefers-reduced-motion
     .page-service-table__table tbody th[scope="row"] {
         padding-bottom: 8px;
         min-width: 0;
+    }
+}
+
+/* ============================================================
+   Главная: блоки «Когда нужна», «Сколько стоит», FAQ (SEO)
+   Переиспользуют компоненты дизайна .card и .compare
+   ============================================================ */
+
+/* --- Когда нужна заказная разработка (на компоненте .card) --- */
+.usecases {
+    background: var(--bg-light);
+    padding: var(--section-pad) 0;
+    color: var(--text-dark);
+}
+.usecases__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+.usecases .card__title {
+    font-size: 20px;
+}
+.usecases .card__text a {
+    color: var(--primary);
+    font-weight: 600;
+}
+.usecases__note {
+    margin: 56px auto 0;
+    max-width: 780px;
+    text-align: center;
+    font-size: clamp(18px, 1.7vw, 22px);
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
+}
+.usecases__note a {
+    color: var(--primary);
+}
+
+/* --- Сколько стоит (тёмная секция; таблица .compare — белая; URL /stoimost/) --- */
+.pricing {
+    position: relative;
+    overflow: hidden;
+    background: #0a0a14;
+    padding: var(--section-pad) 0;
+    color: var(--text);
+}
+/* Слой аврора-фона — как в .team; canvas инициализирует soft-aurora.js */
+.pricing__aurora {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.2;
+    pointer-events: none;
+}
+.pricing__aurora canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.pricing > .container {
+    position: relative;
+    z-index: 1;
+}
+.pricing__answer {
+    max-width: 780px;
+    margin: 0 auto 40px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+.pricing__answer b {
+    color: #fff;
+}
+/* Бенто стоимости. --pb-accent — осветлённый акцент: --primary-hover (#8366ff)
+   на --surface даёт 4.4:1 и не проходит AA для мелкого текста, #a78bfa даёт 6.4:1.
+   .reveal живёт на обёртке .pbento, а не на ячейках: у ячеек свой transition
+   для hover, и на общем элементе он затёр бы opacity из .reveal (одинаковая
+   специфичность, это правило ниже по файлу) — карточки появлялись бы рывком. */
+.pricing .eyebrow--light {
+    color: #a78bfa;
+}
+.pbento {
+    --pb-accent: #a78bfa;
+    display: grid;
+    gap: 16px;
+    margin-top: 8px;
+}
+.pbento__cell {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    padding: clamp(22px, 2.2vw, 32px);
+}
+
+/* Прайс: четыре группы услуг */
+.pbento__groups {
+    display: grid;
+    gap: 26px 32px;
+}
+.pbento__group-h {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--pb-accent);
+    margin: 0 0 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-strong);
+}
+.pbento__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.pbento__list li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.pbento__list li:last-child {
+    border-bottom: 0;
+}
+.pbento__list a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    transition: color 0.2s ease;
+}
+.pbento__list a:hover {
+    color: var(--pb-accent);
+}
+.pbento__list span {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pb-accent);
+    white-space: nowrap;
+}
+.pbento__foot {
+    margin: 24px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-strong);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+.pbento__foot b {
+    color: #fff;
+    font-weight: 700;
+}
+.pbento__foot a {
+    color: var(--pb-accent);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Финальная плашка */
+.pbento__cell--cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: linear-gradient(120deg, #1d1748 0%, var(--surface) 70%);
+}
+.pbento__cta-text {
+    flex: 1 1 420px;
+}
+.pbento__cta-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px;
+}
+.pbento__cta-sub {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 640px;
+}
+
+@media (min-width: 620px) {
+    .pbento__groups {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 1080px) {
+    .pbento__groups {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* --- FAQ (светлая секция на фоне сайта --bg-light; белые карточки) --- */
+.faq {
+    background: var(--bg-light);
+    padding: var(--section-pad) 0;
+    color: var(--text-dark);
+}
+/* Две колонки во всю ширину контейнера — вдвое меньше высоты секции.
+   align-items: start, чтобы раскрытый вопрос тянул только свою карточку,
+   а не весь ряд. */
+.faq__list {
+    margin: 8px 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 16px;
+}
+@media (min-width: 860px) {
+    .faq__list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.faq__item {
+    background: #fff;
+    border: 1px solid rgba(10, 10, 18, 0.08);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.faq__item:hover {
+    border-color: rgba(111, 76, 255, 0.45);
+    box-shadow: 0 12px 32px rgba(10, 10, 18, 0.10);
+}
+.faq__item[open] {
+    border-color: var(--primary);
+}
+/* min-height держит закрытые вопросы одной высоты независимо от того,
+   в одну или две строки лёг текст. align-items: start на сетке при этом
+   сохранён — раскрытый вопрос тянет только свою карточку, не соседнюю.
+   98px = высота двухстрочного вопроса (три самых длинных ложатся в две
+   строки при 628px колонке); при 88px они выбивались из ряда. */
+.faq__q {
+    list-style: none;
+    cursor: pointer;
+    min-height: 98px;
+    box-sizing: border-box;
+    padding: 22px 26px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+.faq__q::-webkit-details-marker {
+    display: none;
+}
+.faq__q::after {
+    content: "+";
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(111, 76, 255, 0.12);
+    color: var(--primary);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
+}
+.faq__item[open] .faq__q::after {
+    transform: rotate(45deg);
+    background: var(--primary);
+    color: #fff;
+}
+.faq__a {
+    padding: 0 26px 22px;
+    color: var(--text-dark-muted);
+    font-size: 15px;
+    line-height: 1.7;
+}
+.faq__a a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+@media (max-width: 720px) {
+    .usecases__grid {
+        grid-template-columns: 1fr;
+    }
+    .faq__a {
+        max-width: none;
     }
 }
 
