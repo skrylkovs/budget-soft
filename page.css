@@ -2381,6 +2381,21 @@
     margin-top: 8px;
 }
 
+/* ---------- Подзаголовок под H1: первое предложение лида — это не часть
+   абзаца, а подзаголовок, поэтому выделяем его размером, а не точкой в
+   конце. Кегль между .section-title (40–45px) и .section-lead (16–17px),
+   чтобы иерархия читалась и на узких экранах.
+   Цепочка > обязательна: только шапка с H1 — прямой потомок .container.
+   Шапки секций ниже (например «Стоимость») лежат глубже, в .page-prose,
+   и их <strong> (цена) не должен превращаться в блок. ---------- */
+#razrabotka-erp-sistem > .container > .section-head > .section-lead > strong:first-child {
+    display: block;
+    margin-bottom: 10px;
+    font-size: clamp(19px, 2vw, 22px);
+    line-height: 1.35;
+    color: var(--text-dark);
+}
+
 /* ---------- Единая карточка: что такое ERP + сигналы к внедрению ---------- */
 .erp-map__about {
     padding: 3rem 2rem 25px 2rem;
@@ -2476,9 +2491,9 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 14px 0;
+    padding: 10px 0;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.4;
     color: rgba(10, 10, 18, 0.78);
 }
 
