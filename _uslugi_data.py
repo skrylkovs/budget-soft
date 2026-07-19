@@ -244,8 +244,15 @@ def render_compare(header_cells: list[str], rows: list[list[str]]) -> str:
             )
         row_html.append(f'<div class="compare__row">{"".join(cells)}</div>')
 
+    # Сетка .compare по умолчанию рассчитана на 3 колонки (параметр + 2 подхода).
+    # Если подходов больше, добавляем модификатор --cols-N: без него лишние
+    # ячейки переносятся на новую строку и таблица «рассыпается» (см. page.css).
+    cols_mod = (
+        f" compare--cols-{len(header_cells)}" if len(header_cells) != 3 else ""
+    )
+
     return (
-        '<div class="compare compare--service">'
+        f'<div class="compare compare--service{cols_mod}">'
         f'<div class="compare__head">{"".join(head_cells)}</div>'
         f'{"".join(row_html)}</div>'
     )

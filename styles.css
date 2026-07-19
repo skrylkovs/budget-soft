@@ -1873,6 +1873,23 @@ button.nav__link {
     gap: 0;
 }
 
+/* Таблицы сравнения с числом колонок, отличным от базовых трёх (параметр +
+   2 подхода): генератор проставляет модификатор .compare--cols-N. Без него
+   лишние ячейки переносятся на новую строку сетки и таблица «рассыпается».
+   Ограничено десктопом: на ≤900px таблица схлопывается в одну колонку
+   (см. медиазапрос ниже), и это правило не должно её перебивать. */
+@media (min-width: 901px) {
+    .compare--cols-4 .compare__head,
+    .compare--cols-4 .compare__row {
+        grid-template-columns: 1fr repeat(3, 1.2fr);
+    }
+
+    .compare--cols-5 .compare__head,
+    .compare--cols-5 .compare__row {
+        grid-template-columns: 0.9fr repeat(4, 1fr);
+    }
+}
+
 .compare__head {
     background: #fafafd;
     border-bottom: 1px solid rgba(10, 10, 18, 0.08);

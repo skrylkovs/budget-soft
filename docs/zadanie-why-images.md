@@ -504,7 +504,7 @@
 
 # Часть 3. Иллюстрации блока «Типичные сигналы» (секция «О решении»)
 
-Дата: 12.07.2026. Статус: ✅ 47 из 90 страниц закрыто.
+Дата: 12.07.2026. Статус: ✅ ГОТОВО — все 91 страница закрыта (0 на старой `erp-signals.webp`).
 
 ## Что это за картинка
 
@@ -532,48 +532,22 @@ canvas.paste(im, ((400 - im.width) // 2, (348 - im.height) // 2), im)
 
 | Набор | Страниц | Файлы |
 |---|---:|---|
-| Тематические под услугу | 32 | `images/svc-01…47-*.png` |
+| Тематические под услугу | 76 | `images/svc-01…91-*.png` |
 | Абстрактные hub-вариации | 15 | `images/signals-01…08-hub.png` |
-| Старая общая (не заменена) | 43 | `images/erp-signals.webp` |
+| Старая `erp-signals.webp` | 0 | — (осталась только дефолтом параметра `img`) |
 
-Тематические 32 — это страницы из промптов (топ-15 + 17 нишевых из второй
-партии). 15 страниц закрыты восемью абстрактными hub-вариациями
-(веб-приложения, автоматизация, порталы, кабинеты, блокчейн, стартапы,
-интеграции, legacy, серверы, DevOps, аутсорсинг, выделенная команда,
-консалтинг, документооборот, контекстная реклама).
+Тематические 76 закрывают все содержательные услуги (`svc-01…15` — топ-15,
+`svc-31…47` — вторая партия из 17, `svc-48…90` — 43 нишевые, `svc-91` — fintech).
+15 страниц закрыты восемью абстрактными hub-вариациями (веб-приложения,
+автоматизация, порталы, кабинеты, блокчейн, стартапы, интеграции, legacy,
+серверы, DevOps, аутсорсинг, выделенная команда, консалтинг, документооборот,
+контекстная реклама) — им отдельная тематическая иллюстрация не делалась.
 
-## Осталось: 43 нишевые страницы на старой `erp-signals.webp`
-
-Это страницы, созданные в более поздних сессиях (нишевые услуги и стеки).
-Старая иллюстрация — в блёкло-синей гамме и уже не сочетается с тёмным
-cyberpunk-набором. Список:
-
-`android-razrabotka`, `ar-vr-razrabotka`, `avtomatizaciya-komplaens`,
-`backend-razrabotka`, `boty-dlya-max`, `computer-vision`, `data-engineering`,
-`desktop-prilozheniya`, `frontend-razrabotka`, `golosovye-boty`,
-`ios-razrabotka`, `iot-razrabotka`, `krossplatformennaya-razrabotka`,
-`nagruzochnoe-testirovanie`, `pentest`, `prodvizhenie-v-nejrosetyah`,
-`pwa-razrabotka`, `razrabotka-ai-agentov`, `razrabotka-api`,
-`razrabotka-bpm-sistem`, `razrabotka-brendinga`, `razrabotka-chat-botov`,
-`razrabotka-helpdesk-sistem`, `razrabotka-hrm-sistem`, `razrabotka-igr`,
-`razrabotka-mikroservisov`, `razrabotka-parserov`, `razrabotka-pim-sistem`,
-`razrabotka-pm-sistem`, `razrabotka-pod-avroru`, `razrabotka-pos-sistem`,
-`razrabotka-smart-kontraktov`, `rechevaya-analitika`, `smart-tv-prilozheniya`,
-`testirovanie-po`, `ux-audit`, `ux-ui-dizajn`, `vk-mini-apps`,
-`vnedrenie-bitrix24`, `vnedrenie-rpa`, `vstraivaemye-sistemy`,
-`vysokonagruzhennye-sistemy`, `zashchita-kii`
-
-Шаблон промпта для следующей партии — тот же, что использовался для svc-*:
-
-```
-нарисуй N картинок размером 400×300 с прозрачным фоном
-цветовая гамма - темная (графит, неоновые акценты - циан и фиолет)
-стиль - минималистичный, cyberpunk
-тематика - заказная разработка ПО и ИТ-услуги
-картинки должны абстрактно соответствовать описаниям:
-1) <услуга> — <2–4 опорных образа>
-...
-```
+`erp-signals.webp` больше не используется ни одной страницей, но оставлена
+в репозитории как значение по умолчанию `img="erp-signals.webp"` в
+`make_about_body_renderer`: если появится новая страница услуги без явного
+`img`, она подхватит его как fallback. Для новой страницы правильно сразу
+задать свой `svc-*` (см. «Подключение»).
 
 ## Подключение
 

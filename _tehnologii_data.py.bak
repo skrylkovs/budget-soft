@@ -1,0 +1,401 @@
+"""Данные и парсинг docs/texts-tehnologii.md — стековые лендинги /tehnologii/.
+
+Раздел собирается отдельным конвейером от страниц услуг (см. трек B в
+docs/plan-novye-stranicy-uslug-i-stekovye-lendingi.md): свой источник, свой
+парсер и свои типы блоков. Общая MD-разметка (заголовки, таблицы, списки,
+{section: …}) делегируется md_body_to_html из _uslugi_data; спец-маркеры
+раздела ({verdict-cards}, {eco-map}, {price-models}) рендерятся здесь.
+"""
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+from pathlib import Path
+
+from _uslugi_data import inline_md, md_body_to_html
+
+ROOT = Path(__file__).parent
+TEXTS_TEHNOLOGII_MD = ROOT / "docs" / "texts-tehnologii.md"
+
+# Порядок = номер секции `## N.` в MD. Поля:
+#   slug        — каталог /tehnologii/<slug>/;
+#   menu_label  — короткое имя в меню/футере/хабе;
+#   menu_desc   — подпись пункта в панели меню «Технологии»;
+#   service_type, low_price — Schema.org Service/Offer (low_price = нижняя
+#     цена матрицы «Что строим», не самый дешёвый доп);
+#   hub_what / hub_term / hub_price — строка стека в карте хаба /tehnologii/;
+#   intro_image / intro_alt — картинка интро-панели первого экрана
+#     (файл кладётся руками; до замены лежит плейсхолдер).
+TECH_META: list[dict] = [
+    {
+        "slug": "laravel",
+        "menu_label": "Laravel",
+        "menu_desc": "Веб-приложения, магазины, кабинеты и SaaS на PHP-фреймворке.",
+        "service_type": "Разработка веб-приложений и сайтов на Laravel",
+        "low_price": "150000",
+        "hub_what": "Сайты, магазины, личные кабинеты, SaaS",
+        "hub_term": "MVP 4–8 недель",
+        "hub_price": "от 150 000 ₽",
+        "intro_image": "images/tech/laravel-hero.png",
+        "intro_alt": "Разработка на Laravel в BUDGET SOFT",
+    },
+]
+
+
+@dataclass
+class TechPage:
+    slug: str
+    menu_label: str
+    menu_desc: str
+    service_type: str
+    low_price: str
+    hub_what: str
+    hub_term: str
+    hub_price: str
+    meta_title: str  # Title целиком, включая бренд — генератор не дописывает
+    h1: str
+    description: str  # явное поле **Description:** секции
+    facts: list[tuple[str, str]]  # факты интро-панели: (крупная цифра, подпись)
+    intro_image: str
+    intro_alt: str
+    cta: tuple[str, str, str]  # заголовок, кнопка, подпись финального CTA
+    lead: str
+    body_html: str
+    faq: list[tuple[str, str]]  # вопрос/ответ в MD-разметке (ссылки в ответах)
+
+
+def md_plain(text: str) -> str:
+    """Текст без MD-разметки (для JSON-LD FAQPage: совпадает с видимым 1:1)."""
+    text = re.sub(r"\*\*(.+?)\*\*", r"\1", text)
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def render_verdict_cards(items: list[tuple[str, str, str]]) -> str:
+    """Пары «подходит / не подходит» (.tech-verdict): каждый пункт маркера
+    {verdict-cards} — строка ``- yes|no :: Заголовок :: Текст``."""
+    yes_icon = (
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+        '<path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2" '
+        'stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    no_icon = (
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+        '<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" '
+        'stroke-linecap="round"/></svg>'
+    )
+    cards = []
+    for kind, title, text in items:
+        icon = yes_icon if kind == "yes" else no_icon
+        cards.append(
+            f'<div class="tech-verdict__card tech-verdict__card--{kind} reveal">'
+            f'<p class="tech-verdict__title"><span class="tech-verdict__mark" aria-hidden="true">{icon}</span>'
+            f"{inline_md(title)}</p>"
+            f'<p class="tech-verdict__text">{inline_md(text)}</p></div>'
+        )
+    return f'<div class="tech-verdict">{"".join(cards)}</div>'
+
+
+def render_eco_map(items: list[tuple[str, str]]) -> str:
+    """Карта экосистемы (.tech-eco): пункты маркера {eco-map} вида
+    ``- **Инструмент** — выгода бизнесу``."""
+    cells = "".join(
+        f'<li class="tech-eco__item reveal">'
+        f'<p class="tech-eco__name">{inline_md(name)}</p>'
+        f'<p class="tech-eco__desc">{inline_md(desc)}</p></li>'
+        for name, desc in items
+    )
+    return f'<ul class="tech-eco" role="list">{cells}</ul>'
+
+
+# Иконки карточек {rescue-cards} по slug услуги (стиль SERVICE_ICONS:
+# контур, viewBox 24×24, stroke 1.6, currentColor). Нет slug — фолбэк-скобки.
+RESCUE_ICONS: dict[str, str] = {
+    "audit-koda": '<circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"></circle><path d="M15.8 15.8L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path><path d="M8.5 10l1.8 1.8 3.2-3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>',
+    "spasenie-proektov": '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"></circle><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.6"></circle><path d="M12 3v5.4M12 15.6V21M3 12h5.4M15.6 12H21" stroke="currentColor" stroke-width="1.6"></path>',
+    "modernizaciya-legacy": '<path d="M4 11a8 8 0 0113.7-4.7L20 8.5M20 13a8 8 0 01-13.7 4.7L4 15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4v4.5h-4.5M4 20v-4.5h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>',
+    "tehpodderzhka-i-soprovozhdenie": '<path d="M4 13v-2a8 8 0 0116 0v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path><rect x="2.5" y="13" width="4.5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"></rect><rect x="17" y="13" width="4.5" height="6" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="M19 19a5 5 0 01-5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>',
+}
+_RESCUE_FALLBACK_ICON = '<path d="M8 6l-5.5 6L8 18M16 6l5.5 6L16 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>'
+
+_RESCUE_ITEM_RE = re.compile(r"^\*\*\[(?P<title>[^\]]+)\]\((?P<url>/[^)]+)\)\*\*\s*—\s*(?P<desc>.+)$")
+
+
+def render_rescue_cards(items: list[tuple[str, str, str]]) -> str:
+    """Кликабельные карточки услуг блока «чужой код» (.tech-rescue): каждый
+    пункт маркера {rescue-cards} — `- **[Название](/uslugi/…/)** — описание`.
+    Вся карточка — ссылка; иконка подбирается по slug услуги."""
+    arrow = (
+        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+        '<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" '
+        'stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    cards = []
+    for title, url, desc in items:
+        slug = url.rstrip("/").rsplit("/", 1)[-1]
+        icon = RESCUE_ICONS.get(slug, _RESCUE_FALLBACK_ICON)
+        cards.append(
+            f'<a class="tech-rescue__card reveal" href="{url}">'
+            f'<span class="tech-rescue__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">{icon}</svg></span>'
+            f'<span class="tech-rescue__body">'
+            f'<span class="tech-rescue__title">{inline_md(title)}<span class="tech-rescue__arrow">{arrow}</span></span>'
+            f'<span class="tech-rescue__desc">{inline_md(desc)}</span></span></a>'
+        )
+    return f'<div class="tech-rescue">{"".join(cards)}</div>'
+
+
+def render_staff_panel(stats: list[tuple[str, str]], formats: list[tuple[str, str]]) -> str:
+    """Панель аутстаффинга (.tech-staff): сверху три ключевых условия крупными
+    цифрами, ниже — две кликабельные карточки форматов работы."""
+    stat_html = "".join(
+        f'<div class="tech-staff__stat">'
+        f'<p class="tech-staff__value">{inline_md(value)}</p>'
+        f'<p class="tech-staff__label">{inline_md(label)}</p></div>'
+        for value, label in stats
+    )
+    arrow = (
+        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+        '<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" '
+        'stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    fmt_html = ""
+    for link_md, desc in formats:
+        m = re.match(r"^\[(?P<name>[^\]]+)\]\((?P<url>/[^)]+)\)$", link_md.strip())
+        if not m:
+            raise ValueError(f"{{staff-panel}}: format ожидает '[Название](/путь/)', получено: {link_md!r}")
+        fmt_html += (
+            f'<a class="tech-staff__format reveal" href="{m.group("url")}">'
+            f'<span class="tech-staff__format-name">{inline_md(m.group("name"))}<span class="tech-staff__format-arrow">{arrow}</span></span>'
+            f'<span class="tech-staff__format-desc">{inline_md(desc)}</span></a>'
+        )
+    return (
+        f'<div class="tech-staff reveal">'
+        f'<div class="tech-staff__stats">{stat_html}</div>'
+        f'<div class="tech-staff__formats">{fmt_html}</div></div>'
+    )
+
+
+def render_steps(items: list[tuple[str, str]]) -> str:
+    """Таймлайн старта (.tech-steps): нумерованные карточки «01 → 02 → 03» из
+    списка после маркера {steps} (`1. **Заголовок** — текст`)."""
+    cards = []
+    for i, (title, text) in enumerate(items, start=1):
+        text = text[:1].upper() + text[1:] if text else text
+        cards.append(
+            f'<li class="tech-steps__item reveal">'
+            f'<span class="tech-steps__num" aria-hidden="true">{i:02d}</span>'
+            f'<p class="tech-steps__title">{inline_md(title)}</p>'
+            f'<p class="tech-steps__text">{inline_md(text)}</p></li>'
+        )
+    return f'<ol class="tech-steps" role="list">{"".join(cards)}</ol>'
+
+
+def render_price_models(rows: list[list[str]]) -> str:
+    """Две равноправные модели цены (.tech-price-models). Колонки таблицы
+    после маркера {price-models}: «Модель | Условия | Кому подходит | Подробнее»."""
+    cards = []
+    for row in rows:
+        name, value, desc, link = (c.strip() for c in row[:4])
+        cards.append(
+            f'<div class="tech-price-model reveal">'
+            f'<p class="tech-price-model__name">{inline_md(name)}</p>'
+            f'<p class="tech-price-model__value">{inline_md(value)}</p>'
+            f'<p class="tech-price-model__desc">{inline_md(desc)}</p>'
+            f'<p class="tech-price-model__link">{inline_md(link)} →</p></div>'
+        )
+    return f'<div class="tech-price-models">{"".join(cards)}</div>'
+
+
+def tech_body_to_html(body: str) -> str:
+    """Тело секции стека → HTML: спец-маркеры раздела рендерятся здесь,
+    остальные фрагменты — md_body_to_html (порядок блоков сохраняется)."""
+    lines = body.split("\n")
+    parts: list[str] = []
+    md_buf: list[str] = []
+
+    def flush() -> None:
+        chunk = "\n".join(md_buf).strip()
+        md_buf.clear()
+        if chunk:
+            parts.append(md_body_to_html(chunk))
+
+    i = 0
+    while i < len(lines):
+        stripped = lines[i].strip()
+
+        if stripped == "{verdict-cards}":
+            flush()
+            i += 1
+            items: list[tuple[str, str, str]] = []
+            while i < len(lines) and lines[i].strip().startswith("- "):
+                pieces = [p.strip() for p in lines[i].strip()[2:].split("::", 2)]
+                if len(pieces) != 3 or pieces[0] not in ("yes", "no"):
+                    raise ValueError(f"{{verdict-cards}}: ожидался формат 'yes|no :: Заголовок :: Текст', получено: {lines[i]!r}")
+                items.append((pieces[0], pieces[1], pieces[2]))
+                i += 1
+            parts.append(render_verdict_cards(items))
+            continue
+
+        if stripped == "{eco-map}":
+            flush()
+            i += 1
+            eco: list[tuple[str, str]] = []
+            while i < len(lines) and lines[i].strip().startswith("- "):
+                m = re.match(r"^\*\*(?P<name>.+?)\*\*\s*—\s*(?P<desc>.+)$", lines[i].strip()[2:])
+                if not m:
+                    raise ValueError(f"{{eco-map}}: ожидался пункт '- **Инструмент** — выгода', получено: {lines[i]!r}")
+                eco.append((m.group("name"), m.group("desc")))
+                i += 1
+            parts.append(render_eco_map(eco))
+            continue
+
+        if stripped == "{price-models}":
+            flush()
+            i += 1
+            if not (i + 1 < len(lines) and lines[i].strip().startswith("|")):
+                raise ValueError("{price-models}: после маркера ожидалась MD-таблица")
+            i += 2  # заголовок таблицы (документация) + разделитель |---|
+            rows: list[list[str]] = []
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")])
+                i += 1
+            parts.append(render_price_models(rows))
+            continue
+
+        if stripped == "{rescue-cards}":
+            flush()
+            i += 1
+            rescue: list[tuple[str, str, str]] = []
+            while i < len(lines) and lines[i].strip().startswith("- "):
+                m = _RESCUE_ITEM_RE.match(lines[i].strip()[2:])
+                if not m:
+                    raise ValueError(f"{{rescue-cards}}: ожидался пункт '- **[Название](/путь/)** — описание', получено: {lines[i]!r}")
+                rescue.append((m.group("title"), m.group("url"), m.group("desc")))
+                i += 1
+            parts.append(render_rescue_cards(rescue))
+            continue
+
+        if stripped == "{staff-panel}":
+            flush()
+            i += 1
+            stats: list[tuple[str, str]] = []
+            formats: list[tuple[str, str]] = []
+            while i < len(lines) and lines[i].strip().startswith("- "):
+                pieces = [p.strip() for p in lines[i].strip()[2:].split("::", 2)]
+                if len(pieces) != 3 or pieces[0] not in ("stat", "format"):
+                    raise ValueError(f"{{staff-panel}}: ожидалось 'stat|format :: … :: …', получено: {lines[i]!r}")
+                (stats if pieces[0] == "stat" else formats).append((pieces[1], pieces[2]))
+                i += 1
+            if not stats or not formats:
+                raise ValueError("{staff-panel}: нужны и stat-, и format-строки")
+            parts.append(render_staff_panel(stats, formats))
+            continue
+
+        if stripped == "{steps}":
+            flush()
+            i += 1
+            steps: list[tuple[str, str]] = []
+            while i < len(lines) and re.match(r"^\d+\.\s+", lines[i].strip()):
+                item = re.sub(r"^\d+\.\s+", "", lines[i].strip())
+                m = re.match(r"^\*\*(?P<title>.+?)\*\*\s*—\s*(?P<text>.+)$", item)
+                if not m:
+                    raise ValueError(f"{{steps}}: ожидался пункт '1. **Заголовок** — текст', получено: {lines[i]!r}")
+                steps.append((m.group("title"), m.group("text")))
+                i += 1
+            parts.append(render_steps(steps))
+            continue
+
+        md_buf.append(lines[i])
+        i += 1
+
+    flush()
+    return "\n".join(parts)
+
+
+def _parse_faq(faq_raw: str) -> list[tuple[str, str]]:
+    """FAQ секции стека: вопрос — `**жирная строка**`, ответ — абзац ниже."""
+    items = re.findall(r"\*\*(.+?)\*\*\n(.+?)(?=\n\s*\n\*\*|\s*\Z)", faq_raw.strip(), re.S)
+    return [(q.strip(), re.sub(r"\s+", " ", a).strip()) for q, a in items]
+
+
+def _meta_field(chunk: str, name: str, slug: str) -> str:
+    m = re.search(rf"\*\*{name}:\*\*\s*(.+)", chunk)
+    if not m:
+        raise ValueError(f"Секция {slug}: нет обязательного поля **{name}:**")
+    return m.group(1).strip()
+
+
+def parse_texts_tehnologii(path: Path = TEXTS_TEHNOLOGII_MD) -> list[TechPage]:
+    raw = path.read_text(encoding="utf-8")
+    sections = re.split(r"\n## \d+\.\s+", raw)
+    pages: list[TechPage] = []
+
+    for idx, chunk in enumerate(sections[1:], start=1):
+        if idx > len(TECH_META):
+            break
+        meta = TECH_META[idx - 1]
+        slug = meta["slug"]
+
+        title = _meta_field(chunk, "Title", slug)
+        description = _meta_field(chunk, "Description", slug)
+        h1 = _meta_field(chunk, "H1", slug)
+        facts_raw = _meta_field(chunk, "Facts", slug)
+        cta_raw = _meta_field(chunk, "CTA", slug)
+
+        facts: list[tuple[str, str]] = []
+        for item in facts_raw.split("·"):
+            if not item.strip():
+                continue
+            if "::" not in item:
+                raise ValueError(f"Секция {slug}: факт должен быть 'цифра :: подпись', получено: {item!r}")
+            num, label = (p.strip() for p in item.split("::", 1))
+            facts.append((num, label))
+
+        cta_parts = [p.strip() for p in cta_raw.split("::", 2)]
+        if len(cta_parts) != 3:
+            raise ValueError(f"Секция {slug}: CTA должен быть 'заголовок :: кнопка :: подпись'")
+
+        cta_m = re.search(r"\*\*CTA:\*\*\s*.+", chunk)
+        body = chunk[cta_m.end():].strip()
+
+        faq_split = re.split(r"\n### FAQ\s*\n", body, maxsplit=1)
+        if len(faq_split) != 2:
+            raise ValueError(f"Секция {slug}: нет подсекции '### FAQ'")
+        body, faq_raw = faq_split[0].strip(), faq_split[1]
+        faq = _parse_faq(faq_raw)
+        if not faq:
+            raise ValueError(f"Секция {slug}: FAQ пуст")
+
+        # Лид (подзаголовок H1, → .section-lead) — первый абзац тела до блоков.
+        lead = ""
+        lead_m = re.match(r"^(?!\{|#|\||[-*]\s|\d+\.\s)(.+?)(?:\n\s*\n|\Z)", body, re.S)
+        if lead_m:
+            lead = inline_md(re.sub(r"\s+", " ", lead_m.group(1)))
+            body = body[lead_m.end():].strip()
+
+        pages.append(
+            TechPage(
+                slug=slug,
+                menu_label=meta["menu_label"],
+                menu_desc=meta["menu_desc"],
+                service_type=meta["service_type"],
+                low_price=meta["low_price"],
+                hub_what=meta["hub_what"],
+                hub_term=meta["hub_term"],
+                hub_price=meta["hub_price"],
+                meta_title=title,
+                h1=h1,
+                description=description,
+                facts=facts,
+                intro_image=meta["intro_image"],
+                intro_alt=meta["intro_alt"],
+                cta=(cta_parts[0], cta_parts[1], cta_parts[2]),
+                lead=lead,
+                body_html=tech_body_to_html(body),
+                faq=faq,
+            )
+        )
+
+    if len(pages) != len(TECH_META):
+        raise ValueError(f"Ожидалось {len(TECH_META)} стеков, получено {len(pages)}")
+    return pages
