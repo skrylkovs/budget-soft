@@ -102,6 +102,14 @@ SERVICE_META: list[tuple[str, str]] = [
     ("vstraivaemye-sistemy", "Встраиваемое ПО"),
     ("vnedrenie-bitrix24", "Внедрение Битрикс24"),
     ("prodvizhenie-v-nejrosetyah", "Продвижение в нейросетях"),
+    ("integraciya-s-chestnym-znakom", "Интеграция с «Честным ЗНАКом»"),
+    ("avtomatizaciya-testirovaniya", "Автоматизация тестирования"),
+    ("audit-dostupnosti-wcag", "Доступность сайта (ГОСТ Р 52872)"),
+    ("perevod-1c-na-linux-postgresql", "Перевод 1С на PostgreSQL и Linux"),
+    ("b2b-internet-magazin", "B2B-магазин и кабинет дилера"),
+    ("integraciya-s-esia", "Интеграция с ЕСИА"),
+    ("integraciya-1s-s-marketplejsami", "Интеграция 1С с маркетплейсами"),
+    ("programmy-loyalnosti", "Программы лояльности"),
 ]
 
 # Быстрые ссылки в полосе направлений (6 шт.)

@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://www.budget-soft.ru/importozameshchenie/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-07-20</lastmod>
   </url>
   <url>
     <loc>https://www.budget-soft.ru/kontakty/</loc>
@@ -83,6 +83,10 @@
   <url>
     <loc>https://www.budget-soft.ru/uslugi/razrabotka-internet-magazinov/</loc>
     <lastmod>2026-07-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.budget-soft.ru/uslugi/b2b-internet-magazin/</loc>
+    <lastmod>2026-07-20</lastmod>
   </url>
   <url>
     <loc>https://www.budget-soft.ru/uslugi/razrabotka-marketplejsov/</loc>
@@ -213,6 +217,10 @@
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
+    <loc>https://www.budget-soft.ru/uslugi/perevod-1c-na-linux-postgresql/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
     <loc>https://www.budget-soft.ru/uslugi/seo-prodvizhenie/</loc>
     <lastmod>2026-07-19</lastmod>
   </url>
@@ -279,6 +287,10 @@
   <url>
     <loc>https://www.budget-soft.ru/uslugi/testirovanie-po/</loc>
     <lastmod>2026-07-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.budget-soft.ru/uslugi/avtomatizaciya-testirovaniya/</loc>
+    <lastmod>2026-07-20</lastmod>
   </url>
   <url>
     <loc>https://www.budget-soft.ru/uslugi/nagruzochnoe-testirovanie/</loc>
@@ -413,6 +425,10 @@
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
+    <loc>https://www.budget-soft.ru/uslugi/integraciya-s-chestnym-znakom/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
     <loc>https://www.budget-soft.ru/tehnologii/python/</loc>
     <lastmod>2026-07-19</lastmod>
   </url>
@@ -531,5 +547,21 @@
   <url>
     <loc>https://www.budget-soft.ru/tehnologii/1c/</loc>
     <lastmod>2026-07-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.budget-soft.ru/uslugi/audit-dostupnosti-wcag/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.budget-soft.ru/uslugi/integraciya-s-esia/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.budget-soft.ru/uslugi/integraciya-1s-s-marketplejsami/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.budget-soft.ru/uslugi/programmy-loyalnosti/</loc>
+    <lastmod>2026-07-20</lastmod>
   </url>
 </urlset>

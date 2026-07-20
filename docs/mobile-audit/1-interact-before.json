@@ -1,0 +1,330 @@
+[
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C7",
+  "sev": "major",
+  "sel": "#burgerBtn",
+  "detail": "тап-таргет 40x40 < 44x44"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "Esc не закрывает меню"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "тап по фону не закрывает меню"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__close",
+  "detail": "крестик 36x36 < 44x44"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__panel",
+  "detail": "панель вне вьюпорта top=-194 bottom=556 vh=568, overflow-y=hidden, max-height=none"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C11",
+  "sev": "major",
+  "sel": "canvas,canvas,canvas",
+  "detail": "3 активных canvas при vw=320"
+ },
+ {
+  "page": "/",
+  "vp": "390x844",
+  "c": "ERR",
+  "sev": "blocker",
+  "sel": "run",
+  "detail": "page.goto: Timeout 30000ms exceeded."
+ },
+ {
+  "page": "/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "major",
+  "sel": "#burgerBtn",
+  "detail": "тап-таргет 40x40 < 44x44"
+ },
+ {
+  "page": "/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "меню не помещается: bottom=543 > vh=390, overflow-y=visible, max-height=none"
+ },
+ {
+  "page": "/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "Esc не закрывает меню"
+ },
+ {
+  "page": "/",
+  "vp": "844x390",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__close",
+  "detail": "крестик 36x36 < 44x44"
+ },
+ {
+  "page": "/",
+  "vp": "844x390",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__panel",
+  "detail": "панель вне вьюпорта top=-78 bottom=468 vh=390, overflow-y=hidden, max-height=none"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "320x568",
+  "c": "ERR",
+  "sev": "blocker",
+  "sel": "run",
+  "detail": "page.goto: Timeout 30000ms exceeded."
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "major",
+  "sel": "#burgerBtn",
+  "detail": "тап-таргет 40x40 < 44x44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "Esc не закрывает меню"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "тап по фону не закрывает меню"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__close",
+  "detail": "крестик 36x36 < 44x44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "major",
+  "sel": "#burgerBtn",
+  "detail": "тап-таргет 40x40 < 44x44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "меню не помещается: bottom=543 > vh=390, overflow-y=visible, max-height=none"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "Esc не закрывает меню"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "844x390",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__close",
+  "detail": "крестик 36x36 < 44x44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "844x390",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__panel",
+  "detail": "панель вне вьюпорта top=-78 bottom=468 vh=390, overflow-y=hidden, max-height=none"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "ERR",
+  "sev": "blocker",
+  "sel": "run",
+  "detail": "page.goto: Timeout 30000ms exceeded."
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "major",
+  "sel": "#burgerBtn",
+  "detail": "тап-таргет 40x40 < 44x44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "Esc не закрывает меню"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "тап по фону не закрывает меню"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__close",
+  "detail": "крестик 36x36 < 44x44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "major",
+  "sel": "#burgerBtn",
+  "detail": "тап-таргет 40x40 < 44x44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "меню не помещается: bottom=543 > vh=390, overflow-y=visible, max-height=none"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "Esc не закрывает меню"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "844x390",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__close",
+  "detail": "крестик 36x36 < 44x44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "844x390",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__panel",
+  "detail": "панель вне вьюпорта top=-78 bottom=468 vh=390, overflow-y=hidden, max-height=none"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "320x568",
+  "c": "ERR",
+  "sev": "blocker",
+  "sel": "run",
+  "detail": "page.goto: Timeout 30000ms exceeded."
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "major",
+  "sel": "#burgerBtn",
+  "detail": "тап-таргет 40x40 < 44x44"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "Esc не закрывает меню"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "390x844",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "тап по фону не закрывает меню"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "390x844",
+  "c": "C8",
+  "sev": "blocker",
+  "sel": ".contact-modal__close",
+  "detail": "крестик 36x36 < 44x44"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "major",
+  "sel": "#burgerBtn",
+  "detail": "тап-таргет 40x40 < 44x44"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "меню не помещается: bottom=543 > vh=390, overflow-y=visible, max-height=none"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "844x390",
+  "c": "C7",
+  "sev": "blocker",
+  "sel": "#mobileMenu",
+  "detail": "Esc не закрывает меню"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "844x390",
+  "c": "ERR",
+  "sev": "blocker",
+  "sel": "run",
+  "detail": "page.evaluate: TypeError: Cannot read properties of null (reading 'classList')"
+ }
+]

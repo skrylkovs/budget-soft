@@ -1,7 +1,7 @@
 {
   "_comment": "Реестр постоянных URL сайта. Эти пути НЕЛЬЗЯ менять — на них могут быть внешние ссылки, индексация в поиске и закладки. Менять можно только содержимое страниц, не их адреса. При добавлении новой страницы — добавляй сюда новую запись, существующие не трогай.",
   "url_style": "directory-pretty-urls (каждая страница — <dir>/index.html, отдаётся как /<dir>/)",
-  "count": 134,
+  "count": 142,
   "pages": [
     {
       "url": "/",
@@ -26,7 +26,8 @@
     {
       "url": "/importozameshchenie/",
       "file": "importozameshchenie/index.html",
-      "title": "Импортозамещение — BUDGET SOFT"
+      "title": "Импортозамещение ПО: переход на российское программное обеспечение под ключ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
     },
     {
       "url": "/kontakty/",
@@ -112,6 +113,12 @@
       "url": "/uslugi/razrabotka-internet-magazinov/",
       "file": "uslugi/razrabotka-internet-magazinov/index.html",
       "title": "Разработка интернет-магазина под ключ — от 200 000 ₽: стоимость создания сайта e-commerce на заказ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/b2b-internet-magazin/",
+      "file": "uslugi/b2b-internet-magazin/index.html",
+      "title": "B2B-портал и личный кабинет дилера — оптовый интернет-магазин под ключ от 150 000 ₽ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
     },
     {
       "url": "/uslugi/razrabotka-marketplejsov/",
@@ -274,6 +281,12 @@
       "title": "Внедрение 1С под ключ — ERP, УТ, ЗУП от 150 000 ₽ — BUDGET SOFT"
     },
     {
+      "url": "/uslugi/perevod-1c-na-linux-postgresql/",
+      "file": "uslugi/perevod-1c-na-linux-postgresql/index.html",
+      "title": "Перевод 1С на PostgreSQL и Linux — миграция рабочей базы под ключ от 120 000 ₽ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
+    },
+    {
       "url": "/uslugi/seo-prodvizhenie/",
       "file": "uslugi/seo-prodvizhenie/index.html",
       "title": "SEO-продвижение сайтов в Яндексе — комплексное SEO от 50 000 ₽/мес — BUDGET SOFT"
@@ -357,6 +370,12 @@
       "url": "/uslugi/testirovanie-po/",
       "file": "uslugi/testirovanie-po/index.html",
       "title": "Тестирование ПО и QA на заказ — от 1 400 ₽/час: ручное, автоматизированное и мобильное тестирование на аутсорсе — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/avtomatizaciya-testirovaniya/",
+      "file": "uslugi/avtomatizaciya-testirovaniya/index.html",
+      "title": "Автоматизация тестирования и разработка автотестов — регресс в CI/CD от 40 000 ₽ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
     },
     {
       "url": "/uslugi/nagruzochnoe-testirovanie/",
@@ -524,6 +543,12 @@
       "title": "Продвижение в нейросетях (GEO/AEO) — попадание бренда в ответы ChatGPT и Алисы — BUDGET SOFT"
     },
     {
+      "url": "/uslugi/integraciya-s-chestnym-znakom/",
+      "file": "uslugi/integraciya-s-chestnym-znakom/index.html",
+      "title": "Интеграция 1С с «Честным ЗНАКом» (ГИС МТ) — подключение ERP, WMS и сайта от 60 000 ₽ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
+    },
+    {
       "url": "/tehnologii/python/",
       "file": "tehnologii/python/index.html",
       "title": "Разработка на Python на заказ — веб-сервисы, ИИ и аналитика от 150 000 ₽ — BUDGET SOFT"
@@ -672,6 +697,30 @@
       "url": "/tehnologii/1c/",
       "file": "tehnologii/1c/index.html",
       "title": "Разработка на 1С:Предприятие на заказ — доработка конфигураций, ERP и интеграции от 150 000 ₽ — BUDGET SOFT"
+    },
+    {
+      "url": "/uslugi/audit-dostupnosti-wcag/",
+      "file": "uslugi/audit-dostupnosti-wcag/index.html",
+      "title": "Доступная среда на сайте: версия для слабовидящих и аудит по ГОСТ Р 52872 — от 25 000 ₽ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
+    },
+    {
+      "url": "/uslugi/integraciya-s-esia/",
+      "file": "uslugi/integraciya-s-esia/index.html",
+      "title": "Интеграция с ЕСИА: подключение и авторизация через Госуслуги — от 45 000 ₽ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
+    },
+    {
+      "url": "/uslugi/integraciya-1s-s-marketplejsami/",
+      "file": "uslugi/integraciya-1s-s-marketplejsami/index.html",
+      "title": "Интеграция 1С с маркетплейсами: Ozon, Wildberries, Яндекс Маркет — обмен от 35 000 ₽ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
+    },
+    {
+      "url": "/uslugi/programmy-loyalnosti/",
+      "file": "uslugi/programmy-loyalnosti/index.html",
+      "title": "Разработка программы лояльности — внедрение системы лояльности от 90 000 ₽ — BUDGET SOFT",
+      "lastmod": "2026-07-20"
     }
   ]
 }

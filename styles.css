@@ -75,6 +75,13 @@ body {
     overflow-x: hidden;
 }
 
+/* Длинные технические слова («импортозамещение», «микросервисная») на узких
+   вьюпортах вылезали за контейнер заголовка. break-word (а не anywhere) переносит
+   только когда слово реально не влезает, и не меняет расчёт ширин на десктопе. */
+h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -789,8 +796,9 @@ button.nav__link {
 /* Burger */
 .burger {
     display: none;
-    width: 40px;
-    height: 40px;
+    /* 44×44 — минимальный тап-таргет (Apple HIG / WCAG 2.5.5) */
+    width: 44px;
+    height: 44px;
     padding: 0;
     background: transparent;
     border: 1px solid var(--border-strong);
@@ -834,6 +842,15 @@ button.nav__link {
     padding: 16px 24px 24px;
     flex-direction: column;
     gap: 4px;
+    /* Меню не должно уходить за нижний край: в мобильном landscape (844×390)
+       семи пунктам не хватает высоты. Ограничиваем остатком вьюпорта под шапкой
+       и скроллим внутри себя. */
+    max-height: calc(100vh - var(--header-h));
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
 }
 
 .mobile-menu.is-open {
@@ -4235,7 +4252,14 @@ main:has(.cta--simple) + .footer {
     position: relative;
     z-index: 1;
     width: min(552px, 100%);
-    overflow: hidden;
+    /* Панель выше вьюпорта раньше обрезалась (overflow: hidden без max-height):
+       на 320×568 и в landscape кнопка отправки становилась недостижимой.
+       Ограничиваем высоту и скроллим содержимое внутри панели. */
+    max-height: calc(100vh - 40px);
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     border-radius: 0;
     background: #fff;
     color: var(--text-dark);
@@ -4263,8 +4287,9 @@ main:has(.cta--simple) + .footer {
     z-index: 2;
     display: grid;
     place-items: center;
-    width: 36px;
-    height: 36px;
+    /* 44×44 — минимальный тап-таргет (Apple HIG / WCAG 2.5.5) */
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 0;
     border-radius: 10px;

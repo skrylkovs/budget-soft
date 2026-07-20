@@ -286,6 +286,14 @@
     padding-right: 0;
 }
 
+/* Абзац-сноска сразу после сравнительной таблицы (например ссылки на
+   профильные страницы под таблицей замен): без этого правила он прилипает
+   к таблице вплотную — у первого <p> в полосе margin-top обнулён. */
+.page-inner .page-prose--band .compare + p,
+.page-inner .page-prose-bands .page-prose--band .compare + p {
+    margin-top: 1.75rem;
+}
+
 .page-inner .page-prose--band--bare:hover {
     box-shadow: none;
     transform: none;

@@ -24,8 +24,10 @@ TEXTS_TEHNOLOGII_MD = ROOT / "docs" / "texts-tehnologii.md"
 #   service_type, low_price — Schema.org Service/Offer (low_price = нижняя
 #     цена матрицы «Что строим», не самый дешёвый доп);
 #   hub_what / hub_term / hub_price — строка стека в карте хаба /tehnologii/;
-#   intro_image / intro_alt — картинка интро-панели первого экрана
-#     (файл кладётся руками; до замены лежит плейсхолдер).
+#   intro_image / intro_alt — картинка интро-панели первого экрана. SVG-мокап
+#     редактора со своим кодом стека, генерируется `python _tech_hero_svg.py`
+#     (спецификации там же, в словаре S). Раньше тут лежал один плейсхолдер
+#     laravel-hero.png, скопированный на все 31 стек.
 TECH_META: list[dict] = [
     {
         "slug": "laravel",
@@ -36,7 +38,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, магазины, личные кабинеты, SaaS",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/laravel-hero.png",
+        "intro_image": "images/tech/laravel-hero.svg",
         "intro_alt": "Разработка на Laravel в BUDGET SOFT",
     },
     {
@@ -48,7 +50,7 @@ TECH_META: list[dict] = [
         "hub_what": "Веб-сервисы, ИИ, аналитика, автоматизация",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/python-hero.png",
+        "intro_image": "images/tech/python-hero.svg",
         "intro_alt": "Разработка на Python в BUDGET SOFT",
     },
     {
@@ -60,7 +62,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, SPA, кабинеты, дашборды",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/react-hero.png",
+        "intro_image": "images/tech/react-hero.svg",
         "intro_alt": "Разработка на React в BUDGET SOFT",
     },
     {
@@ -72,7 +74,7 @@ TECH_META: list[dict] = [
         "hub_what": "Веб-приложения, API и real-time сервисы",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 250 000 ₽",
-        "intro_image": "images/tech/nodejs-hero.png",
+        "intro_image": "images/tech/nodejs-hero.svg",
         "intro_alt": "Разработка на Node.js в BUDGET SOFT",
     },
     {
@@ -84,7 +86,7 @@ TECH_META: list[dict] = [
         "hub_what": "SPA, сайты, кабинеты, дашборды, витрины",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 45 000 ₽",
-        "intro_image": "images/tech/vue-hero.png",
+        "intro_image": "images/tech/vue-hero.svg",
         "intro_alt": "Разработка на Vue.js в BUDGET SOFT",
     },
     {
@@ -96,7 +98,7 @@ TECH_META: list[dict] = [
         "hub_what": "Мобильное приложение iOS + Android",
         "hub_term": "MVP 6–10 недель",
         "hub_price": "от 220 000 ₽",
-        "intro_image": "images/tech/flutter-hero.png",
+        "intro_image": "images/tech/flutter-hero.svg",
         "intro_alt": "Разработка на Flutter в BUDGET SOFT",
     },
     {
@@ -108,7 +110,7 @@ TECH_META: list[dict] = [
         "hub_what": "Мобильные приложения iOS + Android",
         "hub_term": "MVP 8–12 недель",
         "hub_price": "от 220 000 ₽",
-        "intro_image": "images/tech/react-native-hero.png",
+        "intro_image": "images/tech/react-native-hero.svg",
         "intro_alt": "Разработка на React Native в BUDGET SOFT",
     },
     {
@@ -120,7 +122,7 @@ TECH_META: list[dict] = [
         "hub_what": "Мобильные приложения, бэкенд",
         "hub_term": "MVP 8–12 недель",
         "hub_price": "от 220 000 ₽",
-        "intro_image": "images/tech/kotlin-hero.png",
+        "intro_image": "images/tech/kotlin-hero.svg",
         "intro_alt": "Разработка на Kotlin в BUDGET SOFT",
     },
     {
@@ -132,7 +134,7 @@ TECH_META: list[dict] = [
         "hub_what": "iOS-приложения для iPhone и iPad",
         "hub_term": "MVP 6–8 недель",
         "hub_price": "от 300 000 ₽",
-        "intro_image": "images/tech/swift-hero.png",
+        "intro_image": "images/tech/swift-hero.svg",
         "intro_alt": "Разработка на Swift в BUDGET SOFT",
     },
     {
@@ -144,7 +146,7 @@ TECH_META: list[dict] = [
         "hub_what": "SPA, кабинеты, порталы, дашборды",
         "hub_term": "MVP за 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/angular-hero.png",
+        "intro_image": "images/tech/angular-hero.svg",
         "intro_alt": "Разработка на Angular в BUDGET SOFT",
     },
     {
@@ -156,7 +158,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, SPA, кабинеты, SaaS и API",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/typescript-hero.png",
+        "intro_image": "images/tech/typescript-hero.svg",
         "intro_alt": "Разработка на TypeScript в BUDGET SOFT",
     },
     {
@@ -168,7 +170,7 @@ TECH_META: list[dict] = [
         "hub_what": "Бэкенд, API, микросервисы, highload",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 250 000 ₽",
-        "intro_image": "images/tech/golang-hero.png",
+        "intro_image": "images/tech/golang-hero.svg",
         "intro_alt": "Разработка на Go в BUDGET SOFT",
     },
     {
@@ -180,7 +182,7 @@ TECH_META: list[dict] = [
         "hub_what": "Highload-бэкенды, микросервисы, API",
         "hub_term": "MVP 6–10 недель",
         "hub_price": "от 250 000 ₽",
-        "intro_image": "images/tech/java-hero.png",
+        "intro_image": "images/tech/java-hero.svg",
         "intro_alt": "Разработка на Java в BUDGET SOFT",
     },
     {
@@ -192,7 +194,7 @@ TECH_META: list[dict] = [
         "hub_what": "Корпоративные системы, веб-приложения и API",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 160 000 ₽",
-        "intro_image": "images/tech/dotnet-hero.png",
+        "intro_image": "images/tech/dotnet-hero.svg",
         "intro_alt": "Разработка на .NET в BUDGET SOFT",
     },
     {
@@ -204,7 +206,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, магазины, кабинеты, SaaS и API",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/php-hero.png",
+        "intro_image": "images/tech/php-hero.svg",
         "intro_alt": "Разработка на PHP в BUDGET SOFT",
     },
     {
@@ -216,7 +218,7 @@ TECH_META: list[dict] = [
         "hub_what": "Порталы, CRM/ERP, магазины, SaaS и API",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/symfony-hero.png",
+        "intro_image": "images/tech/symfony-hero.svg",
         "intro_alt": "Разработка на Symfony в BUDGET SOFT",
     },
     {
@@ -228,7 +230,7 @@ TECH_META: list[dict] = [
         "hub_what": "Порталы, CRM/ERP, магазины с 1С, API",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/yii-hero.png",
+        "intro_image": "images/tech/yii-hero.svg",
         "intro_alt": "Разработка на Yii в BUDGET SOFT",
     },
     {
@@ -240,7 +242,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, магазины, порталы",
         "hub_term": "от 1 недели",
         "hub_price": "от 45 000 ₽",
-        "intro_image": "images/tech/wordpress-hero.png",
+        "intro_image": "images/tech/wordpress-hero.svg",
         "intro_alt": "Разработка на WordPress в BUDGET SOFT",
     },
     {
@@ -252,7 +254,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, магазины, порталы",
         "hub_term": "от 3 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/bitrix-hero.png",
+        "intro_image": "images/tech/bitrix-hero.svg",
         "intro_alt": "Разработка на 1С-Битрикс в BUDGET SOFT",
     },
     {
@@ -264,7 +266,7 @@ TECH_META: list[dict] = [
         "hub_what": "Порталы, сайты, магазины",
         "hub_term": "MVP 4–6 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/drupal-hero.png",
+        "intro_image": "images/tech/drupal-hero.svg",
         "intro_alt": "Разработка на Drupal в BUDGET SOFT",
     },
     {
@@ -276,7 +278,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, веб-приложения, API, CRM и SaaS",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/django-hero.png",
+        "intro_image": "images/tech/django-hero.svg",
         "intro_alt": "Разработка на Django в BUDGET SOFT",
     },
     {
@@ -288,7 +290,7 @@ TECH_META: list[dict] = [
         "hub_what": "REST/GraphQL API, микросервисы, бэкенд",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 180 000 ₽",
-        "intro_image": "images/tech/fastapi-hero.png",
+        "intro_image": "images/tech/fastapi-hero.svg",
         "intro_alt": "Разработка на FastAPI в BUDGET SOFT",
     },
     {
@@ -300,7 +302,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, магазины, кабинеты, SaaS и веб-приложения",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/nextjs-hero.png",
+        "intro_image": "images/tech/nextjs-hero.svg",
         "intro_alt": "Разработка на Next.js в BUDGET SOFT",
     },
     {
@@ -312,7 +314,7 @@ TECH_META: list[dict] = [
         "hub_what": "API, SaaS, микросервисы",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 160 000 ₽",
-        "intro_image": "images/tech/nestjs-hero.png",
+        "intro_image": "images/tech/nestjs-hero.svg",
         "intro_alt": "Разработка на NestJS в BUDGET SOFT",
     },
     {
@@ -324,7 +326,7 @@ TECH_META: list[dict] = [
         "hub_what": "Сайты, магазины, кабинеты, SaaS и PWA",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 45 000 ₽",
-        "intro_image": "images/tech/nuxt-hero.png",
+        "intro_image": "images/tech/nuxt-hero.svg",
         "intro_alt": "Разработка на Nuxt в BUDGET SOFT",
     },
     {
@@ -336,7 +338,7 @@ TECH_META: list[dict] = [
         "hub_what": "Бэкенд, микросервисы, корпоративные системы",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 160 000 ₽",
-        "intro_image": "images/tech/spring-hero.png",
+        "intro_image": "images/tech/spring-hero.svg",
         "intro_alt": "Разработка на Spring в BUDGET SOFT",
     },
     {
@@ -348,7 +350,7 @@ TECH_META: list[dict] = [
         "hub_what": "Высоконагруженный backend, блокчейн, IoT",
         "hub_term": "MVP 6–10 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/rust-hero.png",
+        "intro_image": "images/tech/rust-hero.svg",
         "intro_alt": "Разработка на Rust в BUDGET SOFT",
     },
     {
@@ -360,7 +362,7 @@ TECH_META: list[dict] = [
         "hub_what": "MVP, SaaS, маркетплейсы и веб-приложения",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 160 000 ₽",
-        "intro_image": "images/tech/ruby-hero.png",
+        "intro_image": "images/tech/ruby-hero.svg",
         "intro_alt": "Разработка на Ruby on Rails в BUDGET SOFT",
     },
     {
@@ -372,7 +374,7 @@ TECH_META: list[dict] = [
         "hub_what": "Highload, десктоп и встроенное ПО",
         "hub_term": "MVP 8–12 недель",
         "hub_price": "от 400 000 ₽",
-        "intro_image": "images/tech/cpp-hero.png",
+        "intro_image": "images/tech/cpp-hero.svg",
         "intro_alt": "Разработка на C++ в BUDGET SOFT",
     },
     {
@@ -384,7 +386,7 @@ TECH_META: list[dict] = [
         "hub_what": "Смарт-контракты, DeFi, NFT, DApps",
         "hub_term": "MVP 4–8 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/solidity-hero.png",
+        "intro_image": "images/tech/solidity-hero.svg",
         "intro_alt": "Разработка на Solidity в BUDGET SOFT",
     },
     {
@@ -396,7 +398,7 @@ TECH_META: list[dict] = [
         "hub_what": "Доработка 1С, ERP и учёт, интеграции",
         "hub_term": "от 2 недель",
         "hub_price": "от 150 000 ₽",
-        "intro_image": "images/tech/1c-hero.png",
+        "intro_image": "images/tech/1c-hero.svg",
         "intro_alt": "Разработка на 1С в BUDGET SOFT",
     },
 ]

@@ -14,6 +14,14 @@
   const burger = document.getElementById('burgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   if (burger && mobileMenu) {
+    const closeMenu = () => {
+      if (!mobileMenu.classList.contains('is-open')) return;
+      burger.classList.remove('is-open');
+      mobileMenu.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
     burger.addEventListener('click', () => {
       const isOpen = burger.classList.toggle('is-open');
       mobileMenu.classList.toggle('is-open', isOpen);
@@ -22,12 +30,21 @@
     });
 
     mobileMenu.querySelectorAll('a, button.js-open-contact').forEach((link) => {
-      link.addEventListener('click', () => {
-        burger.classList.remove('is-open');
-        mobileMenu.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    /* Меню должно закрываться не только крестиком: клавишей Esc и тапом по фону */
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (!mobileMenu.classList.contains('is-open')) return;
+      closeMenu();
+      burger.focus();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('is-open')) return;
+      if (mobileMenu.contains(e.target) || burger.contains(e.target)) return;
+      closeMenu();
     });
   }
 

@@ -1,0 +1,26 @@
+[
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C11",
+  "sev": "major",
+  "sel": "canvas,canvas,canvas",
+  "detail": "3 активных canvas при vw=320"
+ },
+ {
+  "page": "/",
+  "vp": "390x844",
+  "c": "C11",
+  "sev": "major",
+  "sel": "canvas,canvas,canvas",
+  "detail": "3 активных canvas при vw=390"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "320x568",
+  "c": "ERR",
+  "sev": "blocker",
+  "sel": "run",
+  "detail": "page.goto: Timeout 30000ms exceeded."
+ }
+]
