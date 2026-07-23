@@ -16,6 +16,8 @@ Thumbs.db
 .playwright-mcp/
 __pycache__/
 .claude/settings.local.json
+# Временные JSON-планы правок (генерируются скриптами в корне, не для репо)
+/_*.json
 
 # Рабочие каталоги генерации картинок (не для репозитория)
 /output/

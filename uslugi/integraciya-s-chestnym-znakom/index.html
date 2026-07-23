@@ -46,7 +46,7 @@
   <header class="header" id="siteHeader">
     <div class="container header__inner">
       <a href="../../" class="logo" aria-label="BUDGET SOFT — на главную">
-        <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+        <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
       </a>
       <nav class="nav" aria-label="Основная навигация">
         <ul class="nav__list">
@@ -377,7 +377,10 @@
     <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
         <video class="hero__video" autoplay muted loop playsinline poster="../../hero-poster.jpg">
-          <source src="../../hero-background.webm" type="video/webm">
+          <!-- media на <source>: на узких вьюпортах источник не подходит, браузер
+               его не запрашивает и остаётся на постере. Видео 2.2 МБ не тратит
+               мобильный трафик (C5). -->
+          <source src="../../hero-background.webm" type="video/webm" media="(min-width: 900px)">
         </video>
         <div class="hero__overlay"></div>
       </div>
@@ -491,7 +494,7 @@
         <h3 class="erp-map__signals-title">Типичные сигналы, что пора настраивать интеграцию с ГИС МТ</h3>
         <ul class="erp-map__signals-list"><li>коды маркировки заказывают и вводят в оборот руками через личный кабинет «Честного ЗНАКа»;</li><li>УПД с кодами приходят по ЭДО, а в учётной системе их сопоставляют вручную;</li><li>склад сканирует товар, но остатки по кодам расходятся с ГИС МТ;</li><li>касса отказывает в продаже: код не принадлежит магазину, просрочен или не выведен из оборота;</li><li>ваша система написана под вас — готового модуля маркировки для неё не существует;</li><li>к 1 июля 2026 года нужно перейти на ТС ПИоТ и обязательный ЭДО, а как — непонятно.</li></ul>
       </div>
-      <img class="erp-map__signals-visual" src="../../images/erp-signals.webp" alt="Сигналы, что пора настраивать интеграцию с ГИС МТ: коды вводят в оборот руками, УПД сопоставляют вручную, остатки расходятся с «Честным ЗНАКом», касса отказывает в продаже" width="380" height="330" loading="lazy">
+      <img class="erp-map__signals-visual" src="../../images/svc-96-chestny-znak.png" alt="Сигналы, что пора настраивать интеграцию с ГИС МТ: коды вводят в оборот руками, УПД сопоставляют вручную, остатки расходятся с «Честным ЗНАКом», касса отказывает в продаже" width="380" height="330" loading="lazy">
       <div class="page-spec-cards"><div class="page-spec-cards__item reveal">
     <p class="page-spec-cards__label"><svg class="page-spec-cards__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12.59 3H5a2 2 0 00-2 2v7.59a2 2 0 00.59 1.41l7.4 7.4a2 2 0 002.83 0l7.59-7.59a2 2 0 000-2.83L14 3.59A2 2 0 0012.59 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.6"></circle></svg><span>Цена</span></p>
     <p class="page-spec-cards__value">Коннектор к ГИС МТ от 60 000 ₽, интеграция под ключ от 150 000 ₽</p>
@@ -951,7 +954,7 @@
       <div class="footer__top">
         <div class="footer__col footer__col--brand">
           <a href="../../" class="logo logo--footer">
-            <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+            <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
           </a>
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <div class="footer__social" aria-label="Социальные сети">

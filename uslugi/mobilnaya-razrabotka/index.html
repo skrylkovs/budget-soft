@@ -46,7 +46,7 @@
   <header class="header" id="siteHeader">
     <div class="container header__inner">
       <a href="../../" class="logo" aria-label="BUDGET SOFT — на главную">
-        <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+        <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
       </a>
       <nav class="nav" aria-label="Основная навигация">
         <ul class="nav__list">
@@ -377,7 +377,10 @@
     <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
         <video class="hero__video" autoplay muted loop playsinline poster="../../hero-poster.jpg">
-          <source src="../../hero-background.webm" type="video/webm">
+          <!-- media на <source>: на узких вьюпортах источник не подходит, браузер
+               его не запрашивает и остаётся на постере. Видео 2.2 МБ не тратит
+               мобильный трафик (C5). -->
+          <source src="../../hero-background.webm" type="video/webm" media="(min-width: 900px)">
         </video>
         <div class="hero__overlay"></div>
       </div>
@@ -965,7 +968,7 @@
       <div class="footer__top">
         <div class="footer__col footer__col--brand">
           <a href="../../" class="logo logo--footer">
-            <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+            <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
           </a>
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <div class="footer__social" aria-label="Социальные сети">

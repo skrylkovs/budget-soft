@@ -3146,3 +3146,39 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 }
+
+/* ================================================================
+   Типографика на тач-вьюпортах (C3)
+
+   Норма: основной текст ≥ 16px, вторичный (подписи, бейджи, брови) ≥ 13px.
+   Блок ограничен 768px — десктопные кегли не меняются, поэтому контроль
+   десктопной регрессии (C12) правки не затрагивают.
+================================================================ */
+@media (max-width: 768px) {
+    /* Основной текст: 14–15px → 16px. */
+    .page-faq__a,
+    .page-price-card__desc,
+    .risk-contract__detail,
+    .tech-eco__name,
+    .tech-eco__desc,
+    .page-workflow__process p,
+    .page-workflow__result p,
+    .tech-steps__text,
+    .tech-verdict__text,
+    .tech-price-model__name,
+    .tech-price-model__desc,
+    .tech-price-model__link {
+        font-size: 16px;
+    }
+
+    /* Вторичный текст, не дотягивавший до нижней границы 13px. */
+    .page-price-card__badge,
+    .risk-contract__eyebrow {
+        font-size: 13px;
+    }
+
+    /* Основной текст требует межстрочного ≥ 1.4. */
+    .risk-metric__label {
+        line-height: 1.45;
+    }
+}

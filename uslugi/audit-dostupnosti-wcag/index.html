@@ -46,7 +46,7 @@
   <header class="header" id="siteHeader">
     <div class="container header__inner">
       <a href="../../" class="logo" aria-label="BUDGET SOFT — на главную">
-        <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+        <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
       </a>
       <nav class="nav" aria-label="Основная навигация">
         <ul class="nav__list">
@@ -377,7 +377,10 @@
     <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
         <video class="hero__video" autoplay muted loop playsinline poster="../../hero-poster.jpg">
-          <source src="../../hero-background.webm" type="video/webm">
+          <!-- media на <source>: на узких вьюпортах источник не подходит, браузер
+               его не запрашивает и остаётся на постере. Видео 2.2 МБ не тратит
+               мобильный трафик (C5). -->
+          <source src="../../hero-background.webm" type="video/webm" media="(min-width: 900px)">
         </video>
         <div class="hero__overlay"></div>
       </div>
@@ -491,7 +494,7 @@
         <h3 class="erp-map__signals-title">Типичные сигналы, что нужен аудит доступности</h3>
         <ul class="erp-map__signals-list"><li>вы школа, вуз, колледж или библиотека — доступность сайта проверяют наравне с остальной информационной открытостью;</li><li>вы госорганизация или подведомственное учреждение и готовитесь к проверке сайта;</li><li>вы медучреждение и обязаны обеспечивать доступность среды, включая сайт;</li><li>в тендере или техническом задании стоит соответствие ГОСТ Р 52872 либо WCAG 2.1 AA;</li><li>«версия для слабовидящих» на сайте есть, но замечания всё равно приходят;</li><li>сайт делаете заново и доступность нужно заложить сразу, а не переделывать потом.</li></ul>
       </div>
-      <img class="erp-map__signals-visual" src="../../images/erp-signals.webp" alt="Сигналы, что нужен аудит доступности сайта: школа или вуз готовится к проверке, госорганизация проверяет сайт, медучреждение обязано обеспечить доступность среды, в тендере стоит ГОСТ Р 52872 или WCAG 2.1 AA, виджет для слабовидящих стоит, но замечания приходят" width="380" height="330" loading="lazy">
+      <img class="erp-map__signals-visual" src="../../images/svc-95-wcag.png" alt="Сигналы, что нужен аудит доступности сайта: школа или вуз готовится к проверке, госорганизация проверяет сайт, медучреждение обязано обеспечить доступность среды, в тендере стоит ГОСТ Р 52872 или WCAG 2.1 AA, виджет для слабовидящих стоит, но замечания приходят" width="380" height="330" loading="lazy">
       <div class="page-spec-cards"><div class="page-spec-cards__item reveal">
     <p class="page-spec-cards__label"><svg class="page-spec-cards__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12.59 3H5a2 2 0 00-2 2v7.59a2 2 0 00.59 1.41l7.4 7.4a2 2 0 002.83 0l7.59-7.59a2 2 0 000-2.83L14 3.59A2 2 0 0012.59 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.6"></circle></svg><span>Цена</span></p>
     <p class="page-spec-cards__value">Экспресс-аудит от 25 000 ₽, полный аудит по ГОСТ Р 52872 от 55 000 ₽</p>
@@ -953,7 +956,7 @@
       <div class="footer__top">
         <div class="footer__col footer__col--brand">
           <a href="../../" class="logo logo--footer">
-            <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+            <img src="../../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
           </a>
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <div class="footer__social" aria-label="Социальные сети">

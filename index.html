@@ -84,7 +84,7 @@
   <header class="header" id="siteHeader">
     <div class="container header__inner">
       <a href="./" class="logo" aria-label="BUDGET SOFT — на главную">
-        <img src="logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+        <img src="logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
       </a>
 
       <nav class="nav" aria-label="Основная навигация">
@@ -421,8 +421,11 @@
     <!-- ============ Блок 3. Hero ============ -->
     <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
-        <video class="hero__video" autoplay="" muted="" loop="" playsinline="">
-          <source src="hero-background.webm" type="video/webm">
+        <video class="hero__video" autoplay="" muted="" loop="" playsinline="" poster="hero-poster.jpg">
+          <!-- media на <source>: на узких вьюпортах источник не подходит, браузер
+               его не запрашивает и остаётся на постере. Видео 2.2 МБ не тратит
+               мобильный трафик (C5). -->
+          <source src="hero-background.webm" type="video/webm" media="(min-width: 900px)">
         </video>
         <div class="hero__overlay"></div>
       </div>
@@ -790,7 +793,7 @@
               </div>
               <div class="bento-showcase__media bento-showcase__media--phone">
                 <div class="bento-showcase__phone">
-                  <img src="images/tec1-sm.png" alt="Экспертиза на опережение" loading="lazy">
+                  <img src="images/tec1-sm.png" width="800" height="870" alt="Экспертиза на опережение" loading="lazy">
                 </div>
               </div>
             </div>
@@ -809,7 +812,7 @@
                 <p class="bento-showcase__desc">AI встроен в нашу работу и помогает специалистам: меньше рутины и выше скорость.</p>
               </div>
               <div class="bento-showcase__media bento-showcase__media--center">
-                <img src="images/tec2-sm.png" alt="Человек и AI работают вместе" loading="lazy">
+                <img src="images/tec2-sm.png" width="800" height="404" alt="Человек и AI работают вместе" loading="lazy">
               </div>
             </div>
           </article>
@@ -827,7 +830,7 @@
                 <p class="bento-showcase__desc">Независимая команда проводит аудит и стресс-тесты ПО перед каждым релизом.</p>
               </div>
               <div class="bento-showcase__media bento-showcase__media--security">
-                <img src="images/tec3-sm.png" alt="Гарантия безопасности" loading="lazy">
+                <img src="images/tec3-sm.png" width="800" height="326" alt="Гарантия безопасности" loading="lazy">
               </div>
             </div>
           </article>
@@ -845,7 +848,7 @@
                 <p class="bento-showcase__desc">Никакого «черного ящика». Мы декомпозируем задачи, даем честные оценки и предоставляем клиенту полный доступ к трекерам и метрикам эффективности в реальном времени.</p>
               </div>
               <div class="bento-showcase__media bento-showcase__media--code">
-                <img src="images/tec4-sm.png" alt="Прозрачный рабочий процесс" loading="lazy">
+                <img src="images/tec4-sm.png" width="743" height="800" alt="Прозрачный рабочий процесс" loading="lazy">
               </div>
             </div>
           </article>
@@ -1505,7 +1508,7 @@
       <div class="footer__top">
         <div class="footer__col footer__col--brand">
           <a href="./" class="logo logo--footer">
-            <img src="logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+            <img src="logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
           </a>
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <div class="footer__social" aria-label="Социальные сети">

@@ -44,7 +44,7 @@
   <header class="header" id="siteHeader">
     <div class="container header__inner">
       <a href="../" class="logo" aria-label="BUDGET SOFT — на главную">
-        <img src="../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+        <img src="../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
       </a>
       <nav class="nav" aria-label="Основная навигация">
         <ul class="nav__list">
@@ -375,7 +375,10 @@
     <section class="hero" data-fab-theme="dark">
       <div class="hero__bg" aria-hidden="true">
         <video class="hero__video" autoplay muted loop playsinline poster="../hero-poster.jpg">
-          <source src="../hero-background.webm" type="video/webm">
+          <!-- media на <source>: на узких вьюпортах источник не подходит, браузер
+               его не запрашивает и остаётся на постере. Видео 2.2 МБ не тратит
+               мобильный трафик (C5). -->
+          <source src="../hero-background.webm" type="video/webm" media="(min-width: 900px)">
         </video>
         <div class="hero__overlay"></div>
       </div>
@@ -476,7 +479,7 @@
           <h2 class="section-title">Этапы реализации <span class="text-gradient">вашего проекта</span></h2>
           <p class="section-lead">Мы не просто принимаем заказ — выстраиваем прозрачный процесс от первой консультации до релиза и поддержки.</p>
         </div>
-        <ol class="page-workflow page-workflow--layout reveal"><li class="page-workflow__row page-workflow__row--30"><article class="page-workflow__card page-workflow__card--1" style="--wf-accent: #10b981">
+        <ol class="page-workflow page-workflow--layout reveal"><li class="page-workflow__row page-workflow__row--30"><article class="page-workflow__card page-workflow__card--1" style="--wf-accent: #f59e0b">
   <span class="page-workflow__glow" aria-hidden="true"></span>
   <span class="page-workflow__step">01</span>
   <header class="page-workflow__head">
@@ -510,7 +513,7 @@
       <p>Детальное коммерческое предложение с графиком платежей и таймлайном проекта.</p>
     </div>
   </div>
-</article><article class="page-workflow__card page-workflow__card--3" style="--wf-accent: #7c3aed">
+</article><article class="page-workflow__card page-workflow__card--3" style="--wf-accent: #3b82f6">
   <span class="page-workflow__glow" aria-hidden="true"></span>
   <span class="page-workflow__step">03</span>
   <header class="page-workflow__head">
@@ -527,7 +530,7 @@
       <p>Согласованный визуальный стиль и кликабельный прототип будущего ПО.</p>
     </div>
   </div>
-</article></li><li class="page-workflow__row page-workflow__row--wide"><article class="page-workflow__card page-workflow__card--4" style="--wf-accent: #ec4899">
+</article></li><li class="page-workflow__row page-workflow__row--wide"><article class="page-workflow__card page-workflow__card--4" style="--wf-accent: #10b981">
   <span class="page-workflow__glow" aria-hidden="true"></span>
   <span class="page-workflow__step">04</span>
   <header class="page-workflow__head">
@@ -544,7 +547,7 @@
       <p>Полное Техническое Задание (Blueprint), исключающее двусмысленность при разработке.</p>
     </div>
   </div>
-</article><article class="page-workflow__card page-workflow__card--5" style="--wf-accent: #ef4444">
+</article><article class="page-workflow__card page-workflow__card--5" style="--wf-accent: #6366f1">
   <span class="page-workflow__glow" aria-hidden="true"></span>
   <span class="page-workflow__step">05</span>
   <header class="page-workflow__head">
@@ -561,7 +564,7 @@
       <p>Рабочие сборки после каждого спринта, согласованный backlog и функционал, готовый к полноценному QA.</p>
     </div>
   </div>
-</article></li><li class="page-workflow__row page-workflow__row--half"><article class="page-workflow__card page-workflow__card--6" style="--wf-accent: #06b6d4">
+</article></li><li class="page-workflow__row page-workflow__row--half"><article class="page-workflow__card page-workflow__card--6" style="--wf-accent: #5b8def">
   <span class="page-workflow__glow" aria-hidden="true"></span>
   <span class="page-workflow__step">06</span>
   <header class="page-workflow__head">
@@ -578,7 +581,7 @@
       <p>Протокол тестирования с зафиксированными кейсами и стабильная сборка, готовая к релизу и внедрению у заказчика.</p>
     </div>
   </div>
-</article><article class="page-workflow__card page-workflow__card--7" style="--wf-accent: #3b82f6">
+</article><article class="page-workflow__card page-workflow__card--7" style="--wf-accent: #6f4cff">
   <span class="page-workflow__glow" aria-hidden="true"></span>
   <span class="page-workflow__step">07</span>
   <header class="page-workflow__head">
@@ -799,7 +802,7 @@
       <div class="footer__top">
         <div class="footer__col footer__col--brand">
           <a href="../" class="logo logo--footer">
-            <img src="../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img">
+            <img src="../logos/budget-soft.svg" alt="BUDGET SOFT" class="logo__img" width="432" height="65">
           </a>
           <p class="footer__tagline">Заказная разработка ПО, AI и автоматизация бизнес-процессов.</p>
           <div class="footer__social" aria-label="Социальные сети">

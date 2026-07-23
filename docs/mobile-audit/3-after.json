@@ -1,0 +1,3338 @@
+[
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "110x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "228x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "167x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "145x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "188x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "177x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "110x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "167x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "177x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "110x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "167x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "302x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "177x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "110x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "228x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "167x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "145x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "188x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "302x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "177x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "110x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "228x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "167x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "145x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "188x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "302x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "177x19 < 44"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x30 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x30 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x30 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x30 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x30 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-erp-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x32 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x32 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x32 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x32 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x32 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-crm-sistem/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "86x31 < 44"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/uslugi/razrabotka-smart-kontraktov/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "48x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "49x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "60x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "21x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "37x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "32x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "68x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "19x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "53x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "34x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x71 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "33x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "57x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "48x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "49x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "60x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "21x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "37x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "32x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "68x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "19x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "53x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "34x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x71 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "33x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "57x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "48x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "49x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "60x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "21x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "37x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "32x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "68x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "19x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "53x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "34x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x71 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "33x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "57x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "48x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "49x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "60x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "21x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "37x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "32x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "68x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "19x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "53x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "34x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x71 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "33x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "57x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "48x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "49x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "43x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "60x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "21x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "37x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "32x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "68x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "19x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "83x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "54x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "58x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "53x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "55x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "36x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "50x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "34x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "39x71 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "33x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "57x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "18x20 < 44"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "122x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "149x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "131x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "159x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "142x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "133x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "135x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "122x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "149x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "131x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "159x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "142x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "133x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "135x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "122x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "149x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "131x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "159x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "142x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "133x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "135x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "122x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "149x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "131x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "159x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "142x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "133x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "135x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "96x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "122x31 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "149x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "131x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "159x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "142x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "133x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a.page-inline-link",
+  "detail": "135x20 < 44"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/tehnologii/laravel/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/portfolio/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/stoimost/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/etapy/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/kontakty/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/o-nas/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/blog/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/garantii/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/importozameshchenie/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "320x568",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "360x640",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "390x844",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "414x896",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "18x44 < 24"
+ },
+ {
+  "page": "/privacy/",
+  "vp": "430x932",
+  "c": "C2",
+  "sev": "major",
+  "sel": "a",
+  "detail": "15x44 < 24"
+ }
+]
